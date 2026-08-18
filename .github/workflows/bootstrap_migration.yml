@@ -65,26 +65,26 @@ jobs:
           python - <<'PY'
           from pathlib import Path
 
-          replacements = {
-              ".crest_common_lift_relaxation": ".carrier_repair",
-              ".crest_controlled_lift_relaxation": ".controlled_repair",
-              ".crest_common_lift": ".carrier",
-              ".crest_controlled_lift": ".controlled_carrier",
-              ".crest_joint_state": ".joint_state",
-              ".crest_lift_invariance": ".lift_invariance",
-              ".crest_lax_lift": ".lift_bounds",
-              "mrm.crest_common_lift_relaxation": "crest.carrier_repair",
-              "mrm.crest_controlled_lift_relaxation": "crest.controlled_repair",
-              "mrm.crest_common_lift": "crest.carrier",
-              "mrm.crest_controlled_lift": "crest.controlled_carrier",
-              "mrm.crest_joint_state": "crest.joint_state",
-              "mrm.crest_lift_invariance": "crest.lift_invariance",
-              "mrm.crest_lax_lift": "crest.lift_bounds",
-          }
+          replacements = (
+              ("mrm.crest_common_lift_relaxation", "crest.carrier_repair"),
+              ("mrm.crest_controlled_lift_relaxation", "crest.controlled_repair"),
+              ("mrm.crest_common_lift", "crest.carrier"),
+              ("mrm.crest_controlled_lift", "crest.controlled_carrier"),
+              ("mrm.crest_joint_state", "crest.joint_state"),
+              ("mrm.crest_lift_invariance", "crest.lift_invariance"),
+              ("mrm.crest_lax_lift", "crest.lift_bounds"),
+              (".crest_common_lift_relaxation", ".carrier_repair"),
+              (".crest_controlled_lift_relaxation", ".controlled_repair"),
+              (".crest_common_lift", ".carrier"),
+              (".crest_controlled_lift", ".controlled_carrier"),
+              (".crest_joint_state", ".joint_state"),
+              (".crest_lift_invariance", ".lift_invariance"),
+              (".crest_lax_lift", ".lift_bounds"),
+          )
           for root in (Path("crest"), Path("tests")):
               for path in root.glob("*.py"):
                   text = path.read_text(encoding="utf-8")
-                  for old, new in replacements.items():
+                  for old, new in replacements:
                       text = text.replace(old, new)
                   path.write_text(text, encoding="utf-8")
           PY
@@ -186,7 +186,7 @@ jobs:
           The source SHA contains J1--J7, O1, the J4/J7 NP-completeness boundary, analytic proof documents, the CREST philosophy manuscript, submission controls, and repository-hygiene corrections. Git history in MRM remains the pre-extraction provenance source.
           MD
 
-          if grep -R "mrm\.crest_\|\.crest_" crest tests; then
+          if grep -R -E '^(from|import) mrm\.' crest tests; then
             echo "unrewritten temporary-host imports remain" >&2
             exit 1
           fi
