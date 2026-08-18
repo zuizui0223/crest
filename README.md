@@ -28,6 +28,10 @@ J4-REPAIR and J7-REPAIR are NP-complete in general. The included solvers are exa
 
 CREST owns only results that essentially couple two or more companion contracts. It does not absorb the headline theorems of CCOC, MLTR, MRM, or CED, and it claims no novelty for generic partition refinement, fixed points, safety games, model repair, weighted set cover, or abstraction morphisms.
 
+## Publication sequence
+
+The fixed publication strategy is **CCOC flagship → CREST philosophy paper → MLTR/MRM/CED focused full papers**, rather than waiting for four short reports. See [`docs/publication_sequence_2026-08-18.md`](docs/publication_sequence_2026-08-18.md).
+
 ## Run
 
 ```bash
@@ -38,4 +42,4 @@ python scripts/verify_crest_philosophy_submission.py --write-report
 
 ## Provenance
 
-The initial independent repository was migrated from `zuizui0223/mrm` at audited source SHA `72550fa8335cbffb901785f8a171c647b3cf8cc6`. See `PROVENANCE.md` and the synthesis proof ledger for theorem-level sources and boundaries.
+The independent repository was migrated from `zuizui0223/mrm` at audited source SHA `72550fa8335cbffb901785f8a171c647b3cf8cc6`. Physical extraction is complete; see `PROVENANCE.md` and the synthesis proof ledger for theorem-level sources and boundaries.
