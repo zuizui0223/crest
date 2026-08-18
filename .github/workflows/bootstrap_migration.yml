@@ -1,0 +1,209 @@
+name: Bootstrap CREST synthesis migration
+
+on:
+  push:
+    branches:
+      - agent/migrate-crest-synthesis
+    paths:
+      - .github/workflows/bootstrap_migration.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/migrate-crest-synthesis
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Copy the audited CREST synthesis unit
+        env:
+          SOURCE_REPO: https://github.com/zuizui0223/mrm.git
+          SOURCE_SHA: 72550fa8335cbffb901785f8a171c647b3cf8cc6
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/mrm-source
+          git clone --filter=blob:none "$SOURCE_REPO" /tmp/mrm-source
+          git -C /tmp/mrm-source checkout "$SOURCE_SHA"
+
+          rm -rf crest tests docs manuscript scripts artifacts
+          mkdir -p crest tests docs manuscript scripts artifacts
+
+          cp /tmp/mrm-source/mrm/crest_common_lift.py crest/carrier.py
+          cp /tmp/mrm-source/mrm/crest_common_lift_relaxation.py crest/carrier_repair.py
+          cp /tmp/mrm-source/mrm/crest_controlled_lift.py crest/controlled_carrier.py
+          cp /tmp/mrm-source/mrm/crest_controlled_lift_relaxation.py crest/controlled_repair.py
+          cp /tmp/mrm-source/mrm/crest_joint_state.py crest/joint_state.py
+          cp /tmp/mrm-source/mrm/crest_lift_invariance.py crest/lift_invariance.py
+          cp /tmp/mrm-source/mrm/crest_lax_lift.py crest/lift_bounds.py
+
+          cp /tmp/mrm-source/tests/test_crest_*.py tests/
+          cp /tmp/mrm-source/docs/contract_relative_ecological_state_theory.md docs/
+          cp /tmp/mrm-source/docs/crest_*.md docs/
+          cp /tmp/mrm-source/manuscript/crest_philosophy_biology_philosophy.md manuscript/
+          cp /tmp/mrm-source/manuscript/biology_philosophy_submission_handoff.md manuscript/
+          cp /tmp/mrm-source/scripts/verify_crest_philosophy_submission.py scripts/
+
+          cat > crest/__init__.py <<'PY'
+          """Contract-Relative Ecological State Theory synthesis package.
+
+          This package contains the cross-contract J1--J7 theorem implementations.
+          CCOC, MLTR, MRM, and CED remain separate companion theorem programs.
+          """
+
+          __version__ = "0.1.0"
+          PY
+
+          python - <<'PY'
+          from pathlib import Path
+
+          replacements = {
+              ".crest_common_lift_relaxation": ".carrier_repair",
+              ".crest_controlled_lift_relaxation": ".controlled_repair",
+              ".crest_common_lift": ".carrier",
+              ".crest_controlled_lift": ".controlled_carrier",
+              ".crest_joint_state": ".joint_state",
+              ".crest_lift_invariance": ".lift_invariance",
+              ".crest_lax_lift": ".lift_bounds",
+              "mrm.crest_common_lift_relaxation": "crest.carrier_repair",
+              "mrm.crest_controlled_lift_relaxation": "crest.controlled_repair",
+              "mrm.crest_common_lift": "crest.carrier",
+              "mrm.crest_controlled_lift": "crest.controlled_carrier",
+              "mrm.crest_joint_state": "crest.joint_state",
+              "mrm.crest_lift_invariance": "crest.lift_invariance",
+              "mrm.crest_lax_lift": "crest.lift_bounds",
+          }
+          for root in (Path("crest"), Path("tests")):
+              for path in root.glob("*.py"):
+                  text = path.read_text(encoding="utf-8")
+                  for old, new in replacements.items():
+                      text = text.replace(old, new)
+                  path.write_text(text, encoding="utf-8")
+          PY
+
+          cat > pyproject.toml <<'TOML'
+          [build-system]
+          requires = ["setuptools>=68"]
+          build-backend = "setuptools.build_meta"
+
+          [project]
+          name = "contract-relative-ecological-state-theory"
+          version = "0.1.0"
+          description = "Finite cross-contract synthesis for ecological state adequacy"
+          requires-python = ">=3.10"
+
+          [project.optional-dependencies]
+          dev = ["pytest>=8"]
+
+          [tool.setuptools.packages.find]
+          include = ["crest*"]
+
+          [tool.pytest.ini_options]
+          testpaths = ["tests"]
+          addopts = "-q"
+          TOML
+
+          cat > .gitignore <<'EOF'
+          __pycache__/
+          *.py[cod]
+          *.egg-info/
+          build/
+          dist/
+          .pytest_cache/
+          .mypy_cache/
+          .ruff_cache/
+          .coverage
+          .coverage.*
+          htmlcov/
+          .venv/
+          venv/
+          env/
+          .DS_Store
+          .idea/
+          .vscode/
+          EOF
+
+          cat > README.md <<'MD'
+          # CREST — Contract-Relative Ecological State Theory
+
+          CREST is the cross-contract synthesis unit connecting four independent mathematical-ecology programs:
+
+          - **CCOC — future sufficiency:** which distinctions an enlarged future grammar can expose;
+          - **MLTR — semantic coherence:** which inherited ecological meanings survive structural change;
+          - **MRM — mechanism robustness:** which retained response alternatives support one prediction;
+          - **CED — evidential licensing:** which distinctions finite imperfect evidence permits reporting.
+
+          Its central representational principle is:
+
+          > Treating two ecological configurations as the same state is a scientific commitment about which differences may be ignored for a declared future, inherited meaning, retained mechanism family, evidence contract, and target.
+
+          ## Current finite synthesis results
+
+          - **J1:** unique coarsest four-audit state and evidence gate;
+          - **J2:** faithful-lift invariance;
+          - **J3:** maximal universal common carrier or finite no-go certificate;
+          - **J4:** universal-carrier repair characterization;
+          - **J5:** one-sided lift refinement bounds;
+          - **J6:** maximal controlled common carrier and safe selector;
+          - **J7:** controlled-carrier repair characterization;
+          - **O1:** the cheapest carrier repair need not be the cheapest evidence-licensed repair.
+
+          J4-REPAIR and J7-REPAIR are NP-complete in general. The included solvers are exact finite exhaustive oracles, not polynomial-time claims.
+
+          ## Ownership firewall
+
+          CREST owns only results that essentially couple two or more companion contracts. It does not absorb the headline theorems of CCOC, MLTR, MRM, or CED, and it claims no novelty for generic partition refinement, fixed points, safety games, model repair, weighted set cover, or abstraction morphisms.
+
+          ## Run
+
+          ```bash
+          python -m pip install -e '.[dev]'
+          pytest
+          python scripts/verify_crest_philosophy_submission.py --write-report
+          ```
+
+          ## Provenance
+
+          The initial independent repository was migrated from `zuizui0223/mrm` at audited source SHA `72550fa8335cbffb901785f8a171c647b3cf8cc6`. See `PROVENANCE.md` and the synthesis proof ledger for theorem-level sources and boundaries.
+          MD
+
+          cat > PROVENANCE.md <<'MD'
+          # CREST migration provenance
+
+          - Source repository: `zuizui0223/mrm`
+          - Audited source commit: `72550fa8335cbffb901785f8a171c647b3cf8cc6`
+          - Migration target: `zuizui0223/crest`
+          - Migration policy: copy first, verify independently, then remove temporary CREST hosting from MRM only after both repositories are green.
+
+          The source SHA contains J1--J7, O1, the J4/J7 NP-completeness boundary, analytic proof documents, the CREST philosophy manuscript, submission controls, and repository-hygiene corrections. Git history in MRM remains the pre-extraction provenance source.
+          MD
+
+          if grep -R "mrm\.crest_\|\.crest_" crest tests; then
+            echo "unrewritten temporary-host imports remain" >&2
+            exit 1
+          fi
+
+      - name: Verify the independent package
+        run: |
+          set -euo pipefail
+          python -m pip install -e '.[dev]'
+          pytest
+          python scripts/verify_crest_philosophy_submission.py --write-report
+          git diff --check
+
+      - name: Commit migrated assets
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md PROVENANCE.md .gitignore pyproject.toml crest tests docs manuscript scripts artifacts
+          git commit -m "Migrate the CREST synthesis unit from MRM"
+          git push origin HEAD:agent/migrate-crest-synthesis
