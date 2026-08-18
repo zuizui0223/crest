@@ -1,0 +1,51 @@
+name: CREST reproducibility
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  theorem-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install package and test dependencies
+        run: python -m pip install -e '.[dev]'
+
+      - name: Run CREST theorem and obstruction tests
+        run: pytest
+
+      - name: Verify philosophy submission controls
+        if: matrix.python-version == '3.12'
+        run: python scripts/verify_crest_philosophy_submission.py --write-report
+
+      - name: Check repository hygiene and deterministic outputs
+        run: |
+          git diff --check
+          if git ls-files | grep -E '(^|/)(__pycache__/|.*\.py[co]$|[^/]+\.egg-info/)'; then
+            echo 'tracked Python build/runtime products detected' >&2
+            exit 1
+          fi
+          test -z "$(git status --porcelain)"
+
+      - name: Upload submission-control report
+        if: matrix.python-version == '3.12'
+        uses: actions/upload-artifact@v4
+        with:
+          name: crest-submission-control-report
+          path: artifacts/crest_philosophy_submission_report.json
