@@ -1,0 +1,14 @@
+# Table 1 — Four contract-relative adequacy audits
+
+This table is manuscript-facing. It summarizes the four CREST audits without implying that they are exhaustive, mutually independent, commuting, or jointly minimal.
+
+| Audit | Scientific contract varied | What makes a proposed state merge fail? | Formal anchor in the current program | Appropriate response to failure |
+|---|---|---|---|---|
+| **Future sufficiency** | Declared legal future operations / composition grammar | A newly legal future word distinguishes configurations that the closed state had merged | CCOC open-future interface lower bound and bounded-local sharpness family | Retain additional response-relevant state information, or accept the lower bound on exact compression under the enlarged future repertoire |
+| **Semantic coherence** | Structural target and inherited source meaning | A carried source label groups target configurations with different outputs, legal actions, or successors | MLTR unique coarsest exact source-relative repair; finite history context when inherited meanings conflict | Refine the inherited classification only where target dynamics force a split; preserve history context where required |
+| **Mechanism robustness** | Retained response mechanisms / response types | Retained mechanisms compatible with the same visible state disagree on a declared future prediction | MRM candidate-safe quotient and deterministic / typed / set-valued reporting | Retain response-relevant mechanism distinctions, report a set/typed prediction, or perform a discriminating intervention |
+| **Evidential licensing** | Worlds compatible with the declared experiment, observation, and reliability contract | One evidence class contains more than one target value | CED reportability criterion and target-safe refinement | Preserve ambiguity, strengthen the evidence contract, or choose a risk-limited experiment; do not report an unearned distinction |
+
+## Caption
+
+**Table 1. Four different ways in which one ecological state representation can become inadequate.** CREST treats a state merge as a scientific commitment relative to a declared contract. The four audits vary different objects and therefore generate different failure certificates and remedies: an enlarged future can expose a dormant distinction; structural change can break inherited state meaning; retained mechanisms can disagree on a successor; and available evidence can fail to license a target-relevant distinction. The table is diagnostic rather than exhaustive: CREST does not claim that the four audits are independent, commuting, or a complete taxonomy of ecological representation.
