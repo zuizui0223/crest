@@ -40,6 +40,48 @@ Its central principle remains:
 
 This does not mean that nature is arbitrary or observer-created. It means that a scientific state variable is an equivalence claim, and its adequacy depends on the work the variable is required to perform.
 
+## Formal anchor map
+
+The four companion results are not one theorem. They supply four differently quantified anchors for the CREST argument.
+
+### CCOC — extension/compression noncommutation
+
+The current sharp finite family has a two-state closed interface but an open interface with exponentially many states:
+
+\[
+|P_C|=2,
+\qquad
+|P_O|=2^{m+1},
+\qquad
+K_O-K_C=m.
+\]
+
+The scientific content is that opening independently addressable future interactions can force retention of dormant causal information even when every fixed closed context admits a small exact law.
+
+### MLTR — least source-relative repair
+
+Starting from the target partition carried by one inherited source law, iterative output/legal-row/successor refinement produces the unique coarsest exact target repair \(P_\infty\). The transport defect records the extra target resolution forced by structural replacement:
+
+\[
+\Delta_{\#}=|Q_T^{\min}|-|Q_S|,
+\qquad
+\Delta_K=\log_2|Q_T^{\min}|-\log_2|Q_S|.
+\]
+
+This is a semantic repair relative to a fixed inherited law, not an unconstrained search for the smallest target abstraction.
+
+### MRM — mechanism-safe reporting
+
+A single candidate-independent deterministic transition is licensed only where every retained response type agrees under the declared action. Where they disagree, the honest output remains typed or set-valued unless a declared intervention discriminates the response types.
+
+### CED — evidence-relative reportability
+
+For experiment-induced evidence classes, a deterministic target report is licensed exactly when the requested target is constant over every world compatible with the observed record. A target-safe refinement states the resolution required for deterministic tracking; it does not by itself show that current evidence has earned that refinement.
+
+### CREST — joint state and evidence gate
+
+On a declared common finite carrier, CREST's J1 construction gives the unique coarsest common fixed point of the four audit closures. The full joint state is deterministically reportable only when the reliability-qualified evidence partition is at least as fine as that required state. This is a conditional synthesis theorem on an explicit common lift, not a claim that nature supplies one canonical universal state space.
+
 ## Why four short reports first is the wrong sequence
 
 Waiting for four short publications would weaken rather than strengthen the program.
