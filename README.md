@@ -11,6 +11,15 @@ Its central representational principle is:
 
 > Treating two ecological configurations as the same state is a scientific commitment about which differences may be ignored for a declared future, inherited meaning, retained mechanism family, evidence contract, and target.
 
+The companion-level scientific spine is:
+
+- present functional equivalence need not imply open-future causal equivalence;
+- inherited ecological categories are historically and structurally conditional;
+- visible-state equivalence need not support one mechanism-robust prediction; and
+- a model-required distinction need not be an evidence-licensed report.
+
+See [`docs/companion_spine_and_publication_decision_2026-08-19.md`](docs/companion_spine_and_publication_decision_2026-08-19.md).
+
 ## Current finite synthesis results
 
 - **J1:** unique coarsest four-audit state and evidence gate;
@@ -30,7 +39,15 @@ CREST owns only results that essentially couple two or more companion contracts.
 
 ## Publication sequence
 
-The fixed publication strategy is **CCOC flagship → CREST philosophy paper → MLTR/MRM/CED focused full papers**, rather than waiting for four short reports. See [`docs/publication_sequence_2026-08-18.md`](docs/publication_sequence_2026-08-18.md).
+The current decision is a **1 + 1 + 3 strategy**:
+
+```text
+CCOC full theorem paper / citable preprint
+  -> CREST full Biology & Philosophy paper
+  -> MLTR, MRM, and CED as independent focused full papers
+```
+
+Do not wait for four thin short reports before submitting CREST. Do not retarget the present philosophy manuscript to a broad general-ecology journal without a genuinely new cross-contract ecological theorem or worked application. See the [2026-08-19 decision](docs/companion_spine_and_publication_decision_2026-08-19.md); the [2026-08-18 sequence note](docs/publication_sequence_2026-08-18.md) is retained as the earlier decision record.
 
 ## Run
 
