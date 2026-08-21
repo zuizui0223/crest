@@ -1,6 +1,7 @@
 name: Temporary cross-gate novelty alignment
 
 on:
+  pull_request:
   push:
     branches:
       - agent/crest-crossgate-novelty
