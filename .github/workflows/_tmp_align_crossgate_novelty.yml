@@ -1,0 +1,36 @@
+name: Temporary cross-gate novelty alignment
+
+on:
+  push:
+    branches:
+      - agent/crest-crossgate-novelty
+
+permissions:
+  contents: write
+
+jobs:
+  align:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/crest-crossgate-novelty
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Align manuscript and review
+        run: python scripts/_tmp_align_crossgate_novelty.py
+      - name: Verify submission controls
+        run: python scripts/verify_crest_philosophy_submission.py --write-report
+      - name: Commit generated changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add manuscript/crest_philosophy_biology_philosophy.md docs/crest_prior_art_review_protocol_and_evidence_matrix_2026-08-21.md artifacts/crest_philosophy_submission_report.json
+          if git diff --cached --quiet; then
+            echo 'No generated changes'
+          else
+            git commit -m 'Align CREST novelty with cross-gate prior art'
+            git push origin HEAD:agent/crest-crossgate-novelty
+          fi
