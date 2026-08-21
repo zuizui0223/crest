@@ -1,7 +1,7 @@
 {
   "target": "manuscript/crest_philosophy_biology_philosophy.md",
   "repository_word_count_definition": "visible markdown tokens before References; publisher count may differ slightly",
-  "abstract_words": 227,
+  "abstract_words": 225,
   "keyword_count": 6,
   "keywords": [
     "philosophy of ecology",
@@ -11,11 +11,20 @@
     "causal abstraction",
     "uncertainty"
   ],
-  "manuscript_words_before_references": 5094,
+  "manuscript_words_before_references": 4561,
   "development_target_5500_7500_met": false,
   "hard_cap_10000_met": true,
   "blind_hits": {},
   "excluded_unpublished_reference_hits": [],
+  "post_j1_joint_state_checks": {
+    "defines_joint_partition": true,
+    "defines_state_block": true,
+    "states_unique_coarseness": true,
+    "states_carrier_gate": true,
+    "states_evidence_gate": true,
+    "rejects_global_intrinsic_state": true
+  },
+  "stale_joint_state_hits": [],
   "automated_blockers": [],
   "author_controlled_blockers": {
     "competing_interests_placeholder": true,
