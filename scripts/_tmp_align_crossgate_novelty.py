@@ -1,3 +1,4 @@
+# One-shot deterministic manuscript/review alignment; remove before merge.
 from pathlib import Path
 
 manuscript_path = Path("manuscript/crest_philosophy_biology_philosophy.md")
