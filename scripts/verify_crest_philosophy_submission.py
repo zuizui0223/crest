@@ -77,6 +77,34 @@ def main() -> int:
         if re.search(re.escape(name), reference_text, flags=re.I)
     ]
 
+    # Post-J1 synchronization gate. The old philosophy manuscript predated the
+    # conditional joint-state theorem and could incorrectly read as if joint
+    # minimality were still wholly open. These checks distinguish the proved
+    # contract-relative state from the still-rejected global/intrinsic reading.
+    joint_state_checks = {
+        "defines_joint_partition": bool(
+            re.search(
+                r"J=\(C_\\Gamma\\vee C_\{\\mathcal H\}\\vee C_\\Theta\\vee C_\{D,T\}\)\(B\)",
+                text,
+            )
+        ),
+        "defines_state_block": "\\operatorname{State}_{\\mathcal C}(u)=[u]_J" in text,
+        "states_unique_coarseness": "unique coarsest" in text,
+        "states_carrier_gate": "Carrier existence comes before state construction" in text,
+        "states_evidence_gate": "J\\preceq E_D" in text,
+        "rejects_global_intrinsic_state": (
+            "does **not** establish one universal joint state independent of scientific contract" in text
+            and "not one intrinsic partition of nature" in text
+        ),
+    }
+
+    stale_joint_state_phrases = [
+        "no claim is made that these four audits are exhaustive, commuting, jointly minimal",
+        "share a joint minimum is an open mathematical question",
+        "does not establish a universal joint state, an audit order",
+    ]
+    stale_joint_state_hits = [phrase for phrase in stale_joint_state_phrases if phrase in text]
+
     blockers: list[str] = []
     if not 150 <= abstract_words <= 250:
         blockers.append(f"abstract word count {abstract_words} is outside 150-250")
@@ -93,11 +121,20 @@ def main() -> int:
             "submission reference list contains unpublished/preprint audit sources: "
             + ", ".join(excluded_unpublished)
         )
+    missing_joint_state = [name for name, ok in joint_state_checks.items() if not ok]
+    if missing_joint_state:
+        blockers.append(
+            "post-J1 joint-state synchronization checks failed: " + ", ".join(missing_joint_state)
+        )
+    if stale_joint_state_hits:
+        blockers.append(
+            "obsolete pre-J1 joint-state wording remains: " + " | ".join(stale_joint_state_hits)
+        )
 
     author_controlled = {
         "competing_interests_placeholder": "AUTHOR INPUT REQUIRED BEFORE SUBMISSION" in text,
         "funding_placeholder": text.count("AUTHOR INPUT REQUIRED BEFORE SUBMISSION") >= 2,
-        "ai_disclosure_requires_final_human_review": True,
+        "ai_disclosure_requires_final_human_review": "FINAL HUMAN REVIEW REQUIRED BEFORE SUBMISSION" in text,
         "title_page_metadata_required": True,
     }
 
@@ -112,6 +149,8 @@ def main() -> int:
         "hard_cap_10000_met": manuscript_words_before_references <= 10_000,
         "blind_hits": blind_hits,
         "excluded_unpublished_reference_hits": excluded_unpublished,
+        "post_j1_joint_state_checks": joint_state_checks,
+        "stale_joint_state_hits": stale_joint_state_hits,
         "automated_blockers": blockers,
         "author_controlled_blockers": author_controlled,
         "automated_checks_pass": not blockers,
