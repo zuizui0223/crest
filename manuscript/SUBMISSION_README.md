@@ -25,6 +25,7 @@ This is **not** an unconditional globally unique state of nature. J3/J6 first ga
 ## Manuscript-facing support
 
 - `table1_adequacy_audits.md` — compact comparison of the four input audits plus their relation to the J1 joint state.
+- `joint_state_section.md` — manuscript-facing section that explicitly defines the CREST state as `[u]_J` and separates carrier existence, state requirement, and evidence licensing.
 - `biology_philosophy_submission_handoff.md` — automated and human submission gates.
 - `title_page_template.md` — author-controlled title-page and declaration fields; keep separate from blinded review manuscript.
 - `../docs/crest_state_hypothesis_recovery_2026-08-21.md` — current recovery answer to “what is the state?”
@@ -51,7 +52,7 @@ CREST synthesis owns the cross-contract carrier/state/repair/comparison results 
 
 ## Current finishing path
 
-1. **Synchronize the review manuscript with J1/J3/J6:** replace the obsolete blanket non-claim about joint minimality with conditional unique-coarsest state language, and define the state explicitly as `[u]_J`.
+1. **Synchronize the review manuscript with J1/J3/J6:** replace the obsolete blanket non-claim about joint minimality with conditional unique-coarsest state language, define the state explicitly as `[u]_J`, and integrate `joint_state_section.md`.
 2. Insert/typeset Table 1 after the four audits are introduced and connect it to the J1 joint-state section.
 3. Preserve the three-gate distinction: common carrier -> required joint state -> evidence licensing.
 4. Convert the synchronized review manuscript to the final upload format while preserving double-blind separation.
