@@ -11,7 +11,31 @@ Its central representational principle is:
 
 > Treating two ecological configurations as the same state is a scientific commitment about which differences may be ignored for a declared future, inherited meaning, retained mechanism family, evidence contract, and target.
 
-The companion-level scientific spine is:
+## What the CREST state is
+
+The four companion programs are **constraints on one state representation**, not four competing definitions of state.
+
+On a declared admissible finite common carrier `U`, let `B` be the baseline partition and let the four companion obligations induce refinement closures `C_Γ`, `C_H`, `C_Θ`, and `C_{D,T}`. CREST-J1 proves that
+
+\[
+J=(C_\Gamma\vee C_\mathcal H\vee C_\Theta\vee C_{D,T})(B)
+\]
+
+is the unique coarsest / least-information partition satisfying all four declared obligations. For one world/configuration `u`, the CREST state is its block
+
+\[
+\operatorname{State}_{\mathcal C}(u)=[u]_J.
+\]
+
+This is **conditional joint minimality**, not one intrinsic partition of nature. J3/J6 first test whether a suitable common carrier exists; after J1 constructs the required state, the evidence gate separately asks whether the available data actually identify its block.
+
+Current recovery controls:
+
+- [`docs/crest_state_hypothesis_recovery_2026-08-21.md`](docs/crest_state_hypothesis_recovery_2026-08-21.md) — recovered state hypothesis and remaining boundaries;
+- [`docs/crest_philosophy_claim_ledger_post_j1_2026-08-21.md`](docs/crest_philosophy_claim_ledger_post_j1_2026-08-21.md) — post-J1 philosophy claim corrections;
+- [`manuscript/joint_state_section.md`](manuscript/joint_state_section.md) — manuscript-facing joint-state insertion.
+
+The companion-level scientific spine remains:
 
 - present functional equivalence need not imply open-future causal equivalence;
 - inherited ecological categories are historically and structurally conditional;
