@@ -23,7 +23,18 @@ The philosophical claim is contract-relative but not arbitrary. Scientists choos
 
 ## 2. One state label, four different obligations
 
-Consider the coarse ecological state **pollination maintained**. Suppose two configurations receive this label because both currently sustain an adequate amount of pollination. That agreement does not yet tell us whether the configurations should count as the same state for every scientific use of the label.
+Consider the coarse ecological state **pollination maintained**. Suppose two configurations receive this label because both currently sustain an adequate amount of pollination. That agreement does not yet tell us whether the configurations should count as the same state for every scientific use of the label. Table 1 summarizes the four obligations currently formalized in CREST. The rows are constraints on one joint state representation, not four rival definitions of ecological state.
+
+**Table 1. Four scientific obligations constraining one contract-relative ecological state.**
+
+| Obligation | Contract varied | A proposed merge fails when | Formal response in CREST |
+|---|---|---|---|
+| **Future sufficiency** | Legal future operations / composition grammar | A legal future distinguishes configurations that the current state merges | Retain response-relevant distinctions or accept the exact-compression lower bound under the enlarged future repertoire |
+| **Semantic coherence** | Structural target and inherited source meaning | A carried state label groups target configurations with different outputs, legal actions, successors, or required history meaning | Apply the coarsest source-relative repair and retain finite history context only where required |
+| **Mechanism robustness** | Retained response mechanisms / response types | Mechanisms compatible with the visible state disagree on a requested future response | Retain response-relevant mechanism distinctions, use typed/set-valued prediction, or discriminate experimentally |
+| **Evidential / target resolution** | Experiment, observation, reliability, and target contract | One evidence class spans distinctions needed for full-state or target reporting | Keep required resolution separate from earned evidence; preserve ambiguity or strengthen the evidence design |
+
+The four obligations can interact under refinement, so independently minimizing each row once need not recover the joint state. Their common resolution is constructed later through the J1 least common fixed point, after the common-carrier gate.
 
 ### 2.1 Future sufficiency
 
