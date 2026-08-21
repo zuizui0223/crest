@@ -443,3 +443,43 @@ Further terminology generation should stop unless it produces one of:
 - an empirical consequence that distinguishes CREST from ordinary adaptive monitoring/POMDP/VOI practice.
 
 Otherwise the correct next task is manuscript positioning and specialist human literature review, not another named concept.
+
+
+---
+
+## 13. Targeted cross-gate exact-match check — control, viability and observability
+
+A final targeted search asked whether the strongest surviving CREST result is already explicit in control theory or ecological management: **expanding an admissible management-action repertoire enlarges the viable domain while simultaneously forcing a finer adequate state, making that state unidentifiable under fixed evidence, yet leaving a declared target reportable.**
+
+Additional query families included combinations of `action set`, `control authority`, `viability kernel`, `observability`, `state distinguishability`, `monitoring`, `partial observability`, `state abstraction`, and `ecosystem management`.
+
+### Closest prior art found
+
+- Cury et al. (2005), *Viability theory for an ecosystem approach to fisheries*, establishes viability kernels as ecological-management objects whose size depends on admissible controls and constraints.
+- Ecosystem-management viability work more generally shows that regulation through available controls can enlarge the set of states from which ecological constraints can be maintained.
+- Kassara (2012), *Observability by using viability kernels*, and Kassara (2013), *A Set-Valued Approach to Observability*, explicitly connect observability and viability-kernel constructions in control theory.
+- POMDP and adaptive-management literature already combines actions, partial observability, monitoring and decision value.
+- Automata/state-learning literature already uses richer input alphabets to expose otherwise indistinguishable states.
+
+### Novelty consequence
+
+These findings block any claim that CREST first links **viability and observability**, first shows that admissible controls change a viable set, or first shows that richer inputs can expose latent state distinctions.
+
+No direct match was located in this audit for the full CREST cross-gate conjunction:
+
+\[
+\text{action repertoire expansion}
+\Rightarrow
+\text{viable carrier}\uparrow,
+\quad |J|\uparrow,
+\quad \text{fixed-evidence full-state identification}\downarrow,
+\quad \text{target reportability preserved},
+\]
+
+with the required monitoring repair characterized by the unique common refinement `E ∨ J` and with the CCOC family yielding arbitrarily large finite monitoring-resolution debt from one newly relevant future action.
+
+This remains a **no-direct-match result from the present audit**, not evidence of historical firstness.
+
+### Final priority rule
+
+The manuscript should sell the **cross-gate conjunction and theorem-backed architecture**, not any of its generic ingredients. If future literature supplies the same conjunction, CREST remains defensible as an ecology-specific theorem-grounded synthesis, but the novelty language must be reduced again.
