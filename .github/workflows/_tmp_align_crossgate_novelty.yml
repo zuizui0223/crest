@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Align manuscript and review
-        run: python scripts/_tmp_align_crossgate_novelty.py
+        run: python scripts/_tmp_fix_and_run_crossgate.py
       - name: Verify submission controls
         run: python scripts/verify_crest_philosophy_submission.py --write-report
       - name: Commit generated changes
