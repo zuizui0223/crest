@@ -3,7 +3,7 @@
 
 ## Abstract
 
-Ecology routinely compresses heterogeneous configurations into shared states for prediction, comparison, and management. We ask a narrower philosophical and formal question: when several ecological configurations are treated as the same state, what scientific commitments make that equivalence adequate? CREST distinguishes four currently formalized obligations: future sufficiency under declared operations, semantic coherence after structural change, robustness across retained response mechanisms, and evidence-relative target resolution. The companion theorem programs show that each obligation can invalidate a coarse merge for a different reason. The synthesis then asks whether these requirements can define one state. They do not automatically share a common carrier, but when they are synchronized on one declared finite latent-world carrier and represented by monotone inflationary refinement closures, CREST-J1 yields a unique coarsest common fixed point \(J\). The CREST state of a configuration \(u\) is its block \([u]_J\): the least-information equivalence class preserving every distinction forced by the declared contract. This is conditional joint minimality, not a claim of one intrinsic partition of nature. A separate evidence gate determines whether the required state is reportable: a deterministic full-state report exists exactly when the reliability-qualified evidence partition resolves \(J\); otherwise the sharp report remains ambiguity-explicit, while a requested target may still be identifiable. CREST therefore treats ecological state equivalence as an explicit, testable scientific commitment, while denying that its four obligations are exhaustive or historically first.
+Ecology routinely compresses heterogeneous configurations into shared states for prediction, comparison, and management. We ask when that compression remains scientifically adequate as the work assigned to a state changes. CREST distinguishes four currently formalized obligations: future sufficiency under declared operations, semantic coherence after structural change, robustness across retained response mechanisms, and evidence-relative target resolution. On one admissible finite common carrier, these obligations induce a unique coarsest joint partition \(J\); the CREST state of configuration \(u\) is its block \([u]_J\), the least-information equivalence class preserving every distinction forced by the declared contract. A separate evidence gate asks whether the required block is actually identified. This yields an ecological state adequacy frontier rather than a single context-free state: changes in scientific obligations can alter carrier feasibility, required state resolution, and evidential identifiability in different directions. A finite control-enrichment witness shows that adding one management action can enlarge the viable carrier while increasing the least-information state resolution beyond fixed monitoring, even though a requested target remains reportable. We call this management-induced information debt. CREST therefore treats ecological state equivalence as a testable scientific commitment and shows why increased management capability can increase, rather than reduce, what must be known about the system. The account is contract-relative but not arbitrary, and it does not claim that the four obligations are exhaustive or that nature supplies one intrinsic state partition.
 
 **Keywords:** philosophy of ecology; ecological state; scientific representation; model adequacy; causal abstraction; uncertainty
 
@@ -167,6 +167,26 @@ in general.
 
 CREST-O1 makes the separation operational. In its finite witness, the cheapest structural carrier repair costs one unit but leaves the downstream full J1 state unresolved by the declared evidence, whereas a costlier repair is fully licensed. The target remains reportable under the cheaper repair. This does not make the costlier repair normatively better. It shows that carrier feasibility, state adequacy, and evidence licensing are distinct optimization targets.
 
+### 3.4 The ecological state adequacy frontier
+
+The preceding results suggest that one ecological state should not be viewed only as the output of a fixed modelling contract. A second question is how the required state changes when the scientific contract itself changes. Let \(\mathcal C\) denote a declared contract and let \(J_{\mathcal C}\) be its J1 state whenever the relevant carrier gate is admissible. For an evidence record \(e\), let
+
+\[
+\mathcal S_{\mathcal C}(e)
+=
+\{[u]_{J_{\mathcal C}}:u\text{ remains compatible with }e\}.
+\]
+
+CREST therefore associates a contract not only with a state partition but with three separable quantities: whether a coherent carrier exists, how fine the least-information adequate state must be, and how many such state blocks remain compatible with the evidence. We call changes among these regimes the **ecological state adequacy frontier**.
+
+The frontier has an order-theoretic asymmetry. Along a comparison in which a stronger contract requires a refinement of the earlier state while the evidence is held fixed, the required state-information burden cannot decrease. If that fixed evidence already fails to identify the coarser state, refining the state cannot restore identification. Conversely, evidence that identifies a finer state necessarily identifies its coarsenings. Scientific requirements can therefore outrun an unchanged monitoring programme.
+
+This effect need not be gradual. The CCOC extremal family shows that adding one previously illegal primitive future action can increase exact state memory by an arbitrary number of bits across a finite family. The point is not a generic priority claim about representation phase transitions. It is that a small change in the ecological future or intervention contract can make a previously adequate ecological classification severely under-resolved even before the physical configuration has changed.
+
+A finite cross-gate witness makes the management implication sharper. Before enrichment, a controlled contract admits a two-world viable carrier whose two required states are identified by the declared evidence. Adding one controllable `rescue` action makes a third world viable. Yet the same action gives two candidate worlds different future behavior, so J1 must split them. The viable carrier therefore expands while the required state count increases from two to three. Because the original monitoring record still merges those two worlds, full-state identification is lost. The requested target remains constant across them and is still reportable.
+
+We call this **management-induced information debt**: expanding what managers can do can expand what they must know. The claim is existential, not universal. New actions need not always increase state resolution. The witness establishes only that greater control authority and easier state identification are not generally aligned.
+
 ## 4. Contract-relative does not mean arbitrary
 
 The most natural objection is that a contract-relative state is merely conventional: choose a different purpose and obtain a different state. That conclusion does not follow. CREST concerns the adequacy of a **scientific representation**, not the claim that underlying ecological processes depend on our descriptions.
@@ -193,6 +213,10 @@ Fourth, **measurement should be separated from representational requirement**. A
 
 Fifth, **state design and monitoring design can be coupled without being identical**. Once \(J\) identifies which distinctions are required, an observation programme can ask which of those distinctions are unresolved and which target decisions remain possible without full-state identification. This turns the state concept into a bridge between representation and measurement without collapsing one into the other.
 
+Sixth, **monitoring adequacy can fail before the ecosystem changes state physically**. A monitoring programme may correctly identify the least-information state required under one intervention repertoire. If restoration, reconnection, colonization, invasion, or management innovation makes new futures scientifically relevant, the required state can refine while the observations remain unchanged. The monitoring programme can therefore become inadequate because the counterfactual responsibilities assigned to the state expanded, not because sensor quality deteriorated or because the ecosystem already crossed a physical regime threshold.
+
+Seventh, **more management capacity can create an epistemic burden**. Additional management options can make previously irrelevant differences consequential. In that regime, increasing control authority and increasing knowledge requirements occur together. This suggests that the design of a new intervention should be coupled to an audit of whether existing monitoring resolves the state distinctions that the intervention makes consequential.
+
 These consequences do not impose a mandatory pipeline in which future sufficiency must be checked first, followed by semantics, mechanism, and evidence. The order used here is explanatory. In an empirical project the evidence model may be specified first; a mechanism family may define relevant actions; or a structural transfer problem may determine the target. CREST's point is that the obligations and their dependencies should remain explicit.
 
 ## 6. Position relative to existing adequacy and abstraction theories
@@ -201,7 +225,7 @@ The account is intentionally cumulative. Ecological identity theory already anal
 
 CREST should therefore not be judged by whether any one ingredient is new. Nor does J1 claim novelty for closure operators, partition lattices, or least common fixed points. Those are established mathematical substrates.
 
-The ecology-specific contribution is the mapping between distinct scientific obligations and one contract-relative state representation, together with explicit carrier and evidence gates. The four companion programmes provide differently structured failure conditions; J1 shows how their state-resolution requirements can be combined on one carrier; J3/J6 show that the carrier itself can fail; and the evidence gate prevents a required state resolution from being mistaken for an observed state.
+The ecology-specific contribution is therefore not generic purpose-relativity, minimal abstraction, partial observability, or representation phase transitions. Those have established antecedents. CREST's narrower contribution is to couple three questions that ecological state practice often treats separately: whether the declared scientific obligations share any coherent carrier, what the unique least-information state is when they do, and whether existing evidence identifies that state. The ecological state adequacy frontier studies how those three quantities move as the contract changes. The management-enrichment witness then supplies a counterexample to a tempting intuition: increasing management capability need not simplify the epistemic problem. One additional control can enlarge the viable domain while simultaneously making the adequate state finer than the monitoring system can identify.
 
 This positioning also explains why CREST is not simply a replacement name for POMDPs or causal abstraction. Those frameworks can encode many of the relevant ingredients and remain indispensable neighbors. The philosophical argument here concerns what scientific commitments are made when ecologists use one coarse state label and what must be true for that label to carry several kinds of scientific work.
 
@@ -221,9 +245,7 @@ Finally, CREST does not decide normative priorities. A management programme may 
 
 ## 8. Conclusion
 
-When ecologists assign different configurations the same state label, they make a substantive scientific commitment: some differences are being declared irrelevant to the work the state must perform.
-
-CREST separates four currently formalized sources of constraint on that merge—future sufficiency, inherited semantic coherence, mechanism robustness, and evidential/target resolution—because each can fail for a different reason. But the framework does not stop at a taxonomy of failures. Conditional on a coherent finite common carrier, the four requirements define one joint state:
+CREST makes a stronger claim than that ecological states are purpose-relative. For a fixed coherent contract, the adequate state is the unique coarsest equivalence that preserves the distinctions required for the declared scientific work:
 
 \[
 J=(C_\Gamma\vee C_{\mathcal H}\vee C_\Theta\vee C_{D,T})(B),
@@ -231,13 +253,11 @@ J=(C_\Gamma\vee C_{\mathcal H}\vee C_\Theta\vee C_{D,T})(B),
 \operatorname{State}_{\mathcal C}(u)=[u]_J.
 \]
 
-The state is the least-information equivalence class that preserves every distinction forced by the declared scientific contract. It is neither a maximally detailed microscopic description nor one context-free partition of nature.
+Across changing contracts, however, state adequacy has a frontier: the coherent carrier, the minimum required state resolution, and the evidence-compatible state set can move differently. A state may remain mathematically well defined after it ceases to be observationally identifiable; a target may remain reportable after full-state identification is lost; and a strengthened contract may eventually cease to admit any fully adequate joint state.
 
-Two additional gates keep this answer from becoming merely formal. First, a coherent common carrier may fail to exist under the declared synchronization. Second, even when the required state exists, the available evidence may fail to identify its block. A target can sometimes remain reportable despite this full-state ambiguity.
+The finite management-enrichment witness exposes an ecological consequence. Adding an available intervention can make more configurations viable while simultaneously increasing the distinctions that a usable state must encode. Existing monitoring may then become inadequate before the ecosystem has undergone any physical regime shift. In this sense, management capability can create information debt: expanding what can be done can expand what must be known.
 
-The resulting view is contract-relative without being arbitrary. Scientists declare what work the state must perform; the model dynamics, inherited semantics, retained mechanisms, and evidence determine which merges survive those commitments. **What counts as the same ecological state is therefore the coarsest equivalence that remains adequate for the declared scientific work, with a separate evidential question about whether that state has actually been identified.**
-
-CREST offers this as a formalized philosophy of ecological state representation, not as a new metaphysics of ecosystems, a universal abstraction algorithm, or an exhaustive theory of ecological adequacy.
+This does not turn CREST into a universal theory of ecological ontology. The framework remains conditional on declared futures, meanings, mechanisms, evidence, targets, and synchronization. Its philosophical proposal is instead that ecological sameness is a defeasible scientific commitment whose burden can change as scientific responsibilities change. What counts as the same ecological state is therefore not only contract-relative; it has a structured, testable response to changes in the contract.
 
 ## Statements and Declarations
 
@@ -291,6 +311,7 @@ Yates, K. L., Bouchet, P. J., Caley, M. J., Mengersen, K., Randin, C. F., Parnel
 - The abstract is within the current 150–250-word requirement.
 - Six keywords are supplied.
 - The manuscript now distinguishes unconditional/cross-contract global minimality (not claimed) from J1 conditional unique coarseness on a declared admissible finite common carrier (proved).
+- The manuscript now foregrounds the ecological state adequacy frontier and the finite management-induced information-debt witness; neither is presented as a historical-firstness claim.
 - Swanson (2026) and Huang (2026) remain in internal novelty audits but are excluded from this reference list under the journal's current published/accepted-only reference rule.
 - Author-controlled Competing Interests and Funding statements must be completed before submission.
 - Review-manuscript anonymization and separate title-page metadata are controlled by `manuscript/biology_philosophy_submission_handoff.md`.
