@@ -11,7 +11,7 @@ Ecology routinely compresses heterogeneous configurations into shared states for
 
 Ecologists routinely decide what counts as the same ecological state. A lake can be classified as eutrophic or clear-water, a population as persistent or declining, a community as pollination-maintained or pollination-limited, and a landscape as connected or fragmented. Such labels are useful precisely because they ignore many differences among underlying configurations. The scientific question is therefore not whether ecological descriptions simplify. It is **which differences a state representation is permitted to ignore for the work assigned to it**.
 
-Philosophy of ecology has long examined the identity and continuity of ecological systems, including dynamical accounts of ecosystem identity and distinctions among different senses of ecological identity (Cumming & Collier, 2005; Collier & Cumming, 2011; Delettre, 2021). Ecological modelling has likewise developed explicit adequacy protocols (Getz et al., 2018), intervention-sensitive State-and-Transition Models (Stringham et al., 2003), adaptive-management and POMDP approaches to hidden state and model uncertainty (Nicol & Chadès, 2012; Fackler & Pacifici, 2014), and extensive work on model transferability under novel conditions (Yates et al., 2018). In adjacent formal fields, causal states and causal abstraction already provide mature accounts of prediction- or intervention-preserving coarse representations (Shalizi & Crutchfield, 2001; Beckers & Halpern, 2019). General philosophy of modelling also treats adequacy as purpose-sensitive rather than reducible to one context-free notion of fidelity (Giere, 2010; Parker, 2020; Bokulich & Parker, 2021).
+Philosophy of ecology has long examined the identity and continuity of ecological systems, including dynamical accounts of ecosystem identity and distinctions among different senses of ecological identity (Cumming & Collier, 2005; Collier & Cumming, 2011; Delettre, 2021). Ecological modelling has gone further than merely using state labels: explicit equivalence criteria for ecosystem states have been proposed (Boit & Spencer, 2019), model-adequacy protocols already scrutinize state variables, control variables, data determinacy and coarse graining (Getz et al., 2018), and State-and-Transition Models make ecological states intervention-sensitive (Stringham et al., 2003). Conservation decision theory likewise separates hidden ecological state from observation and has developed management-relevant state reduction in POMDPs, including explicit arguments for reducing state and observation variables to the smallest ensemble needed for the decision problem (Nicol & Chadès, 2012; Chadès et al., 2021), while structural and observational uncertainty can be treated jointly (Fackler & Pacifici, 2014). Monitoring itself is already understood as adaptive: long-term programmes may be redesigned as scientific and policy questions change (Lindenmayer & Likens, 2009; Lindenmayer et al., 2011). Ecological model transferability under novel conditions is also an established problem (Yates et al., 2018). In adjacent formal fields, causal states, state abstraction, and causal abstraction provide mature accounts of prediction- or intervention-preserving coarse representations (Shalizi & Crutchfield, 2001; Beckers & Halpern, 2019). General philosophy of modelling treats adequacy as purpose-sensitive rather than reducible to one context-free notion of fidelity (Giere, 2010; Parker, 2020; Bokulich & Parker, 2021), and this adequacy-for-purpose perspective has now been articulated explicitly for the environmental sciences (Parker et al., 2026).
 
 CREST begins from this literature rather than from a claim that ecology previously lacked state theory or context-sensitive representation. Its narrower target is a particular scientific commitment made whenever a coarse variable assigns two configurations the same label. Let a representation \(q:X\to Q\) map ecological configurations \(x\in X\) to coarse states. Whenever \(q(x)=q(y)\), the representation declares at least some differences between \(x\) and \(y\) irrelevant to the scientific task. That merge may be harmless for one purpose and unacceptable for another.
 
@@ -277,7 +277,11 @@ OpenAI ChatGPT was used during manuscript development to assist with literature 
 
 Beckers, S., & Halpern, J. Y. (2019). Abstracting Causal Models. *Proceedings of the AAAI Conference on Artificial Intelligence*, 33(01), 2678–2685. https://doi.org/10.1609/aaai.v33i01.33012678
 
+Boit, A., & Spencer, M. (2019). Equivalence and dissimilarity of ecosystem states. *Ecological Modelling*, 396, 12–22. https://doi.org/10.1016/j.ecolmodel.2019.01.009
+
 Bokulich, A., & Parker, W. (2021). Data models, representation and adequacy-for-purpose. *European Journal for Philosophy of Science*, 11(1), Article 31. https://doi.org/10.1007/s13194-020-00345-2
+
+Chadès, I., Pascal, L. V., Nicol, S., Fletcher, C. S., & Ferrer-Mestres, J. (2021). A primer on partially observable Markov decision processes (POMDPs). *Methods in Ecology and Evolution*, 12(11), 2058–2072. https://doi.org/10.1111/2041-210X.13692
 
 Collier, J., & Cumming, G. S. (2011). A Dynamical Approach to Ecosystem Identity. In *Philosophy of Ecology*, Handbook of the Philosophy of Science, Vol. 11, pp. 201–218. Elsevier. https://doi.org/10.1016/B978-0-444-51673-2.50008-X
 
@@ -291,11 +295,17 @@ Getz, W. M., Marshall, C. R., Carlson, C. J., Giuggioli, L., Ryan, S. J., Romañ
 
 Giere, R. N. (2010). An Agent-Based Conception of Models and Scientific Representation. *Synthese*, 172(2), 269–281. https://doi.org/10.1007/s11229-009-9506-z
 
+Lindenmayer, D. B., & Likens, G. E. (2009). Adaptive monitoring: a new paradigm for long-term research and monitoring. *Trends in Ecology & Evolution*, 24(9), 482–486. https://doi.org/10.1016/j.tree.2009.03.005
+
+Lindenmayer, D. B., Likens, G. E., Haywood, A., & Miezis, L. (2011). Adaptive monitoring in the real world: proof of concept. *Trends in Ecology & Evolution*, 26(12), 641–646. https://doi.org/10.1016/j.tree.2011.08.002
+
 Massimi, M. (2022). *Perspectival Realism*. Oxford University Press.
 
 Nicol, S., & Chadès, I. (2012). Which States Matter? An Application of an Intelligent Discretization Method to Solve a Continuous POMDP in Conservation Biology. *PLoS ONE*, 7(2), e28993. https://doi.org/10.1371/journal.pone.0028993
 
 Parker, W. S. (2020). Model Evaluation: An Adequacy-for-Purpose View. *Philosophy of Science*, 87(3), 457–477. https://doi.org/10.1086/708691
+
+Parker, W. S., Carey, C. C., Olsson, F., & Thomas, R. Q. (2026). An adequacy-for-purpose perspective for the environmental sciences. *Frontiers in Ecology and the Environment*, Early View, e70058. https://doi.org/10.1002/fee.70058
 
 Shalizi, C. R., & Crutchfield, J. P. (2001). Computational Mechanics: Pattern and Prediction, Structure and Simplicity. *Journal of Statistical Physics*, 104, 817–879.
 
