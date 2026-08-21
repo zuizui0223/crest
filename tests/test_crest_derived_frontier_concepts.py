@@ -150,3 +150,51 @@ def test_decision_safe_ignorance_has_exact_sharp_report_form() -> None:
             and all(len(report) == 1 for report in target_reports)
         )
         assert decision_safe_ignorance == sharp_form
+
+
+def test_minimal_monitoring_refinement_is_common_refinement() -> None:
+    """Exhaust R1: E ∨ J is the unique coarsest evidence refinement licensing J."""
+
+    partitions = _partitions(4)
+    for evidence, state in product(partitions, repeat=2):
+        required = _common_refinement(evidence, state)
+        assert partition_refines(required, evidence)
+        assert evidence_licenses(state, required)
+
+        for candidate in partitions:
+            if partition_refines(candidate, evidence) and evidence_licenses(
+                state, candidate
+            ):
+                assert partition_refines(candidate, required)
+
+
+def test_monitoring_resolution_debt_has_exact_zero_criterion() -> None:
+    partitions = _partitions(4)
+    for evidence, state in product(partitions, repeat=2):
+        required = _common_refinement(evidence, state)
+        zero_debt = _block_count(required) == _block_count(evidence)
+        assert zero_debt == evidence_licenses(state, evidence)
+
+
+def test_monitoring_resolution_debt_is_monotone_under_state_refinement() -> None:
+    partitions = _partitions(4)
+    for evidence, coarse_state, fine_state in product(partitions, repeat=3):
+        if not partition_refines(fine_state, coarse_state):
+            continue
+        coarse_required = _common_refinement(evidence, coarse_state)
+        fine_required = _common_refinement(evidence, fine_state)
+        assert partition_refines(fine_required, coarse_required)
+        assert _block_count(fine_required) >= _block_count(coarse_required)
+
+
+def test_decision_safe_ignorance_is_positive_state_debt_zero_target_debt() -> None:
+    partitions = _partitions(3)
+    for evidence, state, target in product(partitions, repeat=3):
+        state_required = _common_refinement(evidence, state)
+        target_required = _common_refinement(evidence, target)
+        positive_state_debt = _block_count(state_required) > _block_count(evidence)
+        zero_target_debt = _block_count(target_required) == _block_count(evidence)
+        assert (positive_state_debt and zero_target_debt) == (
+            evidence_licenses(target, evidence)
+            and not evidence_licenses(state, evidence)
+        )
