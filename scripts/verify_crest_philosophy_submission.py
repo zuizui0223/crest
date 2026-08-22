@@ -77,13 +77,11 @@ def main() -> int:
         if re.search(re.escape(name), reference_text, flags=re.I)
     ]
 
-    # Post-J1 synchronization gate. These checks protect the conditional joint-state
-    # result while allowing the manuscript structure itself to evolve. Gate A is
-    # recognized structurally: an explicit 3.1 Gate A section plus carrier/common-world
-    # language in the manuscript. The legacy sentence remains accepted for old frozen
-    # candidates but is no longer required.
+    # Post-J1 synchronization gate. The manuscript may evolve its section numbering,
+    # so Gate A is recognized by its heading and common-carrier language rather than
+    # by the historical 3.1 position.
     carrier_gate_present = bool(
-        re.search(r"###\s+3\.1\s+Gate A", text, flags=re.I)
+        re.search(r"###\s+\d+\.1\s+Gate A", text, flags=re.I)
         and re.search(r"common carrier|common ecological world set", text, flags=re.I)
     ) or "Carrier existence comes before state construction" in text
 
@@ -101,6 +99,17 @@ def main() -> int:
         "rejects_global_intrinsic_state": (
             "does **not** establish one universal joint state independent of scientific contract" in text
             and "not one intrinsic partition of nature" in text
+        ),
+    }
+
+    trajectory_first_checks = {
+        "defines_temporally_extended_state": (
+            "scientifically licensed compression of a temporally extended ecological world" in text
+        ),
+        "states_snapshot_sufficiency": "Snapshot sufficiency is a condition" in text,
+        "separates_ced_as_evidence_gate": "CED is deliberately downstream" in text,
+        "states_trajectory_theorem_firewall": (
+            "not yet a general theorem for continuous or stochastic trajectories" in text
         ),
     }
 
@@ -132,6 +141,11 @@ def main() -> int:
         blockers.append(
             "post-J1 joint-state synchronization checks failed: " + ", ".join(missing_joint_state)
         )
+    missing_trajectory_first = [name for name, ok in trajectory_first_checks.items() if not ok]
+    if missing_trajectory_first:
+        blockers.append(
+            "trajectory-first manuscript checks failed: " + ", ".join(missing_trajectory_first)
+        )
     if stale_joint_state_hits:
         blockers.append(
             "obsolete pre-J1 joint-state wording remains: " + " | ".join(stale_joint_state_hits)
@@ -156,6 +170,7 @@ def main() -> int:
         "blind_hits": blind_hits,
         "excluded_unpublished_reference_hits": excluded_unpublished,
         "post_j1_joint_state_checks": joint_state_checks,
+        "trajectory_first_checks": trajectory_first_checks,
         "stale_joint_state_hits": stale_joint_state_hits,
         "automated_blockers": blockers,
         "author_controlled_blockers": author_controlled,
