@@ -115,12 +115,54 @@ def main() -> int:
         ),
     }
 
+    capability_resolution_checks = {
+        "states_scaling_section": "### 4.5 Cross-gate scale separation — capability–resolution divergence" in text,
+        "states_unit_carrier_gain": bool(
+            re.search(r"\\Delta\s*\|K\^\*\|=1", text)
+        ),
+        "states_arbitrary_m_bit_growth": bool(
+            re.search(r"\\Delta K_\{U_0\}=m", text)
+            and "For every integer \\(m\\ge1\\)" in text
+        ),
+        "states_no_carrier_gain_only_bound": (
+            "no universal finite function" in text
+            and "Viability gain alone therefore cannot upper-bound" in text
+        ),
+        "states_full_state_loss_target_retention": (
+            "full-state licensing changes from yes to no" in text
+            and "coarse target" in text
+            and "remains reportable" in text
+        ),
+        "states_connected_witness": (
+            "connected future-response graph" in text
+            and "fragile" in text
+            and "safe" in text
+        ),
+        "states_action_abstraction_prior_art_boundary": (
+            "Konidaris (2019)" in text
+            and "state and action abstraction as coupled problems" in text
+            and "The CREST result is therefore **not** the qualitative proposition" in text
+        ),
+        "references_konidaris": (
+            "Konidaris, G. (2019). On the necessity of abstraction." in reference_text
+            and "10.1016/j.cobeha.2018.11.005" in reference_text
+        ),
+    }
+
     stale_joint_state_phrases = [
         "no claim is made that these four audits are exhaustive, commuting, jointly minimal",
         "share a joint minimum is an open mathematical question",
         "does not establish a universal joint state, an audit order",
     ]
     stale_joint_state_hits = [phrase for phrase in stale_joint_state_phrases if phrase in text]
+
+    stale_action_headline_phrases = [
+        "The action-expansion witness adds a specifically ecological consequence.",
+        "The action-expansion witness proves one strict finite separation of this kind.",
+    ]
+    stale_action_headline_hits = [
+        phrase for phrase in stale_action_headline_phrases if phrase in text
+    ]
 
     blockers: list[str] = []
     if not 150 <= abstract_words <= 250:
@@ -148,9 +190,22 @@ def main() -> int:
         blockers.append(
             "trajectory-first manuscript checks failed: " + ", ".join(missing_trajectory_first)
         )
+    missing_capability_resolution = [
+        name for name, ok in capability_resolution_checks.items() if not ok
+    ]
+    if missing_capability_resolution:
+        blockers.append(
+            "capability-resolution manuscript checks failed: "
+            + ", ".join(missing_capability_resolution)
+        )
     if stale_joint_state_hits:
         blockers.append(
             "obsolete pre-J1 joint-state wording remains: " + " | ".join(stale_joint_state_hits)
+        )
+    if stale_action_headline_hits:
+        blockers.append(
+            "obsolete qualitative-only action headline remains: "
+            + " | ".join(stale_action_headline_hits)
         )
 
     author_controlled = {
@@ -173,7 +228,9 @@ def main() -> int:
         "excluded_unpublished_reference_hits": excluded_unpublished,
         "post_j1_joint_state_checks": joint_state_checks,
         "trajectory_first_checks": trajectory_first_checks,
+        "capability_resolution_checks": capability_resolution_checks,
         "stale_joint_state_hits": stale_joint_state_hits,
+        "stale_action_headline_hits": stale_action_headline_hits,
         "automated_blockers": blockers,
         "author_controlled_blockers": author_controlled,
         "automated_checks_pass": not blockers,
