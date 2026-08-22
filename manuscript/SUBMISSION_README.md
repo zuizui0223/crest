@@ -4,25 +4,25 @@
 
 `crest_philosophy_biology_philosophy.md`
 
-The long manuscript remains the primary source draft, but its current opening still reflects the older **four obligations -> three gates** ordering. It is therefore **not conceptually final** after the trajectory-first CREST reorganization.
+The long manuscript has now been integrated to the trajectory-first CREST architecture. Its conceptual order is no longer **four obligations -> three gates**. It now runs from ecological worlds and snapshot sufficiency to structural obstructions, finite state construction, downstream evidence licensing, quotient laws, and representational stability.
 
-The canonical manuscript-revision contract is now:
+The canonical revision contract remains:
 
 - [`trajectory_first_manuscript_contract_2026-08-22.md`](trajectory_first_manuscript_contract_2026-08-22.md)
 
-That contract must govern the next integrated manuscript revision.
+The manuscript now implements that contract rather than merely pointing to it.
 
-## New manuscript center
+## Manuscript center
 
-The manuscript should now begin from the deeper question:
+The paper asks:
 
 > **Why can a finite ecological state exist at all in a world whose relevant dynamics, interactions, response structure, and scientific observables depend on context?**
 
-The working CREST answer is:
+Its working answer is:
 
 > **An ecological state is a scientifically licensed compression of a temporally extended ecological world.**
 
-The older title question, **What Counts as the Same Ecological State?**, remains the operational form of this problem: which differences among possible ecological worlds may be erased without invalidating the work assigned to the state?
+The title question, **What Counts as the Same Ecological State?**, is the operational form of this deeper problem: which differences among possible ecological worlds may be erased without invalidating the work assigned to the state?
 
 A possible world is represented schematically as
 
@@ -30,14 +30,12 @@ A possible world is represented schematically as
 \omega=(h_t,x_t,\mathcal F_t),
 \]
 
-with relevant history, present configuration, and future-response structure. This is the organizing interpretation of the existing finite latent-world mathematics; it is **not** a claim that CREST already proves a general continuous or stochastic trajectory theorem.
+with relevant history, present configuration, and future-response structure. This remains an organizing interpretation of the finite latent-world mathematics, not a claim that CREST already proves a general continuous or stochastic trajectory theorem.
 
-## Required conceptual order
-
-The next integrated manuscript must follow this dependency order:
+## Implemented manuscript order
 
 ```text
-self-modifying / context-dependent ecological world
+context-dependent ecological world
         ↓
 temporally extended possible worlds
         ↓
@@ -50,7 +48,7 @@ structural obstructions
     MLTR — historical / semantic insufficiency
     MRM  — mechanistic insufficiency
         ↓
-minimal adequate finite state J
+finite minimal adequate state J
         ↓
 evidence licensing
     CED
@@ -58,50 +56,69 @@ evidence licensing
 quotient laws / reportability / representational stability
 ```
 
-CED is deliberately downstream: it asks whether evidence identifies a distinction already required by the scientific state problem. It should no longer be introduced as a fourth ontic source of difference on the same level as future, history/semantics, and mechanism.
+CED is now explicitly downstream in the prose: it asks whether evidence identifies a distinction already required by the state/reporting problem. Its target-safe finite refinement remains part of the declared representational requirement where explicitly stated, but that requirement is kept separate from empirical identification.
 
 ## Finite theorem core retained
 
 On one declared finite common carrier, CREST-J1 still gives
 
 \[
-J=(C_\Gamma\vee C_\mathcal H\vee C_\Theta\vee C_{D,T})(B),
+J=(C_\Gamma\vee C_\mathcal H\vee C_\Theta\vee C_{D,T})(B)
 \]
 
-as the unique coarsest joint partition satisfying the implemented finite requirements under its stated assumptions, and the finite CREST state of world/configuration \(u\) is \([u]_J\).
+as the unique coarsest joint partition satisfying the implemented finite requirements under its stated assumptions, with
 
-This is **conditional joint minimality**, not one unconditional globally unique state of nature. J3/J6 gate whether a common carrier exists; the evidence gate separately asks whether the required state can actually be identified.
+\[
+\operatorname{State}_{\mathcal C}(u)=[u]_J.
+\]
 
-The finite theorem chain is therefore retained, but it now appears **after** the world-level state definition and snapshot-sufficiency problem rather than serving as the philosophical starting point.
+J3/J6 still gate common-carrier feasibility, and the evidence gate separately asks whether
+
+\[
+J\preceq E_D.
+\]
+
+The trajectory-first reorganization changes the philosophical dependency order, not the proof status of these finite results.
+
+## New literature grounding
+
+The revised introduction adds only a narrow background layer:
+
+- Levin (1998) for ecosystems as complex adaptive systems;
+- Post & Palkovacs (2009) for reciprocal eco-evolutionary feedbacks;
+- Schoener (2011) for the ecological/evolutionary feedback synthesis.
+
+These sources motivate context-dependent response structure. They are not cited as support for the CREST finite theorems and do not imply global fitness maximization, generic mathematical chaos, or determinism.
 
 ## Submission-facing support
 
-- `trajectory_first_manuscript_contract_2026-08-22.md` — canonical conceptual and section-order contract for the next manuscript integration;
-- `table1_adequacy_audits.md` — historical four-input table; revise its placement so CED is epistemically downstream;
+- `trajectory_first_manuscript_contract_2026-08-22.md` — canonical conceptual contract now implemented in the long manuscript;
 - `joint_state_section.md` — reusable finite joint-state theorem and three-gate material;
-- `biology_philosophy_submission_handoff.md` — automated and human submission gates; update after the long manuscript is integrated;
+- `biology_philosophy_submission_handoff.md` — automated and human submission gates;
 - `title_page_template.md` — author-controlled title-page and declaration fields;
 - `../docs/trajectory_first_program_architecture_2026-08-22.md` — program-level hierarchy across CREST/CCOC/MLTR/MRM/CED;
 - `../docs/contract_relative_ecological_state_theory.md` — canonical world-level philosophical statement;
 - `../docs/crest_mathematical_spine.md` — proved finite theorem hierarchy.
 
+`table1_adequacy_audits.md` is retained as historical/support material; the integrated manuscript no longer relies on the old four-parallel-obligation table as its philosophical entry point.
+
 ## Claim boundary
 
 Do not claim:
 
-- that ecological states are intrinsically supplied by nature as one context-free partition;
+- one intrinsic ecological partition supplied by nature;
 - that every present snapshot is insufficient;
 - that the three structural obstruction programs are exhaustive;
-- that CREST proves general continuous/stochastic trajectory dynamics;
-- that ecosystems are generically mathematically chaotic;
-- that evolution monotonically maximizes one global fitness function;
-- that observation context changes underlying ecological truth;
-- that generic fixed-point, abstraction, causal-state, predictive-state, or partition-refinement machinery is new.
+- a proved general continuous/stochastic trajectory theory;
+- generic mathematical chaos of ecosystems;
+- monotonic global fitness maximization;
+- that observational context changes underlying ecological truth;
+- novelty for generic fixed-point, abstraction, causal-state, predictive-state, or partition-refinement machinery.
 
 Do claim, with explicit premises:
 
 - ecological state can be treated as a scientifically licensed compression of declared latent ecological worlds;
-- snapshot sufficiency is a condition to establish, not an assumption;
+- snapshot sufficiency is a condition to establish rather than an assumption;
 - CCOC, MLTR, and MRM provide distinct structural reasons a present merge can fail;
 - CED separates required state from evidentially identified state and reportable target;
 - on an admissible finite common carrier, J1 gives the unique coarsest state satisfying the implemented requirements;
@@ -110,14 +127,13 @@ Do claim, with explicit premises:
 
 ## Remaining finishing path
 
-1. revise the long manuscript abstract and Sections 1–3 using `trajectory_first_manuscript_contract_2026-08-22.md`;
-2. move the finite joint-state construction after the world/snapshot framing without altering proved theorem statements;
-3. reframe CED as downstream evidence licensing throughout the manuscript and Table 1;
-4. promote quotient-law and representational-stability consequences into the main Discussion;
-5. rerun source/claim/prior-art audit after the prose reordering;
-6. complete author-controlled title-page, funding, competing-interest, acknowledgement, and corresponding-author fields;
-7. run one final immutable verifier/reproducibility pass on the exact submission candidate SHA.
+1. rerun theorem, submission-control, repository-hygiene, source/claim, and citation checks on the integrated manuscript;
+2. inspect the revised manuscript for duplicated arguments and section-transition quality;
+3. refresh the Biology & Philosophy fit/handoff notes to the integrated wording;
+4. complete author-controlled title-page, funding, competing-interest, acknowledgement, and corresponding-author fields;
+5. perform final human source/claim/interpretation/prose review;
+6. run the immutable verifier/reproducibility pass on the exact submission candidate SHA.
 
 ## Stop rule
 
-Do not add another audit or theorem family during this manuscript reframe. The active task is **integrate the trajectory-first state concept into the existing proved manuscript without inflating the mathematics**.
+Do not add another audit or theorem family during manuscript finishing. The active line is now **verify the integrated trajectory-first manuscript -> remove prose redundancy -> human responsibility review -> submission metadata**.
