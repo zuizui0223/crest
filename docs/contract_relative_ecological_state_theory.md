@@ -1,368 +1,297 @@
 # Contract-Relative Ecological State Theory (CREST)
 
-> **Status:** program-level metatheory with seven conditional finite synthesis
-> theorems and one supporting obstruction. CREST does not merge CCOC, MLTR, MRM,
-> and CED, does not claim novelty for generic quotient/refinement/repair/viability
-> machinery, and does not supply a nature-given ontology of ecological states.
+> **Canonical philosophical statement.** Technical theorem details live in
+> [`crest_mathematical_spine.md`](crest_mathematical_spine.md) and the proof ledger.
 
-## 1. Central principle
+## 1. The question
 
-> **Treating two ecological configurations as the same state is a scientific
-> commitment about which differences may be ignored for a declared future,
-> inherited meaning, retained mechanism family, evidence contract, and target.**
+CREST is organized around one question:
 
-Write the program contract schematically as
+> **What counts as the same ecological state?**
 
-\[
-\mathcal C=(\Gamma,\mathcal H,\Theta,D;T).
-\]
-
-“State identity is contract-relative” concerns scientific representation adequacy.
-It does not deny mind-independent ecological structure.
-
-## 2. Four companion audits
-
-| Audit | Repository | Question | Failure | Formal output |
-|---|---|---|---|---|
-| future sufficiency | CCOC | Which distinctions can an enlarged legal future expose? | future insufficiency | interface lower bound / finer predictive state |
-| semantic coherence | MLTR | Can one inherited law retain its meaning after change? | semantic non-portability | least source-relative repair, defect, history |
-| mechanism robustness | MRM | Do retained response mechanisms support one prediction? | mechanism non-robustness | deterministic, typed, or set-valued report |
-| evidential licensing | CED | Which distinctions does finite imperfect evidence justify reporting? | evidential non-resolvability | compatible-world report, required resolution, design |
-
-The audits differ in carriers, starting partitions, quantifier orders, certificates,
-and remedies. Passing one does not satisfy another automatically.
-
-### Synthesis ownership
-
-Results whose quantified statement essentially couples at least two companion
-contracts belong to a fifth logical unit: the **CREST synthesis unit**. The J/O
-series is therefore not an MRM theorem family. MRM is only its current physical
-host. The ownership charter is `crest_synthesis/README.md`, and physical extraction
-to `zuizui0223/crest` is specified in
-`docs/crest_synthesis_migration_manifest_2026-08-18.md`.
-
-## 3. Carrier semantics
-
-The companion contracts do not automatically share one world set. CREST first asks
-whether their component descriptions can be synchronized into a finite carrier.
-
-### J3 — universal common carrier
-
-For finite ambient worlds `W`, static compatibility `W0`, and partial deterministic
-actions `tau_a`, define
-
-\[
-F(S)=\{w\in S\cap W_0:
-\tau_a(w)\downarrow\Rightarrow\tau_a(w)\in S
-\text{ for every action }a\}.
-\]
-
-Descending iteration from `W0` yields the unique greatest universally
-transition-closed carrier `U*`.
-
-\[
-\text{nonempty common lift exists}\iff U^*\neq\varnothing.
-\]
-
-A coverage-complete lift exists iff `U*` represents every required component label.
-Eliminated worlds have finite action-chain certificates. J3 is appropriate when the
-representation must survive **every** declared legal action.
-
-### J6 — controlled common carrier
-
-Partition actions into uncontrollable `A_u` and controllable `A_c`. Define
-
-\[
-\begin{aligned}
-G(S)=\{w\in S\cap W_0:\;&
-\forall a\in A_u,
-\tau_a(w)\downarrow\Rightarrow\tau_a(w)\in S,\\
-&\exists a\in A_c,
-\tau_a(w)\downarrow\text{ and }\tau_a(w)\in S\}.
-\end{aligned}
-\]
-
-Descending iteration yields the unique greatest robustly controlled-invariant
-carrier `K*`.
-
-\[
-\text{nonempty controlled lift exists}\iff K^*\neq\varnothing.
-\]
-
-Coverage is complete iff `K*` represents all required labels. Every nonempty `K*`
-admits a deterministic memoryless safe selector. Eliminated worlds receive finite
-AND/OR certificates for static incompatibility, uncontrollable escape, or failure
-of every legal control choice.
-
-J6 is appropriate when unavoidable exterior moves must all be survived but one safe
-control may be selected. A no-op or wait option must be declared explicitly. Under
-control nonblocking, the corresponding J3 carrier is contained in J6's carrier;
-strict inclusion is possible.
-
-## 4. Typed carrier repair
-
-### J4 — universal J3 repair characterization
-
-J4 permits admitting an incompatible world, disabling one legal transition, and
-waiving one coverage obligation. For every nonempty retained `S subseteq W`, define
-
-\[
-\begin{aligned}
-A(S)&=S\setminus W_0,\\
-E(S)&=\{(w,a):w\in S,\tau_a(w)\downarrow,
-\tau_a(w)\notin S\},\\
-D(S)&=\{(k,\ell):\ell\in R_k,\ell\notin p_k(S)\}.
-\end{aligned}
-\]
-
-Then
-
-\[
-R(S)=\sum_{w\in A(S)}c_w+
-\sum_{(w,a)\in E(S)}d_{w,a}+
-\sum_{(k,\ell)\in D(S)}r_{k,\ell},
-\]
-
-and
-
-\[
-\boxed{R^*=\min_{\varnothing\neq S\subseteq W}R(S).}
-\]
-
-For a **fixed** `S`, the operations and cost are necessary and sufficient. Finding
-the best `S` is a separate global selection problem.
-
-### J7 — controlled J6 repair characterization
-
-J7 permits admitting an incompatible world, disabling one uncontrollable
-transition, installing one declared local fallback control, and waiving one
-coverage obligation.
-
-For nonempty `S subseteq W`, define `A(S)` and `D(S)` as above, and
-
-\[
-U(S)=\{(w,a):w\in S,\ a\in A_u,
-\tau_a(w)\downarrow,\ \tau_a(w)\notin S\}.
-\]
-
-Let
-
-\[
-C(S)=\{w\in S:\nexists a\in A_c
-\text{ with }\tau_a(w)\downarrow\text{ and }\tau_a(w)\in S\}.
-\]
-
-The subset is repair-feasible only when every `w in C(S)` has a declared fallback
-successor `f(w) in S`. For feasible `S`,
+A state label is useful only because it treats many different ecological configurations as equivalent. Calling two configurations the same state therefore makes a scientific commitment:
 
 \[
 \boxed{
-R_c(S)=
-\sum_{w\in A(S)}c_w+
-\sum_{(w,a)\in U(S)}d_{w,a}+
-\sum_{w\in C(S)}g_w+
-\sum_{(k,\ell)\in D(S)}r_{k,\ell}.
+\text{the differences erased by the state will not matter for the work assigned to it.}
 }
 \]
 
-If `F` is the family of repair-feasible nonempty subsets, then
+CREST asks when that commitment is justified.
+
+The scientific contract is written schematically as
 
 \[
-\boxed{R_c^*=\min_{S\in\mathcal F}R_c(S)}
+\mathcal C=(\Gamma,\mathcal H,\Theta,D;T),
 \]
 
-when `F` is nonempty; otherwise no repair exists in the declared language. Again,
-necessity and sufficiency are fixed-witness statements before global selection.
+where:
 
-### Computational boundary
+- \(\Gamma\): future interactions, operations, or interventions the state must survive;
+- \(\mathcal H\): inherited meanings or historical structure that must remain coherent;
+- \(\Theta\): retained response mechanisms or causal alternatives;
+- \(D\): experiment, observation, reliability, and evidence contract;
+- \(T\): the report or decision target.
 
-The J4-REPAIR and J7-REPAIR decision problems are NP-complete by direct reductions
-from weighted set cover. The reduction already works:
+State identity is therefore **contract-relative but not arbitrary**. Scientists declare the work; dynamics, causal structure, and evidence can refute a proposed merge.
 
-- for J4 with no transitions; and
-- for J7 with no uncontrollable actions and one controllable self-loop per world.
+## 2. Four obligations on one ecological state
 
-Thus the coverage-selection term alone suffices for hardness. The executable
-solvers enumerate all `2^|W|-1` nonempty subsets. They are exact exponential oracles,
-not tractability results. See
-`docs/crest_repair_complexity_boundary_2026-08-18.md`.
+The four companion programs identify four distinct ways that ecological sameness can fail.
 
-J4 and J7 are not interchangeable, and neither is MLTR semantic repair. J4/J7 weaken
-a cross-component carrier contract before J1 constructs a state; MLTR repairs one
-inherited macro-law after structural replacement.
+### Future sufficiency — CCOC
 
-## 5. Joint state on an admissible carrier
-
-### J1 — unique coarsest four-audit state
-
-On finite carrier `U`, let
-
-\[
-C_\Gamma,C_\mathcal H,C_\Theta,C_{D,T}:\Pi(U)\to\Pi(U)
-\]
-
-be monotone, inflationary, idempotent closures, with baseline `B`. Their join gives
-
-\[
-\boxed{J=(C_\Gamma\vee C_\mathcal H\vee C_\Theta\vee C_{D,T})(B).}
-\]
-
-`J` is the unique coarsest partition satisfying all four obligations. Fair finite
-iteration reaches it without pairwise commutation; a single pass through separately
-computed minima can fail.
-
-For reliability-qualified evidence partition `E_D`,
+Two configurations may be indistinguishable under every currently legal future yet behave differently after colonization, reconnection, a newly available interaction, or a new intervention.
 
 \[
 \boxed{
-\text{full deterministic state report exists}\iff J\preceq E_D.
+\text{present functional equivalence}
+\not\Rightarrow
+\text{open-future causal equivalence}
 }
 \]
 
-Otherwise the sharp state report is the set of `J` blocks compatible with the
-evidence class. A target may still be deterministic without full-state resolution.
+CCOC asks which distinctions must be retained so that a state remains exact under the declared future grammar.
 
-The least-common-fixed-point machinery is classical closure/refinement substrate.
-J1's CREST role is the explicit joint four-contract construction and evidence gate;
-it must not be sold as a new generic partition theorem.
+### Semantic coherence — MLTR
 
-## 6. Comparing lifts and contracts
+An ecological category may remain syntactically available after structural turnover while no longer preserving its old operational meaning. Pollinator replacement, species turnover, network rewiring, or restoration can make an inherited state label too coarse.
 
-### J2 — faithful-lift equality
+MLTR asks how much an inherited classification must be refined to remain exact while preserving as much carried meaning as possible.
 
-If surjection `pi:U -> V` preserves baseline, evidence, target, audit labels, action
-legality, and successors exactly, then
+### Mechanism robustness — MRM
 
-\[
-C_i^U(\pi^*P)=\pi^*C_i^V(P)
-\]
+The same visible state can remain compatible with multiple latent mechanisms. Those mechanism differences need not always be represented. They become state-relevant exactly where retained mechanisms disagree about a future response that the state is required to support.
 
-and
+Thus CREST does not equate ecological state with full mechanism identity. It preserves **response-relevant latent distinctions**.
 
-\[
-\boxed{J_U=\pi^*J_V,\qquad U/J_U\cong V/J_V.}
-\]
+### Evidential licensing — CED
 
-Scientifically invisible latent duplication cannot change the state or licensing.
+A distinction can be required by the scientific model without being identified by the current field evidence. Finite observation, detection failure, common-mode error, or an observation map that collapses causal channels can leave several required states compatible with one record.
 
-### J5 — one-sided lift bounds
-
-With exact evidence/target pullback and exact shared-action semantics:
+CED separates:
 
 \[
-\text{finer source obligations}\Rightarrow\pi^*J_V\preceq J_U,
+\boxed{
+\text{required state}
+\neq
+\text{identified state}
+\neq
+\text{target report}
+}
 \]
+
+in general.
+
+## 3. The CREST answer
+
+Conditional on one admissible finite common carrier \(U\), let the four obligations induce monotone, inflationary, idempotent refinement closures on the partition lattice of \(U\):
 
 \[
-\text{coarser source obligations}\Rightarrow J_U\preceq\pi^*J_V.
+C_\Gamma,\quad C_\mathcal H,\quad C_\Theta,\quad C_{D,T}.
 \]
 
-Both directions recover J2 equality. Target-only licensing is invariant;
-full-state licensing is one-sided in the corresponding direction.
-
-## 7. Supporting obstruction O1
-
-O1 gives a finite J7×J1/CED witness with
+From a baseline partition \(B\), CREST-J1 defines
 
 \[
-\boxed{R_{\mathrm{struct}}^*=1<R_{\mathrm{licensed}}^*=2.}
+\boxed{
+J=(C_\Gamma\vee C_\mathcal H\vee C_\Theta\vee C_{D,T})(B).
+}
 \]
 
-The cheapest controlled-carrier repair can leave the full joint state unresolved by
-the evidence, while a more expensive repair is fully licensed. The target can still
-be reportable under the cheaper repair. O1 therefore shows that carrier feasibility,
-state adequacy, and evidential licensing are distinct optimization targets. It is a
-supporting obstruction, not J8.
+Then \(J\) is the unique coarsest / least-information partition satisfying all four obligations. For a latent world \(u\),
 
-## 8. Proved dependency map
+\[
+\boxed{
+\operatorname{State}_{\mathcal C}(u)=[u]_J.
+}
+\]
+
+So the CREST answer is:
+
+> **Two ecological configurations count as the same state exactly to the extent that the declared scientific contract permits all differences between them to be ignored.**
+
+The generic lattice machinery is classical. CREST's content is the ecology-specific mapping of future, inherited meaning, mechanism uncertainty, and evidence onto one state-adequacy problem.
+
+## 4. Three gates, not one ontology
+
+The mathematical program separates three questions that ecological practice often collapses.
+
+### Gate A — carrier feasibility
+
+Can the four obligations even be synchronized on one admissible world set?
+
+J3/J6 answer this under universal and controlled action semantics. Failure here means that a fully adequate common state does not exist under the declared contract.
+
+### Gate B — representational adequacy
+
+If an admissible carrier exists, what is the least-information state that preserves every required distinction?
+
+That state is \(J\).
+
+### Gate C — evidential licensing
+
+Does the observation contract identify which \(J\)-block is occupied?
+
+For evidence partition \(E\),
+
+\[
+\boxed{
+\text{full-state report exists}
+\iff
+J\preceq E.
+}
+\]
+
+A target can still be reportable when this condition fails.
+
+## 5. The non-obvious ecological consequence
+
+The strongest current CREST result is not merely that state depends on purpose.
+
+A newly available management action can make **more ecological worlds viable** while simultaneously making **fewer worlds scientifically interchangeable**.
+
+Under the assumptions of the action-expansion result,
+
+\[
+A_c\uparrow
+\Rightarrow
+K^*\uparrow,
+\]
+
+while a strengthened future contract can force
+
+\[
+J\text{ to refine}.
+\]
+
+A strict finite witness realizes
+
+\[
+\boxed{
+|K^*|\uparrow,
+\qquad
+|J|\uparrow,
+\qquad
+\text{full-state identifiability}\downarrow,
+\qquad
+\text{target reportability unchanged}.
+}
+\]
+
+The intervention need not yet have been executed. Its availability can already change which latent differences the present state must preserve.
+
+This is the core of **management-induced information debt**.
+
+## 6. Monitoring debt can be structural
+
+For fixed evidence partition \(E\) and required state \(J\), the unique coarsest evidence refinement that preserves existing evidence distinctions and identifies \(J\) is
+
+\[
+E\vee J.
+\]
+
+The finite resolution debt is
+
+\[
+D_E(J)=\log_2|E\vee J|-\log_2|E|.
+\]
+
+But this debt should not be read only as "collect more samples."
+
+Suppose a net ecological performance factorizes as
+
+\[
+W(z)=F(z)R(z),
+\]
+
+where \(F\) is a reproductive channel and \(R\) a recruitment/reachability channel. The changes
+
+\[
+(F,R)\mapsto(aF,R)
+\quad\text{and}\quad
+(F,R)\mapsto(F,aR)
+\]
+
+produce identical net output \(aFR\). Repeatedly measuring only \(W\) cannot distinguish the two latent worlds. If a future intervention acts specifically on \(F\), however, those worlds may need different states.
+
+The missing evidence is then **a different measurement channel**, not merely more measurements of the old one.
+
+## 7. A temporally thick interpretation
+
+The present finite theory is formulated on latent worlds, not on a continuous ontology of time. Nevertheless, a latent world can contain relevant history and future-response structure as coordinates.
+
+This supports the following philosophical interpretation:
+
+> **An ecological state is not necessarily a property of an instant. It can be a scientifically licensed compression of a temporally extended possible world.**
+
+A latent world may encode:
+
+- relevant history or inherited state meaning;
+- current ecological configuration;
+- latent mechanism or fitness-relevant structure;
+- possible responses to declared future interactions and interventions;
+- the observation record through which science accesses that world.
+
+Under this interpretation, a present snapshot \(X\) is sufficient only when all latent worlds sharing that snapshot also share the required CREST state. Formally, a future theorem could study the criterion
+
+\[
+X(u)=X(v)
+\Rightarrow
+[u]_J=[v]_J.
+\]
+
+The current repository treats this as a **research direction**, not as an already proved trajectory theorem.
+
+## 8. Two kinds of stability
+
+CREST also motivates separating:
+
+1. **dynamical stability** — whether the ecological system resists or recovers from perturbation; and
+2. **representational stability** — whether a state representation remains adequate when the scientific contract, observation view, or intervention repertoire changes.
+
+The action-expansion witness already proves that the second can fail without a prior physical regime shift. A system can be dynamically unchanged while its scientifically adequate state becomes finer.
+
+A general theory connecting dynamical, evolutionary, and representational stability remains future work.
+
+## 9. What CREST does not claim
+
+CREST does not establish:
+
+- a nature-given canonical state partition;
+- a unique common carrier for every scientific description;
+- that all biological evolution monotonically maximizes one global fitness function;
+- that stochasticity disappears at the ecological level;
+- that every present snapshot is insufficient;
+- that the four obligations are exhaustive;
+- that monitoring bits equal money, sensors, or person-hours;
+- an infinite, continuous, fully stochastic, or approximate trajectory theorem.
+
+The theory is deliberately conditional: its value is to make the conditions under which ecological sameness is scientifically defensible explicit and testable.
+
+## 10. Where to go next
+
+The canonical progression is now:
 
 ```text
-declared ambient synchronization
-  -> choose action contract:
-       J3: survive every legal action
-       J6: survive all uncontrollable moves + choose one safe control
-  -> maximal carrier or finite typed no-go
-  -> choose matching repair language if needed:
-       J4: universal-contract repair characterization
-       J7: controlled-contract repair characterization
-  -> admissible carrier
-  -> J1 unique coarsest four-audit state + evidence gate
-  -> compare alternate lifts/contracts:
-       J2 faithful equality
-       J5 one-sided bounds
-  -> O1 warns that cheapest structural and licensed repairs can differ
+philosophical question
+    What counts as the same ecological state?
+        ↓
+four obligations
+    future / semantics / mechanisms / evidence
+        ↓
+three mathematical gates
+    carrier → least-information state → evidence
+        ↓
+cross-gate consequences
+    action expansion / monitoring debt / target-only reporting
+        ↓
+ecological projection
+    open systems / turnover / latent causality / monitoring / stability
 ```
 
-These arrows are theorem dependencies, not a mandatory field-work order.
+See:
 
-## 9. Ecological reading
-
-For a state called **pollination maintained**:
-
-- CCOC tests future colonization, reconnection, and intervention exposure;
-- MLTR tests inherited meaning after pollinator turnover;
-- MRM tests retained mechanisms' restoration predictions;
-- CED tests whether field evidence earned the distinction;
-- J3 asks whether every declared action preserves a synchronized carrier;
-- J6 asks whether unavoidable exterior moves can be survived under one policy;
-- J4/J7 price declared concessions when the relevant carrier fails;
-- J1 constructs the least joint state; and
-- J2/J5 compare alternative latent descriptions and contract strengths.
-
-Contract-relativity is constrained rather than arbitrary: scientists declare the
-obligations, action roles, fallbacks, and costs, while dynamics and evidence can
-refute a merge, carrier, policy, repair, or report.
-
-## 10. Prior-art and ownership firewall
-
-CREST does not claim novelty for:
-
-- partition refinement, closure operators, or lattice fixed points;
-- invariant, viability, and safety kernels;
-- controllable-predecessor iteration or memoryless finite safety strategies;
-- minimum-cost model/safety-game repair, weighted set cover, or subset optimization;
-- quotient naturality, simulation, or abstraction precision;
-- adequacy-for-purpose, partial observability, or ecological transferability.
-
-Its candidate contribution is the theorem-grounded ecology-specific contract map and
-its typed carrier, repair, partition, evidence, and comparison gates.
-
-Ownership remains:
-
-- CCOC — open-future interface obstruction;
-- MLTR — inherited-law transport and semantic repair;
-- MRM — mechanism-robust prediction;
-- CED — evidential reportability and design; and
-- CREST synthesis unit — conditional cross-contract coupling.
-
-## 11. What is not proved
-
-- a nature-given synchronization, action-role assignment, fallback, or cost scale;
-- that every companion model admits a coverage-complete J3/J6 carrier;
-- policy optimality beyond safety;
-- exhaustiveness of the J4/J7 repair languages;
-- a polynomial algorithm or tractable subclass classification for J4/J7;
-- arbitrary transition redirection or action-role reclassification;
-- comparison for every nonfaithful lift;
-- stochastic, partial-observation, delayed-control, approximate, or infinite forms;
-- philosophical exhaustiveness of the four axes; or
-- empirical validity of the declared contracts.
-
-## 12. Routing and stop rule
-
-Single-axis work returns to its companion repository. Essential multi-axis work may
-enter the CREST synthesis unit only if it establishes a new coupled
-noncommutation, impossibility, necessary-and-sufficient boundary, or minimality
-statement. Generic algorithmic extension is insufficient.
-
-The J/O series is frozen before physical extraction. No J8 or new O-family may be
-implemented under `mrm/`. Current work is limited to proof correction, complexity
-and prior-art audit, regression testing, manuscript consolidation, and migration.
-
-Proof controls:
-
-- [Synthesis proof ledger](crest_synthesis_proof_ledger_2026-08-17.md)
-- [Companion proof recovery](crest_proof_recovery_2026-08-17.md)
-- [Cross-repository validation](crest_final_validation_2026-08-17.md)
-- [Next-proof novelty gate](crest_next_proof_novelty_gate_2026-08-18.md)
-- [Unit charter](../crest_synthesis/README.md)
+- [`crest_mathematical_spine.md`](crest_mathematical_spine.md) for the proved theorem hierarchy;
+- [`crest_ecological_projection.md`](crest_ecological_projection.md) for the ecology-facing interpretation; and
+- [`README.md`](README.md) for supporting and archived documents.
