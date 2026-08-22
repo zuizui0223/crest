@@ -1,10 +1,10 @@
 # CREST trajectory-first novelty and validation audit — 2026-08-22
 
-> **Status:** current novelty/validation control after the trajectory-first reorganization and the capability–resolution divergence result. This is not a historical-firstness claim and not a database-complete systematic review.
+> **Status:** current novelty/validation control after the trajectory-first reorganization, connected capability–resolution divergence theorem, and Biology & Philosophy manuscript integration. This is **not** a historical-firstness claim and **not** a database-complete systematic review.
 
 ## 1. Bottom-line verdict
 
-CREST has a defensible mathematical/philosophical contribution, but most of the broad philosophical vocabulary is prior-art-adjacent and should not carry novelty by itself.
+CREST has a defensible mathematical/philosophical contribution, but most broad philosophical vocabulary is prior-art-adjacent and should not carry novelty by itself.
 
 Not novelty-bearing on its own:
 
@@ -62,9 +62,7 @@ Bisimulation, MDP/POMDP state reduction, causal abstraction, and conservation de
 
 ### 2.5 State–action abstraction coupling
 
-Konidaris (2019), *On the necessity of abstraction* (Current Opinion in Behavioral Sciences, doi:10.1016/j.cobeha.2018.11.005), explicitly treats state abstraction and action abstraction as coupled problems and notes the less-explored direction in which action abstraction drives the state abstraction needed to support those actions.
-
-This is a material nearest neighbour for the CREST action-expansion narrative.
+Konidaris (2019), *On the necessity of abstraction* (*Current Opinion in Behavioral Sciences* 29:1–7, doi:10.1016/j.cobeha.2018.11.005), explicitly treats state abstraction and action abstraction as coupled problems and discusses the direction in which action abstraction drives the state abstraction needed to support those actions.
 
 **Blocked claim:** it is new in general that changing/adding actions can change which state distinctions a task representation needs.
 
@@ -72,7 +70,7 @@ CREST must therefore locate novelty in the **carrier/state/evidence/target conju
 
 ### 2.6 Adequacy-for-purpose / representation repair
 
-Purpose-relative adequacy and representation repair/obsolescence already have strong philosophical and formal precedents, including the Swanson 2026 manuscript used in the prior audit.
+Purpose-relative adequacy and representation repair/obsolescence have strong philosophical and formal precedents.
 
 **Blocked claim:** contract-relativity, minimal adequate representation, or representational obsolescence is itself new.
 
@@ -81,6 +79,52 @@ Purpose-relative adequacy and representation repair/obsolescence already have st
 Adaptive monitoring, value of information, partial identification, and target/goal-oriented experimental design already formalize question-specific evidence acquisition.
 
 **Blocked claim:** CED is the first target-relevant monitoring framework or the first to prefer target reportability over full latent-state learning.
+
+### 2.8 Bisimulation, observer extension, and viability–observability links
+
+The capability–resolution theorem sits near several additional formal-methods traditions that must be kept explicit.
+
+**Bisimulation partition refinement.** Groote, Martens & de Vink (2023), *Lowerbounds for Bisimulation by Partition Refinement* (*Logical Methods in Computer Science* 19(2), doi:10.46298/lmcs-19(2:10)2023), gives lower bounds for algorithms computing bisimulation on labelled transition systems, including deterministic families with small action alphabets. This is close to the finite refinement machinery used inside the CREST witness.
+
+**Blocked claim:** small action alphabets, refinement cascades, or difficult/large bisimulation computations are new.
+
+The CREST theorem is not an algorithmic lower bound for computing a quotient. Its quantity is the **change in the required quotient itself** relative to a simultaneous controlled-carrier change and fixed evidence/target contract.
+
+**Observer/alphabet extension in supervisory control.** Natural-observer and hierarchical/decentralized supervisory-control work studies extending event/projection alphabets so an abstraction regains observer/nonblocking/control-consistency properties; Schmidt & Breindl (2011), *Maximally Permissive Hierarchical Control of Decentralized Discrete Event Systems* (*IEEE Transactions on Automatic Control* 56(4):723–737, doi:10.1109/TAC.2010.2067250), is a close neighbour. These results establish that control, observability, event alphabets, and abstractions must be coordinated.
+
+**Blocked claim:** CREST is the first formalism to connect control-relevant event sets, observability, and valid abstraction.
+
+The direction of the CREST scaling theorem differs: it fixes the evidence, enlarges what can be done by one action, and quantifies how much finer the **required state** can become while viability improves only marginally.
+
+**Viability and observability.** Kassara's viability-kernel observability work links observability to a viability construction in continuous/set-valued control settings.
+
+**Blocked claim:** viability and observability have never been studied jointly.
+
+CREST's candidate contribution therefore cannot be “viability + observability”. It is the particular four-way scaling statement across **carrier gain, required-state complexity, evidence adequacy, and target reportability**.
+
+### 2.9 Targeted no-bound nearest-neighbour scan — result
+
+A targeted 2026-08-22 search explicitly covered:
+
+- state/action abstraction coupling;
+- labelled-transition-system bisimulation and partition-refinement lower bounds;
+- alphabet/event extension and natural-observer synthesis in discrete-event control;
+- viability–observability links;
+- POMDP/predictive-state/state-reduction families already audited above.
+
+This scan found strong matches to every **ingredient**, but did **not** identify a direct statement matching the full CREST conjunction
+
+\[
+\Delta|K^*|=1,
+\qquad
+\Delta K_{U_0}\text{ arbitrary},
+\qquad
+\text{fixed evidence loses full-state adequacy},
+\qquad
+\text{coarse target remains reportable}.
+\]
+
+That negative result is **not evidence of historical firstness**. It is sufficient only for the current conservative manuscript wording: “we prove within CREST” / “candidate CREST-level contribution,” not “first theorem of its kind.”
 
 ## 3. What remains strongest
 
@@ -94,7 +138,7 @@ J=(C_\Gamma\vee C_\mathcal H\vee C_\Theta\vee C_{D,T})(B)
 
 as the unique coarsest common fixed point above the baseline.
 
-This is essential because it answers **what the finite CREST state is**. But closure-operator/fixed-point theory is classical, so J1 should be presented as the formal existence/minimality backbone rather than as the strongest originality claim.
+This answers **what the finite CREST state is**, but closure-operator/fixed-point theory is classical. J1 is the existence/minimality backbone, not the strongest originality claim.
 
 ### B. Required state vs evidence vs target
 
@@ -159,67 +203,40 @@ O1 shows that a cheapest structural carrier repair need not be a cheapest fully 
 - **MRM:** many standalone pieces are close to standard robust/model-uncertain prediction; its strongest role is as a mechanism-response constraint inside CREST.
 - **CED:** strongest as the downstream evidence/licensing layer; target-oriented OED/VOI/partial identification are not novel individually.
 
-## 5. Validation still required before submission
+## 5. Validation status for the current submission
 
-### P0 — integrate the scaling theorem into the manuscript
+### Closed
 
-The Biology & Philosophy manuscript still describes the older qualitative `rescue` witness as the main action-expansion result.
+1. **Trajectory-first hierarchy** is integrated across README, mathematical spine, and manuscript.
+2. **PSR/POMDP boundary** is explicit; no non-embeddability claim is made.
+3. **Snapshot sufficiency** is explicitly a factorization criterion, not a novelty theorem.
+4. **State/action abstraction boundary** is explicit through Konidaris (2019).
+5. **Connected capability–resolution theorem** is analytically stated for arbitrary \(m\), with one connected transition system rather than a direct-sum witness.
+6. **Regression/oracle consistency:** multi-Python CI verifies the finite witness surface; the Biology & Philosophy manuscript integration run passed **93 tests** on Python 3.10/3.11/3.12 and all submission-control checks after report synchronization.
+7. **Manuscript theorem hierarchy:** J1 = conditional state backbone; qualitative action expansion = direction; capability–resolution divergence = scale/no-bound headline.
+8. **Targeted nearest-neighbour scan for the no-bound conjunction** completed at the conservative, non-firstness level described above.
+9. **Empirical data requirement removed:** real-data cases are optional illustrations, not theorem-validation conditions.
 
-**Pass condition:** the manuscript distinguishes:
+### P1 only if the novelty claim is strengthened later
 
-1. J1 = conditional least-state existence/minimality backbone;
-2. qualitative action expansion = monotone direction;
-3. capability–resolution divergence = arbitrary cross-gate scale separation/no-bound theorem.
-
-### P0 — add the state/action-abstraction prior-art boundary
-
-The manuscript already contains the PSR/POMDP boundary but should also cite Konidaris (2019) or equivalent state/action abstraction work.
-
-**Pass condition:** it explicitly concedes that action choice/action abstraction can shape required state abstraction, and locates the CREST claim in the carrier/state/evidence/target scaling conjunction.
-
-### P0 — theorem proof/test consistency
-
-The connected witness must remain analytically described and executable from the same transition system.
-
-**Pass condition:** multi-Python CI verifies for a finite range of \(m\) that:
-
-- carrier gain is exactly one;
-- present-state class count is \(1\to2^m\);
-- monitoring debt is exactly \(m\) bits;
-- full-state evidence fails after expansion;
-- coarse target remains reportable;
-- readout paths terminate in the same rescued world.
-
-The analytic proof supplies arbitrary \(m\); finite tests are regression witnesses, not the proof.
-
-### P1 — nearest-neighbour search for the no-bound conjunction
-
-The web/secondary search to date confirms strong prior art for automata state complexity, task-specific abstraction, action/state abstraction coupling, viability, observability, and partial observability. It has not produced a direct match to the full conjunction
-
-\[
-\Delta|K^*|=1,\quad
-\Delta K\text{ arbitrary},\quad
-\text{evidence adequacy lost},\quad
-\text{target reportability retained}.
-\]
-
-That absence is not proof of historical firstness.
-
-**Pass condition for current paper:** claim only a `candidate CREST-level contribution` / `we prove within this framework`, not “first ever,” unless a database-complete review is later performed.
+A database-complete literature review is required before any wording such as “first,” “unprecedented,” or “no previous framework/theorem.” The current manuscript does not require such wording.
 
 ### P2 — optional future mathematics
 
 Not current blockers:
 
-- stochastic/continuous/infinite-state analogues that genuinely use the CREST multi-gate coupling;
+- stochastic/continuous/infinite-state analogues that genuinely use CREST-specific multi-gate coupling;
 - a general representational-stability metric/radius;
-- a general observation-symmetry theorem.
+- a general observation-symmetry theorem;
+- structural conditions that upper-bound the capability–resolution divergence in restricted ecological model classes.
+
+The last item is now the most natural mathematical sequel: the theorem proves that no carrier-gain-only bound exists **without additional assumptions**, so future work can ask which locality, bounded-depth, bounded-response-rank, or blanket assumptions restore a finite bound.
 
 ## 6. Empirical status
 
 Real-data or worked ecological applications are **optional illustrations**, not validation requirements for the finite theorem.
 
-The mathematical claims stand or fall on definitions, proofs, counterexamples, and finite regression/oracle checks. Do not reopen empirical-data collection as a submission blocker unless the paper is deliberately changed from a mathematical/philosophical paper into an empirical-methods paper.
+The mathematical claims stand or fall on definitions, proofs, counterexamples, and finite regression/oracle checks. Do not reopen empirical-data collection as a submission blocker unless the paper is deliberately changed into an empirical-methods paper.
 
 ## 7. Current safe positioning
 
@@ -237,18 +254,28 @@ Not safe as novelty claims:
 - state is a compression of history/future;
 - future tests can define present predictive state;
 - actions can affect state abstraction;
+- viability and observability are jointly studied for the first time;
 - adequate state is purpose/contract-relative;
 - monitoring should change when management changes;
-- representational obsolescence is a new general concept.
+- representational obsolescence is a new general concept;
+- the no-bound theorem is historically first.
 
 ## 8. Development rule
 
-Do not add another theorem family now.
+**Stop theorem proliferation for the current paper.**
 
-Current order:
+The current finite manuscript has its spine:
 
-1. validate and merge the connected capability–resolution theorem;
-2. integrate it into the mathematical spine and manuscript;
-3. add the Konidaris/action–state abstraction boundary;
-4. re-run submission controls and theorem CI;
-5. stop mathematical proliferation unless a new result strengthens the same carrier/state/evidence/target chain.
+\[
+\text{carrier existence}
+\to
+\text{least state }J
+\to
+\text{evidence licensing}
+\to
+\text{qualitative action expansion}
+\to
+\text{capability–resolution no-bound theorem}.
+\]
+
+A new result should enter only if it strengthens this exact chain through a necessary-and-sufficient boundary, a sharp bound under explicit additional assumptions, or a genuinely new cross-gate impossibility. Otherwise record it as future work rather than expanding the headline surface.
