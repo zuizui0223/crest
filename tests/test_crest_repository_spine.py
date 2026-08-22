@@ -39,12 +39,14 @@ def test_philosophy_doc_keeps_world_level_frame_and_finite_firewall_separate() -
     assert "general continuous/stochastic trajectory theorem" in PHILOSOPHY
 
 
-def test_mathematical_spine_prioritizes_three_gates_and_cross_gate_result() -> None:
+def test_mathematical_spine_prioritizes_gates_and_cross_gate_scaling() -> None:
     for term in (
         "Gate A — carrier feasibility",
         "Gate B — unique least-information state",
         "Gate C — evidence licensing",
-        "Cross-gate theorem — action expansion",
+        "Cross-gate monotonicity — qualitative action expansion",
+        "Cross-gate scaling — capability–resolution divergence",
+        "viability gain alone cannot upper-bound representational burden",
         "Supporting theorem infrastructure",
     ):
         assert term in MATH
