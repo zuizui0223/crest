@@ -20,7 +20,9 @@ def test_manuscript_follows_trajectory_first_state_spine() -> None:
         "### 4.1 Gate A — Can the requirements share an admissible ecological world set?",
         "### 4.2 Gate B — What is the least-information adequate state?",
         "### 4.3 Gate C — Does the evidence identify that state?",
-        "### 4.4 Cross-gate result — when management changes what must be known",
+        "### 4.4 Cross-gate direction — capability can enlarge the carrier and refine the state",
+        "### 4.5 Cross-gate scale separation — capability–resolution divergence",
+        "### 4.6 Monitoring-resolution debt",
         "## 5. Quotient laws and representational stability",
         "## 6. Position relative to existing theories",
         "## 7. Limits",
@@ -42,7 +44,7 @@ def test_temporally_extended_interpretation_is_not_mislabeled_as_proved() -> Non
     assert "not backward causation" in text
 
 
-def test_predictive_state_prior_art_boundary_is_explicit() -> None:
+def test_predictive_and_action_abstraction_prior_art_boundaries_are_explicit() -> None:
     text = MANUSCRIPT.read_text(encoding="utf-8")
 
     assert "Predictive State Representations" in text
@@ -50,3 +52,18 @@ def test_predictive_state_prior_art_boundary_is_explicit() -> None:
     assert "does not claim to be more expressive than a sufficiently rich PSR" in text
     assert "Littman, M. L., Sutton, R. S., & Singh, S. (2002)" in text
     assert "Singh, S., James, M. R., & Rudary, M. R. (2004)" in text
+
+    assert "Konidaris (2019)" in text
+    assert "state and action abstraction as coupled problems" in text
+    assert "The CREST result is therefore **not** the qualitative proposition" in text
+    assert "Konidaris, G. (2019). On the necessity of abstraction." in text
+
+
+def test_scaling_theorem_is_the_quantitative_headline() -> None:
+    text = MANUSCRIPT.read_text(encoding="utf-8")
+
+    assert "\\Delta |K^*|=1" in text
+    assert "\\Delta K_{U_0}=m" in text
+    assert "no universal finite function" in text
+    assert "full-state licensing changes from yes to no" in text
+    assert "Viability gain alone therefore cannot upper-bound" in text
