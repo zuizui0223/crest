@@ -24,4 +24,4 @@ def test_cross_gate_section_keeps_priority_and_scope_firewalls() -> None:
     assert "Konidaris (2019)" in text
     assert "The CREST result is therefore **not** the qualitative proposition" in text
     assert "No claim of historical priority for the generic equivalence-class idea is needed." in text
-    assert "not backward causation" in text
+    assert "no backward causation" in text
