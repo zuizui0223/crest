@@ -57,12 +57,14 @@
   "crest_outputs": {
     "binary_snapshot_useful_for_broad_state_target": true,
     "binary_snapshot_universally_adequate_across_targets": false,
+    "required_resolution_changes_across_targets": true,
     "within_pigmented_context_axis_required_for_human_context_target": true,
     "human_context_overlay_reportable": true,
     "horticultural_or_human_origin_identified": false,
     "pollinator_mediated_selection_identified": false,
-    "required_state_equals_identified_state": false,
-    "identified_state_equals_reportable_target": false
+    "full_causal_state_identified_for_bombus_target": false,
+    "full_causal_state_identified_for_provenance_target": false,
+    "narrower_target_reportable_despite_causal_state_unresolved": true
   },
   "claim_ceiling": [
     "This replay does not re-estimate the hotarubukuro models from raw data; it composes locked, validated source results into a CREST state-adequacy audit.",
