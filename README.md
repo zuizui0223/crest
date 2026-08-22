@@ -19,7 +19,9 @@ observation / intervention context
         ↓
 scientific contract
         ↓
-minimal adequate state
+carrier feasibility
+        ↓
+least-information adequate state
         ↓
 evidence licensing and reportability
 ```
@@ -80,7 +82,7 @@ q_{\mathcal C,V}(\omega)=q_{\mathcal C,V}(\omega').
 }
 \]
 
-A pair of worlds with the same present snapshot but different required states is therefore a witness that the present snapshot is insufficient for that scientific contract.
+This is a factorization criterion, not a novelty theorem. A pair of worlds with the same present snapshot but different required states is a witness that the present snapshot is insufficient for that scientific contract.
 
 CREST currently studies three structural reasons this can happen and one separate evidential question.
 
@@ -128,13 +130,13 @@ A required state can exist mathematically while the current record supports only
 
 ## 6. Finite mathematical spine
 
-On one admissible finite common carrier \(U\), with baseline partition \(B\), the current finite theory represents the declared requirements by refinement closures. In the existing implementation these include
+On one admissible finite common carrier \(U\), with baseline partition \(B\), the current finite theory represents the declared requirements by refinement closures
 
 \[
 C_\Gamma,\ C_\mathcal H,\ C_\Theta,\ C_{D,T}.
 \]
 
-CREST-J1 proves that their least common fixed refinement
+CREST-J1 proves that
 
 \[
 \boxed{
@@ -148,7 +150,7 @@ is the **unique coarsest / least-information** partition satisfying the declared
 \operatorname{State}_{\mathcal C}(u)=[u]_J.
 \]
 
-The lattice/fixed-point substrate is classical. The CREST contribution is the ecological contract that determines which distinctions the joint state must preserve.
+The lattice/fixed-point substrate is classical. J1 is the existence/minimality backbone, not the strongest novelty claim.
 
 The finite theory is organized by three gates:
 
@@ -166,7 +168,40 @@ J\preceq E.
 }
 \]
 
-## 7. Ecological rules as quotient laws
+## 7. Main cross-gate theorem — capability–resolution divergence
+
+The qualitative action-expansion result gives the direction: adding safe control options can enlarge the viable carrier, while strengthening the future responsibility can refine the least-information state and make fixed monitoring insufficient.
+
+The stronger result is quantitative. For every integer \(m\ge1\), there is one connected finite deterministic CREST system in which adding a **single** controllable action `probe` gives
+
+\[
+\boxed{
+\Delta|K^*|=1,
+\qquad
+\Delta K_{U_0}=m\text{ bits}.
+}
+\]
+
+On the retained present slice \(U_0\):
+
+- required state classes change from \(1\) to \(2^m\);
+- fixed-monitoring resolution debt changes from \(0\) to exactly \(m\) bits;
+- full-state identification changes from yes to no;
+- a constant coarse target remains reportable.
+
+The action alphabet changes only from `{hold}` to `{hold, probe}` and the output alphabet remains `{neutral, bit0, bit1, done}`. Repeated `probe` reads one latent coordinate at a time, and the readout paths terminate in the same `fragile` world that `probe` newly makes viable before reaching `safe`.
+
+Therefore no universal finite function depending only on carrier-size gain can upper-bound required state complexity:
+
+\[
+\boxed{
+\text{viability gain alone cannot upper-bound representational burden.}
+}
+\]
+
+This is the main nontrivial mathematical headline beyond the conditional J1 state construction. CREST does **not** claim novelty for generic state/action abstraction coupling, automaton minimization, viability kernels, or predictive states separately.
+
+## 8. Ecological rules as quotient laws
 
 CREST treats a coarse ecological rule as an effective law on a declared state quotient. A rule is well-defined only while every world merged by that quotient agrees on the response the rule must provide.
 
@@ -176,12 +211,11 @@ Therefore a rule can be valid in one observational, structural, or intervention 
 \boxed{
 \text{ecological rule}
 =\text{ effective law on a scientifically adequate quotient}
-}
 \]
 
 This is a non-relativist claim: the underlying dynamics do not change because the observer changes description. What changes is whether the distinctions erased by the old quotient remain irrelevant to the new task.
 
-## 8. Representational stability
+## 9. Representational stability and monitoring debt
 
 CREST distinguishes at least:
 
@@ -189,25 +223,11 @@ CREST distinguishes at least:
 - **evolutionary stability** — whether strategies or traits resist invasion under the relevant evolutionary model;
 - **representational stability** — whether the same state quotient remains adequate when observation, intervention, future, mechanism, or reporting responsibility changes.
 
-The existing action-expansion witness already realizes a strict case in which the ecosystem need not change physically before the adequate state changes. A newly available intervention can refine the state distinction before that intervention is executed.
+A newly available intervention can refine the state distinction before that intervention is executed. The connected scaling family shows that this representational change can be arbitrarily large in bits even while the controlled-carrier gain stays fixed at one world.
 
 > **The future does not have to happen to change the present scientific state; a counterfactual future only has to become relevant to the contract.**
 
 This is representational, not backward, causation.
-
-## 9. Cross-gate consequences retained from the finite theory
-
-Under explicit one-sided assumptions, enlarging a management repertoire can
-
-\[
-|K^*|\uparrow,
-\qquad
-|J|\uparrow,
-\qquad
-\text{full-state identifiability}\downarrow,
-\]
-
-while target reportability remains unchanged.
 
 For fixed evidence partition \(E\), the minimum refinement that preserves existing evidence distinctions and identifies \(J\) is
 
@@ -221,29 +241,49 @@ with finite monitoring-resolution debt
 D_E(J)=\log_2|E\vee J|-\log_2|E|.
 \]
 
-A microdonta-derived channel witness further shows that some monitoring debt is structural: repeated measurement of one net output cannot necessarily break a causal symmetry; a new discriminating measurement channel may be required.
+A channel-factorization witness further shows that some monitoring debt is structural: repeated measurement of one net output cannot necessarily break a causal symmetry; a new discriminating measurement channel may be required.
 
-## 10. Canonical reading order
+## 10. Prior-art firewall
+
+The current headline is deliberately narrower than several established ideas.
+
+CREST does not claim novelty for:
+
+- dynamic or trajectory-sensitive ecosystem identity;
+- predictive equivalence or causal states;
+- Predictive State Representations based on future action-observation tests;
+- purpose-relative or task-specific state abstraction;
+- POMDP state reduction;
+- the generic coupling of state and action abstraction, including the direction emphasized by Konidaris (2019) in which action abstraction can drive the state abstraction needed to support those actions;
+- generic viability/observability mathematics;
+- adaptive monitoring or target-oriented experimental design.
+
+The candidate CREST-level contribution is the **carrier/state/evidence/target cross-gate conjunction and its scale separation**: a fixed-size capability expansion can add exactly one viable world while forcing arbitrarily many additional bits of least-state and monitoring resolution, with full-state licensing lost but a coarse target retained.
+
+## 11. Canonical reading order
 
 1. [`docs/contract_relative_ecological_state_theory.md`](docs/contract_relative_ecological_state_theory.md) — trajectory-first philosophical statement and state definition.
-2. [`docs/crest_ecological_projection.md`](docs/crest_ecological_projection.md) — ecology-facing interpretation, quotient laws, and stability.
-3. [`docs/crest_mathematical_spine.md`](docs/crest_mathematical_spine.md) — minimal proved finite theorem chain.
-4. [`manuscript/crest_philosophy_biology_philosophy.md`](manuscript/crest_philosophy_biology_philosophy.md) — Biology & Philosophy target manuscript.
-5. [`docs/README.md`](docs/README.md) — supporting proofs, audits, and archived development concepts.
+2. [`docs/crest_mathematical_spine.md`](docs/crest_mathematical_spine.md) — canonical finite theorem chain and scaling result.
+3. [`docs/crest_capability_resolution_divergence_theorem_2026-08-22.md`](docs/crest_capability_resolution_divergence_theorem_2026-08-22.md) — analytic connected scaling construction and no-bound corollary.
+4. [`docs/crest_ecological_projection.md`](docs/crest_ecological_projection.md) — ecology-facing interpretation, quotient laws, and stability.
+5. [`manuscript/crest_philosophy_biology_philosophy.md`](manuscript/crest_philosophy_biology_philosophy.md) — Biology & Philosophy target manuscript.
+6. [`docs/README.md`](docs/README.md) — supporting proofs, audits, optional applications, and archived development concepts.
 
-## 11. Scope firewall
+## 12. Scope firewall
 
 CREST does **not** currently claim:
 
 - one intrinsic ecological partition independent of scientific context;
-- that the four historical companion programs exhaust every legitimate notion of ecological state;
+- that the historical companion programs exhaust every legitimate notion of ecological state;
 - that every present snapshot is insufficient;
 - a general theorem that all ecological dynamics are deterministic, chaotic, or globally fitness-maximizing;
 - a general infinite, continuous, stochastic, approximate, or delayed-observation trajectory theorem;
-- that generic partition refinement, state abstraction, purpose-relative modeling, causal states, or effective theories are new;
+- that generic partition refinement, state abstraction, action abstraction, purpose-relative modelling, causal states, or effective theories are new;
+- that a one-world viability gain generically creates large state complexity in real ecosystems;
+- that empirical data are required to establish the finite theorem;
 - that finite state-memory bits equal financial or field sampling costs.
 
-The present trajectory-first framing reorganizes the existing finite theory; it does not silently upgrade philosophical interpretation into an unproved mathematical theorem.
+The trajectory-first framing organizes the finite theory; the connected scaling theorem is an exact finite existence result, not an empirical frequency claim.
 
 ## Run
 
