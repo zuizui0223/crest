@@ -11,7 +11,7 @@
     "causal abstraction",
     "model adequacy"
   ],
-  "manuscript_words_before_references": 5625,
+  "manuscript_words_before_references": 5903,
   "development_target_5500_7500_met": true,
   "hard_cap_10000_met": true,
   "blind_hits": {},
@@ -26,9 +26,10 @@
   },
   "trajectory_first_checks": {
     "defines_temporally_extended_state": true,
-    "states_snapshot_sufficiency": true,
+    "states_snapshot_factorization_criterion": true,
     "separates_ced_as_evidence_gate": true,
-    "states_trajectory_theorem_firewall": true
+    "states_trajectory_theorem_firewall": true,
+    "states_psr_prior_art_boundary": true
   },
   "stale_joint_state_hits": [],
   "automated_blockers": [],
