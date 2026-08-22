@@ -19,7 +19,7 @@ Read these first, in order.
    Projection to open ecosystems, history, latent mechanisms, observation, quotient laws, monitoring, and representational stability.
 
 5. [`../manuscript/crest_philosophy_biology_philosophy.md`](../manuscript/crest_philosophy_biology_philosophy.md)  
-   Current trajectory-first Biology & Philosophy manuscript.
+   Current trajectory-first Biology & Philosophy manuscript, including the explicit PSR/POMDP novelty boundary.
 
 ## Headline proof documents
 
@@ -41,7 +41,7 @@ These remain active proofs but are not separate philosophical headlines.
 ### Lift comparison
 
 - `crest_lift_invariance_theorem_2026-08-17.md` — J2 faithful-lift invariance.
-- `crest_lax_lift_bounds_theorem_2026-08-18.md` — J5 one-sided lift bounds.
+- `crest_lax_lift_bounds_theorem_2026-08-18.md` — J5 one-sided comparison.
 
 ### Carrier repair and complexity
 
@@ -59,62 +59,79 @@ The following documents record useful derived terminology and finite corollaries
 - [`crest_candidate_concepts_provability_map_2026-08-21.md`](crest_candidate_concepts_provability_map_2026-08-21.md)
 - [`crest_ecological_state_adequacy_frontier_2026-08-21.md`](crest_ecological_state_adequacy_frontier_2026-08-21.md)
 
-This layer includes:
+This layer includes Monitoring Adequacy Envelope, Counterfactual Obsolescence, Ecological State Shadow, Decision-Safe Ignorance, and frontier/regime bookkeeping. Use them only when they clarify the main state problem.
 
-- Monitoring Adequacy Envelope;
-- Counterfactual Obsolescence;
-- Ecological State Shadow;
-- Decision-Safe Ignorance;
-- frontier/regime bookkeeping.
-
-Use these concepts when they clarify a result; do not let them replace the trajectory-first narrative.
-
-## Literature and novelty audits
+## Literature and novelty controls
 
 These establish claim boundaries rather than the scientific theory itself.
 
-- [`trajectory_first_novelty_validation_audit_2026-08-22.md`](trajectory_first_novelty_validation_audit_2026-08-22.md) — **current novelty and remaining-validation authority after the trajectory-first reframe**.
+### Current authority
+
+- [`trajectory_first_novelty_validation_audit_2026-08-22.md`](trajectory_first_novelty_validation_audit_2026-08-22.md) — current novelty ceiling and development rule.
+- [`trajectory_first_nearest_neighbor_matrix_2026-08-22.md`](trajectory_first_nearest_neighbor_matrix_2026-08-22.md) — claim-by-claim overlap / difference / safe / blocked wording.
+- [`crest_vs_predictive_state_models_2026-08-22.md`](crest_vs_predictive_state_models_2026-08-22.md) — PSR/POMDP comparison and the decision that snapshot sufficiency is a factorization criterion rather than a novelty-bearing theorem.
+- [`trajectory_first_submission_citation_chase_2026-08-22.md`](trajectory_first_submission_citation_chase_2026-08-22.md) — final conservative nearest-neighbour citation chase for submission.
+- [`post_trajectory_cross_repo_validation_2026-08-22.md`](post_trajectory_cross_repo_validation_2026-08-22.md) — current cross-repository ownership/status validation.
+
+### Historical evidence base
+
 - `crest_prior_art_review_protocol_and_evidence_matrix_2026-08-21.md`
-- [`crest_broad_literature_audit_2026-08-21.md`](crest_broad_literature_audit_2026-08-21.md) — broad pre-reframe evidence base.
+- [`crest_broad_literature_audit_2026-08-21.md`](crest_broad_literature_audit_2026-08-21.md)
 - [`crest_adequacy_frontier_prior_art_audit_2026-08-21.md`](crest_adequacy_frontier_prior_art_audit_2026-08-21.md)
 
-Current safe positioning:
+These remain useful evidence/provenance but predate the trajectory-first claim ordering.
 
-- dynamic/trajectory-sensitive ecosystem identity is not new;
-- causal-state and predictive-state compression of history/futures is not new;
-- purpose-relative adequacy is not new;
-- task-specific state abstraction and partial observability are not new;
-- adaptive monitoring and target-oriented experimental design are not new;
-- generic representational obsolescence is not new;
-- the candidate CREST contribution is the ecology-specific coupling of trajectory-level state responsibility, three structural insufficiency layers, carrier/state minimality, downstream evidence licensing, and strict cross-gate consequences.
+### Current safe positioning
+
+Not new by itself:
+
+- dynamic or trajectory-sensitive ecological identity;
+- causal-state or predictive-state compression of history/futures;
+- future action/observation tests defining predictive state;
+- purpose-relative adequacy;
+- task-specific state abstraction or POMDP state reduction;
+- abstraction transfer across tasks;
+- adaptive monitoring and target-oriented experimental design;
+- generic representational obsolescence or quotient/effective-law language.
+
+Current strongest CREST-level contribution:
+
+> **an ecology-specific coupling of future/composition, inherited semantics/history, retained mechanism responses, carrier feasibility, finite state minimality, and downstream evidence licensing, with explicit separation of required state, identified state, and reportable target plus strict cross-gate witnesses.**
+
+## Ecology-grounded validation cases
+
+Two deliberately heterogeneous conceptual cases now map real ecological mechanisms into the complete CREST contract without invented fitted parameters:
+
+1. [`shallow_lake_end_to_end_crest_case_2026-08-22.md`](shallow_lake_end_to_end_crest_case_2026-08-22.md) — nutrient-loading history, sediment-P legacy, food-web/macrophyte feedback, restoration actions, and measurement-channel ambiguity.
+2. [`fragmented_landscape_end_to_end_crest_case_2026-08-22.md`](fragmented_landscape_end_to_end_crest_case_2026-08-22.md) — fragmentation history, extinction debt, colonization credit, dispersal/source limitation, restoration connectivity, and land-use legacy.
+
+These close the **conceptual ecological-grounding** requirement. They do not establish empirical predictive superiority. Any next application should use real data/model comparison rather than adding another illustrative relabelling.
 
 ## Validation status
 
-The **finite theorem surface** is already strongly validated by analytic proofs, independent exhaustive oracles on small finite systems, multi-Python CI, and end-to-end carrier → repair → J1 → evidence tests. See [`crest_post_state_validation_2026-08-21.md`](crest_post_state_validation_2026-08-21.md).
+### Closed for the current finite / philosophy paper
 
-The main remaining validation work is now **novelty and ecological grounding**, not another round of finite theorem enumeration:
+- finite J1–J7/O1 theorem surface: analytic proofs + independent finite oracles + multi-Python CI;
+- trajectory-first program ordering;
+- PSR / causal-state / POMDP claim boundary;
+- snapshot-sufficiency status: **factorization criterion, not novelty theorem**;
+- CREST-versus-generic-predictive-model claim: **architectural decomposition, not non-embeddability**;
+- two heterogeneous ecology-grounded conceptual mappings;
+- post-reframe cross-repository ownership/status synchronization;
+- submission citation chase for the closest current novelty threats.
 
-1. close the PSR / causal-state / controlled-abstraction prior-art boundary;
-2. refresh the claim-by-claim literature matrix under the trajectory-first framing;
-3. decide whether snapshot sufficiency remains a criterion or receives a genuinely stronger theorem;
-4. add at least one end-to-end ecology-grounded worked case;
-5. only then consider a CREST-specific stochastic/trajectory extension.
+### Intentionally open future research — not submission blockers
+
+- empirical performance validation on a real dataset;
+- stochastic/continuous/infinite-state trajectory theorem that depends essentially on CREST-specific coupling;
+- a general metric or robustness radius for representational stability;
+- a true database-complete systematic review if historical-firstness were ever to be claimed.
 
 Dated pre-J1 and pre-trajectory validation notes remain provenance, not current authority.
 
 ## Submission-control and historical development records
 
-These are provenance/audit material, not entry points for the theory.
-
-Examples include:
-
-- submission audits and validation reports;
-- pre-/post-J1 claim ledgers;
-- state-hypothesis recovery notes;
-- publication sequence decisions;
-- earlier development/novelty-gate documents.
-
-Keep them for traceability, but do not cite them as the canonical definition of CREST when a canonical spine document exists.
+Submission audits, pre-/post-J1 claim ledgers, hypothesis-recovery notes, publication-sequence decisions, and earlier novelty-gate documents remain for traceability. Do not use a dated historical note as the canonical definition when a post-2026-08-22 document exists.
 
 ## Code ownership map
 
@@ -154,4 +171,4 @@ A new named result enters the canonical spine only if it does at least one of th
 3. proves a sharp lower/upper bound that depends essentially on the CREST contract architecture;
 4. produces an empirical discrimination that cannot be reduced to ordinary adaptive monitoring, POMDP, PSR, or generic state abstraction.
 
-Otherwise, extend an existing theorem, add a witness, or record the idea under future research rather than creating another headline concept.
+Otherwise, extend an existing result, add an empirical validation, or record the idea under future research rather than creating another headline concept.
