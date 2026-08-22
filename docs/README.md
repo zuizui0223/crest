@@ -118,7 +118,7 @@ Core test groups:
 - `test_crest_joint_state*.py` — J1 and finite oracle;
 - `test_crest_common_lift.py`, `test_crest_controlled_lift.py`, `test_crest_carrier_oracles.py` — Gate A;
 - `test_crest_action_expansion_cross_gate.py`, `test_crest_adequacy_frontier.py` — cross-gate witness;
-- `test_crest_microdonta_bridge.py` — ecological channel-identifiability witness;
+- `test_crest_microdonta_channel_bridge.py` — ecological channel-identifiability witness;
 - `test_crest_derived_frontier_concepts.py` — derived regime mathematics.
 
 Repair/lift tests are supporting regression suites.
