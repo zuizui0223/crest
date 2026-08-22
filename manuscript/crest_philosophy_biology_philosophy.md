@@ -3,7 +3,8 @@
 
 ## Abstract
 
-Ecology routinely compresses heterogeneous configurations into shared states for prediction, comparison, and management. We ask when that compression remains scientifically adequate as the work assigned to a state changes. CREST distinguishes four currently formalized obligations: future sufficiency under declared operations, semantic coherence after structural change, robustness across retained response mechanisms, and evidence-relative target resolution. On one admissible finite common carrier, these obligations induce a unique coarsest joint partition \(J\); the CREST state of configuration \(u\) is its block \([u]_J\), the least-information equivalence class preserving every distinction forced by the declared contract. A separate evidence gate asks whether the required block is actually identified. Within CREST, these three quantities define what we call an ecological state adequacy frontier: changes in scientific obligations can alter carrier feasibility, required state resolution, and evidential identifiability in different directions. A finite control-enrichment witness shows that adding one management action can enlarge the viable carrier while increasing the least-information state resolution beyond fixed monitoring, even though a requested target remains reportable. We use management-induced information debt for this specific cross-gate pattern rather than as a claim to a new generic theory of representational obsolescence. CREST therefore treats ecological state equivalence as a testable scientific commitment and shows why increased management capability can increase, rather than reduce, what must be known about the system. The account is contract-relative but not arbitrary, and it does not claim that the four obligations are exhaustive or that nature supplies one intrinsic state partition.
+
+Ecology routinely compresses heterogeneous configurations into shared states for prediction, comparison, and management. We ask a single question: when are two ecological configurations scientifically allowed to count as the same state? CREST treats that judgment as a contract-relative commitment constrained by four currently formalized obligations: future sufficiency under declared operations, semantic coherence after structural change, robustness across retained response mechanisms, and evidential licensing. The mathematics then separates three gates. First, the obligations must admit a common ecological carrier. Second, on an admissible finite carrier they induce a unique coarsest joint partition \(J=(C_\Gamma\vee C_\mathcal H\vee C_\Theta\vee C_{D,T})(B)\); the CREST state of configuration \(u\) is its least-information block \([u]_J\). Third, the evidence must be fine enough to identify that block, although a requested target can remain reportable when the full state is unresolved. A strict control-enrichment witness shows why these gates cannot be collapsed: adding one management action can enlarge the viable carrier while forcing a finer state that unchanged monitoring no longer identifies. The minimum evidence refinement is \(E\vee J\), and a channel-factorization example shows that the resulting monitoring deficit can be structural, requiring a new measurement type rather than more replication of the same output. CREST therefore makes ecological sameness a testable scientific commitment while rejecting both a nature-given universal state partition and the claim that its four obligations exhaust ecological adequacy.
 
 **Keywords:** philosophy of ecology; ecological state; scientific representation; model adequacy; causal abstraction; uncertainty
 
@@ -21,7 +22,7 @@ The program currently formalizes four such commitments. **Future sufficiency** a
 
 The philosophical claim is contract-relative but not arbitrary. Scientists choose which futures, inherited meanings, candidate mechanisms, observations, and targets belong to a model contract; CREST does not prove that one such contract is uniquely correct for nature. But once those commitments are declared, a proposed merge can fail for explicit reasons. A legal future can distinguish two merged configurations; a structural replacement can make an inherited label operationally incoherent; retained mechanisms can disagree on a successor; and an evidence class can contain multiple target values. Contract-relativity therefore relocates the question from “what is the one true state of the ecosystem?” to “what distinctions must this scientific state preserve?”
 
-## 2. One state label, four different obligations
+## 2. Four obligations on one ecological sameness relation
 
 Consider the coarse ecological state **pollination maintained**. Suppose two configurations receive this label because both currently sustain an adequate amount of pollination. That agreement does not yet tell us whether the configurations should count as the same state for every scientific use of the label. Table 1 summarizes the four obligations currently formalized in CREST. The rows are constraints on one joint state representation, not four rival definitions of ecological state.
 
@@ -34,7 +35,7 @@ Consider the coarse ecological state **pollination maintained**. Suppose two con
 | **Mechanism robustness** | Retained response mechanisms / response types | Mechanisms compatible with the visible state disagree on a requested future response | Retain response-relevant mechanism distinctions, use typed/set-valued prediction, or discriminate experimentally |
 | **Evidential / target resolution** | Experiment, observation, reliability, and target contract | One evidence class spans distinctions needed for full-state or target reporting | Keep required resolution separate from earned evidence; preserve ambiguity or strengthen the evidence design |
 
-The four obligations can interact under refinement, so independently minimizing each row once need not recover the joint state. Their common resolution is constructed later through the J1 least common fixed point, after the common-carrier gate.
+The four obligations can interact under refinement, so independently minimizing each row once need not recover the joint state. They therefore feed into one mathematical question with three distinct gates: can the obligations share an admissible carrier, what is the least-information state on that carrier, and does the evidence identify it?
 
 ### 2.1 Future sufficiency
 
@@ -80,19 +81,33 @@ This separates two questions that are often blurred in modelling practice: what 
 
 For the pollination example, a model may correctly identify substitute-response capacity as the distinction required for a management prediction while field observations remain compatible with both possibilities. The remedy is not to refine the reported state by fiat. It is to preserve ambiguity, strengthen the evidence contract, or redesign the experiment.
 
-## 3. Why the four obligations should not be collapsed
+## 3. The mathematical answer: carrier, state, and evidence
 
-The most important philosophical claim of CREST is not that there are exactly four boxes. A sufficiently expressive POMDP, causal model, or other decision framework may encode future actions, histories, mechanism alternatives, observations, and targets in one formal object. Encoding the ingredients together, however, does not make the obligations synonymous.
+The four obligations remain scientifically distinct, but the synthesis question asks for one state. CREST answers that question in dependency order rather than by treating its individual theorem labels as parallel results. The first issue is whether the obligations can even be synchronized on one admissible set of ecological worlds. Only then does it make sense to construct the least-information joint state. Only after that state exists can one ask whether the observation system identifies it.
 
-Future sufficiency begins with a proposed coarse representation and varies the admissible future repertoire. Semantic coherence begins with one inherited representation and constrains target repair by the meaning carried from the source. Mechanism robustness varies over retained response laws while asking what prediction can be supported uniformly. Evidential licensing varies over worlds compatible with a record and reliability contract while asking what can be reported. Their quantifier orders and failure certificates differ.
+This separation is essential. A carrier failure is not a bad partition, a state-refinement requirement is not an observation, and an evidence failure does not imply that the requested target is unreportable. The three gates therefore distinguish existence, representation, and identification before any cross-gate ecological consequence is considered.
 
-These differences matter because the remedies differ. Future insufficiency can require more response-relevant state information. Semantic non-portability can require source-relative repair or explicit history context. Mechanism disagreement can require typed or set-valued prediction or discrimination. Evidential non-resolvability can require ambiguity-retaining reporting or stronger evidence. A single scalar “adequacy score” could be useful for a decision problem, but it would obscure which scientific obligation failed.
+### 3.1 Gate A — Can the obligations share an admissible ecological world set?
 
-The distinction is especially clear when representation requirements and empirical achievements are separated. CCOC can identify a distinction that an open-future interface must retain. MLTR can identify a distinction required to preserve inherited semantics. MRM can identify a response-type distinction required for candidate-independent prediction. CED can then show that the current observations still do not license one of those distinctions. More observations do not by themselves repair inherited semantics; a semantic split does not resolve a mechanism family; choosing one mechanism does not make an observation-supported claim; and an evidence-rich description can still be inadequate for an enlarged future.
+The conditional state theorem presupposes a common carrier. That assumption cannot simply be hidden inside the notation.
 
-Nor are the four audits assumed to be logically independent in every possible application. Structural replacement may enlarge the legal future repertoire; an observation design may simultaneously discriminate mechanisms; one split induced by a future audit may cause a later semantic audit to split again. CREST therefore does not infer that the four operators commute or that they can always be solved once and combined without feedback.
+CREST-J3 addresses a universal-action contract by descending to the greatest synchronized transition-closed carrier \(U^*\). CREST-J6 addresses a controlled contract in which all uncontrollable moves must remain safe while at least one admissible control choice is available, yielding a greatest robustly controlled-invariant carrier \(K^*\). If the relevant carrier is empty or fails required coverage, there is no fully adequate joint state under that declared synchronization.
 
-### 3.1 From four obligations to one ecological state
+This failure is different from an insufficiently fine partition. If no common carrier exists, further splitting states cannot create a coherent joint world set. The contract itself must be repaired or revised. CREST-J4 and J7 characterize two finite repair languages for the universal and controlled carrier problems, respectively.
+
+The conceptual order is therefore:
+
+\[
+\text{common carrier}
+\;\longrightarrow\;
+\text{required joint state}
+\;\longrightarrow\;
+\text{evidence licensing}.
+\]
+
+These are theorem dependencies, not a mandatory order for fieldwork or modelling practice.
+
+### 3.2 Gate B — What is the least-information joint state?
 
 Keeping the four obligations distinct does not mean that ecology must end with four different states. The motivating synthesis question is the opposite: **if one ecological state is expected to support all four kinds of scientific work, what should that state be?**
 
@@ -126,27 +141,7 @@ The qualifier is essential. The theorem does not say that the same \(J\) is mini
 
 The construction also refutes a tempting shortcut. One might independently compute a minimum partition for each audit and combine the four results once. The J1 cascade witness shows that one pass can be insufficient: a distinction created by one audit can make another audit able to expose a new distinction, which can trigger further refinements. Pairwise commutation is not required. Fair repeated refinement reaches the same least common fixed point even when intermediate partitions and pass counts depend on order.
 
-### 3.2 Carrier existence comes before state construction
-
-The conditional state theorem presupposes a common carrier. That assumption cannot simply be hidden inside the notation.
-
-CREST-J3 addresses a universal-action contract by descending to the greatest synchronized transition-closed carrier \(U^*\). CREST-J6 addresses a controlled contract in which all uncontrollable moves must remain safe while at least one admissible control choice is available, yielding a greatest robustly controlled-invariant carrier \(K^*\). If the relevant carrier is empty or fails required coverage, there is no fully adequate joint state under that declared synchronization.
-
-This failure is different from an insufficiently fine partition. If no common carrier exists, further splitting states cannot create a coherent joint world set. The contract itself must be repaired or revised. CREST-J4 and J7 characterize two finite repair languages for the universal and controlled carrier problems, respectively.
-
-The conceptual order is therefore:
-
-\[
-\text{common carrier}
-\;\longrightarrow\;
-\text{required joint state}
-\;\longrightarrow\;
-\text{evidence licensing}.
-\]
-
-These are theorem dependencies, not a mandatory order for fieldwork or modelling practice.
-
-### 3.3 Required state is not necessarily identified state
+### 3.3 Gate C — Does the evidence identify that state?
 
 Even when \(J\) is mathematically well defined, the available evidence may not determine which \(J\)-block is occupied.
 
@@ -178,7 +173,7 @@ in general.
 
 CREST-O1 makes the separation operational. In its finite witness, the cheapest structural carrier repair costs one unit but leaves the downstream full J1 state unresolved by the declared evidence, whereas a costlier repair is fully licensed. The target remains reportable under the cheaper repair. This does not make the costlier repair normatively better. It shows that carrier feasibility, state adequacy, and evidence licensing are distinct optimization targets.
 
-### 3.4 The ecological state adequacy frontier
+### 3.4 Cross-gate result — when management changes what must be known
 
 The preceding results suggest that one ecological state should not be viewed only as the output of a fixed modelling contract. A second question is how the required state changes when the scientific contract itself changes. Let \(\mathcal C\) denote a declared contract and let \(J_{\mathcal C}\) be its J1 state whenever the relevant carrier gate is admissible. For an evidence record \(e\), let
 
@@ -188,7 +183,7 @@ The preceding results suggest that one ecological state should not be viewed onl
 \{[u]_{J_{\mathcal C}}:u\text{ remains compatible with }e\}.
 \]
 
-CREST therefore associates a contract not only with a state partition but with three separable quantities: whether a coherent carrier exists, how fine the least-information adequate state must be, and how many such state blocks remain compatible with the evidence. We call changes among these regimes the **ecological state adequacy frontier**.
+CREST therefore associates a contract not only with a state partition but with three separable quantities: whether a coherent carrier exists, how fine the least-information adequate state must be, and how many such state blocks remain compatible with the evidence. For bookkeeping, these changes can be displayed as an **ecological state adequacy frontier**. The frontier is descriptive terminology for the three gate outputs, not a fourth mathematical gate.
 
 The frontier has an order-theoretic asymmetry. Along a comparison in which a stronger contract requires a refinement of the earlier state while the evidence is held fixed, the required state-information burden cannot decrease. If that fixed evidence already fails to identify the coarser state, refining the state cannot restore identification. Conversely, evidence that identifies a finer state necessarily identifies its coarsenings. Scientific requirements can therefore outrun an unchanged monitoring programme.
 
@@ -196,7 +191,7 @@ This effect need not be gradual. The CCOC extremal family shows that adding one 
 
 A finite cross-gate witness makes the management implication sharper. Before enrichment, a controlled contract admits a two-world viable carrier whose two required states are identified by the declared evidence. Adding one controllable `rescue` action makes a third world viable. Yet the same action gives two candidate worlds different future behavior, so J1 must split them. The viable carrier therefore expands while the required state count increases from two to three. Because the original monitoring record still merges those two worlds, full-state identification is lost. The requested target remains constant across them and is still reportable.
 
-We call this **management-induced information debt**: expanding what managers can do can expand what they must know. The claim is existential, not universal. New actions need not always increase state resolution. The witness establishes only that greater control authority and easier state identification are not generally aligned.
+This strict witness motivates the descriptive phrase **management-induced information debt**: expanding what managers can do can expand what they must know. The claim is existential, not universal. New actions need not always increase state resolution. The witness establishes only that greater control authority and easier state identification are not generally aligned.
 
 The associated monitoring burden can be stated exactly. For a fixed evidence partition \(E\) and required state partition \(J\), the unique coarsest refinement of the existing evidence that both preserves its distinctions and licenses deterministic full-state reporting is the common refinement \(E\vee J\). CREST therefore defines the finite monitoring-resolution debt
 
@@ -206,7 +201,13 @@ D_E(J)=\log_2|E\vee J|-\log_2|E|.
 
 In the `rescue` witness, full-state debt becomes \(\log_2(3/2)>0\) while target debt remains zero. Across the existing CCOC extremal family, one newly relevant future action can induce \(m\) bits of such debt for arbitrary finite \(m\). The common-refinement construction is classical; the point here is its coupling to the CREST carrier/state/evidence gates.
 
-## 4. Contract-relative does not mean arbitrary
+## 4. From the formal state to ecological interpretation
+
+The proved results are finite and exact, but the ecological object represented by one latent world need not be a present-time snapshot. A declared world may carry relevant history, current population or community configuration, latent response structure, and responses to future actions. CREST therefore permits a temporally thicker interpretation of ecological state: a state can compress distinctions inherited from the past and distinctions that matter only under counterfactual futures. This is an interpretation of the current latent-world formalism, not yet a general theorem for continuous or stochastic trajectories.
+
+The ecological point is consequently narrower than saying that the observer creates the ecosystem. Underlying dynamics remain mind-independent. What changes with the scientific viewpoint or contract is the quotient through which those dynamics are represented and the obligations that quotient must satisfy.
+
+### 4.1 Contract-relative does not mean arbitrary
 
 The most natural objection is that a contract-relative state is merely conventional: choose a different purpose and obtain a different state. That conclusion does not follow. CREST concerns the adequacy of a **scientific representation**, not the claim that underlying ecological processes depend on our descriptions.
 
@@ -218,9 +219,11 @@ The contract also does not make every scientifically defensible state equally go
 
 This distinction is especially relevant in ecology because boundaries, scales, and interventions are scientifically consequential. A plot, island, watershed, or community can be represented at multiple levels. CREST does not tell ecologists which level is uniquely correct. It specifies what follows once a state at a chosen level is asked to support a declared set of predictive, semantic, mechanistic, and evidential tasks.
 
-## 5. Consequences for ecological explanation and measurement
+## 5. Ecological consequences: open futures, hidden mechanisms, and monitoring
 
-The joint-state account changes how ecological state variables should be discussed.
+Ecological systems make the three-gate distinction especially consequential because state variables sit inside open, interacting, evolving, and only partially observed systems. CREST does not assume deterministic trajectories or monotonic maximization of one global fitness function. Its narrower claim is that history, interaction structure, latent response mechanisms, and accessible futures become state-relevant exactly when forgetting them violates a declared scientific obligation.
+
+The joint-state account therefore changes how ecological state variables should be discussed.
 
 First, **descriptive sameness should be distinguished from predictive sameness**. Two communities can share current observables while differing under a future intervention. A state adequate for current reporting should not automatically be exported to futures outside its original contract.
 
@@ -279,6 +282,8 @@ Across changing contracts, however, state adequacy has a frontier: the coherent 
 The finite management-enrichment witness exposes an ecological consequence. Adding an available intervention can make more configurations viable while simultaneously increasing the distinctions that a usable state must encode. Existing monitoring may then become inadequate before the ecosystem has undergone any physical regime shift. In this sense, management capability can create information debt: expanding what can be done can expand what must be known.
 
 This does not turn CREST into a universal theory of ecological ontology. The framework remains conditional on declared futures, meanings, mechanisms, evidence, targets, and synchronization. Its philosophical proposal is instead that ecological sameness is a defeasible scientific commitment whose burden can change as scientific responsibilities change. What counts as the same ecological state is therefore not only contract-relative; it has a structured, testable response to changes in the contract.
+
+Ecologically, this also supports a temporally thicker interpretation without yet proving a trajectory-level theory: a present state can legitimately encode distinctions inherited from history and distinctions exposed only by possible futures when the declared scientific work makes those distinctions consequential. The resulting state is not the whole ecosystem and not merely a snapshot. It is the least-information scientific compression that the declared obligations permit.
 
 ## Statements and Declarations
 
