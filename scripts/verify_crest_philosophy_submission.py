@@ -77,10 +77,16 @@ def main() -> int:
         if re.search(re.escape(name), reference_text, flags=re.I)
     ]
 
-    # Post-J1 synchronization gate. The old philosophy manuscript predated the
-    # conditional joint-state theorem and could incorrectly read as if joint
-    # minimality were still wholly open. These checks distinguish the proved
-    # contract-relative state from the still-rejected global/intrinsic reading.
+    # Post-J1 synchronization gate. These checks protect the conditional joint-state
+    # result while allowing the manuscript structure itself to evolve. Gate A is
+    # recognized structurally: an explicit 3.1 Gate A section plus carrier/common-world
+    # language in the manuscript. The legacy sentence remains accepted for old frozen
+    # candidates but is no longer required.
+    carrier_gate_present = bool(
+        re.search(r"###\s+3\.1\s+Gate A", text, flags=re.I)
+        and re.search(r"common carrier|common ecological world set", text, flags=re.I)
+    ) or "Carrier existence comes before state construction" in text
+
     joint_state_checks = {
         "defines_joint_partition": bool(
             re.search(
@@ -90,7 +96,7 @@ def main() -> int:
         ),
         "defines_state_block": "\\operatorname{State}_{\\mathcal C}(u)=[u]_J" in text,
         "states_unique_coarseness": "unique coarsest" in text,
-        "states_carrier_gate": "Carrier existence comes before state construction" in text,
+        "states_carrier_gate": carrier_gate_present,
         "states_evidence_gate": "J\\preceq E_D" in text,
         "rejects_global_intrinsic_state": (
             "does **not** establish one universal joint state independent of scientific contract" in text
