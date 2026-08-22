@@ -39,18 +39,16 @@ def test_submission_handoff_matches_generated_report_and_current_headline() -> N
 def test_title_page_and_review_manuscript_use_the_same_title() -> None:
     manuscript = MANUSCRIPT.read_text(encoding="utf-8")
     title_page = TITLE_PAGE.read_text(encoding="utf-8")
-    title = (
-        "What Counts as the Same Ecological State? "
-        "A Contract-Relative Theory of Temporally Extended Ecological States"
-    )
-    assert title in manuscript
-    assert title in title_page
+    first = "What Counts as the Same Ecological State?"
+    second = "A Contract-Relative Theory of Temporally Extended Ecological States"
+    assert f"# {first}\n## {second}" in manuscript
+    assert f"**{first} {second}**" in title_page
 
 
 def test_submission_readme_records_math_first_finished_state() -> None:
     text = SUBMISSION_README.read_text(encoding="utf-8")
     assert "connected capability–resolution divergence theorem" in text
-    assert "Real-data and conceptual ecology cases are optional illustrations" in text
+    assert "Existing conceptual and real-data ecology cases are optional illustrations" in text
     assert "Repository-controlled scientific development is closed" in text
     assert "verify the integrated trajectory-first manuscript" not in text
 
