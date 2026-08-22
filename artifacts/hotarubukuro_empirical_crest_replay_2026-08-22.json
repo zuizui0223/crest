@@ -1,0 +1,73 @@
+{
+  "status": "cross_repository_empirical_replay",
+  "source_repository": "zuizui0223/hotarubukuro",
+  "source_main_sha": "661321107ed47468a48e3be32a3461ebb5ca99a5",
+  "source_files": {
+    "broad_environment_spatial": {
+      "path": "reproducibility/broad_environment_spatial_final_2026-08-19.md",
+      "blob_sha": "eac850eb85ea5ac0f8584984654c85c2f394ce2b"
+    },
+    "bombus_local_transition": {
+      "path": "reproducibility/bombus_local_sharp_transition_current_results_2026-08-09.md",
+      "blob_sha": "a895198c91235e74acf98309d0dfced881163a12"
+    },
+    "continuous_isolation_human_context": {
+      "path": "reproducibility/continuous_colour_isolation_human_context_result_2026-08-18.md",
+      "blob_sha": "d510c343860ae4f588306f45d4a0fc6a85b5611b"
+    }
+  },
+  "present_snapshot": {
+    "state_variable": "pigmentation_state",
+    "levels": ["white", "pigmented"],
+    "cell_geometry": {
+      "n_cells": 1305,
+      "n_pigmented": 674,
+      "n_white": 631
+    }
+  },
+  "contracts": {
+    "broad_environmental_differentiation": {
+      "target": "whether pigmentation-state differentiation aligns with supported environmental differences beyond geographic continuity",
+      "observed_state_excess": 0.052133,
+      "state_posterior_predictive_p": 0.00998,
+      "conditional_intensity_posterior_predictive_p": 0.26347,
+      "crest_reading": "binary pigmentation state is scientifically informative for this broad differentiation target; conditional intensity is a distinct response and cannot be substituted for the state"
+    },
+    "local_bombus_mechanism": {
+      "target": "whether focal Bombus availability licenses a deterministic pollinator-mediated mechanism claim for sharp white-pigmented transitions",
+      "n_nonoverlapping_pairs_5km": 67,
+      "mean_pigmented_minus_white_support": 0.03590,
+      "median_pigmented_minus_white_support": -0.00277,
+      "proportion_positive": 0.493,
+      "one_sided_p": 0.02716,
+      "bh_q": 0.08148,
+      "raw_support_sensitivity_p": 0.26715,
+      "crest_reading": "the current evidence does not license a deterministic pollinator-mediated selection state; mechanism ambiguity must remain explicit"
+    },
+    "human_context_within_pigmented": {
+      "target": "whether the binary pigmentation snapshot is sufficient for the human-context/provenance-facing question",
+      "relative_isolation_rho_pigmented_5km": 0.285498,
+      "relative_isolation_rho_white_5km": 0.078506,
+      "pigmented_relative_natural_map_upper_tail_p": 0.000900,
+      "pigmented_relative_count_conditioned_upper_tail_p": 0.003996,
+      "direct_relative_colour_contrast_upper_tail_p": 0.158584,
+      "crest_reading": "the pigmented block contains a reproducible isolation-human-context gradient beyond fitted natural geography, so pigmentation alone is not sufficient for this target; however the evidence licenses only a human-context overlay, not provenance or causal origin"
+    }
+  },
+  "crest_outputs": {
+    "binary_snapshot_useful_for_broad_state_target": true,
+    "binary_snapshot_universally_adequate_across_targets": false,
+    "within_pigmented_context_axis_required_for_human_context_target": true,
+    "human_context_overlay_reportable": true,
+    "horticultural_or_human_origin_identified": false,
+    "pollinator_mediated_selection_identified": false,
+    "required_state_equals_identified_state": false,
+    "identified_state_equals_reportable_target": false
+  },
+  "claim_ceiling": [
+    "This replay does not re-estimate the hotarubukuro models from raw data; it composes locked, validated source results into a CREST state-adequacy audit.",
+    "The human-context result does not identify horticultural origin, planting, escape, establishment, phenotypic plasticity, pollen movement, gene flow, or causation by people.",
+    "The Bombus result does not demonstrate pollinator-mediated selection; direct visitation, stigma contact, pollen transfer, and fitness measurements remain required.",
+    "No discrete natural-versus-human provenance state is created from the continuous isolation gradient."
+  ]
+}
