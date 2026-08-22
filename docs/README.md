@@ -6,17 +6,20 @@ This directory contains more proof and development material than the main scient
 
 Read these first, in order.
 
-1. [`contract_relative_ecological_state_theory.md`](contract_relative_ecological_state_theory.md)  
-   One philosophical question, four obligations, and the CREST answer.
+1. [`trajectory_first_program_architecture_2026-08-22.md`](trajectory_first_program_architecture_2026-08-22.md)  
+   Canonical program hierarchy: temporally extended worlds → snapshot sufficiency → structural obstructions → finite state → evidence licensing.
 
-2. [`crest_mathematical_spine.md`](crest_mathematical_spine.md)  
-   Minimal proof chain: carrier → joint state → evidence → cross-gate consequence.
+2. [`contract_relative_ecological_state_theory.md`](contract_relative_ecological_state_theory.md)  
+   Canonical philosophical statement of ecological state as scientifically licensed compression of a temporally extended ecological world.
 
-3. [`crest_ecological_projection.md`](crest_ecological_projection.md)  
-   Projection to open ecosystems, history, latent mechanisms, observation, monitoring, and stability.
+3. [`crest_mathematical_spine.md`](crest_mathematical_spine.md)  
+   Minimal proved finite chain: carrier → joint state → evidence → cross-gate consequence.
 
-4. [`../manuscript/crest_philosophy_biology_philosophy.md`](../manuscript/crest_philosophy_biology_philosophy.md)  
-   Current Biology & Philosophy manuscript.
+4. [`crest_ecological_projection.md`](crest_ecological_projection.md)  
+   Projection to open ecosystems, history, latent mechanisms, observation, quotient laws, monitoring, and representational stability.
+
+5. [`../manuscript/crest_philosophy_biology_philosophy.md`](../manuscript/crest_philosophy_biology_philosophy.md)  
+   Current trajectory-first Biology & Philosophy manuscript.
 
 ## Headline proof documents
 
@@ -28,6 +31,8 @@ These support the mathematical spine directly.
 - `crest_maximal_common_lift_theorem_2026-08-17.md` — J3 universal carrier.
 - [`crest_controlled_common_lift_theorem_2026-08-18.md`](crest_controlled_common_lift_theorem_2026-08-18.md) — J6 controlled carrier.
 - [`crest_synthesis_proof_ledger_2026-08-17.md`](crest_synthesis_proof_ledger_2026-08-17.md) — complete theorem/proof ownership ledger.
+
+The trajectory-first framing does not change the proof status of these finite results.
 
 ## Supporting mathematics
 
@@ -62,23 +67,40 @@ This layer includes:
 - Decision-Safe Ignorance;
 - frontier/regime bookkeeping.
 
-Use these concepts when they clarify a result; do not let them replace the one-question narrative.
+Use these concepts when they clarify a result; do not let them replace the trajectory-first narrative.
 
 ## Literature and novelty audits
 
 These establish claim boundaries rather than the scientific theory itself.
 
+- [`trajectory_first_novelty_validation_audit_2026-08-22.md`](trajectory_first_novelty_validation_audit_2026-08-22.md) — **current novelty and remaining-validation authority after the trajectory-first reframe**.
 - `crest_prior_art_review_protocol_and_evidence_matrix_2026-08-21.md`
-- [`crest_broad_literature_audit_2026-08-21.md`](crest_broad_literature_audit_2026-08-21.md)
+- [`crest_broad_literature_audit_2026-08-21.md`](crest_broad_literature_audit_2026-08-21.md) — broad pre-reframe evidence base.
 - [`crest_adequacy_frontier_prior_art_audit_2026-08-21.md`](crest_adequacy_frontier_prior_art_audit_2026-08-21.md)
 
 Current safe positioning:
 
-- generic ecological state identity is not new;
+- dynamic/trajectory-sensitive ecosystem identity is not new;
+- causal-state and predictive-state compression of history/futures is not new;
 - purpose-relative adequacy is not new;
-- state abstraction and partial observability are not new;
-- viability/observability links are not new;
-- the candidate CREST contribution is the four-obligation carrier/state/evidence architecture and its strict cross-gate consequences.
+- task-specific state abstraction and partial observability are not new;
+- adaptive monitoring and target-oriented experimental design are not new;
+- generic representational obsolescence is not new;
+- the candidate CREST contribution is the ecology-specific coupling of trajectory-level state responsibility, three structural insufficiency layers, carrier/state minimality, downstream evidence licensing, and strict cross-gate consequences.
+
+## Validation status
+
+The **finite theorem surface** is already strongly validated by analytic proofs, independent exhaustive oracles on small finite systems, multi-Python CI, and end-to-end carrier → repair → J1 → evidence tests. See [`crest_post_state_validation_2026-08-21.md`](crest_post_state_validation_2026-08-21.md).
+
+The main remaining validation work is now **novelty and ecological grounding**, not another round of finite theorem enumeration:
+
+1. close the PSR / causal-state / controlled-abstraction prior-art boundary;
+2. refresh the claim-by-claim literature matrix under the trajectory-first framing;
+3. decide whether snapshot sufficiency remains a criterion or receives a genuinely stronger theorem;
+4. add at least one end-to-end ecology-grounded worked case;
+5. only then consider a CREST-specific stochastic/trajectory extension.
+
+Dated pre-J1 and pre-trajectory validation notes remain provenance, not current authority.
 
 ## Submission-control and historical development records
 
@@ -127,9 +149,9 @@ Repair/lift tests are supporting regression suites.
 
 A new named result enters the canonical spine only if it does at least one of the following:
 
-1. proves a new necessary-and-sufficient condition for ecological state adequacy;
+1. proves a new necessary-and-sufficient condition for ecological state adequacy beyond a definitional factorization;
 2. proves a genuinely cross-gate impossibility/noncommutation;
 3. proves a sharp lower/upper bound that depends essentially on the CREST contract architecture;
-4. produces an empirical discrimination that cannot be expressed as ordinary adaptive monitoring, POMDP, or generic state abstraction.
+4. produces an empirical discrimination that cannot be reduced to ordinary adaptive monitoring, POMDP, PSR, or generic state abstraction.
 
 Otherwise, extend an existing theorem, add a witness, or record the idea under future research rather than creating another headline concept.
