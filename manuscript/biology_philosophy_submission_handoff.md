@@ -1,56 +1,69 @@
-# Biology & Philosophy submission handoff — CREST philosophy paper
+# Biology & Philosophy submission handoff — CREST
 
-> **Target:** Biology & Philosophy — Original Research  
-> **Repository status:** scientific architecture, manuscript structure, and automated controls are synchronized to the single-question CREST spine. Actual submission remains blocked only by author-controlled metadata, final human responsibility review, final blinded-file preparation, and live-policy recheck.
+> **Target:** *Biology & Philosophy*  
+> **Canonical review manuscript:** `crest_philosophy_biology_philosophy.md`  
+> **Repository status:** the finite mathematics, trajectory-first interpretation, novelty firewall, manuscript, and automated submission controls are synchronized. Remaining blockers are author-controlled metadata/final responsibility review and construction of the exact blinded upload candidate.
 
-## A. One-question manuscript
+## 1. Current manuscript identity
 
 ### Title
 
-**What Counts as the Same Ecological State? A Contract-Relative Account of State-Representation Adequacy**
+**What Counts as the Same Ecological State? A Contract-Relative Theory of Temporally Extended Ecological States**
 
-### Central philosophical question
+### Central question
 
-> **When are two ecological configurations scientifically allowed to count as the same state?**
+> **Why can a finite ecological state exist at all when the distinctions relevant to prediction, intervention, inherited meaning, mechanism, and evidence depend on scientific context?**
 
-CREST treats ecological sameness as a declared scientific commitment rather than one intrinsic partition of nature.
+CREST's working answer is:
 
-Four currently formalized obligations constrain one sameness relation:
+> **An ecological state is a scientifically licensed compression of a temporally extended ecological world.**
 
-1. **future sufficiency / CCOC** — can a newly relevant future expose a difference the state erased?
-2. **semantic coherence / MLTR** — does an inherited ecological category retain its operational meaning after structural change?
-3. **mechanism robustness / MRM** — do retained latent response mechanisms agree on the response demanded from the state?
-4. **evidential licensing / CED** — has the observation system actually resolved the distinction the state requires?
+The manuscript does not claim that this trajectory-level formulation is itself historically novel or already proved for general stochastic/continuous systems.
 
-These are constraints on one state, not four rival definitions.
+## 2. Logical hierarchy
 
-## B. Mathematical answer — three gates
+The current paper is **not** organized as four co-level audits.
 
-The manuscript now presents the theorem dependency in the following order.
+```text
+temporally extended ecological worlds
+    ↓
+observation / intervention context
+    ↓
+snapshot-sufficiency question
+    ↓
+three structural obstructions
+    CCOC — future/composition
+    MLTR — inherited semantics/history
+    MRM  — retained mechanism response
+    ↓
+Gate A — admissible finite common carrier
+    ↓
+Gate B — least-information adequate state J
+    ↓
+Gate C — evidence licensing / CED
+    ↓
+full-state / target-only / set-valued report
+```
 
-### Gate A — carrier
+CED is downstream: it asks whether the available evidence identifies distinctions that the state/reporting contract already requires.
 
-The four obligations must first admit a common ecological world set. J3/J6 characterize the maximal universal/controlled finite carriers. An empty or coverage-incomplete carrier is a contract-level failure; it cannot be repaired merely by splitting a partition more finely.
+## 3. Finite state answer
 
-### Gate B — least-information joint state
-
-For a declared admissible finite carrier \(U\), baseline partition \(B\), and four refinement closures,
+On a declared admissible finite common carrier `U`, baseline partition `B`, and implemented refinement closures,
 
 \[
-J=(C_\Gamma\vee C_\mathcal H\vee C_\Theta\vee C_{D,T})(B)
+J=(C_\Gamma\vee C_{\mathcal H}\vee C_\Theta\vee C_{D,T})(B)
 \]
 
-is the unique coarsest / least-information joint partition satisfying all four obligations. The CREST state of world/configuration \(u\) is
+is the unique coarsest / least-information common fixed partition under J1's assumptions. The finite CREST state is
 
 \[
 \operatorname{State}_{\mathcal C}(u)=[u]_J.
 \]
 
-This is conditional joint minimality, not a universal ontology.
+J1 is the **existence/minimality backbone**. The generic closure/fixed-point machinery is classical and is not the manuscript's principal novelty claim.
 
-### Gate C — evidence
-
-For reliability-qualified evidence partition \(E_D\),
+For reliability-qualified evidence partition `E_D`,
 
 \[
 \text{full deterministic state report exists}
@@ -58,145 +71,114 @@ For reliability-qualified evidence partition \(E_D\),
 J\preceq E_D.
 \]
 
-A requested target may remain deterministic even when the full state is unresolved. Hence CREST keeps distinct:
+A target can remain reportable even when the full state is unresolved, so CREST keeps distinct
 
 \[
-\text{required state}
-\neq
-\text{identified state}
-\neq
-\text{target report}.
+\text{required state}\neq\text{identified state}\neq\text{reportable target}.
 \]
 
-## C. Main cross-gate ecological result
+## 4. Quantitative mathematical headline
 
-The manuscript no longer treats the ecological-state-adequacy frontier as the mathematical headline. It is retained only as descriptive bookkeeping for the three gate outputs.
+The current theorem-level headline is the connected **capability–resolution divergence** family.
 
-The stronger result is the strict action-expansion witness:
+For every integer `m >= 1`, one newly admitted action `probe`, with a bounded output alphabet, yields in one connected finite response graph
 
 \[
-|K^*|\uparrow,
+\boxed{
+\Delta |K^*|=1,
 \qquad
-|J|\uparrow,
-\qquad
-\text{full-state identification: yes}\to\text{no},
-\qquad
-\text{target reporting: yes}\to\text{yes}.
+\Delta K_{U_0}=m.
+}
 \]
 
-Thus a new management capability can enlarge the domain that becomes viable while forcing a finer ecological state that unchanged monitoring no longer identifies.
+On the retained present slice:
 
-The finite minimum evidence refinement is
+- required state: `1 -> 2^m` classes;
+- fixed-monitoring debt: `0 -> m` bits;
+- full-state licensing: `yes -> no`;
+- coarse target reportability: `yes -> yes`.
 
-\[
-E\vee J,
-\]
+Hence there is no universal finite bound depending only on carrier-size gain that upper-bounds the representational burden created by capability expansion.
 
-with monitoring-resolution debt
+The qualitative proposition that actions can change useful state abstraction is **not** claimed as new; the manuscript explicitly acknowledges predictive-state, POMDP, causal/bisimulation abstraction, and state/action-abstraction precedents including Konidaris (2019).
 
-\[
-D_E(J)=\log_2|E\vee J|-\log_2|E|.
-\]
+## 5. Current verified repository state
 
-A channel-factorization example \(W(z)=F(z)R(z)\) shows that this deficit can be **structural**: more replication of the same net output can fail to distinguish latent causal worlds, while a new channel-resolved measurement can break the symmetry.
+Automated state at the current submission-controlled manuscript:
 
-## D. Ecology-facing interpretation
-
-The manuscript now explicitly bridges the finite mathematics to ecology.
-
-A declared latent ecological world may contain relevant history, current population/community configuration, latent mechanism structure, and counterfactual responses to future actions. This motivates a **temporally thicker interpretation** of ecological state:
-
-> a state can be understood as a least-information scientific compression that may retain past- or future-relevant distinctions when the declared scientific work makes them consequential.
-
-This is explicitly presented as an interpretation of the current finite latent-world formalism, **not yet a general theorem for continuous or stochastic trajectories**.
-
-Current future-theorem candidates remain outside the proved manuscript claims:
-
-- snapshot sufficiency;
-- observation-symmetry obstruction;
-- stochastic/trajectory extension;
-- representational resilience.
-
-## E. Current automated manuscript status
-
-Verifier:
-
-```bash
-python scripts/verify_crest_philosophy_submission.py --write-report
-```
-
-Current verified state after the single-question manuscript refactor:
-
-- abstract: **234 words**;
+- abstract: **244 words**;
 - keywords: **6**;
-- repository-defined visible words before References: **5,942**;
-- development band 5,500–7,500: **PASS**;
-- hard cap `<=10,000`: **PASS**;
-- potential double-blind identifiers before References: **0**;
-- excluded unpublished/preprint audit references in submission bibliography: **0**;
-- J1 joint-partition formula present: **PASS**;
-- explicit state block `[u]_J` present: **PASS**;
-- conditional unique-coarseness wording present: **PASS**;
-- explicit Gate A carrier structure present: **PASS**;
-- evidence gate `J \preceq E_D` present: **PASS**;
-- global/intrinsic-state overclaim rejected: **PASS**;
-- obsolete pre-J1 phrases: **0**;
+- repository-defined visible words before References: **6,715**;
+- journal hard cap `<=10,000`: **PASS**;
+- potential double-blind identifier hits before References: **0**;
+- excluded unpublished/preprint audit references in the submission bibliography: **0**;
+- theorem/regression suite: **93 tests PASS**;
+- Python **3.10 / 3.11 / 3.12**: **PASS**;
+- Python 3.12 submission verifier: **PASS**;
+- repository hygiene / deterministic submission report: **PASS**;
 - automated blockers: **0**.
 
-Theorem/obstruction tests pass on Python **3.10, 3.11, and 3.12**. The Python 3.12 job also passes the submission verifier and repository hygiene/deterministic-output checks.
+Canonical generated record: `../artifacts/crest_philosophy_submission_report.json`.
 
-## F. Claim boundary
+## 6. Current journal-policy check — 2026-08-22
 
-### Safe manuscript claims
+Official journal guidance checked at:
 
-- four declared obligations constrain one proposed ecological state equivalence;
-- on one admissible finite common carrier, J1 yields the unique coarsest joint state satisfying them;
-- carrier existence, state construction, and evidence identification are distinct gates;
-- pairwise audit commutation is not required and one-pass independent minimization can fail;
-- a target can remain reportable when the full state is unresolved;
-- one added management action can, in a finite witness, expand viability while increasing required state resolution and defeating unchanged full-state monitoring;
-- the minimum evidence refinement identifying \(J\) while preserving existing evidence distinctions is \(E\vee J\);
-- monitoring deficit can be structural rather than merely a shortage of replication.
+`https://link.springer.com/journal/10539/submission-guidelines`
+
+Current requirements relevant to this manuscript:
+
+- **double-blind peer review**; author-identifying information must be removed from the review manuscript and associated review materials;
+- submit a **separate Title Page** containing title, authors, affiliations, corresponding-author contact information, and ORCID(s) if available;
+- acknowledgements, disclosures, and funding information belong on the separate title page during blinded review;
+- manuscript length: **10,000 words or fewer**;
+- abstract: **150–250 words**;
+- keywords: **4–6**;
+- editable manuscript source is required; Word is standard, while manuscripts with mathematical content may also be submitted in LaTeX;
+- generative-LLM use beyond copy editing must be documented in a suitable manuscript section, and human authors remain accountable for the final text.
+
+The current manuscript meets the repository-checkable word/abstract/keyword/anonymity limits. Exact upload-format and declaration placement must still be checked on the final blinded file.
+
+## 7. Claim firewall
+
+### Safe
+
+- CREST gives a contract-relative finite state construction on an admissible declared carrier;
+- CCOC, MLTR, and MRM are three structural reasons a present merge can fail;
+- CED is downstream evidence licensing;
+- carrier feasibility, required state, evidence identification, and target reportability are distinct gates;
+- one fixed-size capability expansion can add only one viable world while forcing arbitrarily many additional bits of state/monitoring resolution in the constructed family;
+- a coarse target can remain reportable after full-state identification is lost;
+- ecological rules may be interpreted as effective laws on adequate quotients.
 
 ### Do not claim
 
-- a nature-given ecological partition independent of contract;
-- exhaustiveness of the four obligations;
-- historical firstness for generic partition refinement, fixed points, viability kernels, partial observability, state abstraction, model repair, or purpose-relative adequacy;
-- that every added management action increases information requirements;
-- that finite partition bits are monetary/logistical sampling cost;
-- that the temporally thick interpretation is already a proved trajectory theorem;
-- that current Campanula or other empirical observations identify the abstract channel states used in the structural-monitoring example.
+- one intrinsic ecological state partition supplied by nature;
+- historical firstness for trajectory-sensitive state, predictive state, state/action abstraction, viability, observability, partition refinement, or purpose-relative adequacy;
+- that the three structural obstruction families are exhaustive;
+- that every action expansion increases information requirements;
+- that finite partition bits equal financial or field-sampling costs;
+- a proved general stochastic/continuous trajectory theorem;
+- empirical validation as a prerequisite for the finite theorem.
 
-## G. Separate title page and declarations — author input required
+## 8. Remaining work
 
-Keep outside the blinded review manuscript:
+### Repository-controlled
 
-- author name(s): **AUTHOR INPUT REQUIRED**;
-- affiliation(s): **AUTHOR INPUT REQUIRED**;
-- corresponding author and email: **AUTHOR INPUT REQUIRED**;
-- ORCID(s), if used: **AUTHOR INPUT REQUIRED**;
-- acknowledgements: **AUTHOR INPUT REQUIRED**;
-- funding statement: **AUTHOR INPUT REQUIRED**;
-- competing-interests statement: **AUTHOR INPUT REQUIRED**.
+No unresolved scientific theorem, novelty-boundary, or manuscript-structure task is currently known.
 
-Do not infer a no-conflict or no-funding statement from repository history.
+### Author-controlled / exact-upload tasks
 
-## H. Generative-AI disclosure — final human approval required
+1. finalize author list and order;
+2. complete affiliations, corresponding-author email, and ORCID(s) if used;
+3. finalize acknowledgements, funding, and competing-interests statements on the separate title page;
+4. complete the human source/claim/mathematics/prose responsibility review;
+5. approve the final LLM-use disclosure against the current Springer policy;
+6. construct the exact blinded review manuscript, removing development-only placeholders and moving identifying/declaration material to the title page as required;
+7. visually inspect the blinded manuscript and any supplements for identifying information;
+8. run the verifier/reproducibility suite on the exact upload-candidate commit;
+9. submit only after all co-authors, if any, approve the final manuscript.
 
-The manuscript contains a disclosure placeholder. Before submission, the human author(s) must review the cited sources, mathematical claims, interpretations, and final prose and be able to take responsibility for the complete manuscript. Only then should the AI-use disclosure be finalized against the live publisher policy.
+## Stop rule
 
-## I. Double-blind and upload finalization
-
-Repository scanning is clean, but the exact upload candidate still needs a human visual/read-through. Before upload:
-
-1. create the separate title page;
-2. remove development-only submission-control material/placeholders from the blinded review file as appropriate;
-3. complete final source/claim/interpretation/prose review;
-4. approve declarations and AI-use disclosure;
-5. recheck the live Biology & Philosophy / Springer Nature instructions;
-6. run one immutable verifier/reproducibility replay on the exact upload candidate SHA.
-
-## Current verdict
-
-**Repository-controlled scientific work is synchronized. CREST now reads as one philosophical question, four constraints on ecological sameness, a three-gate mathematical answer, one strict cross-gate ecological result, and an ecology-facing interpretation. Remaining blockers are author-controlled submission tasks rather than unresolved repository science.**
+Do not add another audit, derived-concept family, empirical benchmark, or theorem family to the present submission line. A future mathematical sequel should start from a genuinely new question, such as structural assumptions that restore an upper bound on capability–resolution divergence.
