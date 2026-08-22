@@ -1,0 +1,102 @@
+{
+  "status": "prospective_evidence_design",
+  "source_application": "hotarubukuro_empirical_crest_replay_2026-08-22",
+  "principle": "choose a new observation when it separates a required-state distinction that current evidence merges; do not substitute more replication of the same aggregate proxy for a missing causal channel",
+  "branches": {
+    "bombus": {
+      "current_licensed_report": "weak local consistency between focal Bombus support and sharp colour transitions",
+      "current_unlicensed_reports": [
+        "differential realized Bombus visitation caused by colour",
+        "differential pollination effectiveness",
+        "colour-mediated pollinator selection",
+        "pollinator-mediated explanation of the geographic colour pattern"
+      ],
+      "steps": [
+        {
+          "id": "B1",
+          "channel": "standardized_direct_visitation",
+          "separates": "predicted Bombus availability from realized flower use",
+          "first_report_unlocked": "differential realized visitation if supported"
+        },
+        {
+          "id": "B2",
+          "channel": "single_visit_conspecific_pollen_deposition",
+          "separates": "realized visitation from effective pollen delivery",
+          "first_report_unlocked": "differential pollination effectiveness if supported"
+        },
+        {
+          "id": "B3",
+          "channel": "reproductive_consequence_with_pollination_controls",
+          "separates": "pollen delivery from reproductive consequence",
+          "first_report_unlocked": "fitness consequence if supported"
+        },
+        {
+          "id": "B4",
+          "channel": "colour_causal_intervention_or_equivalent",
+          "separates": "response to colour from response to correlated flower/site traits",
+          "first_report_unlocked": "colour-mediated causal mechanism if supported"
+        }
+      ],
+      "immediate_priority": ["B1", "B2"],
+      "selection_claim_requires": ["B2", "B3", "B4"],
+      "forbidden_shortcuts": [
+        "more_species_distribution_model_replication_implies_pollination_effectiveness",
+        "visit_counts_alone_imply_fitness",
+        "geographic_association_alone_implies_colour_mediated_selection"
+      ]
+    },
+    "human_provenance": {
+      "current_licensed_report": "pigmented-specific human-context overlay in relative isolation",
+      "current_unlicensed_reports": [
+        "horticultural origin",
+        "cultivated source",
+        "intentional planting",
+        "human-mediated establishment",
+        "human causation of pigmentation"
+      ],
+      "steps": [
+        {
+          "id": "H1",
+          "channel": "site_history_and_anthropogenic_process_metadata",
+          "separates": "population exposure from direct local human-process context",
+          "first_report_unlocked": "stronger site-level human association if supported"
+        },
+        {
+          "id": "H2",
+          "channel": "dated_occurrence_and_historical_provenance",
+          "separates": "present co-location with people from temporally compatible establishment history",
+          "first_report_unlocked": "temporal provenance compatibility if supported"
+        },
+        {
+          "id": "H3",
+          "channel": "reference_aware_population_genetic_assignment",
+          "separates": "local natural ancestry from compatibility with candidate source populations",
+          "first_report_unlocked": "source or ancestry compatibility if supported"
+        },
+        {
+          "id": "H4",
+          "channel": "common_garden_or_family_design_when_needed",
+          "separates": "inherited colour differences from phenotypic plasticity",
+          "first_report_unlocked": "heritable colour differentiation if supported"
+        }
+      ],
+      "immediate_priority": ["H2", "H3"],
+      "human_establishment_claim_requires": ["H2", "H3"],
+      "forbidden_shortcuts": [
+        "human_population_proximity_implies_horticultural_origin",
+        "genetic_assignment_alone_implies_intentional_planting",
+        "current_isolation_alone_implies_human_establishment"
+      ]
+    }
+  },
+  "sampling_strata": {
+    "bombus": "locked strict sharp-transition pairs with synchronized paired effort",
+    "human_provenance": "high relative-isolation pigmented occurrences versus matched lower-isolation pigmented occurrences under the existing natural-geography context"
+  },
+  "field_priority": [
+    "paired direct visitation plus single-visit pollen deposition at strict colour transitions",
+    "historical/site audit plus tissue collection for reference-aware genetic assignment at high-isolation pigmented occurrences",
+    "reproductive and colour-manipulation escalation only if the direct pollination channels support a difference"
+  ],
+  "claim_ceiling": "This is a prospective evidence design. It does not estimate effects, sample sizes, costs, causal probabilities, provenance, or pollinator-mediated selection."
+}
