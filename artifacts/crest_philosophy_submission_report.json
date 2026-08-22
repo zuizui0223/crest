@@ -1,17 +1,17 @@
 {
   "target": "manuscript/crest_philosophy_biology_philosophy.md",
   "repository_word_count_definition": "visible markdown tokens before References; publisher count may differ slightly",
-  "abstract_words": 234,
+  "abstract_words": 241,
   "keyword_count": 6,
   "keywords": [
     "philosophy of ecology",
     "ecological state",
     "scientific representation",
-    "model adequacy",
+    "temporal extension",
     "causal abstraction",
-    "uncertainty"
+    "model adequacy"
   ],
-  "manuscript_words_before_references": 5942,
+  "manuscript_words_before_references": 5625,
   "development_target_5500_7500_met": true,
   "hard_cap_10000_met": true,
   "blind_hits": {},
@@ -23,6 +23,12 @@
     "states_carrier_gate": true,
     "states_evidence_gate": true,
     "rejects_global_intrinsic_state": true
+  },
+  "trajectory_first_checks": {
+    "defines_temporally_extended_state": true,
+    "states_snapshot_sufficiency": true,
+    "separates_ced_as_evidence_gate": true,
+    "states_trajectory_theorem_firewall": true
   },
   "stale_joint_state_hits": [],
   "automated_blockers": [],
