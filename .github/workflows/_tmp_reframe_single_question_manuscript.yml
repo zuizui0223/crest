@@ -1,0 +1,37 @@
+name: Temporary single-question manuscript reframe
+
+on:
+  pull_request:
+  push:
+    branches:
+      - agent/crest-manuscript-single-question
+
+permissions:
+  contents: write
+
+jobs:
+  reframe:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/crest-manuscript-single-question
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reframe manuscript around the single-question spine
+        run: python scripts/_tmp_reframe_single_question_manuscript.py
+      - name: Verify submission controls
+        run: python scripts/verify_crest_philosophy_submission.py --write-report
+      - name: Commit generated manuscript changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add manuscript/crest_philosophy_biology_philosophy.md artifacts/crest_philosophy_submission_report.json
+          if git diff --cached --quiet; then
+            echo 'No generated changes'
+          else
+            git commit -m 'Reframe manuscript around the single-question spine'
+            git push origin HEAD:agent/crest-manuscript-single-question
+          fi
