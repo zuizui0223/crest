@@ -1,25 +1,70 @@
 # Contract-Relative Ecological State Theory (CREST)
 
-> **Canonical philosophical statement.** Technical theorem details live in
-> [`crest_mathematical_spine.md`](crest_mathematical_spine.md) and the proof ledger.
+> **Canonical philosophical statement.** CREST is organized from ecological worlds to state representations, not from four companion audits upward. Technical finite theorem details live in [`crest_mathematical_spine.md`](crest_mathematical_spine.md) and the proof ledger.
 
-## 1. The question
+## 1. The starting point: world before state
 
-CREST is organized around one question:
+CREST begins from the fact that an ecological system need not be well represented as a point moving under one fixed, context-free rule. Ecological interaction, environmental change, stochasticity, and evolution can alter the response structure that determines what happens next.
 
-> **What counts as the same ecological state?**
+The theory therefore treats a possible ecological world schematically as
 
-A state label is useful only because it treats many different ecological configurations as equivalent. Calling two configurations the same state therefore makes a scientific commitment:
+\[
+\omega=(h_t,x_t,\mathcal F_t),
+\]
+
+where:
+
+- \(h_t\) is relevant history;
+- \(x_t\) is present configuration;
+- \(\mathcal F_t\) is the future-response structure under the interactions and interventions relevant to the scientific problem.
+
+For stochastic systems, \(\mathcal F_t\) can be a conditional distribution over possible future paths rather than one predetermined future.
+
+This framing does not assert a block-universe ontology, determinism, or one globally increasing fitness function. Its purpose is narrower: **a scientific state may need to summarize temporally extended distinctions even when the researcher observes only a present snapshot.**
+
+## 2. The central question
+
+CREST asks:
+
+> **Which differences among possible ecological worlds may science safely ignore when those worlds are assigned the same ecological state?**
+
+A state is therefore a compression. Calling two worlds the same state makes the commitment
 
 \[
 \boxed{
-\text{the differences erased by the state will not matter for the work assigned to it.}
+\text{every difference erased by the state is irrelevant to the work assigned to it.}
 }
 \]
 
-CREST asks when that commitment is justified.
+The central working definition is:
 
-The scientific contract is written schematically as
+\[
+\boxed{
+\text{ecological state}
+=\text{ scientifically licensed equivalence class of ecological worlds.}
+}
+\]
+
+Equivalently, under context \(V\) and contract \(\mathcal C\),
+
+\[
+\operatorname{State}_{\mathcal C,V}(\omega)
+=[\omega]_{\sim_{\mathcal C,V}}.
+\]
+
+The current finite implementation realizes this idea on declared finite latent-world sets. A general continuous/stochastic trajectory theorem is not yet claimed.
+
+## 3. Scientific access is not the world itself
+
+Science does not observe \(\omega\) directly. An observation/intervention context \(V\) determines what is accessible, schematically
+
+\[
+O_V:\Omega\to Y_V.
+\]
+
+Changing \(V\) can change which worlds are observationally or experimentally distinguishable without changing the underlying ecological dynamics.
+
+The scientific contract is written
 
 \[
 \mathcal C=(\Gamma,\mathcal H,\Theta,D;T),
@@ -31,17 +76,41 @@ where:
 - \(\mathcal H\): inherited meanings or historical structure that must remain coherent;
 - \(\Theta\): retained response mechanisms or causal alternatives;
 - \(D\): experiment, observation, reliability, and evidence contract;
-- \(T\): the report or decision target.
+- \(T\): requested report or decision target.
 
-State identity is therefore **contract-relative but not arbitrary**. Scientists declare the work; dynamics, causal structure, and evidence can refute a proposed merge.
+State identity is **context- and contract-relative but not arbitrary**. The researcher declares the task; dynamics, causal structure, and evidence determine whether a proposed merge survives it.
 
-## 2. Four obligations on one ecological state
+## 4. Snapshot sufficiency
 
-The four companion programs identify four distinct ways that ecological sameness can fail.
+Let \(X(\omega)\) denote the present ecological snapshot. The snapshot is sufficient for a declared CREST state exactly when the required state factors through \(X\):
 
-### Future sufficiency — CCOC
+\[
+\boxed{
+X(\omega)=X(\omega')
+\Longrightarrow
+q_{\mathcal C,V}(\omega)=q_{\mathcal C,V}(\omega').
+}
+\]
 
-Two configurations may be indistinguishable under every currently legal future yet behave differently after colonization, reconnection, a newly available interaction, or a new intervention.
+If there exist \(\omega,\omega'\) with
+
+\[
+X(\omega)=X(\omega')
+\quad\text{but}\quad
+q_{\mathcal C,V}(\omega)\neq q_{\mathcal C,V}(\omega'),
+\]
+
+then the present snapshot is not a sufficient state for that contract.
+
+This criterion is deliberately conditional. CREST does not claim that snapshots are always insufficient; it makes snapshot sufficiency something to demonstrate rather than assume.
+
+## 5. Three structural ways snapshot sufficiency can fail
+
+The companion theorem programs are best read as obstruction theories below the world-level definition.
+
+### 5.1 Future insufficiency — CCOC
+
+Two worlds can share one present description yet differ in a distinction exposed only when a future interaction, connection, colonization route, or intervention becomes relevant.
 
 \[
 \boxed{
@@ -51,25 +120,25 @@ Two configurations may be indistinguishable under every currently legal future y
 }
 \]
 
-CCOC asks which distinctions must be retained so that a state remains exact under the declared future grammar.
+CCOC quantifies how opening the future grammar can force a finer causal interface.
 
-### Semantic coherence — MLTR
+### 5.2 Historical / semantic insufficiency — MLTR
 
-An ecological category may remain syntactically available after structural turnover while no longer preserving its old operational meaning. Pollinator replacement, species turnover, network rewiring, or restoration can make an inherited state label too coarse.
+An inherited category can remain syntactically available after turnover or replacement while losing exact operational meaning. Different histories or structural replacements can require the old macrostate to split.
 
-MLTR asks how much an inherited classification must be refined to remain exact while preserving as much carried meaning as possible.
+MLTR asks for the least exact repair of an inherited classification while preserving as much carried meaning as possible.
 
-### Mechanism robustness — MRM
+### 5.3 Mechanistic insufficiency — MRM
 
-The same visible state can remain compatible with multiple latent mechanisms. Those mechanism differences need not always be represented. They become state-relevant exactly where retained mechanisms disagree about a future response that the state is required to support.
+The same visible state can remain compatible with several latent response mechanisms. CREST does not preserve full mechanism identity. A mechanism difference becomes state-relevant only when it changes a required future response or report.
 
-Thus CREST does not equate ecological state with full mechanism identity. It preserves **response-relevant latent distinctions**.
+Thus CCOC, MLTR, and MRM explain three different reasons why equal present snapshots can fail to imply equal required states.
 
-### Evidential licensing — CED
+## 6. Evidence licensing is a second-stage problem — CED
 
-A distinction can be required by the scientific model without being identified by the current field evidence. Finite observation, detection failure, common-mode error, or an observation map that collapses causal channels can leave several required states compatible with one record.
+A required distinction can exist in the ecological model without being identified by current evidence.
 
-CED separates:
+CED therefore sits after representational adequacy and separates
 
 \[
 \boxed{
@@ -83,15 +152,19 @@ CED separates:
 
 in general.
 
-## 3. The CREST answer
+Finite observation, detection failure, common-mode error, or an observation map that collapses causal channels can leave several required states compatible with one record.
 
-Conditional on one admissible finite common carrier \(U\), let the four obligations induce monotone, inflationary, idempotent refinement closures on the partition lattice of \(U\):
+This distinction is important: CED does not create the underlying world difference. It audits whether the scientific record licenses a claim about distinctions required elsewhere in CREST.
+
+## 7. The finite CREST construction
+
+Conditional on one admissible finite common carrier \(U\), let the declared requirements induce monotone, inflationary, idempotent refinement closures on the partition lattice of \(U\). In the current implementation these are represented as
 
 \[
 C_\Gamma,\quad C_\mathcal H,\quad C_\Theta,\quad C_{D,T}.
 \]
 
-From a baseline partition \(B\), CREST-J1 defines
+From baseline partition \(B\), CREST-J1 constructs
 
 \[
 \boxed{
@@ -99,33 +172,27 @@ J=(C_\Gamma\vee C_\mathcal H\vee C_\Theta\vee C_{D,T})(B).
 }
 \]
 
-Then \(J\) is the unique coarsest / least-information partition satisfying all four obligations. For a latent world \(u\),
+Then \(J\) is the unique coarsest / least-information partition satisfying the declared finite requirements. For latent world \(u\),
 
 \[
-\boxed{
 \operatorname{State}_{\mathcal C}(u)=[u]_J.
-}
 \]
 
-So the CREST answer is:
+The generic lattice machinery is classical. The CREST content is the ecological interpretation of which world distinctions must survive the quotient and the explicit separation of required state from evidential identification.
 
-> **Two ecological configurations count as the same state exactly to the extent that the declared scientific contract permits all differences between them to be ignored.**
+## 8. Three finite gates
 
-The generic lattice machinery is classical. CREST's content is the ecology-specific mapping of future, inherited meaning, mechanism uncertainty, and evidence onto one state-adequacy problem.
-
-## 4. Three gates, not one ontology
-
-The mathematical program separates three questions that ecological practice often collapses.
+The current theorem package separates three questions.
 
 ### Gate A — carrier feasibility
 
-Can the four obligations even be synchronized on one admissible world set?
+Can the declared world descriptions and requirements be synchronized on one admissible finite carrier?
 
-J3/J6 answer this under universal and controlled action semantics. Failure here means that a fully adequate common state does not exist under the declared contract.
+J3/J6 address this under universal and controlled action semantics. Failure means that no fully adequate common finite state exists under the declared contract.
 
 ### Gate B — representational adequacy
 
-If an admissible carrier exists, what is the least-information state that preserves every required distinction?
+If a carrier exists, what is the least-information partition preserving all required distinctions?
 
 That state is \(J\).
 
@@ -137,53 +204,70 @@ For evidence partition \(E\),
 
 \[
 \boxed{
-\text{full-state report exists}
+\text{full deterministic state report exists}
 \iff
 J\preceq E.
 }
 \]
 
-A target can still be reportable when this condition fails.
+A target can remain reportable even when this condition fails.
 
-## 5. The non-obvious ecological consequence
+## 9. Ecological rules as quotient laws
 
-The strongest current CREST result is not merely that state depends on purpose.
+CREST also reframes what an ecological rule is doing.
 
-A newly available management action can make **more ecological worlds viable** while simultaneously making **fewer worlds scientifically interchangeable**.
+Suppose a state quotient merges worlds according to \(\sim_{\mathcal C,V}\). A rule is well-defined on that quotient only if worlds in the same block agree on every response the rule is required to return.
 
-Under the assumptions of the action-expansion result,
-
-\[
-A_c\uparrow
-\Rightarrow
-K^*\uparrow,
-\]
-
-while a strengthened future contract can force
-
-\[
-J\text{ to refine}.
-\]
-
-A strict finite witness realizes
+Therefore:
 
 \[
 \boxed{
+\text{many ecological rules are effective laws of an adequate quotient,
+not necessarily laws of the full latent world.}
+}
+\]
+
+Changing scale, observation channel, intervention repertoire, or structural context can invalidate the old quotient for a new task without making the original rule false in its original domain.
+
+This is not epistemic relativism. The dynamics constrain whether the proposed coarse law is well-defined.
+
+## 10. Counterfactual futures can change the present scientific state
+
+A newly available management action can expose a response distinction between worlds previously treated as equivalent.
+
+The action need not yet be executed. Its inclusion in the scientific contract can already force \(J\) to refine.
+
+Under the existing finite action-expansion result, one can have
+
+\[
 |K^*|\uparrow,
 \qquad
 |J|\uparrow,
 \qquad
 \text{full-state identifiability}\downarrow,
-\qquad
-\text{target reportability unchanged}.
-}
 \]
 
-The intervention need not yet have been executed. Its availability can already change which latent differences the present state must preserve.
+while target reportability remains unchanged.
 
-This is the core of **management-induced information debt**.
+Thus:
 
-## 6. Monitoring debt can be structural
+> **The future does not have to happen to change the present scientific state; a counterfactual future need only become relevant to what the state is required to support.**
+
+This is representational, not backward, causation.
+
+## 11. Dynamical, evolutionary, and representational stability
+
+CREST distinguishes three questions that should not be collapsed.
+
+1. **Dynamical stability:** does the ecological system resist or recover from perturbation?
+2. **Evolutionary stability:** does a strategy or trait resist invasion under the relevant evolutionary model?
+3. **Representational stability:** does the same state quotient remain adequate when the scientific context changes?
+
+The existing action-expansion witness proves one strict separation: the ecological system can remain physically unchanged while the scientifically adequate state becomes finer.
+
+A general theory connecting all three forms of stability remains future work.
+
+## 12. Monitoring debt can be structural
 
 For fixed evidence partition \(E\) and required state \(J\), the unique coarsest evidence refinement that preserves existing evidence distinctions and identifies \(J\) is
 
@@ -197,101 +281,48 @@ The finite resolution debt is
 D_E(J)=\log_2|E\vee J|-\log_2|E|.
 \]
 
-But this debt should not be read only as "collect more samples."
+But this does not mean only "collect more samples." If two latent mechanisms produce the same observed net channel, repeated measurement of that same channel may preserve the observational symmetry. A new discriminating measurement type can be necessary.
 
-Suppose a net ecological performance factorizes as
-
-\[
-W(z)=F(z)R(z),
-\]
-
-where \(F\) is a reproductive channel and \(R\) a recruitment/reachability channel. The changes
-
-\[
-(F,R)\mapsto(aF,R)
-\quad\text{and}\quad
-(F,R)\mapsto(F,aR)
-\]
-
-produce identical net output \(aFR\). Repeatedly measuring only \(W\) cannot distinguish the two latent worlds. If a future intervention acts specifically on \(F\), however, those worlds may need different states.
-
-The missing evidence is then **a different measurement channel**, not merely more measurements of the old one.
-
-## 7. A temporally thick interpretation
-
-The present finite theory is formulated on latent worlds, not on a continuous ontology of time. Nevertheless, a latent world can contain relevant history and future-response structure as coordinates.
-
-This supports the following philosophical interpretation:
-
-> **An ecological state is not necessarily a property of an instant. It can be a scientifically licensed compression of a temporally extended possible world.**
-
-A latent world may encode:
-
-- relevant history or inherited state meaning;
-- current ecological configuration;
-- latent mechanism or fitness-relevant structure;
-- possible responses to declared future interactions and interventions;
-- the observation record through which science accesses that world.
-
-Under this interpretation, a present snapshot \(X\) is sufficient only when all latent worlds sharing that snapshot also share the required CREST state. Formally, a future theorem could study the criterion
-
-\[
-X(u)=X(v)
-\Rightarrow
-[u]_J=[v]_J.
-\]
-
-The current repository treats this as a **research direction**, not as an already proved trajectory theorem.
-
-## 8. Two kinds of stability
-
-CREST also motivates separating:
-
-1. **dynamical stability** — whether the ecological system resists or recovers from perturbation; and
-2. **representational stability** — whether a state representation remains adequate when the scientific contract, observation view, or intervention repertoire changes.
-
-The action-expansion witness already proves that the second can fail without a prior physical regime shift. A system can be dynamically unchanged while its scientifically adequate state becomes finer.
-
-A general theory connecting dynamical, evolutionary, and representational stability remains future work.
-
-## 9. What CREST does not claim
+## 13. What CREST does not claim
 
 CREST does not establish:
 
-- a nature-given canonical state partition;
+- a nature-given canonical ecological partition;
 - a unique common carrier for every scientific description;
-- that all biological evolution monotonically maximizes one global fitness function;
-- that stochasticity disappears at the ecological level;
 - that every present snapshot is insufficient;
-- that the four obligations are exhaustive;
-- that monitoring bits equal money, sensors, or person-hours;
-- an infinite, continuous, fully stochastic, or approximate trajectory theorem.
+- that all biological evolution maximizes one global fitness function;
+- that stochasticity disappears at the ecological level;
+- that ecosystems are generically mathematically chaotic;
+- that CCOC, MLTR, MRM, and CED exhaust every possible source of state inadequacy;
+- that finite state-memory bits equal money, sensors, or field effort;
+- a general infinite, continuous, stochastic, approximate, or delayed-observation trajectory theorem.
 
-The theory is deliberately conditional: its value is to make the conditions under which ecological sameness is scientifically defensible explicit and testable.
+The trajectory-first framing is the organizing interpretation of the current finite latent-world theory, not a silent upgrade of interpretation into an unproved theorem.
 
-## 10. Where to go next
-
-The canonical progression is now:
+## 14. Canonical progression
 
 ```text
-philosophical question
-    What counts as the same ecological state?
+self-modifying ecological world
         ↓
-four obligations
-    future / semantics / mechanisms / evidence
+temporally extended possible worlds
         ↓
-three mathematical gates
-    carrier → least-information state → evidence
+observation / intervention context
         ↓
-cross-gate consequences
-    action expansion / monitoring debt / target-only reporting
+snapshot sufficiency question
         ↓
-ecological projection
-    open systems / turnover / latent causality / monitoring / stability
+structural obstructions
+    CCOC / MLTR / MRM
+        ↓
+least-information adequate state
+        ↓
+evidence licensing
+    CED
+        ↓
+quotient laws, reportability, and representational stability
 ```
 
 See:
 
-- [`crest_mathematical_spine.md`](crest_mathematical_spine.md) for the proved theorem hierarchy;
-- [`crest_ecological_projection.md`](crest_ecological_projection.md) for the ecology-facing interpretation; and
-- [`README.md`](README.md) for supporting and archived documents.
+- [`crest_ecological_projection.md`](crest_ecological_projection.md) for the ecology-facing interpretation;
+- [`crest_mathematical_spine.md`](crest_mathematical_spine.md) for the proved finite theorem hierarchy; and
+- [`README.md`](../README.md) for the canonical repository entry point.
