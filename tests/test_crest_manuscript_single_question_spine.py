@@ -41,7 +41,7 @@ def test_temporally_extended_interpretation_is_not_mislabeled_as_proved() -> Non
     assert "Snapshot sufficiency is a factorization criterion" in text
     assert "CED is deliberately downstream" in text
     assert "representational stability" in text
-    assert "not backward causation" in text
+    assert "no backward causation" in text
 
 
 def test_predictive_and_action_abstraction_prior_art_boundaries_are_explicit() -> None:
