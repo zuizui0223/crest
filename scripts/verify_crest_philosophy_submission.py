@@ -78,11 +78,12 @@ def main() -> int:
     ]
 
     # Post-J1 synchronization gate. These checks protect the conditional joint-state
-    # result while allowing the manuscript structure itself to evolve. In particular,
-    # the carrier check now recognizes the explicit Gate A heading rather than one
-    # legacy sentence from an earlier draft.
+    # result while allowing the manuscript structure itself to evolve. Gate A is
+    # recognized structurally: an explicit 3.1 Gate A section plus carrier/common-world
+    # language in the manuscript. The legacy sentence remains accepted for old frozen
+    # candidates but is no longer required.
     carrier_gate_present = bool(
-        re.search(r"###\s+3\.1\s+Gate A[^\n]*carrier", text, flags=re.I)
+        re.search(r"###\s+3\.1\s+Gate A", text, flags=re.I)
         and re.search(r"common carrier|common ecological world set", text, flags=re.I)
     ) or "Carrier existence comes before state construction" in text
 
