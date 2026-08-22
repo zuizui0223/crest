@@ -1,14 +1,14 @@
 # CREST mathematical spine
 
-> **Purpose:** distinguish the mathematics needed to answer the central philosophical question from supporting theorem infrastructure.
+> **Purpose:** identify the smallest mathematical chain needed to answer the central CREST question, and separate classical substrate from the nontrivial cross-gate result.
 
-## 1. One question, three gates
+## 1. One question, three gates, one cross-gate headline
 
-The mathematical task is not to maximize theorem count. It is to answer:
+The mathematical task is:
 
-> Given a declared scientific contract, when can one ecological state exist, what is the least-information such state, and when does evidence identify it?
+> Given a declared scientific contract, when can one ecological state exist, what is the least-information such state, when does evidence identify it, and how can those requirements change when the future/management repertoire changes?
 
-The main proof chain is:
+The canonical proof chain is
 
 ```text
 Gate A: admissible common carrier?
@@ -17,24 +17,26 @@ Gate B: unique least-information joint state?
         ↓
 Gate C: evidence identifies that state?
         ↓
-Cross-gate: how do those answers change when management/future contracts expand?
+Cross-gate: how can one capability expansion move viability,
+            state complexity, evidence adequacy, and target reportability
+            in different directions and at different scales?
 ```
+
+The first three gates define the object. The cross-gate theorem is the main non-obvious scaling result.
 
 ## 2. Gate A — carrier feasibility
 
-The four companion obligations do not automatically live on the same latent world set. CREST therefore separates state construction from carrier existence.
+The companion obligations do not automatically live on the same latent world set. CREST therefore separates state construction from carrier existence.
 
 ### Universal carrier — J3
 
-For static-compatible worlds `W0` and partial deterministic actions, define the universal predecessor operator
+For static-compatible worlds `W0` and partial deterministic actions, define
 
 \[
 F(S)=\{w\in S\cap W_0:\tau_a(w)\downarrow\Rightarrow\tau_a(w)\in S\text{ for every declared }a\}.
 \]
 
-Descending iteration yields the greatest universally transition-closed carrier \(U^*\).
-
-Core statement:
+Descending iteration yields the greatest universally transition-closed carrier \(U^*\), with
 
 \[
 \boxed{
@@ -52,9 +54,7 @@ When uncontrollable moves must all be survived but one controllable move may be 
 G(S)=\{w\in S\cap W_0:\text{all uncontrollable successors stay in }S\text{ and some legal control stays in }S\}.
 \]
 
-Descending iteration yields the greatest robustly controlled-invariant carrier \(K^*\).
-
-Core statement:
+Descending iteration yields the greatest robustly controlled-invariant carrier \(K^*\), with
 
 \[
 \boxed{
@@ -66,9 +66,9 @@ K^*\neq\varnothing.
 
 Every nonempty \(K^*\) admits a memoryless safe selector in the finite deterministic setting.
 
-### Why Gate A is conceptually necessary
+### Why Gate A is separate
 
-An empty or coverage-incomplete carrier is not a failure to find the right partition. It says the declared scientific obligations cannot all be represented on one admissible world set without changing the contract.
+An empty or coverage-incomplete carrier is not a failure to find the right partition. It says the declared obligations cannot all be represented on one admissible world set without changing the contract.
 
 Detailed proofs:
 
@@ -85,13 +85,13 @@ P\preceq Q
 Q\text{ refines }P.
 \]
 
-Let baseline \(B\) preserve distinctions that must be retained before the four audits. Assume each companion obligation is represented by a monotone, inflationary, idempotent refinement closure:
+Let baseline \(B\) preserve distinctions that must already be retained. Represent the declared companion obligations by monotone, inflationary, idempotent refinement closures
 
 \[
 C_\Gamma,\ C_\mathcal H,\ C_\Theta,\ C_{D,T}.
 \]
 
-Define their closure join \(C_*\) and
+Define
 
 \[
 \boxed{
@@ -100,36 +100,44 @@ J=C_*(B)
 }
 \]
 
-### J1 theorem
+### J1 — conditional joint-state theorem
 
-\(J\) is the unique coarsest partition above \(B\) fixed by all four closures.
+\(J\) is the unique coarsest partition above \(B\) fixed by all declared closures.
 
 Proof skeleton:
 
-1. the partition lattice is finite and complete;
-2. the join of closure operators is a closure operator whose fixed points are the intersection of their fixed-point sets;
+1. \(\Pi(U)\) is finite and complete;
+2. the join of the closure operators is a closure operator whose fixed points are the intersection of their fixed-point sets;
 3. inflationarity gives \(B\preceq J\);
 4. idempotence gives that \(J\) is a common fixed point;
-5. if \(P\) is any common fixed point above \(B\), monotonicity yields
+5. any other common fixed point \(P\) above \(B\) satisfies
    \[
    J=C_*(B)\preceq C_*(P)=P.
    \]
 
-Thus no coarser adequate state exists.
+Thus no coarser adequate state exists. For a finite world \(u\in U\),
+
+\[
+\boxed{
+\operatorname{State}_{\mathcal C}(u)=[u]_J.
+}
+\]
 
 ### Constructive consequence
 
-Pairwise commutation is unnecessary. Any fair repeated schedule of the four closures converges to \(J\) on the finite carrier. A one-pass combination can fail because one audit's split can expose a distinction required by another audit.
+Pairwise commutation is unnecessary. Any fair repeated schedule of the closures converges to \(J\). A one-pass combination can fail because one split can expose a distinction required by another audit. The seven-world cascade witness and exhaustive partition oracle verify this explicitly.
 
-The seven-world cascade witness and exhaustive partition oracle verify this interaction explicitly.
+### Claim ceiling
+
+The generic closure/fixed-point substrate is classical. J1 is important because it tells CREST exactly when the phrase **one least-information state** is mathematically meaningful, not because least common fixed points themselves are new.
 
 Detailed proof: `crest_joint_state_theorem_2026-08-17.md`.
 
 ## 4. Gate C — evidence licensing
 
-Let \(E\) be the reliability-qualified evidence partition: two worlds share one evidence block when the declared observation/experiment cannot distinguish them.
+Let \(E\) be the reliability-qualified evidence partition.
 
-### Full-state licensing theorem
+### Full-state licensing
 
 \[
 \boxed{
@@ -139,20 +147,11 @@ J\preceq E.
 }
 \]
 
-Proof skeleton:
-
-- if \(J\preceq E\), each evidence block lies within one \(J\)-block, so the state label factors through evidence;
-- conversely, any evidence-measurable adequate state \(P\) must satisfy
-  \[
-  J\preceq P\preceq E,
-  \]
-  hence \(J\preceq E\).
-
 If the condition fails, the sharp honest report is the set of \(J\)-blocks intersecting the observed evidence class.
 
 ### Target-only corollary
 
-A target \(T\) can still be deterministic when the full state is unresolved:
+A requested target \(T\) can remain deterministic even if the full state is unresolved:
 
 \[
 J\not\preceq E
@@ -160,11 +159,19 @@ J\not\preceq E
 T\text{ factors through }E.
 \]
 
-This is why CREST distinguishes state identification from decision/report sufficiency.
+Hence CREST keeps separate
 
-## 5. Cross-gate theorem — action expansion
+\[
+\boxed{
+\text{required state},\qquad
+\text{identified state},\qquad
+\text{reportable target}.
+}
+\]
 
-This is the main non-obvious ecological result currently derived from the spine.
+They need not coincide.
+
+## 5. Cross-gate monotonicity — qualitative action expansion
 
 Let controllable repertoires satisfy
 
@@ -172,13 +179,13 @@ Let controllable repertoires satisfy
 A_c\subseteq A_c',
 \]
 
-with old and uncontrollable dynamics preserved. Then controlled-carrier monotonicity gives
+with old and uncontrollable dynamics preserved. Then
 
 \[
 \boxed{K^*(A_c)\subseteq K^*(A_c').}
 \]
 
-On a fixed retained carrier, let \(\Gamma'\) be an order-compatible strengthening of future responsibility \(\Gamma\). Then
+On a fixed retained carrier, if \(\Gamma'\) is an order-compatible strengthening of future responsibility \(\Gamma\), then
 
 \[
 \boxed{J_\Gamma\preceq J_{\Gamma'}.}
@@ -192,7 +199,7 @@ J_\Gamma\not\preceq E
 J_{\Gamma'}\not\preceq E.
 \]
 
-The strict `rescue` witness realizes
+The original strict `rescue` witness realizes
 
 \[
 \boxed{
@@ -203,26 +210,75 @@ The strict `rescue` witness realizes
 }
 \]
 
-So management capability can expand the domain that becomes viable while shrinking the equivalence relation that is scientifically safe.
+This establishes direction: more management capability can make more worlds viable while making fewer worlds scientifically interchangeable.
 
 Detailed proof: `crest_action_expansion_cross_gate_theorem_2026-08-22.md`.
 
-## 6. Minimum monitoring refinement
+## 6. Cross-gate scaling — capability–resolution divergence
 
-For fixed evidence \(E\) and required state \(J\), define the common refinement
+The qualitative theorem does not say how large the representational consequence can be relative to the viability benefit. The connected capability–resolution family supplies that missing scale result.
+
+### Theorem
+
+For every integer \(m\ge1\), there is one finite deterministic system in which adding the single controllable action `probe` gives
+
+\[
+\boxed{
+\Delta |K^*|=1,
+\qquad
+\Delta K_{U_0}=m\text{ bits}.
+}
+\]
+
+On the retained present slice \(U_0\):
+
+- the old least exact state has one class;
+- the new least exact state has \(2^m\) classes;
+- unchanged one-block evidence moves from full-state adequate to inadequate;
+- monitoring-resolution debt changes from \(0\) to exactly \(m\) bits;
+- a constant coarse target remains reportable.
+
+The action alphabet changes only from `{hold}` to `{hold, probe}`, and the static output alphabet remains
+
+\[
+\{\texttt{neutral},\texttt{bit0},\texttt{bit1},\texttt{done}\}.
+\]
+
+Repeated `probe` reveals one binary coordinate at a time. Every readout chain terminates in the same `fragile` world that `probe` newly makes viable, then reaches `safe`. Thus the scaling result is realized in one connected future-response system rather than by placing independent rescue and readout gadgets side by side.
+
+### No-bound corollary
+
+There is no universal finite function \(f\) depending only on carrier-size gain such that all such capability expansions satisfy
+
+\[
+\Delta K_{U_0}\le f(\Delta|K^*|).
+\]
+
+The family holds \(\Delta|K^*|=1\) fixed while \(\Delta K_{U_0}=m\) is arbitrary.
+
+Therefore
+
+\[
+\boxed{
+\text{viability gain alone cannot upper-bound representational burden.}
+}
+\]
+
+This is the main mathematical headline beyond the conditional existence/minimality substrate: a fixed-size expansion of what can be done can have a constant effect at the viability gate and an arbitrarily large effect at the state/evidence gates.
+
+Detailed proof: `crest_capability_resolution_divergence_theorem_2026-08-22.md`.
+
+Executable witness: `tests/test_crest_capability_resolution_divergence.py`.
+
+## 7. Minimum monitoring refinement
+
+For fixed evidence \(E\) and required state \(J\), define
 
 \[
 E_J^*=E\vee J.
 \]
 
-### R1
-
-\(E\vee J\) is the unique coarsest evidence refinement that:
-
-1. preserves all distinctions already present in \(E\); and
-2. identifies \(J\).
-
-Therefore the finite monitoring-resolution debt is
+Then \(E\vee J\) is the unique coarsest evidence refinement that preserves all existing evidence distinctions and identifies \(J\). The finite monitoring-resolution debt is
 
 \[
 \boxed{
@@ -230,13 +286,15 @@ D_E(J)=\log_2|E\vee J|-\log_2|E|.
 }
 \]
 
-It is nonnegative, vanishes exactly when evidence already identifies \(J\), and is monotone when the required state refines.
+It is nonnegative, vanishes exactly when evidence already identifies \(J\), and is monotone under required-state refinement.
+
+The capability–resolution theorem gives a sharp family in which a one-action expansion produces exactly \(m\) bits of debt on a retained present slice for arbitrary \(m\).
 
 Detailed proof: `crest_monitoring_resolution_debt_2026-08-21.md`.
 
-## 7. Structural rather than merely quantitative monitoring debt
+## 8. Structural rather than merely quantitative monitoring debt
 
-A useful ecological witness comes from a positive channel factorization
+A complementary witness shows that an evidence deficit can be about measurement **type**, not only resolution. Suppose
 
 \[
 W(z)=F(z)R(z).
@@ -248,41 +306,33 @@ For any positive multiplier \(a(z)\),
 (aF)R=F(aR).
 \]
 
-Thus observations depending only on net performance \(W\) cannot distinguish a change in the \(F\)-channel from the corresponding change in the \(R\)-channel, no matter how often \(W\) is remeasured.
+Observations depending only on net performance \(W\) cannot distinguish a change in the \(F\)-channel from a compensating change in \(R\), regardless of replication. If a newly relevant intervention acts specifically on \(F\), the latent worlds can require different state labels. The deficit is repaired by a symmetry-breaking channel, not merely by more repeated measurements of \(W\).
 
-If a newly admissible intervention acts specifically on \(F\), the two latent worlds can have different future successors and must split in the required state. The evidence deficit is then repaired by a symmetry-breaking measurement channel, such as observing \(W\) together with \(F\), not by additional net-only replication.
+This remains a witness of the state/evidence architecture, not a fifth audit.
 
-The CREST repository tests this as an ecology-grounded witness of the existing state/evidence architecture; it is not a new fifth audit.
+## 9. Supporting theorem infrastructure
 
-## 8. Supporting theorem infrastructure
-
-The following results remain proved and important but are **supporting**, not headline answers to the philosophical question.
+The following remain proved and useful but are not separate philosophical headlines.
 
 ### Lift comparison
 
 - **J2:** faithful-lift invariance.
 - **J5:** one-sided refinement bounds for non-identical lifts.
 
-Role: verify that scientifically invisible latent duplication does not create fake state complexity and describe one-sided changes when a lift is stronger or weaker.
-
 ### Carrier repair
 
 - **J4:** exact universal-carrier repair characterization; NP-complete global selection.
 - **J7:** exact controlled-carrier repair characterization; NP-complete global selection.
 
-Role: characterize what must be changed when Gate A fails under a declared repair language.
-
 ### Cross-gate obstruction
 
 - **O1:** cheapest structural repair need not be cheapest fully evidence-licensed repair.
 
-Role: prevent collapse of carrier feasibility, state adequacy, and evidence licensing into one optimization problem.
+These protect the separation among carrier feasibility, state adequacy, and evidence licensing and belong in the full proof ledger / appendices.
 
-These results belong in the full proof ledger and appendices, not in the conceptual headline.
+## 10. Derived concepts retained as descriptions
 
-## 9. Derived concepts retained as descriptions, not theorem families
-
-The repository retains the following useful derived language:
+Useful terms retained without promoting new theorem families:
 
 - Monitoring Adequacy Envelope;
 - Counterfactual Obsolescence;
@@ -290,17 +340,18 @@ The repository retains the following useful derived language:
 - Decision-Safe Ignorance;
 - Monitoring Resolution Debt.
 
-Their underlying order/refinement facts are proved, but they should not be presented as independent discoveries unless a future result adds a genuinely new coupling or impossibility.
+## 11. Current proof boundary
 
-## 10. Current proof boundary
-
-Not yet proved:
+Still open:
 
 - a canonical common carrier supplied by nature;
-- an infinite/continuous/stochastic trajectory version of J1;
-- a general theorem that a present snapshot is insufficient;
+- infinite/continuous/stochastic trajectory analogues of the finite joint-state theorem;
 - a general relation between dynamical, evolutionary, and representational stability;
-- an observation-symmetry theorem for arbitrary measurement families;
-- empirical validity of any declared ecological contract.
+- a general observation-symmetry theorem for arbitrary measurement families.
 
-The next mathematical result should be added only if it strengthens the one-question spine rather than creating another parallel vocabulary family.
+Not required for the current finite mathematical claims:
+
+- empirical validation of a particular ecological contract;
+- raw-data benchmarking against predictive-state algorithms.
+
+The next mathematical result should enter the canonical spine only if it strengthens the carrier/state/evidence/target coupling, proves a new necessary-and-sufficient boundary, or establishes another sharp impossibility/bound that cannot be reduced to the existing theorems.
