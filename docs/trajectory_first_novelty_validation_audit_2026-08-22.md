@@ -1,225 +1,254 @@
 # CREST trajectory-first novelty and validation audit — 2026-08-22
 
-> **Status:** current novelty/validation control after the trajectory-first reorganization and Biology & Philosophy manuscript integration. This document supersedes the *conceptual ordering* of the 2026-08-21 broad audit, but does not erase its literature evidence. It is not a claim of historical firstness and is not a formal systematic review.
+> **Status:** current novelty/validation control after the trajectory-first reorganization and the capability–resolution divergence result. This is not a historical-firstness claim and not a database-complete systematic review.
 
 ## 1. Bottom-line verdict
 
-CREST still has a defensible contribution after the trajectory-first reorganization, but the novelty ceiling is narrower than the philosophical headline may initially suggest.
+CREST has a defensible mathematical/philosophical contribution, but most of the broad philosophical vocabulary is prior-art-adjacent and should not carry novelty by itself.
 
-The following ideas are **not novelty-bearing by themselves**:
+Not novelty-bearing on its own:
 
-- ecological identity must be dynamic rather than a static snapshot;
-- ecological state can depend on history, basin/trajectory, or future response;
+- ecological identity is dynamic rather than a static snapshot;
+- ecological state can depend on history, trajectory, basin, or future response;
 - histories can be compressed into predictive equivalence classes;
 - controlled-system state can be represented by predictions of future action-observation tests;
 - state abstraction can be task-specific;
+- action abstraction and state abstraction can constrain one another;
+- future actions/options can determine which state distinctions are useful for planning;
 - adequacy is purpose/context-relative;
 - monitoring can change with management questions;
 - representational obsolescence under a changed task/regime;
-- eco-evolutionary feedback makes ecological dynamics context dependent.
+- eco-evolutionary feedback makes response structure context dependent.
 
-The current strongest CREST contribution is instead the **ecology-specific coupling**:
+The strongest current CREST-level contribution is the **multi-gate ecological state architecture plus a sharp cross-gate scaling result**:
 
 ```text
 temporally extended ecological worlds
-    -> observation/intervention context
-    -> snapshot-sufficiency question
-    -> structural obstructions
-         CCOC: future/composition
-         MLTR: inherited history/semantics
-         MRM: retained mechanism response
-    -> finite least-information adequate state
-    -> CED evidence licensing
-    -> deterministic / target-only / set-valued report
+    -> declared observation/intervention contract
+    -> carrier feasibility
+    -> least-information adequate state
+    -> evidence licensing
+    -> target-only / set-valued fallback
+    -> capability expansion can move these gates at radically different scales
 ```
 
-The distinctive scientific object is not “a predictive state” alone. It is a declared ecological-state contract that keeps **required state**, **identified state**, and **reportable target** separate while allowing future composition, inherited meaning, mechanism ambiguity, and evidence to constrain one representation.
+The central mathematical object is not “a predictive state” alone. It is a declared ecological-state contract that separates **viable carrier**, **required state**, **identified state**, and **reportable target**.
 
-## 2. Closest prior-art families after the reframe
+## 2. Closest prior-art families
 
 ### 2.1 Dynamic ecosystem identity
 
-Collier & Cumming (2011), *A Dynamical Approach to Ecosystem Identity*, explicitly argues that ecosystem identity criteria must be dynamic and process-sensitive rather than based only on static descriptions.
+Collier & Cumming (2011) and Delettre (2021) already make ecological identity dynamic, process-sensitive, trajectory-sensitive, and/or basin-sensitive.
 
-Delettre (2021), *Identity of ecological systems and the meaning of resilience*, distinguishes typological, numerical, local-state, and global-state identity and explicitly connects state identity to trajectories and basins of attraction.
-
-**Blocked claim:** CREST is the first view on which ecological state/identity is temporally extended or dynamical.
+**Blocked claim:** CREST is the first theory in which ecological state is temporally extended or dynamical.
 
 ### 2.2 Computational mechanics / causal states
 
-Computational mechanics groups histories into causal states when they induce the same conditional distribution over futures. These states are minimal sufficient statistics for prediction.
+Causal-state constructions group histories by equality of conditional future distributions and provide minimal predictive sufficient statistics.
 
-**Blocked claim:** CREST is the first theory to define state as an equivalence class of histories/possible worlds according to future behavior.
+**Blocked claim:** CREST invents state as an equivalence class of histories according to future behavior.
 
-### 2.3 Predictive State Representations (PSRs)
+### 2.3 Predictive State Representations
 
-PSRs represent the state of controlled dynamical systems by predictions of future action-observation tests conditioned on history. This is especially close to the new CREST language of `history + future-response structure under interventions`.
+Littman, Sutton & Singh (2002) and Singh, James & Rudary (2004) represent controlled-system state using predictions of future action-observation tests.
 
-**Blocked claim:** CREST is the first framework to let counterfactual future experiments determine what must count as the present state.
-
-**Required manuscript consequence:** the trajectory-first manuscript must explicitly cite and distinguish PSRs rather than relying only on causal-state / causal-abstraction citations.
+**Blocked claim:** CREST is the first framework in which counterfactual future tests determine present predictive state.
 
 ### 2.4 Task-specific state abstraction / POMDPs
 
-Conservation POMDPs, bisimulation/state abstraction, and recent causal state-abstraction work already seek compact task-relevant state representations.
+Bisimulation, MDP/POMDP state reduction, causal abstraction, and conservation decision theory already seek compact task-relevant states.
 
-**Blocked claim:** CREST is the first minimal task-specific state or the first management-relative state representation.
+**Blocked claim:** CREST is the first minimum task-specific or management-relative state representation.
 
-### 2.5 Adequacy-for-purpose / representation repair
+### 2.5 State–action abstraction coupling
 
-Parker and related adequacy-for-purpose work establish purpose-relative model/representation adequacy. Swanson (2026, PhilArchive manuscript) is especially close: bounded carriers, minimal adequate carriers, regime-dependent adequacy, representational obsolescence, and repair are already formalized.
+Konidaris (2019), *On the necessity of abstraction* (Current Opinion in Behavioral Sciences, doi:10.1016/j.cobeha.2018.11.005), explicitly treats state abstraction and action abstraction as coupled problems and notes the less-explored direction in which action abstraction drives the state abstraction needed to support those actions.
 
-**Blocked claim:** contract-relativity, minimal adequate representation, or representational obsolescence is itself the novelty.
+This is a material nearest neighbour for the CREST action-expansion narrative.
 
-### 2.6 Adaptive monitoring / target-oriented experimental design
+**Blocked claim:** it is new in general that changing/adding actions can change which state distinctions a task representation needs.
 
-Adaptive monitoring, ecological value of information, partial identification, and target/goal-oriented optimal experimental design already formalize question-specific evidence acquisition and target-specific uncertainty.
+CREST must therefore locate novelty in the **carrier/state/evidence/target conjunction and its quantitative scaling**, not in the qualitative statement “more actions can require a different state abstraction.”
 
-**Blocked claim:** CED is the first target-relevant monitoring or the first framework to prefer reportability over full latent-state learning.
+### 2.6 Adequacy-for-purpose / representation repair
 
-## 3. What remains genuinely distinctive enough to defend
+Purpose-relative adequacy and representation repair/obsolescence already have strong philosophical and formal precedents, including the Swanson 2026 manuscript used in the prior audit.
 
-### Tier A — strongest current CREST-level contribution
+**Blocked claim:** contract-relativity, minimal adequate representation, or representational obsolescence is itself new.
 
-1. **Trajectory-first ecological-state architecture with typed structural failure modes.**  
-   CCOC, MLTR, and MRM are not three generic predictive-state algorithms: they encode three different reasons a present merge can fail — widened future grammar, inherited semantic/history constraint, and retained mechanism response disagreement.
+### 2.7 Adaptive monitoring / target-oriented design
 
-2. **Required state vs identified state vs reportable target.**  
-   CREST keeps representational necessity logically separate from what the evidence has earned and from whether the requested target is nevertheless constant on the evidence class.
+Adaptive monitoring, value of information, partial identification, and target/goal-oriented experimental design already formalize question-specific evidence acquisition.
 
-3. **Carrier feasibility before state minimality.**  
-   J3/J6 can return that no fully adequate synchronized carrier exists under the declared contract; J1 minimality is conditional on passing that existence gate.
+**Blocked claim:** CED is the first target-relevant monitoring framework or the first to prefer target reportability over full latent-state learning.
 
-4. **Strict cross-gate witnesses.**  
-   The action-expansion witness shows that an expanded intervention repertoire can enlarge the viable carrier, force a finer adequate state, and reduce full-state identifiability while leaving target-only reporting intact. O1 shows that cheapest structural repair and cheapest evidentially licensed repair can differ.
+## 3. What remains strongest
 
-These are the most defensible CREST claims because they couple layers that are usually treated separately.
+### A. Conditional finite state existence/minimality — foundational, not the main novelty claim
 
-### Tier B — companion contributions that remain plausible but require conservative wording
-
-- **CCOC:** the same-system quantitative closed/open response-interface separation and bounded-local sharpness realization. Broad noncommutation/context-dependent minimization is not new; the candidate contribution is the constrained extremal separation.
-- **MLTR:** source-relative portability and the unique coarsest exact repair *constrained to refine carried source labels*, plus minimum history context. Generic coarsest refinement is not new.
-- **MRM:** useful CREST mechanism layer, but many standalone results are close to standard model uncertainty, set-valued prediction, active discrimination, and Bayesian updating. Do not rely on MRM alone as a major novelty anchor without a sharper nearest-neighbour audit.
-- **CED:** useful evidence layer; novelty belongs to the combined finite reportability interface/failure/risk architecture, not target-oriented OED, VOI, set-valued inference, or imperfect detection in isolation.
-
-## 4. Validation still required — priority order
-
-### P0 — systematic nearest-neighbour review for the new trajectory headline
-
-The 2026-08-21 broad audit predates the trajectory-first reframe. A new claim-by-claim review must explicitly include:
-
-- computational mechanics / causal states;
-- Predictive State Representations and observable-operator models;
-- controlled bisimulation / task-conditioned abstraction;
-- dynamic ecosystem identity and ecological process/trajectory accounts;
-- POMDP/adaptive-management state reduction;
-- adequacy-for-purpose and Swanson-style carrier/obsolescence work;
-- target/goal-oriented OED, partial identification, and VOI.
-
-**Pass condition:** every headline manuscript sentence has a nearest-neighbour row stating `overlap / difference / claim allowed / claim blocked`. Negative web search alone is not enough for historical firstness.
-
-### P0 — add the missing PSR boundary to the Biology & Philosophy manuscript
-
-The current trajectory-first manuscript cites causal states and causal abstraction but does not yet explicitly cite PSR literature. This is now a material omission because PSRs directly encode controlled-system state as predictions of future action-observation tests.
-
-**Pass condition:** Related Work / positioning explicitly says that CREST does not claim novelty for predictive or intervention-defined state; its contribution is the ecology-specific contract coupling and evidence-licensing separation.
-
-### P1 — decide the status of “snapshot sufficiency”
-
-The current implication
+On a declared finite carrier, CREST-J1 gives
 
 \[
-X(\omega)=X(\omega')\Rightarrow q_{\mathcal C,V}(\omega)=q_{\mathcal C,V}(\omega')
+J=(C_\Gamma\vee C_\mathcal H\vee C_\Theta\vee C_{D,T})(B)
 \]
 
-is an exact factorization criterion, but by itself it is close to a definition of sufficiency rather than a deep theorem.
+as the unique coarsest common fixed point above the baseline.
 
-Two acceptable outcomes:
+This is essential because it answers **what the finite CREST state is**. But closure-operator/fixed-point theory is classical, so J1 should be presented as the formal existence/minimality backbone rather than as the strongest originality claim.
 
-1. **Downgrade:** call it a criterion/definition and do not sell it as a new theorem; or
-2. **Strengthen:** prove a nontrivial ecological condition under which snapshot sufficiency follows or fails (for example a finite dynamic-blanket/Markov factorization condition with a sharp obstruction).
+### B. Required state vs evidence vs target
 
-Do not create a named theorem merely by restating factorization.
+CREST explicitly separates
 
-### P1 — prove that the CREST coupling adds information beyond a single predictive-state contract, or narrow the claim
+\[
+\text{required state},\qquad
+\text{identified state},\qquad
+\text{reportable target}.
+\]
 
-A sufficiently augmented PSR/POMDP can in principle encode history, mechanisms, actions, and targets. Therefore CREST should not claim mathematical irreducibility to predictive-state frameworks without proof.
+Full-state licensing is
 
-**Validation task:** construct a comparison table/witness showing exactly what CREST adds conceptually or operationally — e.g. preservation of inherited semantic constraints, explicit carrier failure, downstream evidence licensing, and separate target reportability — while conceding that these objects can often be embedded in a richer generic decision model.
+\[
+J\preceq E,
+\]
 
-**Pass condition:** manuscript claims `distinct architecture / audit decomposition`, not `cannot be represented by PSR/POMDP` unless a theorem proves that stronger statement.
+while a target can still factor through \(E\) when the full state does not.
 
-### P1 — ecological worked validation beyond illustrative relabelling
+The ingredients are not individually unprecedented; the defensible point is their explicit placement downstream of carrier/state adequacy rather than collapse into one belief-state or decision object.
 
-The finite mathematics is verified, but the main remaining scientific risk is that the framework looks like formal methods with ecological nouns.
+### C. Capability–resolution divergence — strongest current mathematical headline
 
-At least one worked ecological system should map, without inventing parameters:
+For every \(m\ge1\), the connected deterministic witness uses one newly admitted action `probe` and a bounded four-symbol output alphabet to realize
 
-- a present snapshot;
-- a relevant history or carried meaning;
-- a future/intervention grammar;
-- alternative response mechanisms;
-- an observation/evidence map;
-- a management/report target;
-- the resulting required-vs-identified state distinction.
+\[
+\boxed{
+\Delta|K^*|=1,
+\qquad
+\Delta K_{U_0}=m.
+}
+\]
 
-A second heterogeneous system would materially strengthen the generality argument. `microdonta` can supply mechanism/basin/observational-symmetry witnesses, but it should be labeled illustrative unless tied to real data or published parameter ranges.
+On the same retained present slice:
 
-### P1 — refresh cross-repository validation after the trajectory-first reframe
+- required state: \(1\to 2^m\) classes;
+- fixed-monitoring debt: \(0\to m\) bits;
+- full-state licensing: yes \(\to\) no;
+- coarse target reportability: yes \(\to\) yes.
 
-Some dated validation documents still describe CREST as four co-level audits and contain pre-J1/pre-reframe statements. They are valid provenance but are no longer canonical.
+Every address-readout trajectory enters the same newly rescued `fragile` world, so the result is not a disjoint union of independent readout and rescue gadgets.
 
-**Pass condition:** one post-2026-08-22 validation note confirms:
+The no-bound corollary is
 
-- CCOC/MLTR/MRM are structural insufficiency layers;
-- CED is downstream evidence licensing;
-- J1/J3/J6 finite proof status is unchanged;
-- no current README/manuscript links point to the old MRM-hosted CREST synthesis;
-- stale dated audits are explicitly marked historical where necessary.
+\[
+\boxed{
+\text{there is no finite }f(\Delta|K^*|)
+\text{ that universally upper-bounds }\Delta K_{U_0}.
+}
+\]
 
-### P2 — trajectory/stochastic extension is research, not a current submission blocker
+This is stronger than the qualitative observation that actions and state abstractions interact. It asserts an **unbounded scale separation across CREST gates while capability gain is fixed at one world**.
 
-A true theorem on infinite histories, stochastic trajectories, continuous state, partial observation, or eco-evolutionary dynamics would strengthen the philosophical headline, but it is not required to validate the current finite claims.
+### D. Repair/evidence noncommutation
 
-If pursued, it should not merely rederive causal states/PSRs. A new theorem must depend essentially on CREST-specific multi-contract coupling or evidence licensing.
+O1 shows that a cheapest structural carrier repair need not be a cheapest fully evidence-licensed repair. This remains useful because it prevents Gate A repair and Gate C licensing from being collapsed into one optimization objective.
 
-### P2 — representational stability needs a metric/boundary only if promoted
+## 4. Companion-program claim ceilings
 
-The current action-expansion witness already proves one strict case where representational adequacy changes before the physical ecosystem does. The general phrase **representational stability/resilience** should remain interpretive unless CREST supplies a nontrivial comparison metric, robustness radius, or necessary-and-sufficient stability boundary.
+- **CCOC:** candidate novelty is the constrained same-system closed/open interface separation and bounded-local sharpness realization, not generic future-sensitive minimization.
+- **MLTR:** candidate novelty is source-relative exact repair constrained to preserve inherited labels/meaning, not generic partition refinement.
+- **MRM:** many standalone pieces are close to standard robust/model-uncertain prediction; its strongest role is as a mechanism-response constraint inside CREST.
+- **CED:** strongest as the downstream evidence/licensing layer; target-oriented OED/VOI/partial identification are not novel individually.
 
-## 5. Current stop/go decision
+## 5. Validation still required before submission
 
-### Safe to continue toward Biology & Philosophy
+### P0 — integrate the scaling theorem into the manuscript
 
-Yes, if the manuscript is framed as:
+The Biology & Philosophy manuscript still describes the older qualitative `rescue` witness as the main action-expansion result.
 
-> a theorem-grounded ecology-specific architecture for deciding when temporally extended ecological worlds may be treated as the same scientific state, with explicit separation of structural adequacy, evidence identification, and target reportability.
+**Pass condition:** the manuscript distinguishes:
 
-### Not safe as a novelty claim
+1. J1 = conditional least-state existence/minimality backbone;
+2. qualitative action expansion = monotone direction;
+3. capability–resolution divergence = arbitrary cross-gate scale separation/no-bound theorem.
 
-Do not headline:
+### P0 — add the state/action-abstraction prior-art boundary
 
-- “ecological state is a trajectory”;
-- “state is a compression of history and future”;
-- “future interventions define present state” in the generic sense;
-- “adequate state is contract-relative”;
-- “monitoring should change when management changes”;
-- “representational obsolescence” as a first concept.
+The manuscript already contains the PSR/POMDP boundary but should also cite Konidaris (2019) or equivalent state/action abstraction work.
 
-Those have strong prior-art neighborhoods.
+**Pass condition:** it explicitly concedes that action choice/action abstraction can shape required state abstraction, and locates the CREST claim in the carrier/state/evidence/target scaling conjunction.
 
-### Strongest headline candidate
+### P0 — theorem proof/test consistency
 
-> CREST couples future/composition, inherited semantics, retained mechanisms, carrier feasibility, and evidence licensing into one ecological state-equivalence problem and shows that the state required by a scientific contract, the state identified by evidence, and the target that can be reported need not coincide.
+The connected witness must remain analytically described and executable from the same transition system.
 
-This is currently the best novelty-preserving center.
+**Pass condition:** multi-Python CI verifies for a finite range of \(m\) that:
 
-## 6. Development rule
+- carrier gain is exactly one;
+- present-state class count is \(1\to2^m\);
+- monitoring debt is exactly \(m\) bits;
+- full-state evidence fails after expansion;
+- coarse target remains reportable;
+- readout paths terminate in the same rescued world.
 
-Do not expand theorem count by default. The next work should be, in order:
+The analytic proof supplies arbitrary \(m\); finite tests are regression witnesses, not the proof.
 
-1. close the PSR/causal-state/controlled-abstraction prior-art boundary;
-2. refresh claim-by-claim novelty evidence under the trajectory-first framing;
-3. decide whether snapshot sufficiency is only a criterion or deserves a stronger theorem;
-4. add at least one ecology-grounded end-to-end worked case;
-5. only then consider a genuinely CREST-specific stochastic/trajectory theorem.
+### P1 — nearest-neighbour search for the no-bound conjunction
+
+The web/secondary search to date confirms strong prior art for automata state complexity, task-specific abstraction, action/state abstraction coupling, viability, observability, and partial observability. It has not produced a direct match to the full conjunction
+
+\[
+\Delta|K^*|=1,\quad
+\Delta K\text{ arbitrary},\quad
+\text{evidence adequacy lost},\quad
+\text{target reportability retained}.
+\]
+
+That absence is not proof of historical firstness.
+
+**Pass condition for current paper:** claim only a `candidate CREST-level contribution` / `we prove within this framework`, not “first ever,” unless a database-complete review is later performed.
+
+### P2 — optional future mathematics
+
+Not current blockers:
+
+- stochastic/continuous/infinite-state analogues that genuinely use the CREST multi-gate coupling;
+- a general representational-stability metric/radius;
+- a general observation-symmetry theorem.
+
+## 6. Empirical status
+
+Real-data or worked ecological applications are **optional illustrations**, not validation requirements for the finite theorem.
+
+The mathematical claims stand or fall on definitions, proofs, counterexamples, and finite regression/oracle checks. Do not reopen empirical-data collection as a submission blocker unless the paper is deliberately changed from a mathematical/philosophical paper into an empirical-methods paper.
+
+## 7. Current safe positioning
+
+Safe:
+
+> CREST provides a finite contract architecture that separates carrier feasibility, least-information state, evidence identification, and target reportability, and proves that one fixed-size capability expansion can add only one viable world while forcing arbitrarily many bits of additional state and monitoring resolution.
+
+Also safe:
+
+> The future repertoire can change the adequate present representation before the physical ecosystem changes; the novelty claim is not that actions can affect state abstraction in general, but that the effects on viability, required state, evidence adequacy, and target reportability can diverge without any carrier-gain-only bound.
+
+Not safe as novelty claims:
+
+- ecological state is a trajectory;
+- state is a compression of history/future;
+- future tests can define present predictive state;
+- actions can affect state abstraction;
+- adequate state is purpose/contract-relative;
+- monitoring should change when management changes;
+- representational obsolescence is a new general concept.
+
+## 8. Development rule
+
+Do not add another theorem family now.
+
+Current order:
+
+1. validate and merge the connected capability–resolution theorem;
+2. integrate it into the mathematical spine and manuscript;
+3. add the Konidaris/action–state abstraction boundary;
+4. re-run submission controls and theorem CI;
+5. stop mathematical proliferation unless a new result strengthens the same carrier/state/evidence/target chain.
