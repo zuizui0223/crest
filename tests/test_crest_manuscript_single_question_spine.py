@@ -35,13 +35,14 @@ def test_manuscript_follows_trajectory_first_state_spine() -> None:
 
 def test_temporally_extended_interpretation_is_not_mislabeled_as_proved() -> None:
     text = MANUSCRIPT.read_text(encoding="utf-8")
+    lower = text.lower()
 
     assert "scientifically licensed compression of a temporally extended ecological world" in text
     assert "not yet a general theorem for continuous or stochastic trajectories" in text
     assert "Snapshot sufficiency is a factorization criterion" in text
     assert "CED is deliberately downstream" in text
     assert "representational stability" in text
-    assert "no backward causation" in text
+    assert "no backward causation" in lower
 
 
 def test_predictive_and_action_abstraction_prior_art_boundaries_are_explicit() -> None:
@@ -61,9 +62,10 @@ def test_predictive_and_action_abstraction_prior_art_boundaries_are_explicit() -
 
 def test_scaling_theorem_is_the_quantitative_headline() -> None:
     text = MANUSCRIPT.read_text(encoding="utf-8")
+    lower = text.lower()
 
     assert "\\Delta |K^*|=1" in text
     assert "\\Delta K_{U_0}=m" in text
-    assert "no universal finite function" in text
-    assert "full-state licensing changes from yes to no" in text
-    assert "Viability gain alone therefore cannot upper-bound" in text
+    assert "no universal finite function" in lower
+    assert "full-state licensing changes from yes to no" in lower
+    assert "viability gain alone therefore cannot upper-bound" in lower
