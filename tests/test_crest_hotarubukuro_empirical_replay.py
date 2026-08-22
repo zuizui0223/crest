@@ -36,6 +36,7 @@ def test_binary_snapshot_is_useful_but_not_universally_adequate() -> None:
 
     assert outputs["binary_snapshot_useful_for_broad_state_target"] is True
     assert outputs["binary_snapshot_universally_adequate_across_targets"] is False
+    assert outputs["required_resolution_changes_across_targets"] is True
     assert outputs["within_pigmented_context_axis_required_for_human_context_target"] is True
 
 
@@ -54,10 +55,7 @@ def test_mechanism_and_provenance_claims_remain_unlicensed() -> None:
 
     assert outputs["pollinator_mediated_selection_identified"] is False
     assert outputs["horticultural_or_human_origin_identified"] is False
+    assert outputs["full_causal_state_identified_for_bombus_target"] is False
+    assert outputs["full_causal_state_identified_for_provenance_target"] is False
     assert outputs["human_context_overlay_reportable"] is True
-
-
-def test_required_identified_and_reportable_outputs_are_not_collapsed() -> None:
-    outputs = load_report()["crest_outputs"]
-    assert outputs["required_state_equals_identified_state"] is False
-    assert outputs["identified_state_equals_reportable_target"] is False
+    assert outputs["narrower_target_reportable_despite_causal_state_unresolved"] is True
