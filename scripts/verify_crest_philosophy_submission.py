@@ -35,9 +35,6 @@ def visible_text(markdown: str) -> str:
 
 
 def word_count(markdown: str) -> int:
-    # Repository-defined reproducible count. Journal/Word processors may tokenize
-    # equations and punctuation differently, so this is a version-controlled gate,
-    # not a claim about the publisher's production count.
     text = visible_text(markdown)
     return len(re.findall(r"\b[\w’'-]+\b", text, flags=re.UNICODE))
 
@@ -77,9 +74,6 @@ def main() -> int:
         if re.search(re.escape(name), reference_text, flags=re.I)
     ]
 
-    # Post-J1 synchronization gate. The manuscript may evolve its section numbering,
-    # so Gate A is recognized by its heading and common-carrier language rather than
-    # by the historical 3.1 position.
     carrier_gate_present = bool(
         re.search(r"###\s+\d+\.1\s+Gate A", text, flags=re.I)
         and re.search(r"common carrier|common ecological world set", text, flags=re.I)
@@ -106,10 +100,18 @@ def main() -> int:
         "defines_temporally_extended_state": (
             "scientifically licensed compression of a temporally extended ecological world" in text
         ),
-        "states_snapshot_sufficiency": "Snapshot sufficiency is a condition" in text,
+        "states_snapshot_factorization_criterion": (
+            "Snapshot sufficiency is a factorization criterion" in text
+            and "not a novelty-bearing theorem" in text
+        ),
         "separates_ced_as_evidence_gate": "CED is deliberately downstream" in text,
         "states_trajectory_theorem_firewall": (
             "not yet a general theorem for continuous or stochastic trajectories" in text
+        ),
+        "states_psr_prior_art_boundary": (
+            "Predictive State Representations" in text
+            and "does not claim novelty for predictive equivalence" in text
+            and "does not claim to be more expressive than a sufficiently rich PSR" in text
         ),
     }
 
