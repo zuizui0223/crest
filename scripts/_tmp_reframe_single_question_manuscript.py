@@ -38,26 +38,47 @@ for i, m in enumerate(matches):
     parts.append(sec3[m.start():end].strip())
 
 def classify(part: str) -> str:
+    heading = part.splitlines()[0].lower()
     low = part.lower()
-    if ("common carrier" in low or "common lift" in low) and ("j3" in low or "j6" in low or "carrier" in low):
+
+    # Prefer the existing subsection heading: it expresses the manuscript's present
+    # organization more reliably than incidental cross-references inside the prose.
+    if "carrier" in heading or "common lift" in heading:
+        return "carrier"
+    if "one ecological state" in heading or "joint state" in heading:
+        return "state"
+    if "evidence" in heading or "evidential" in heading:
+        return "evidence"
+    if "frontier" in heading:
+        return "cross"
+
+    # Fallbacks use distinctive mathematical content and are deliberately ordered
+    # from the most specific cross-gate/evidence markers to the more general J1 text.
+    if "management-induced information debt" in low or "`rescue`" in low or "adequacy frontier" in low:
+        return "cross"
+    if "reliability-qualified evidence partition" in low or "sharp state report" in low:
+        return "evidence"
+    if ("j3" in low or "j6" in low) and ("common carrier" in low or "common lift" in low):
         return "carrier"
     if "operatorname{state}" in low or ("j1" in low and "unique coarsest" in low):
         return "state"
-    if "evidence partition" in low or ("full-state" in low and "evidence" in low):
-        return "evidence"
-    if "adequacy frontier" in low or "management-induced information debt" in low or "`rescue`" in low:
-        return "cross"
     raise SystemExit("could not classify subsection: " + part.splitlines()[0])
 
 classified = {}
 for part in parts:
     key = classify(part)
     if key in classified:
-        raise SystemExit(f"duplicate Section 3 classification: {key}")
+        raise SystemExit(
+            f"duplicate Section 3 classification: {key}; headings were "
+            + " | ".join(p.splitlines()[0] for p in parts)
+        )
     classified[key] = part
 
 if set(classified) != {"carrier", "state", "evidence", "cross"}:
-    raise SystemExit(f"missing Section 3 classifications: {set(classified)}")
+    raise SystemExit(
+        f"missing Section 3 classifications: {set(classified)}; headings were "
+        + " | ".join(p.splitlines()[0] for p in parts)
+    )
 
 def rehead(part: str, heading: str) -> str:
     return re.sub(r"^### 3\.\d+ .*?$", heading, part, count=1, flags=re.M)
