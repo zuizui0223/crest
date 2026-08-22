@@ -45,6 +45,7 @@ def main() -> int:
     args = parser.parse_args()
 
     text = TARGET.read_text(encoding="utf-8")
+    lower_text = text.lower()
 
     abstract = section(text, "## Abstract", "**Keywords:**")
     keywords_line = section(text, "**Keywords:**", "## 1.").splitlines()[0].strip()
@@ -125,13 +126,13 @@ def main() -> int:
             and "For every integer \\(m\\ge1\\)" in text
         ),
         "states_no_carrier_gain_only_bound": (
-            "no universal finite function" in text
-            and "Viability gain alone therefore cannot upper-bound" in text
+            "no universal finite function" in lower_text
+            and "viability gain alone therefore cannot upper-bound" in lower_text
         ),
         "states_full_state_loss_target_retention": (
-            "full-state licensing changes from yes to no" in text
-            and "coarse target" in text
-            and "remains reportable" in text
+            "full-state licensing changes from yes to no" in lower_text
+            and "coarse target" in lower_text
+            and "remains reportable" in lower_text
         ),
         "states_connected_witness": (
             "connected future-response graph" in text
