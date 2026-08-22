@@ -63,14 +63,12 @@ This layer includes Monitoring Adequacy Envelope, Counterfactual Obsolescence, E
 
 ## Literature and novelty controls
 
-These establish claim boundaries rather than the scientific theory itself.
-
 ### Current authority
 
 - [`trajectory_first_novelty_validation_audit_2026-08-22.md`](trajectory_first_novelty_validation_audit_2026-08-22.md) — current novelty ceiling and development rule.
 - [`trajectory_first_nearest_neighbor_matrix_2026-08-22.md`](trajectory_first_nearest_neighbor_matrix_2026-08-22.md) — claim-by-claim overlap / difference / safe / blocked wording.
 - [`crest_vs_predictive_state_models_2026-08-22.md`](crest_vs_predictive_state_models_2026-08-22.md) — PSR/POMDP comparison and the decision that snapshot sufficiency is a factorization criterion rather than a novelty-bearing theorem.
-- [`trajectory_first_submission_citation_chase_2026-08-22.md`](trajectory_first_submission_citation_chase_2026-08-22.md) — final conservative nearest-neighbour citation chase for submission.
+- [`trajectory_first_submission_citation_chase_2026-08-22.md`](trajectory_first_submission_citation_chase_2026-08-22.md) — conservative nearest-neighbour citation chase for submission.
 - [`post_trajectory_cross_repo_validation_2026-08-22.md`](post_trajectory_cross_repo_validation_2026-08-22.md) — current cross-repository ownership/status validation.
 
 ### Historical evidence base
@@ -83,29 +81,35 @@ These remain useful evidence/provenance but predate the trajectory-first claim o
 
 ### Current safe positioning
 
-Not new by itself:
-
-- dynamic or trajectory-sensitive ecological identity;
-- causal-state or predictive-state compression of history/futures;
-- future action/observation tests defining predictive state;
-- purpose-relative adequacy;
-- task-specific state abstraction or POMDP state reduction;
-- abstraction transfer across tasks;
-- adaptive monitoring and target-oriented experimental design;
-- generic representational obsolescence or quotient/effective-law language.
+Not new by itself: dynamic or trajectory-sensitive ecological identity; causal-state or predictive-state compression of history/futures; future action/observation tests defining predictive state; purpose-relative adequacy; task-specific state abstraction or POMDP state reduction; abstraction transfer across tasks; adaptive monitoring; target-oriented experimental design; and generic representational obsolescence.
 
 Current strongest CREST-level contribution:
 
 > **an ecology-specific coupling of future/composition, inherited semantics/history, retained mechanism responses, carrier feasibility, finite state minimality, and downstream evidence licensing, with explicit separation of required state, identified state, and reportable target plus strict cross-gate witnesses.**
 
-## Ecology-grounded validation cases
+## Ecology-grounded validation
 
-Two deliberately heterogeneous conceptual cases now map real ecological mechanisms into the complete CREST contract without invented fitted parameters:
+### Conceptual cases
+
+Two deliberately heterogeneous conceptual cases map published ecological mechanisms into the complete CREST contract without invented fitted parameters:
 
 1. [`shallow_lake_end_to_end_crest_case_2026-08-22.md`](shallow_lake_end_to_end_crest_case_2026-08-22.md) — nutrient-loading history, sediment-P legacy, food-web/macrophyte feedback, restoration actions, and measurement-channel ambiguity.
 2. [`fragmented_landscape_end_to_end_crest_case_2026-08-22.md`](fragmented_landscape_end_to_end_crest_case_2026-08-22.md) — fragmentation history, extinction debt, colonization credit, dispersal/source limitation, restoration connectivity, and land-use legacy.
 
-These close the **conceptual ecological-grounding** requirement. They do not establish empirical predictive superiority. Any next application should use real data/model comparison rather than adding another illustrative relabelling.
+### Real-data state-adequacy replay
+
+3. [`hotarubukuro_empirical_crest_validation_2026-08-22.md`](hotarubukuro_empirical_crest_validation_2026-08-22.md) — cross-repository replay of locked *Campanula punctata* results from `zuizui0223/hotarubukuro`.
+
+The real-data replay uses the retained 1-km colour geometry (**1,305 cells; 674 pigmented, 631 white**) and three frozen paper analyses. It verifies a contract-dependent result that the conceptual cases could not supply:
+
+- the binary pigmentation snapshot is useful for the broad environment-vs-space target;
+- the same binary snapshot is not sufficient for the human-context/provenance-facing target because a reproducible isolation–population gradient remains within pigmented cells;
+- the current Bombus evidence does not license a deterministic pollinator-mediated selection state;
+- the human-context evidence licenses a narrower overlay report but not horticultural/provenance causation.
+
+The machine-readable source lock and assertions are in `../artifacts/hotarubukuro_empirical_crest_replay_2026-08-22.json` and `../tests/test_crest_hotarubukuro_empirical_replay.py`.
+
+This closes the first **real-data state-adequacy application**. It is not a raw-data re-estimation, predictive benchmark against competing algorithms, or causal validation of the inferred ecological mechanisms.
 
 ## Validation status
 
@@ -116,16 +120,18 @@ These close the **conceptual ecological-grounding** requirement. They do not est
 - PSR / causal-state / POMDP claim boundary;
 - snapshot-sufficiency status: **factorization criterion, not novelty theorem**;
 - CREST-versus-generic-predictive-model claim: **architectural decomposition, not non-embeddability**;
-- two heterogeneous ecology-grounded conceptual mappings;
+- two heterogeneous conceptual ecology mappings;
+- one locked real-data cross-repository state-adequacy replay;
 - post-reframe cross-repository ownership/status synchronization;
 - submission citation chase for the closest current novelty threats.
 
 ### Intentionally open future research — not submission blockers
 
-- empirical performance validation on a real dataset;
+- raw-data benchmarking of a CREST-derived state against alternative predictive/state-learning representations;
+- prospective data collection that resolves the currently unlicensed mechanism/provenance branches;
 - stochastic/continuous/infinite-state trajectory theorem that depends essentially on CREST-specific coupling;
 - a general metric or robustness radius for representational stability;
-- a true database-complete systematic review if historical-firstness were ever to be claimed.
+- a database-complete systematic review if historical-firstness were ever to be claimed.
 
 Dated pre-J1 and pre-trajectory validation notes remain provenance, not current authority.
 
@@ -150,7 +156,7 @@ The package should remain small. Single-axis CCOC/MLTR/MRM/CED algorithms belong
 
 ## Test ownership map
 
-Headline regression tests should be read as executable witnesses, not substitutes for analytic proofs.
+Headline regression tests are executable witnesses, not substitutes for analytic proofs.
 
 Core test groups:
 
@@ -158,6 +164,7 @@ Core test groups:
 - `test_crest_common_lift.py`, `test_crest_controlled_lift.py`, `test_crest_carrier_oracles.py` — Gate A;
 - `test_crest_action_expansion_cross_gate.py`, `test_crest_adequacy_frontier.py` — cross-gate witness;
 - `test_crest_microdonta_channel_bridge.py` — ecological channel-identifiability witness;
+- `test_crest_hotarubukuro_empirical_replay.py` — locked real-data state-adequacy replay;
 - `test_crest_derived_frontier_concepts.py` — derived regime mathematics.
 
 Repair/lift tests are supporting regression suites.
@@ -171,4 +178,4 @@ A new named result enters the canonical spine only if it does at least one of th
 3. proves a sharp lower/upper bound that depends essentially on the CREST contract architecture;
 4. produces an empirical discrimination that cannot be reduced to ordinary adaptive monitoring, POMDP, PSR, or generic state abstraction.
 
-Otherwise, extend an existing result, add an empirical validation, or record the idea under future research rather than creating another headline concept.
+Otherwise, extend an existing result, add a prospective empirical validation, or record the idea under future research rather than creating another headline concept.
