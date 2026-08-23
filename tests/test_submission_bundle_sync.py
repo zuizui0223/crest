@@ -52,9 +52,10 @@ def test_title_page_and_review_manuscript_use_the_same_title() -> None:
 
 def test_submission_readme_records_math_first_finished_state() -> None:
     text = SUBMISSION_README.read_text(encoding="utf-8")
+    plain = text.replace("**", "")
     assert "connected capability–resolution divergence theorem" in text
     assert "Existing conceptual and real-data ecology cases are optional illustrations" in text
-    assert "Repository-controlled scientific development is closed" in text
+    assert "Repository-controlled scientific development is closed" in plain
     assert "verify the integrated trajectory-first manuscript" not in text
 
 
