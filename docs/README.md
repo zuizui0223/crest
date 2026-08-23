@@ -12,16 +12,19 @@ Read these first, in order.
 2. [`contract_relative_ecological_state_theory.md`](contract_relative_ecological_state_theory.md)  
    Philosophical statement of ecological state as scientifically licensed compression of a temporally extended ecological world.
 
-3. [`crest_mathematical_spine.md`](crest_mathematical_spine.md)  
+3. [`world_law_stability_synthesis_2026-08-23.md`](world_law_stability_synthesis_2026-08-23.md)  
+   Higher-level synthesis: self-modifying ecological worlds → partial observation → contract-relative states → quotient-level effective laws → dynamical/evolutionary/representational stability. It also gives the explicit physics firewall and the `microdonta` bridge for basin memory, latent causal degeneracy, and structural observational symmetry.
+
+4. [`crest_mathematical_spine.md`](crest_mathematical_spine.md)  
    Canonical finite chain: carrier → least-information state → evidence → qualitative action expansion → arbitrary capability–resolution divergence.
 
-4. [`crest_capability_resolution_divergence_theorem_2026-08-22.md`](crest_capability_resolution_divergence_theorem_2026-08-22.md)  
+5. [`crest_capability_resolution_divergence_theorem_2026-08-22.md`](crest_capability_resolution_divergence_theorem_2026-08-22.md)  
    Connected scaling theorem: one added action, carrier gain exactly one world, arbitrary \(m\)-bit state/monitoring burden, full-state licensing loss, coarse-target retention.
 
-5. [`crest_ecological_projection.md`](crest_ecological_projection.md)  
+6. [`crest_ecological_projection.md`](crest_ecological_projection.md)  
    Ecology-facing interpretation: open futures, history, mechanisms, quotient laws, monitoring, and representational stability.
 
-6. [`../manuscript/crest_philosophy_biology_philosophy.md`](../manuscript/crest_philosophy_biology_philosophy.md)  
+7. [`../manuscript/crest_philosophy_biology_philosophy.md`](../manuscript/crest_philosophy_biology_philosophy.md)  
    Biology & Philosophy target manuscript with PSR/POMDP and state/action-abstraction novelty firewalls.
 
 ## Headline proof documents
@@ -87,6 +90,8 @@ Current strongest CREST-level contribution:
 
 > **a finite ecology-specific carrier/state/evidence/target architecture plus a connected cross-gate scaling theorem in which one newly admitted action increases the controlled carrier by exactly one world while forcing an arbitrary \(m\)-bit increase in least-state and monitoring resolution, with full-state licensing lost but a coarse target retained.**
 
+The 2026-08-23 world–law–stability synthesis is an **interpretive unification**, not a new originality claim for block-universe metaphysics, predictive states, adaptive evolution, effective theories, or ecological stability concepts.
+
 No historical-firstness claim is made for the generic ingredients.
 
 ## Optional ecological illustrations — not proof obligations
@@ -97,6 +102,14 @@ The finite theorem does **not** require empirical data. Existing ecological mapp
 
 - [`shallow_lake_end_to_end_crest_case_2026-08-22.md`](shallow_lake_end_to_end_crest_case_2026-08-22.md) — nutrient-history / restoration example.
 - [`fragmented_landscape_end_to_end_crest_case_2026-08-22.md`](fragmented_landscape_end_to_end_crest_case_2026-08-22.md) — fragmentation-history / connectivity example.
+
+### Mechanistic / latent-structure bridge
+
+The separate `zuizui0223/microdonta` repository supplies ecology-grounded mathematical witnesses that can be projected into CREST without becoming new CREST theorem families:
+
+- basin/path hysteresis under restoration — same restored environment, different long-run outcome depending on history/basin;
+- latent causal switch degeneracy — multiple mechanism configurations remain compatible with the same observation;
+- channel-identifiability symmetry — net-only observations can be structurally unable to distinguish distinct causal channels.
 
 ### Optional real-data replay
 
@@ -179,4 +192,4 @@ A new named result enters the canonical spine only if it does at least one of th
 2. proves a genuinely cross-gate impossibility/noncommutation;
 3. proves a sharp lower/upper/no-bound result that depends essentially on the CREST carrier/state/evidence/target architecture.
 
-Empirical illustration by itself is not a reason to create another theorem family. Otherwise, extend an existing result or record the idea under future research rather than expanding the headline surface.
+Empirical illustration or philosophical relabelling by itself is not a reason to create another theorem family. Otherwise, extend an existing result or record the idea under future research rather than expanding the headline surface.
