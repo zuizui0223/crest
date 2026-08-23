@@ -22,15 +22,20 @@ def test_submission_handoff_matches_generated_report_and_current_headline() -> N
         f"visible words before References: **{report['manuscript_words_before_references']:,}**"
         in handoff
     )
-    assert "theorem/regression suite: **93 tests PASS**" in handoff
+    assert "theorem/regression suite: **103 tests PASS**" in handoff
     assert "\\Delta |K^*|=1" in handoff
     assert "\\Delta K_{U_0}=m" in handoff
     assert "CED is downstream" in handoff
+    assert "R_{\\mathcal C}=L_{\\mathcal C,V}\\circ q_{\\mathcal C,V}" in handoff
+    assert "domain-relative law validity" in handoff
 
     for stale in (
         "four currently formalized obligations",
         "abstract: **234 words**",
+        "abstract: **244 words**",
         "5,942",
+        "6,715",
+        "theorem/regression suite: **93 tests PASS**",
         "one strict cross-gate ecological result",
     ):
         assert stale not in handoff
