@@ -1,7 +1,7 @@
 {
   "target": "manuscript/crest_philosophy_biology_philosophy.md",
   "repository_word_count_definition": "visible markdown tokens before References; publisher count may differ slightly",
-  "abstract_words": 244,
+  "abstract_words": 240,
   "keyword_count": 6,
   "keywords": [
     "philosophy of ecology",
@@ -11,8 +11,8 @@
     "causal abstraction",
     "model adequacy"
   ],
-  "manuscript_words_before_references": 6715,
-  "development_target_5500_7500_met": true,
+  "manuscript_words_before_references": 7738,
+  "development_target_5500_7500_met": false,
   "hard_cap_10000_met": true,
   "blind_hits": {},
   "excluded_unpublished_reference_hits": [],
