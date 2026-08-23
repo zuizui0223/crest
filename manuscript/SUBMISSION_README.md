@@ -66,7 +66,7 @@ with full-state identification lost under fixed evidence while a coarse target r
 - Automated blockers: **0**
 - Theorem/regression suite: **103 tests PASS**
 - Python 3.10 / 3.11 / 3.12 theorem/regression tests: **green**
-- Python 3.12 submission verifier: **green**
+- Python 3.12 submission verifier / repository hygiene / deterministic artifact: **green**
 
 Canonical generated record:
 
@@ -124,7 +124,7 @@ Key constraints already encoded in the finishing path:
 
 ## Remaining finishing path
 
-Repository-controlled scientific development is closed once this synthesis PR is green and merged.
+Repository-controlled scientific development is **closed** for the present submission.
 
 Remaining work is the exact-upload layer:
 
