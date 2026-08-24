@@ -266,7 +266,7 @@ The candidate CREST-level contribution is the **carrier/state/evidence/target cr
 2. [`docs/crest_mathematical_spine.md`](docs/crest_mathematical_spine.md) — canonical finite theorem chain and scaling result.
 3. [`docs/crest_capability_resolution_divergence_theorem_2026-08-22.md`](docs/crest_capability_resolution_divergence_theorem_2026-08-22.md) — analytic connected scaling construction and no-bound corollary.
 4. [`docs/crest_ecological_projection.md`](docs/crest_ecological_projection.md) — ecology-facing interpretation, quotient laws, and stability.
-5. [`manuscript/crest_philosophy_biology_philosophy.md`](manuscript/crest_philosophy_biology_philosophy.md) — Biology & Philosophy target manuscript.
+5. [`manuscript/crest_biology_philosophy_blinded_submission.md`](manuscript/crest_biology_philosophy_blinded_submission.md) — Biology & Philosophy target manuscript.
 6. [`docs/README.md`](docs/README.md) — supporting proofs, audits, optional applications, and archived development concepts.
 
 ## 12. Scope firewall

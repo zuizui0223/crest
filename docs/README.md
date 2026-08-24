@@ -12,7 +12,7 @@ Read these first, in order.
 2. [`contract_relative_ecological_state_theory.md`](contract_relative_ecological_state_theory.md)  
    Philosophical statement of ecological state as scientifically licensed compression of a temporally extended ecological world.
 
-3. [`world_law_stability_synthesis_2026-08-23.md`](world_law_stability_synthesis_2026-08-23.md)  
+3. [`world_law_stability_synthesis_2026-08-23.md`](../archive/graphify-cleanup-2026-08-24/docs/world_law_stability_synthesis_2026-08-23.md)  
    Higher-level synthesis: self-modifying ecological worlds → partial observation → contract-relative states → quotient-level effective laws → dynamical/evolutionary/representational stability. It also gives the explicit physics firewall and the `microdonta` bridge for basin memory, latent causal degeneracy, and structural observational symmetry.
 
 4. [`crest_mathematical_spine.md`](crest_mathematical_spine.md)  
@@ -24,7 +24,7 @@ Read these first, in order.
 6. [`crest_ecological_projection.md`](crest_ecological_projection.md)  
    Ecology-facing interpretation: open futures, history, mechanisms, quotient laws, monitoring, and representational stability.
 
-7. [`../manuscript/crest_philosophy_biology_philosophy.md`](../manuscript/crest_philosophy_biology_philosophy.md)  
+7. [`../manuscript/crest_biology_philosophy_blinded_submission.md`](../manuscript/crest_biology_philosophy_blinded_submission.md)  
    Biology & Philosophy target manuscript with PSR/POMDP and state/action-abstraction novelty firewalls.
 
 ## Headline proof documents
@@ -105,10 +105,10 @@ The finite theorem does **not** require empirical data. Existing ecological mapp
 
 ### Integrated restoration/conservation projection
 
-- [`restoration_conservation_cross_domain_validation_2026-08-24.md`](restoration_conservation_cross_domain_validation_2026-08-24.md) — current four-domain CREST mapping and claim ceiling.
+- [`restoration_conservation_cross_domain_validation_2026-08-24.md`](../archive/graphify-cleanup-2026-08-24/docs/restoration_conservation_cross_domain_validation_2026-08-24.md) — current four-domain CREST mapping and claim ceiling.
 - [`restoration_conservation_primary_source_audit_2026-08-24.md`](restoration_conservation_primary_source_audit_2026-08-24.md) — direct-observation versus CREST-interpretation audit, including negative and partial findings.
 
-The canonical manuscript uses this projection as its primary ecology-facing illustration. The ecological studies do not prove the finite theorem or its arbitrary scaling.
+These archived analyses preserve development provenance. They are outside the current philosophy → finite mathematics → ecological projection manuscript spine and do not validate the finite theorem.
 
 ### Mechanistic / latent-structure bridge
 

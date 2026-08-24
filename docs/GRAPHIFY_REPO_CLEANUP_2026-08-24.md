@@ -85,4 +85,4 @@ The current `manuscript/` directory mixes active submission artifacts with integ
 - `joint_state_section.md`
 - older fit-check / handoff files once the final blinded submission path is merged.
 
-No file in this list should be deleted before the graph confirms it is no longer referenced by the active submission/reproducibility path.
+The deep graph confirmed that the superseded submission files are outside the active submission/reproducibility path. The applied classification and verification checkpoint are recorded in `GRAPHIFY_CLEANUP_RESULT_2026-08-24.md`.
