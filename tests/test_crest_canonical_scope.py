@@ -13,7 +13,8 @@ def test_three_stage_manuscript_spine_is_explicit() -> None:
 
 
 def test_empirical_validation_is_outside_manuscript_spine() -> None:
-    assert "not an empirical validation paper" in DOC
+    plain_text = DOC.replace("**", "")
+    assert "not an empirical validation paper" in plain_text
     assert "Izu/Campanula empirical validation" in DOC
     assert "restoration/conservation case-study validation" in DOC
     assert "do not add" in DOC.lower()
