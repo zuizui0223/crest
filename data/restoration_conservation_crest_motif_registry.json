@@ -1,0 +1,111 @@
+{
+  "schema_version": "2026-08-24",
+  "purpose": "Score independent restoration/conservation systems against the same empirical CREST motif without treating them as proof of the finite theorem.",
+  "motif_criteria": [
+    "capability_change",
+    "feasible_future_expansion",
+    "previously_ignorable_distinction_becomes_response_relevant",
+    "response_divergence_within_old_coarse_state",
+    "old_or_coarse_monitoring_can_be_insufficient",
+    "coarse_management_target_can_remain_reportable"
+  ],
+  "cases": [
+    {
+      "id": "R1_elwha_dam_removal",
+      "domain": "freshwater restoration",
+      "action": "remove migration barrier / restore longitudinal passage",
+      "capability_change": true,
+      "feasible_future_expansion": true,
+      "previously_ignorable_distinction_becomes_response_relevant": true,
+      "response_divergence_within_old_coarse_state": true,
+      "old_or_coarse_monitoring_can_be_insufficient": true,
+      "coarse_management_target_can_remain_reportable": true,
+      "motif_status": "full",
+      "evidence_grade": "A",
+      "evidence_basis": [
+        "Two Elwha dams blocked access to more than 90% of the watershed before removal.",
+        "Post-removal eDNA used 11 species-specific assays and found species-specific recolonization timing and spatial extent.",
+        "Focal passage/detection targets are reportable without full community-state identification."
+      ],
+      "sources": [
+        "https://www.fisheries.noaa.gov/west-coast/science-data/dam-removals-elwha-river",
+        "doi:10.1002/edn3.134"
+      ]
+    },
+    {
+      "id": "R2_invasive_plant_removal",
+      "domain": "invasion management / ecological restoration",
+      "action": "remove or suppress invasive plant",
+      "capability_change": true,
+      "feasible_future_expansion": true,
+      "previously_ignorable_distinction_becomes_response_relevant": true,
+      "response_divergence_within_old_coarse_state": true,
+      "old_or_coarse_monitoring_can_be_insufficient": true,
+      "coarse_management_target_can_remain_reportable": true,
+      "motif_status": "full",
+      "evidence_grade": "A/B",
+      "evidence_basis": [
+        "A 440-study review identifies persistent soil microbial, nutrient, seed-bank, secondary-invasion and reinvasion legacies after invasive control.",
+        "A 2023 systematic review reports reinvasion and/or secondary invasion in more than 35% of reviewed studies while seed-bank response was rarely examined.",
+        "Invader-control success can therefore be reportable while native-community recovery remains unresolved."
+      ],
+      "sources": [
+        "doi:10.1111/rec.12669",
+        "doi:10.1016/j.ecoleng.2023.107122"
+      ]
+    },
+    {
+      "id": "R3_peatland_rewetting",
+      "domain": "peatland restoration / climate mitigation",
+      "action": "block drainage / raise water table",
+      "capability_change": true,
+      "feasible_future_expansion": true,
+      "previously_ignorable_distinction_becomes_response_relevant": true,
+      "response_divergence_within_old_coarse_state": true,
+      "old_or_coarse_monitoring_can_be_insufficient": true,
+      "coarse_management_target_can_remain_reportable": true,
+      "motif_status": "full",
+      "evidence_grade": "A/B",
+      "evidence_basis": [
+        "After 7-16 years of rewetting, methanogen abundance and composition can approach pristine conditions while methane-production activity remains substrate-limited.",
+        "Large-scale tropical rewetting can reduce subsidence while vegetation recovery remains a distinct restoration dimension.",
+        "Hydrological restoration is therefore a reportable target that does not uniquely identify carbon-cycle or microbial recovery state."
+      ],
+      "sources": [
+        "doi:10.1016/j.ecoleng.2020.105852",
+        "https://www.nature.com/articles/s41598-024-60462-3"
+      ]
+    },
+    {
+      "id": "R4_prescribed_fire_reintroduction",
+      "domain": "fire ecology / restoration",
+      "action": "reintroduce prescribed fire after long exclusion",
+      "capability_change": true,
+      "feasible_future_expansion": true,
+      "previously_ignorable_distinction_becomes_response_relevant": true,
+      "response_divergence_within_old_coarse_state": true,
+      "old_or_coarse_monitoring_can_be_insufficient": true,
+      "coarse_management_target_can_remain_reportable": true,
+      "motif_status": "strong_partial_replication",
+      "evidence_grade": "A/B",
+      "partial_reason": "The action/history/seed-bank response pieces are strongly supported, but the evidence-state versus reportable-target separation is assembled across studies rather than demonstrated as one integrated monitoring experiment.",
+      "evidence_basis": [
+        "Fire reintroduction after long exclusion can cause novel tree mortality because accumulated duff/fuel structure changes response.",
+        "Prescribed-fire effects on seed banks can differ from visible above-ground community response.",
+        "Ecological condition and fire season can alter seed-bank response."
+      ],
+      "sources": [
+        "doi:10.1111/j.1526-100x.2005.00067.x",
+        "doi:10.2737/RMRS-GTR-238",
+        "doi:10.1016/j.rala.2026.06.002",
+        "doi:10.1016/j.jaridenv.2013.04.001"
+      ]
+    }
+  ],
+  "summary": {
+    "full_motif_cases": 3,
+    "strong_partial_replications": 1,
+    "primary_conclusion": "The qualitative CREST motif recurs independently in freshwater restoration, invasion management, and peatland restoration, with prescribed fire providing a strong partial replication. The repeated phenomenon is not generic response heterogeneity; it is intervention-induced representational refinement with possible monitoring insufficiency and target/state separation.",
+    "theorem_firewall": "No empirical case establishes the arbitrary-m finite no-bound theorem."
+  }
+}
