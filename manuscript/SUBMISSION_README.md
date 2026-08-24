@@ -16,23 +16,24 @@ Superseded manuscripts, handoffs, title pages, and integrated inserts are preser
 ## Scientific spine
 
 ```text
-PHILOSOPHY
-temporally extended ecological worlds
+ECOLOGICAL-STATE PROBLEM
+when should different ecological worlds count as the same state?
+→ temporally extended ecological worlds
 → contract-relative state sameness
 → quotient-level ecological laws
 
-MATHEMATICS
+FINITE MATHEMATICS
 finite carrier
 → least-information required state
 → evidence licensing
 → capability–resolution divergence
 
-ECOLOGY
-state variables are conditional compressions
-→ functional equivalence is future-relative
+ECOLOGICAL CONSEQUENCES
+current functional equivalence need not survive a changed future responsibility
 → history and mechanism matter only when response-relevant
 → monitoring success need not identify full state
 → representational stability differs from dynamical stability
+→ conservation/management repertoire changes require state-adequacy re-audit
 ```
 
 The theorem-level headline is
@@ -45,20 +46,25 @@ The theorem-level headline is
 
 for arbitrary finite \(m\), with full-state licensing lost under fixed evidence while a coarse target remains reportable.
 
+The novelty claim is deliberately narrow: CREST does **not** claim novelty for purpose-relative adequacy, predictive equivalence, POMDP/PSR expressivity, state/action abstraction coupling, ecological history dependence, or generic partition refinement. The defended contribution is the ecology-specific separation of admissible worlds, task-required state, evidence-identified state, reportable target, and quotient-law validity, together with the connected no-bound construction across these layers.
+
 ## Verified submission state
 
 - Abstract: 216 words
-- Main text before References: 5,810 words
+- Main text before References: 5,818 words
 - Keywords: 6
 - Double-blind identifier hits: 0
 - Automated blockers: 0
-- Full regression suite at cleanup: 133 tests passed
+- Active regression suite: 132 tests passed
+- Submission verifier: pass
 
 Run:
 
 ```bash
 pytest
 python scripts/verify_crest_philosophy_submission.py --write-report
+git diff --check
+test -z "$(git status --porcelain)"
 ```
 
 The deterministic verifier record is `../artifacts/crest_philosophy_submission_report.json`.
