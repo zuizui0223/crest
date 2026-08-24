@@ -1,11 +1,10 @@
 {
   "target": "manuscript/crest_biology_philosophy_blinded_submission.md",
   "abstract_words": 216,
-  "main_text_words_before_references": 5810,
+  "main_text_words_before_references": 5818,
   "keyword_count": 6,
   "blind_hits": {},
   "missing_canonical_items": [],
   "blockers": [],
-  "status": "pass",
-  "checkpoint": "graphify-cleanup-2026-08-24"
+  "status": "pass"
 }
