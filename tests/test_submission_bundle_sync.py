@@ -1,64 +1,31 @@
-from __future__ import annotations
-
-import json
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
-MANUSCRIPT = ROOT / "manuscript" / "crest_philosophy_biology_philosophy.md"
-HANDOFF = ROOT / "manuscript" / "biology_philosophy_submission_handoff.md"
-SUBMISSION_README = ROOT / "manuscript" / "SUBMISSION_README.md"
-TITLE_PAGE = ROOT / "manuscript" / "title_page_template.md"
-REPORT = ROOT / "artifacts" / "crest_philosophy_submission_report.json"
-OBSOLETE_INSERT = ROOT / "manuscript" / "adequacy_frontier_insert.md"
+MANUSCRIPT_DIR = ROOT / "manuscript"
+ARCHIVE = ROOT / "archive" / "graphify-cleanup-2026-08-24"
+CANONICAL = {
+    "crest_biology_philosophy_blinded_submission.md",
+    "biology_philosophy_title_page_TEMPLATE.md",
+    "SUBMISSION_README.md",
+    "SUBMISSION_BLOCKERS_2026-08-24.md",
+    "crest_canonical_scope_2026-08-24.md",
+}
 
 
-def test_submission_handoff_matches_generated_report_and_current_headline() -> None:
-    handoff = HANDOFF.read_text(encoding="utf-8")
-    report = json.loads(REPORT.read_text(encoding="utf-8"))
-
-    assert f"abstract: **{report['abstract_words']} words**" in handoff
-    assert (
-        f"visible words before References: **{report['manuscript_words_before_references']:,}**"
-        in handoff
-    )
-    assert "theorem/regression suite: **143 tests PASS**" in handoff
-    assert "\\Delta |K^*|=1" in handoff
-    assert "\\Delta K_{U_0}=m" in handoff
-    assert "CED is downstream" in handoff
-    assert "R_{\\mathcal C}=L_{\\mathcal C,V}\\circ q_{\\mathcal C,V}" in handoff
-    assert "domain-relative law validity" in handoff
-
-    for stale in (
-        "four currently formalized obligations",
-        "abstract: **234 words**",
-        "abstract: **244 words**",
-        "5,942",
-        "6,715",
-        "theorem/regression suite: **93 tests PASS**",
-        "theorem/regression suite: **103 tests PASS**",
-        "one strict cross-gate ecological result",
-    ):
-        assert stale not in handoff
+def test_manuscript_surface_is_single_and_canonical() -> None:
+    assert {p.name for p in MANUSCRIPT_DIR.iterdir() if p.is_file()} == CANONICAL
 
 
-def test_title_page_and_review_manuscript_use_the_same_title() -> None:
-    manuscript = MANUSCRIPT.read_text(encoding="utf-8")
-    title_page = TITLE_PAGE.read_text(encoding="utf-8")
-    first = "What Counts as the Same Ecological State?"
-    second = "A Contract-Relative Theory of Temporally Extended Ecological States"
-    assert f"# {first}\n## {second}" in manuscript
-    assert f"**{first} {second}**" in title_page
+def test_submission_entrypoints_name_the_blinded_candidate() -> None:
+    readme = (MANUSCRIPT_DIR / "SUBMISSION_README.md").read_text(encoding="utf-8")
+    verifier = (ROOT / "scripts" / "verify_crest_philosophy_submission.py").read_text(encoding="utf-8")
+    assert "crest_biology_philosophy_blinded_submission.md" in readme
+    assert 'TARGET = Path("manuscript/crest_biology_philosophy_blinded_submission.md")' in verifier
+    assert "crest_philosophy_biology_philosophy.md" not in readme
+    assert "crest_philosophy_biology_philosophy.md" not in verifier
 
 
-def test_submission_readme_records_math_first_finished_state() -> None:
-    text = SUBMISSION_README.read_text(encoding="utf-8")
-    plain = text.replace("**", "")
-    assert "connected capability–resolution divergence theorem" in text
-    assert "primary-source-grounded restoration/conservation projection" in text
-    assert "Repository-controlled scientific development is closed" in plain
-    assert "verify the integrated trajectory-first manuscript" not in text
-
-
-def test_obsolete_frontier_insert_is_not_in_submission_bundle() -> None:
-    assert not OBSOLETE_INSERT.exists()
+def test_superseded_submission_material_is_archived() -> None:
+    assert (ARCHIVE / "manuscript" / "crest_philosophy_biology_philosophy.md").is_file()
+    assert (ARCHIVE / "manuscript" / "biology_philosophy_submission_handoff.md").is_file()
+    assert (ARCHIVE / "tests" / "test_crest_frontier_manuscript_surface.py").is_file()
