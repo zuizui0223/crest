@@ -23,6 +23,13 @@ def test_three_cases_meet_full_motif_and_fire_is_partial_replication() -> None:
     assert statuses["R4_prescribed_fire_reintroduction"] == "strong_partial_replication"
     assert REGISTRY["summary"]["full_motif_cases"] == 3
     assert REGISTRY["summary"]["strong_partial_replications"] == 1
+    assert REGISTRY["summary"]["direct_end_to_end_demonstrations"] == 0
+
+
+def test_full_status_is_explicitly_cross_source_not_one_integrated_experiment() -> None:
+    semantics = REGISTRY["status_semantics"]
+    assert "does not mean that one study tested the full chain end to end" in semantics["full"]
+    assert "None of the four cases" in semantics["direct_end_to_end_test"]
 
 
 def test_full_motif_cases_satisfy_all_six_boolean_criteria() -> None:

@@ -28,6 +28,8 @@ CREST does not claim novelty for monitoring, adaptive management or purpose-spec
 
 > **When does a newly admitted restoration action make the old present-state representation itself inadequate?**
 
+The evidence grades below apply to the ecological intervention results, not to an end-to-end test of the CREST architecture. No cited study was designed to compare a declared old quotient, a response-aware replacement quotient, evidence licensing and target reportability in one integrated analysis. Those links must therefore be separated into **direct observation** and **CREST interpretation**.
+
 ---
 
 # Case R1 — Dam removal: expanding the feasible ecological world set
@@ -57,7 +59,7 @@ This is the strongest real-world analogue of Gate A. A small management grammar 
 
 ### Evidence grade
 
-**A.** Direct before/after ecosystem-scale intervention plus multi-year species-specific monitoring.
+**A/B.** Ecosystem-scale intervention followed by multi-year, multi-method post-removal monitoring. The cited studies did not experimentally compare two pre-removal state representations.
 
 ### Claim boundary
 
@@ -79,7 +81,11 @@ Remove or suppress an invasive alien plant.
 
 ### Empirical anchor
 
-A 440-study review of N2-fixing woody invaders identified persistent restoration barriers after invasive-species control: altered soil microbial communities, depleted native seed banks, elevated soil N, secondary invasion, reinvasion and dominance by weedy native species. DOI: `10.1111/rec.12669`.
+A 4.5-year field study of *Acacia longifolia* removal compared long- and recently invaded areas and found that microbial measures recovered faster than carbon and nitrogen pools; time since invasion and removal of the nitrogen-rich litter layer affected recovery. DOI: `10.1007/s10530-008-9295-1`.
+
+Direct removal experiments also separate invader control from native recovery. Flory and Clay found 87–99% *Microstegium vimineum* biomass reduction across removal methods, while native-diversity responses depended on treatment selectivity. DOI: `10.1111/j.1365-2664.2009.01610.x`. Rohal et al. found that above-ground vegetation generally reflected seed-bank communities across *Phragmites* treatments, but native graminoids could remain rare above ground despite occurring in the seed bank, and degraded sites lacked sufficient native seed banks for passive recovery. DOI: `10.1111/avsc.12626`.
+
+A 440-study review of N2-fixing woody invaders also identified persistent restoration barriers after invasive-species control: altered soil microbial communities, depleted native seed banks, elevated soil N, secondary invasion, reinvasion and dominance by weedy native species. DOI: `10.1111/rec.12669`.
 
 A 2023 systematic review of native-community restoration after invasive-alien-plant management concluded that removal alone is often insufficient. More than 35% of reviewed studies reported reinvasion and/or secondary invasion, while only a small fraction examined seed-bank response. The review emphasizes invasive seed-bank reduction and propagule arrival from surrounding invaded areas. DOI: `10.1016/j.ecoleng.2023.107122`.
 
@@ -87,7 +93,7 @@ A 2023 systematic review of native-community restoration after invasive-alien-pl
 
 1. **Feasible ecological worlds:** removal reopens trajectories in which native vegetation can recover.
 2. **Required state:** soil nutrient legacy, microbial state, native/invasive seed banks, propagule pressure and secondary invaders can become necessary distinctions for predicting recovery.
-3. **Evidence-identified state:** above-ground vegetation monitoring can certify invader reduction while leaving below-ground recovery state unresolved.
+3. **Evidence-identified state:** above-ground vegetation monitoring can certify invader reduction while leaving response-relevant seed-bank or soil dimensions unresolved in some systems; this is not a universal mismatch.
 4. **Reportable target:** `invader controlled/removed` can be reportable even when `native ecosystem recovered` is not.
 
 ### CREST diagnosis
@@ -104,7 +110,7 @@ The action succeeds on one target while exposing a larger state problem downstre
 
 ### Evidence grade
 
-**A/B.** Large reviews plus long-term removal experiments; the motif is repeatedly documented across invasion systems.
+**A/B.** A long-term field removal study plus large reviews support persistent, history-dependent post-control state. The evidence/target mapping is a CREST interpretation rather than a direct comparison of two monitoring contracts.
 
 ### Claim boundary
 
@@ -120,18 +126,16 @@ Block drainage / raise water table / rewet degraded peat.
 
 ### Empirical anchor
 
-Long-term rewetting (7–16 years) can restore methanogen abundance and composition toward pristine conditions while methane-production activity remains low because vegetation and natural substrate supply have not fully recovered. DOI: `10.1016/j.ecoleng.2020.105852`.
+Urbanová and Bárta found that long-term rewetting (7–16 years) can restore methanogen abundance and composition toward pristine conditions while methane-production activity remains low because vegetation and natural substrate supply have not fully recovered. DOI: `10.1016/j.ecoleng.2020.105852`.
 
-A large-scale Sumatra restoration trial raised water levels over about 4,800 ha using 257 peat dams and monitored recovery for 7.5 years. Rewetting approximately halved peat-subsidence rates where water tables rose from roughly −0.6 m to −0.3 m, while vegetation recovery remained a separate restoration dimension. *Scientific Reports* 2024, article 10721.
-
-A 2026 online study further reports that severe wildfire legacy can strongly alter methane response after rewetting, illustrating how historical disturbance may become response-relevant when rewetting is the action. DOI: `10.1016/j.ese.2026.100735`.
+A large-scale Sumatra restoration trial raised water levels over about 4,800 ha using 257 peat dams and monitored recovery for 7.5 years. Rewetting approximately halved peat-subsidence rates where water tables rose from roughly −0.6 m to −0.3 m, and 57 native peat-swamp-forest tree species regenerated spontaneously in the most rewetted conditions. Hydrology, subsidence and vegetation were measured as distinct recovery dimensions; limited pre-intervention data prevented a full comparison with the initial plantation condition. *Scientific Reports* 2024, article 10721; DOI `10.1038/s41598-024-60462-3`.
 
 ### CREST four-layer mapping
 
 1. **Feasible ecological worlds:** rewetting makes anaerobic recovery, peat stabilization and peatland vegetation trajectories feasible again.
-2. **Required state:** drainage history, vegetation/substrate state, microbial composition and — for climate targets — disturbance/fire history can become response-relevant.
-3. **Evidence-identified state:** water-table recovery does not by itself identify microbial/process recovery or full greenhouse-gas state.
-4. **Reportable target:** `hydrology restored` can be reportable while `carbon-climate function restored` remains unresolved.
+2. **Required state:** drainage history, vegetation/substrate state and microbial composition can become response-relevant for methane-process and multi-attribute recovery targets.
+3. **Evidence-identified state:** water-table recovery does not by itself identify microbial/process or multi-attribute recovery.
+4. **Reportable target:** `hydrology restored` can be reportable while `methanogenic process restored` remains unresolved.
 
 ### CREST diagnosis
 
@@ -140,14 +144,14 @@ This case gives a sharp target-relativity example:
 \[
 T_{\rm hydrology}
 \neq
-T_{\rm climate}
+T_{\rm methane\ process}
 \]
 
 and therefore the state sufficient for one restoration target need not be sufficient for the other.
 
 ### Evidence grade
 
-**A/B.** Long-term rewetting comparisons and large-scale restoration trials.
+**A/B.** Long-term rewetting comparisons and large-scale restoration trials support proxy/function and multi-attribute separation, not net greenhouse-gas or climate recovery.
 
 ---
 
@@ -159,7 +163,9 @@ Reintroduce fire to a fire-dependent ecosystem after long exclusion.
 
 ### Empirical anchor
 
-Long-unburned longleaf-pine restoration shows that reintroducing historically natural fire can generate novel, undesirable effects because long fire exclusion changes duff and fuel structure. Reviews report substantial old-tree mortality in some first-entry burns and identify deep duff/smouldering around old trees as a mechanism. DOI: `10.1111/j.1526-100x.2005.00067.x`; USDA synthesis DOI `10.2737/RMRS-GTR-238`.
+In a direct experiment, Varner et al. assigned 16 longleaf-pine stands that had been fire-excluded for about 40 years to three duff-moisture burn treatments or an unburned control. Dry burns produced 20.5% mean pine mortality, whereas wet and moist burns did not differ from the control; duff consumption and crown scorch predicted mortality. DOI: `10.1139/X06-315`.
+
+Reviews identify the same deep-duff and smouldering mechanism across long-unburned fire-dependent forests. DOI: `10.1111/j.1526-100x.2005.00067.x`; USDA synthesis DOI `10.2737/RMRS-GTR-238`.
 
 Prescribed-fire effects on soil seed banks can also differ from effects on the visible above-ground community. A 2026 rangeland review explicitly treats these response domains as associated but distinct. DOI: `10.1016/j.rala.2026.06.002`.
 
@@ -180,7 +186,7 @@ This is the clearest analogue of the sentence:
 
 ### Evidence grade
 
-**A/B.** Experimental prescribed burns plus multi-system syntheses.
+**A/B.** Experimental prescribed burns plus multi-system syntheses directly support action-by-fuel-history response divergence. The evidence-state versus reportable-target separation remains assembled across sources, so prescribed fire is a partial rather than end-to-end replication.
 
 ---
 
@@ -190,10 +196,10 @@ This is the clearest analogue of the sentence:
 |---|---|---|---|---|
 | dam removal | open fish passage | species/stock, life history, migration timing, habitat response | barrier removal / focal detection | full recolonization state |
 | invasive removal | remove invader | soil N, microbes, seed bank, propagule pressure | invader control | native-community recovery |
-| peat rewetting | restore water table | drainage/fire history, vegetation, substrates, methanogens | hydrological recovery | carbon / methane recovery |
+| peat rewetting | restore water table | drainage history, vegetation, substrates, methanogens | hydrological recovery | methane-process / multi-attribute recovery |
 | prescribed fire | reintroduce burn | fire history, duff/fuel, seed bank, ecological condition | treatment/fuel target | regeneration / resilience state |
 
-The recurring pattern is therefore not `restoration outcomes vary`. The stronger operational motif is:
+The recurring pattern is therefore not merely `restoration outcomes vary`. The stronger CREST projection is:
 
 \[
 \boxed{
@@ -209,7 +215,7 @@ The recurring pattern is therefore not `restoration outcomes vary`. The stronger
 
 while a coarser target can remain reportable.
 
-This is the real-world interpretation of CREST's four-layer architecture. The finite theorem adds a no-bound existence result; the restoration cases show that the qualitative architecture recurs independently in freshwater, invasion, peatland and fire ecology.
+This is the real-world interpretation of CREST's four-layer architecture. Direct studies establish intervention-specific response divergence and multiple recovery dimensions; CREST supplies the state/evidence/target interpretation. The current literature therefore supports **three strong cross-source projections plus one strong partial projection**, not four direct end-to-end empirical replications. The finite theorem alone adds the no-bound existence result.
 
 ---
 
@@ -218,8 +224,8 @@ This is the real-world interpretation of CREST's four-layer architecture. The fi
 ## Promote to the manuscript-facing ecological arc
 
 1. **Elwha/Klamath dam removal** — best Gate-A / feasible-futures example.
-2. **Invasive-plant removal** — best identified-state versus reportable-target example.
-3. **Peatland rewetting** — best history-dependent response and target-relativity example.
+2. **Invasive-plant removal** — best conditional identified-state versus reportable-target example.
+3. **Peatland rewetting** — best proxy/function mismatch and target-relativity example.
 
 ## Independent replication / support
 
@@ -237,7 +243,7 @@ CREST gains empirical value only if it generates discriminating comparisons. The
 
 1. **Dam removal:** species/stock-aware state should outperform simple pre-removal presence/absence when predicting recolonization timing and extent.
 2. **Invasive removal:** adding soil/seed-bank legacy information should improve prediction of native recovery beyond above-ground invader removal status.
-3. **Rewetting:** hydrology-only state should be insufficient for methane/carbon recovery where vegetation/substrate/history differ; richer state should improve transportability.
+3. **Rewetting:** hydrology-only state should be insufficient for methane-process recovery where vegetation/substrate/history differ; richer state should improve transportability.
 4. **Prescribed fire:** above-ground vegetation-only state should be insufficient for post-burn regeneration where seed-bank/fuel-history differences are strong.
 
 Failure of these richer states to improve the declared response task would weaken the ecological usefulness of the proposed CREST mapping, even though it would not refute the finite mathematical theorem.

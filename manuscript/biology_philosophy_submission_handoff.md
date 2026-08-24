@@ -189,17 +189,17 @@ Automated state for the world–state–law integrated manuscript:
 
 - abstract: **240 words**;
 - keywords: **6**;
-- repository-defined visible words before References: **7,738**;
-- repository development target 5,500–7,500: **not met by 238 words; non-blocking**;
+- repository-defined visible words before References: **8,412**;
+- repository development target 5,500–7,500: **not met by 912 words; non-blocking**;
 - journal hard cap `<=10,000`: **PASS**;
 - potential double-blind identifier hits before References: **0**;
 - excluded unpublished/preprint audit references in the submission bibliography: **0**;
-- theorem/regression suite: **103 tests PASS**;
+- theorem/regression suite: **143 tests PASS**;
 - Python **3.10 / 3.11 / 3.12** theorem/regression tests: **PASS**;
 - Python 3.12 submission verifier: **PASS**;
 - automated blockers: **0**.
 
-The only CI change caused by the manuscript integration was the expected deterministic report update; the tracked report is now synchronized to the generated values.
+The restoration/conservation projection is integrated with primary-source and theorem firewalls. The expected deterministic report update is synchronized to the generated values.
 
 Canonical generated record: `../artifacts/crest_philosophy_submission_report.json`.
 

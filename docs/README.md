@@ -103,6 +103,13 @@ The finite theorem does **not** require empirical data. Existing ecological mapp
 - [`shallow_lake_end_to_end_crest_case_2026-08-22.md`](shallow_lake_end_to_end_crest_case_2026-08-22.md) — nutrient-history / restoration example.
 - [`fragmented_landscape_end_to_end_crest_case_2026-08-22.md`](fragmented_landscape_end_to_end_crest_case_2026-08-22.md) — fragmentation-history / connectivity example.
 
+### Integrated restoration/conservation projection
+
+- [`restoration_conservation_cross_domain_validation_2026-08-24.md`](restoration_conservation_cross_domain_validation_2026-08-24.md) — current four-domain CREST mapping and claim ceiling.
+- [`restoration_conservation_primary_source_audit_2026-08-24.md`](restoration_conservation_primary_source_audit_2026-08-24.md) — direct-observation versus CREST-interpretation audit, including negative and partial findings.
+
+The canonical manuscript uses this projection as its primary ecology-facing illustration. The ecological studies do not prove the finite theorem or its arbitrary scaling.
+
 ### Mechanistic / latent-structure bridge
 
 The separate `zuizui0223/microdonta` repository supplies ecology-grounded mathematical witnesses that can be projected into CREST without becoming new CREST theorem families:

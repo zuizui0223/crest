@@ -59,12 +59,12 @@ with full-state identification lost under fixed evidence while a coarse target r
 
 - Abstract: **240 words**
 - Keywords: **6**
-- Visible words before References: **7,738**
-- Repository development target 5,500–7,500: **238 words above; non-blocking**
+- Visible words before References: **8,412**
+- Repository development target 5,500–7,500: **912 words above; non-blocking**
 - 10,000-word hard cap: **PASS**
 - Double-blind identifier hits before References: **0**
 - Automated blockers: **0**
-- Theorem/regression suite: **103 tests PASS**
+- Theorem/regression suite: **143 tests PASS**
 - Python 3.10 / 3.11 / 3.12 theorem/regression tests: **green**
 - Python 3.12 submission verifier / repository hygiene / deterministic artifact: **green**
 
@@ -106,7 +106,7 @@ They are not a proof foundation for the general CREST theorem.
 
 ## Empirical status
 
-Existing conceptual and real-data ecology cases are optional illustrations. They are not required to establish the finite theorem and are not submission blockers.
+The manuscript now includes a primary-source-grounded restoration/conservation projection across dam removal, invasive-plant removal, peatland rewetting, and prescribed fire. These cases illustrate recurrence of the qualitative architecture; they do not establish the finite theorem and are not submission blockers.
 
 ## Current journal-policy constraints
 

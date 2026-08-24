@@ -255,6 +255,32 @@ Thus CREST separates
 
 in general. Evidence can fail to identify the full required state while still licensing a requested target if that target is constant on the unresolved evidence class.
 
+### 3.5 Restoration as a cross-domain ecological projection
+
+Ecological restoration makes the preceding architecture concrete because restoration is explicitly intervention-driven. The Society for Ecological Restoration already distinguishes restoration activity from ecological recovery and requires goals, objectives, measurable indicators, and separate implementation, effectiveness, and impact monitoring (Gann et al. 2026). CREST does not claim novelty for those practice distinctions. It asks a representation question: **once an intervention enters the future that a state must support, does that intervention make a previously erased ecological difference necessary for prediction or reporting?**
+
+Dam removal provides the closest example of feasible-future expansion. Removing the two Elwha River dams reopened upstream habitat that had been inaccessible to anadromous fish for nearly a century. Duda et al. (2021) used 11 species-specific environmental-DNA assays at 25 sites during four post-removal years. Most targeted anadromous species passed both former dam sites, but recolonization timing and spatial extent differed among species. Their presence/nondetection design could document focal passage and connectivity while providing limited information about population dynamics and without distinguishing resident from anadromous forms of some taxa. In CREST terms, `focal species detected above the former barrier` can therefore remain reportable while life-history form, abundance, reproductive establishment, and the full recolonization state remain unresolved. The action makes these distinctions relevant to stronger targets; it does not make one monitoring method universally inadequate.
+
+Invasive-plant removal makes target separation equally visible. Flory and Clay (2009) achieved 87–99% reduction of *Microstegium vimineum* biomass, yet native-diversity responses depended on removal method. Marchante et al. (2009) followed *Acacia longifolia* removal for 4.5 years and found that microbial measures recovered faster than carbon and nitrogen pools, with recovery depending on invasion history and removal of nitrogen-rich litter. Rohal et al. (2021) found that above-ground vegetation generally reflected seed-bank communities after *Phragmites* treatment, but also found native graminoids in seed banks that remained rare above ground and insufficient native seed banks at more degraded sites. The warranted conclusion is conditional: above-ground control evidence can license `invader reduced` while leaving response-relevant soil or seed-bank dimensions unresolved for `native community recovered`. It would be too strong to claim that above-ground monitoring always fails to identify below-ground state.
+
+Peatland rewetting shows a proxy/function mismatch. After 7–16 years of rewetting, methanogen abundance and community composition approached pristine conditions while methane-production potential remained limited by substrate availability and incomplete vegetation recovery (Urbanová and Bárta 2020). A 7.5-year, 4,800-ha tropical trial likewise measured water table, peat subsidence, and native-tree regrowth as distinct recovery dimensions; it found both reduced subsidence and substantial spontaneous native regrowth where rewetting was strongest (Hooijer et al. 2024). These studies do not establish net climate benefit. They show the narrower point that `water table restored` or even `methanogen composition near pristine` does not by itself identify methane-process or multi-attribute recovery.
+
+Prescribed fire supplies independent but partial support. Varner et al. (2007) assigned 16 longleaf-pine stands that had been fire-excluded for about 40 years to three duff-moisture burn treatments or an unburned control. Dry burns caused 20.5% mean pine mortality, whereas wet and moist burns did not differ from the control; duff consumption and crown scorch predicted mortality. Thus an above-ground stand description omitting accumulated duff and its moisture can be too coarse once `burn` becomes a supported future action. The experiment directly establishes action-by-hidden-history response divergence, but it does not also test the evidence-state versus reportable-target link in one design.
+
+Across freshwater restoration, invasion management, peatland restoration, and fire ecology, primary studies are therefore consistent with the same qualitative projection:
+
+\[
+\boxed{
+\text{newly relevant intervention}
+\longrightarrow
+\text{response-relevant distinction}
+\longrightarrow
+\text{possible state refinement and monitoring gap},
+}
+\]
+
+while a coarser implementation or effectiveness target can remain reportable. This is stronger than the generic observation that restoration outcomes vary, but weaker than an end-to-end empirical test of CREST. None of these studies deliberately compared an old quotient with a response-aware replacement quotient, and none establishes the finite one-capability/arbitrary-burden theorem proved below. The observed intervention responses and monitoring limits are empirical; the required-state interpretation is CREST's.
+
 ## 4. The finite mathematical answer: carrier, state, and evidence
 
 The trajectory-first interpretation is broader than the current proved mathematics. The formal results concern declared finite latent-world carriers and exact finite transitions. Their role is to show, under explicit assumptions, how the philosophical compression problem can be made mathematically sharp.
@@ -612,11 +638,19 @@ Cury, P. M., Mullon, C., Garcia, S. M., & Shannon, L. J. (2005). Viability theor
 
 Delettre, O. (2021). Identity of ecological systems and the meaning of resilience. *Journal of Ecology*, 109, 3147–3156. https://doi.org/10.1111/1365-2745.13655
 
+Duda, J. J., Hoy, M. S., Chase, D. M., Pess, G. R., Brenkman, S. J., McHenry, M. M., & Ostberg, C. O. (2021). Environmental DNA is an effective tool to track recolonizing migratory fish following large-scale dam removal. *Environmental DNA*, 3(1), 121–141. https://doi.org/10.1002/edn3.134
+
 Fackler, P., & Pacifici, K. (2014). Addressing structural and observational uncertainty in resource management. *Journal of Environmental Management*, 133, 27–36. https://doi.org/10.1016/j.jenvman.2013.11.004
+
+Flory, S. L., & Clay, K. (2009). Invasive plant removal method determines native plant community responses. *Journal of Applied Ecology*, 46(2), 434–442. https://doi.org/10.1111/j.1365-2664.2009.01610.x
+
+Gann, G. D., et al. (2026). International principles and standards for the practice of ecological restoration. Third edition. *Restoration Ecology*. https://doi.org/10.1111/rec.70441
 
 Getz, W. M., Marshall, C. R., Carlson, C. J., Giuggioli, L., Ryan, S. J., Romañach, S. S., Boettiger, C., Chamberlain, S. D., Larsen, L., D'Odorico, P., & O'Sullivan, D. (2018). Making ecological models adequate. *Ecology Letters*, 21(2), 153–166. https://doi.org/10.1111/ele.12893
 
 Giere, R. N. (2010). An Agent-Based Conception of Models and Scientific Representation. *Synthese*, 172(2), 269–281. https://doi.org/10.1007/s11229-009-9506-z
+
+Hooijer, A., et al. (2024). Benefits of tropical peatland rewetting for subsidence reduction and forest regrowth: results from a large-scale restoration trial. *Scientific Reports*, 14, Article 10721. https://doi.org/10.1038/s41598-024-60462-3
 
 Kassara, K. (2012). Observability by using viability kernels. *Journal of Control Theory and Applications*, 10(3), 303–308. https://doi.org/10.1007/s11768-012-1022-x
 
@@ -630,6 +664,8 @@ Lindenmayer, D. B., Likens, G. E., Haywood, A., & Miezis, L. (2011). Adaptive mo
 
 Littman, M. L., Sutton, R. S., & Singh, S. (2002). Predictive representations of state. *Advances in Neural Information Processing Systems*, 14, 1555–1561.
 
+Marchante, E., Kjøller, A. H., Struwe, S., & Freitas, H. (2009). Soil recovery after removal of the N2-fixing invasive *Acacia longifolia*: consequences for ecosystem restoration. *Biological Invasions*, 11(4), 813–823. https://doi.org/10.1007/s10530-008-9295-1
+
 Massimi, M. (2022). *Perspectival Realism*. Oxford University Press.
 
 Nicol, S., & Chadès, I. (2012). Which States Matter? An Application of an Intelligent Discretization Method to Solve a Continuous POMDP in Conservation Biology. *PLoS ONE*, 7(2), e28993. https://doi.org/10.1371/journal.pone.0028993
@@ -640,6 +676,8 @@ Parker, W. S., Carey, C. C., Olsson, F., & Thomas, R. Q. (2026). An adequacy-for
 
 Post, D. M., & Palkovacs, E. P. (2009). Eco-evolutionary feedbacks in community and ecosystem ecology: interactions between the ecological theatre and the evolutionary play. *Philosophical Transactions of the Royal Society B: Biological Sciences*, 364(1523), 1629–1640. https://doi.org/10.1098/rstb.2009.0012
 
+Rohal, C. B., Reinhardt Adams, C., Reynolds, L. K., Hazelton, E. L. G., & Kettenring, K. M. (2021). Do common assumptions about the wetland seed bank following invasive plant removal hold true? Divergent outcomes following multi-year *Phragmites australis* management. *Applied Vegetation Science*, 24(4), e12626. https://doi.org/10.1111/avsc.12626
+
 Schoener, T. W. (2011). The newest synthesis: understanding the interplay of evolutionary and ecological dynamics. *Science*, 331(6016), 426–429. https://doi.org/10.1126/science.1193954
 
 Shalizi, C. R., & Crutchfield, J. P. (2001). Computational Mechanics: Pattern and Prediction, Structure and Simplicity. *Journal of Statistical Physics*, 104, 817–879.
@@ -647,6 +685,10 @@ Shalizi, C. R., & Crutchfield, J. P. (2001). Computational Mechanics: Pattern an
 Singh, S., James, M. R., & Rudary, M. R. (2004). Predictive State Representations: A New Theory for Modeling Dynamical Systems. *Proceedings of the 20th Conference on Uncertainty in Artificial Intelligence*, 512–519.
 
 Stringham, T. K., Krueger, W. C., & Shaver, P. L. (2003). State and transition modeling: An ecological process approach. *Journal of Range Management*, 56(2), 106–113. https://doi.org/10.2307/4003893
+
+Urbanová, Z., & Bárta, J. (2020). Recovery of methanogenic community and its activity in long-term drained peatlands after rewetting. *Ecological Engineering*, 150, Article 105852. https://doi.org/10.1016/j.ecoleng.2020.105852
+
+Varner, J. M., III, Hiers, J. K., Ottmar, R. D., Gordon, D. R., Putz, F. E., & Wade, D. D. (2007). Overstory tree mortality resulting from reintroducing fire to long-unburned longleaf pine forests: the importance of duff moisture. *Canadian Journal of Forest Research*, 37(8), 1349–1358. https://doi.org/10.1139/X06-315
 
 Yates, K. L., Bouchet, P. J., Caley, M. J., Mengersen, K., Randin, C. F., Parnell, S., Fielding, A. H., Bamford, A. J., Ban, S., Barbosa, A. M., et al. (2018). Outstanding Challenges in the Transferability of Ecological Models. *Trends in Ecology & Evolution*, 33(10), 790–802. https://doi.org/10.1016/j.tree.2018.08.001
 
