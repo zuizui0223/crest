@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "updated": "2026-08-24",
+  "system": "Izu Campanula microdonta direct effective-pollinator dependency pilot",
+  "source_repository": "zuizui0223/izu-core",
+  "source_issue": 91,
+  "purpose": "Prospective end-to-end ecological test of CREST snapshot sufficiency. This registry does not promote historical causation and does not count the finite CREST theorem as empirically proved.",
+  "candidate_snapshots": [
+    "Q0_island_or_population_regime",
+    "Q1_frozen_floral_morphology",
+    "Q2_morphology_plus_current_open_performance"
+  ],
+  "declared_response_grammar": [
+    "ambient_open",
+    "bagged_autonomous",
+    "supplemental_outcross",
+    "visitor_group_single_visit_pollen_deposition"
+  ],
+  "end_to_end_gates": {
+    "G0_source_measurement_admission": {
+      "status": "blocked_field_collection",
+      "requires": [
+        "linked plant effort visit SVD treatment fruit records",
+        "zero_visit effort windows",
+        "no_visit or bagged-unvisited SVD background controls",
+        "terminal outcomes for open_pollinated bagged_autonomous supplemental_outcross",
+        "independent plant support"
+      ]
+    },
+    "G1_snapshot_merge_defined": {
+      "status": "ready_protocol",
+      "requires": [
+        "snapshot variables frozen before response readout",
+        "prespecified similarity or matching rule",
+        "no response-derived feature leakage"
+      ]
+    },
+    "G2_response_disagreement_testable": {
+      "status": "blocked_by_G0",
+      "requires": [
+        "admitted open bagged supplemental outcomes",
+        "admitted background-adjusted SVD for at least one visitor group"
+      ]
+    },
+    "G3_snapshot_insufficiency_demonstrated": {
+      "status": "unresolved",
+      "criterion": "At least one reproducible snapshot-merged plant/population pair or class shows a prespecified response disagreement with independent-plant support."
+    },
+    "G4_interpretable_refinement_repairs_disagreement": {
+      "status": "unresolved",
+      "criterion": "Adding a biologically interpretable dependency or visitor-functional distinction improves held-out prediction or removes systematic response disagreement without simply adding identifiers."
+    },
+    "G5_evidence_licenses_refined_state": {
+      "status": "unresolved",
+      "criterion": "The admitted monitoring channels distinguish the refined state at the declared uncertainty level."
+    },
+    "G6_coarse_target_retained": {
+      "status": "unresolved",
+      "criterion": "At least one prespecified coarse target remains reportable even if full refined-state identification fails."
+    }
+  },
+  "minimum_crest_validation": {
+    "required_gates": ["G0_source_measurement_admission", "G1_snapshot_merge_defined", "G2_response_disagreement_testable", "G3_snapshot_insufficiency_demonstrated"],
+    "stronger_validation_adds": ["G4_interpretable_refinement_repairs_disagreement", "G5_evidence_licenses_refined_state", "G6_coarse_target_retained"]
+  },
+  "claim_firewalls": [
+    "No modern response difference by itself identifies historical Bombus loss as the cause.",
+    "No SVD channel is admitted without source-locked background controls and independent-plant dispersion support.",
+    "Flowers and repeated visits within a plant are subsamples, not independent n.",
+    "The focal pilot does not identify transportable final dependency reliability without the separate izu-core repeated-final-estimand gate.",
+    "A successful Izu case validates the ecological projection for this contract; it does not prove the arbitrary-m finite theorem."
+  ],
+  "current_conclusion": "The end-to-end empirical test is designed but not yet open because source field measurement admission is blocked by collection."
+}
