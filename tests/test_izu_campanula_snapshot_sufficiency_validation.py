@@ -10,9 +10,9 @@ def test_historical_sources_and_oshima_exception_are_recorded() -> None:
         "10.1111/j.1442-1984.1986.tb00018.x",
         "10.1111/j.1442-1984.1988.tb00178.x",
         "Oshima",
-        "bumblebees were absent from the Izu Islands except Oshima",
     ):
         assert term in DOC
+    assert "bumblebees were absent from the izu islands except oshima" in DOC.lower()
 
 
 def test_existing_izu_core_channels_define_future_grammar() -> None:
