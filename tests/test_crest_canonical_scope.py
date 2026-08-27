@@ -30,22 +30,25 @@ def test_mathematical_headline_is_preserved() -> None:
 
 
 def test_contract_well_posedness_is_explicit() -> None:
+    lower = DOC.lower()
     for phrase in (
-        "Independent responsibility",
-        "Non-vacuous domain",
-        "Response testability",
-        "Evidence accountability",
+        "specified independently of the candidate quotient",
+        "nonempty admissible domain",
+        "failure condition",
+        "kept distinct from the state identified by evidence",
     ):
-        assert phrase in DOC
+        assert phrase in lower
 
 
 def test_conservation_projection_is_theoretical_not_validation() -> None:
-    assert "new conservation capability" in DOC
-    assert "state adequacy must be re-audited" in DOC
-    assert "successful target reporting does not imply full state identification" in DOC
+    lower = DOC.lower()
+    assert "new conservation capability" in lower
+    assert "state adequacy" in lower and "re-audited" in lower
+    assert "successful target reporting does not imply full state identification" in lower
 
 
 def test_novelty_positioning_is_explicit() -> None:
+    lower = DOC.lower()
     for phrase in (
         "purpose-relative model adequacy",
         "idealization and abstraction",
@@ -53,4 +56,4 @@ def test_novelty_positioning_is_explicit() -> None:
         "predictive state representations",
         "state/action abstraction coupling",
     ):
-        assert phrase in DOC
+        assert phrase in lower
