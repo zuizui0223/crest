@@ -81,4 +81,4 @@ python scripts/verify_crest_philosophy_submission.py --write-report
 
 The automated suite verifies the finite theorem constructions and the submission verifier checks abstract length, keyword count, blinded identifiers, canonical manuscript sections, philosophical positioning, and theorem headline.
 
-The deterministic verifier record is `../artifacts/crest_philosophy_submission_report.json`.
+The deterministic verifier record is `../artifacts/crest_philosophy_submission_report.json`. Numerical submission metrics are regenerated after each manuscript revision and should not be copied manually into this README.
