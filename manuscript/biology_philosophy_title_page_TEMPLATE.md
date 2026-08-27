@@ -2,7 +2,7 @@
 
 ## Manuscript title
 
-**What Counts as the Same Ecological State? A Contract-Relative Theory of Temporally Extended Ecological States**
+**When Conservation Capacity Outgrows Conservation Knowledge: A Contract-Relative Theory of Ecological State**
 
 ## Authors
 
@@ -36,9 +36,9 @@ For each author provide:
 
 ## Use of generative AI
 
-The author(s) used OpenAI ChatGPT during manuscript development for literature triage, organization of claim and citation audits, and drafting/revision support. All cited sources, mathematical claims, interpretations, and final wording must be reviewed and approved by the human author(s) before submission.
+The author(s) used OpenAI ChatGPT as a generative-AI assistant during theory development and manuscript preparation, including literature triage, adversarial claim checking, organization of code and documentation, and drafting and revision support. The human author(s) independently reviewed the cited sources, mathematical claims, executable tests, interpretations, and final wording and take full responsibility for the accuracy, originality, and integrity of the manuscript. No AI system is listed as an author.
 
-> Final author review required before upload. If the final use falls within Springer Nature's definition of AI-assisted copy editing only, revise this statement to match the applicable policy; otherwise retain an appropriate disclosure in the location requested by the journal.
+This disclosure is intentionally broader than AI-assisted copy editing because generative AI was used for substantive organizational and drafting support. Before upload, place the disclosure in the location required by the journal's current policy while preserving double-blind review requirements.
 
 ## Submission declarations
 
