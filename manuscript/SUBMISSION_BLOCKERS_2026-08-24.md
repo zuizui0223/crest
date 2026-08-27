@@ -11,7 +11,7 @@
 - Contract well-posedness criteria are explicit.
 - Mathematical headline is retained: `Δ|K*| = 1` with arbitrary `ΔK_U0 = m`.
 - Double-blind title-page separation is implemented structurally.
-- Generative-AI disclosure is drafted broadly enough to reflect substantive manuscript-development use.
+- Generative-AI disclosure is drafted to reflect substantive manuscript-development use rather than treating it as copy editing only.
 
 Repository-controlled checks must be rerun after this revision before literal upload.
 
