@@ -53,16 +53,25 @@ def main() -> int:
     }
 
     required = [
-        "## 1. The ecological state problem",
-        "## 2. Contract-relative ecological state",
-        "## 4. The finite mathematical answer",
-        "## 5. Ecological consequences",
-        "## 8. Conclusion",
+        "## 1. The ecological state problem begins with a conservation paradox",
+        "## 2. Ecological state as scientifically constrained equivalence",
+        "## 3. A worked ecological case: shallow-lake restoration",
+        "## 4. The finite CREST architecture",
+        "## 5. Main result: capability–resolution divergence",
+        "## 6. Conservation capacity can outgrow conservation knowledge",
+        "## 7. Relation to abstraction, adequacy, and multiple realization",
+        "## 8. Limits and conclusion",
         "\\Delta|K^*|=1",
         "\\Delta K_{U_0}=m",
+        "conservation capacity can outgrow conservation knowledge",
         "required state",
         "identified state",
         "reportable target",
+        "Potochnik",
+        "Odenbaugh",
+        "Batterman",
+        "Wimsatt",
+        "Yates et al. 2018",
     ]
     missing = [item for item in required if item not in text]
     abstract_words = word_count(abstract)

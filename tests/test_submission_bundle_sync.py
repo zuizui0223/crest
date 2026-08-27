@@ -5,6 +5,7 @@ MANUSCRIPT_DIR = ROOT / "manuscript"
 ARCHIVE = ROOT / "archive" / "graphify-cleanup-2026-08-24"
 CANONICAL = {
     "crest_biology_philosophy_blinded_submission.md",
+    "CREST_supplementary_information.md",
     "biology_philosophy_title_page_TEMPLATE.md",
     "SUBMISSION_README.md",
     "SUBMISSION_BLOCKERS_2026-08-24.md",
@@ -16,10 +17,11 @@ def test_manuscript_surface_is_single_and_canonical() -> None:
     assert {p.name for p in MANUSCRIPT_DIR.iterdir() if p.is_file()} == CANONICAL
 
 
-def test_submission_entrypoints_name_the_blinded_candidate() -> None:
+def test_submission_entrypoints_name_the_blinded_candidate_and_si() -> None:
     readme = (MANUSCRIPT_DIR / "SUBMISSION_README.md").read_text(encoding="utf-8")
     verifier = (ROOT / "scripts" / "verify_crest_philosophy_submission.py").read_text(encoding="utf-8")
     assert "crest_biology_philosophy_blinded_submission.md" in readme
+    assert "CREST_supplementary_information.md" in readme
     assert 'TARGET = Path("manuscript/crest_biology_philosophy_blinded_submission.md")' in verifier
     assert "crest_philosophy_biology_philosophy.md" not in readme
     assert "crest_philosophy_biology_philosophy.md" not in verifier

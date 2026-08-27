@@ -35,7 +35,8 @@ def test_conservation_implications_are_theoretical_not_validation() -> None:
 
 
 def test_manuscript_keeps_clear_state_question() -> None:
-    assert "when different ecological worlds should count as the same ecological state" in MANUSCRIPT
-    assert "required state" in MANUSCRIPT
-    assert "identified state" in MANUSCRIPT
-    assert "reportable target" in MANUSCRIPT
+    manuscript_lower = MANUSCRIPT.lower()
+    assert "when should different ecological worlds count as the same ecological state?" in manuscript_lower
+    assert "required state" in manuscript_lower
+    assert "identified state" in manuscript_lower
+    assert "reportable target" in manuscript_lower

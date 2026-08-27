@@ -1,178 +1,126 @@
-# CREST canonical manuscript scope — 2026-08-24
+# CREST canonical manuscript scope — revised 2026-08-27
 
 ## Status
 
-This is the canonical scope contract for the CREST Biology & Philosophy manuscript.
+This is the canonical scope contract for the CREST Biology & Philosophy submission.
 
-CREST is a **philosophy → finite mathematics → ecological projection** paper.
+The manuscript is an **ecological problem → philosophical/formal analysis → finite theorem → conservation consequence** paper.
 
-It is **not** an empirical validation paper, a prospective field-test paper, or a restoration case-study paper. Empirical programmes such as Izu/Campanula may later test CREST-derived predictions independently, but they are outside the manuscript spine and should not be added to the Discussion as a validation arc.
+It is **not an empirical validation paper**. However, it now contains one **ecology-grounded worked case** in shallow-lake restoration so that the formal distinctions do real ecological work in the main text. The worked case is a finite illustrative mapping grounded in established lake-restoration mechanisms; it is not a fitted empirical test of CREST and does not claim that the extremal theorem has been observed in real lakes.
 
----
+## 1. Organizing claim
 
-# 1. Philosophical problem
-
-The manuscript begins from one question:
-
-> **How can ecological states and ecological laws be well-defined in a temporally extended, partially observed, self-modifying ecological world?**
-
-The operational version is:
-
-> **What counts as the same ecological state?**
-
-CREST answers:
+The paper is organized around:
 
 \[
 \boxed{
-\text{An ecological state is a scientifically licensed quotient of temporally extended ecological worlds.}
+\textbf{conservation capacity can outgrow conservation knowledge.}
 }
 \]
 
-Equivalently:
+A newly available intervention can enlarge what can be managed while simultaneously making a previously adequate ecological-state description too coarse for the new responsibility.
 
-\[
-\boxed{
-\text{An ecological state is a scientifically licensed compression of a temporally extended ecological world.}
-}
-\]
+The operational state question remains:
 
-The state is not defined as an intrinsic snapshot. It is the coarsest representation that may erase world-differences without invalidating the scientific work assigned to the state.
+> **When should different ecological worlds count as the same ecological state?**
 
-The manuscript should preserve the distinction between:
+## 2. Philosophical state problem
 
-- the ecological world;
-- scientific access to that world;
-- the scientific responsibility imposed on a state representation;
-- the resulting state quotient;
-- the coarse law that is well-defined on that quotient.
+CREST treats an ecological state as a scientifically licensed quotient of temporally extended ecological worlds.
 
-The philosophical move is not observer-relative truth. It is **domain-relative law validity** under explicit coarse-graining.
-
----
-
-# 2. World-level formulation
-
-Let
-
-\[
-\Omega
-\]
-
-be a space of admissible ecological world-histories. Relative to a present time, write schematically
+Relative to a present time, write
 
 \[
 \omega=(h_t,x_t,\mathcal F_t),
 \]
 
-where
+where \(h_t\) is relevant history, \(x_t\) present configuration, and \(\mathcal F_t\) future-response structure under relevant interactions and interventions.
 
-- \(h_t\) is relevant history,
-- \(x_t\) is the present configuration,
-- \(\mathcal F_t\) is the relevant future-response structure.
-
-This notation is compatible with deterministic or stochastic models and does not require a block-universe ontology, physical determinism, backward causation, universal fitness maximization, or generic mathematical chaos.
-
-The ecological motivation is
+For scientific access \(V\) and contract \(\mathcal C\),
 
 \[
-\boxed{
-\text{stochastic variation}
-+
-\text{context-dependent selective bias}
-+
-\text{endogenous modification of later response conditions}.
-}
+q_{\mathcal C,V}:\Omega\to Q_{\mathcal C,V},
+\qquad
+\operatorname{State}_{\mathcal C,V}(\omega)=[\omega]_{\sim_{\mathcal C,V}}.
 \]
 
-This is enough to motivate why ecological state need not be exhausted by an instantaneous snapshot.
+The manuscript connects this to established philosophical work on:
 
----
+- abstraction and idealization in ecology;
+- diverse scientific aims and purpose-relative adequacy;
+- multiple realization and levels of description;
+- predictive and interventional state abstractions.
 
-# 3. State and law as linked compression problems
+CREST does not claim novelty for any of those themes by themselves.
 
-For observation/intervention access \(V\) and declared scientific contract \(\mathcal C\), define
+## 3. Well-posed scientific contracts
 
-\[
-q_{\mathcal C,V}:\Omega\to Q_{\mathcal C,V}.
-\]
+Contract-relativity must not collapse into arbitrary relabelling. The manuscript therefore distinguishes normative value from formal well-posedness.
 
-Then
+A CREST contract is well posed only when:
 
-\[
-\operatorname{State}_{\mathcal C,V}(\omega)
-=
-[\omega]_{\sim_{\mathcal C,V}}.
-\]
+1. response, action repertoire, and target are specified independently of the candidate quotient;
+2. the declared obligations share a nonempty admissible domain covering the intended systems;
+3. proposed state merges have a failure condition—response disagreement, semantic failure, or target disagreement;
+4. the state required by the task is kept distinct from the state identified by evidence.
 
-A present snapshot \(X(\omega)\) is sufficient exactly when
+CREST does not rank the moral or institutional value of scientific aims. It constrains what counts as an adequate state once an aim has been declared.
 
-\[
-X(\omega)=X(\omega')
-\Longrightarrow
-q_{\mathcal C,V}(\omega)=q_{\mathcal C,V}(\omega').
-\]
+## 4. Worked ecological case — shallow-lake restoration
 
-This is a factorization criterion, not the novelty-bearing theorem.
+The main text contains one finite ecology-grounded example.
 
-For a required ecological response
+Two currently turbid worlds are considered:
 
-\[
-R_{\mathcal C}:\Omega\to Z_{\mathcal C},
-\]
+- sediment-phosphorus legacy;
+- food-web/macrophyte feedback.
 
-a coarse ecological law exists on the quotient only when there is
+For current-status reporting they can share one coarse state. Once sediment-focused and food-web-focused restoration actions become part of the management repertoire, they require different response states because the interventions have different successors.
 
-\[
-L_{\mathcal C,V}:Q_{\mathcal C,V}\to Z_{\mathcal C}
-\]
+The worked case follows the CREST gates:
 
-such that
+```text
+Gate A — one admissible management world set
+Gate B — coarse turbid state splits under mechanism-specific actions
+Gate C — routine water-quality evidence can still merge the required states
+```
 
-\[
-\boxed{
-R_{\mathcal C}=L_{\mathcal C,V}\circ q_{\mathcal C,V}.
-}
-\]
+The resulting current-status target can remain reportable even when the intervention-response state is unresolved.
 
-Thus state adequacy and law validity are one linked problem: a quotient is scientifically adequate only while the distinctions it erases remain irrelevant to the response, meaning, mechanism family, or report target assigned to it.
+This case is a **worked ecological interpretation**, not empirical validation of the capability–resolution theorem.
 
----
+## 5. Finite mathematical spine
 
-# 4. Finite mathematical answer
-
-The philosophy is grounded by the existing finite CREST theorem spine. Do not add a new theorem family unless it strengthens this same chain.
-
-## Gate A — admissible carrier
+### Gate A — admissible carrier
 
 Ask whether the declared obligations can be represented on one finite latent-world carrier.
 
-## Gate B — least-information required state
+### Gate B — least-information required state
 
-On an admissible finite carrier and baseline partition \(B\), the implemented refinement closures yield a unique coarsest common fixed point under the stated assumptions:
+On an admissible finite carrier and baseline partition \(B\), refinement closures yield
 
 \[
 \boxed{
-J=(C_\Gamma\vee C_\mathcal H\vee C_\Theta\vee C_{D,T})(B).
+J=(C_\Gamma\vee C_\mathcal H\vee C_\Theta\vee C_{D,T})(B),
 }
 \]
 
-This is the finite required state.
+which is the unique coarsest common fixed point under the stated assumptions.
 
-The generic closure/fixed-point machinery is classical and must not be sold as CREST novelty.
+The generic lattice, closure, and finite-state minimization machinery is classical and is not the novelty claim.
 
-## Gate C — evidence licensing
+### Gate C — evidence licensing
 
-For evidence partition \(E\),
+For evidence partition \(E_D\),
 
 \[
 \boxed{
 \text{full deterministic state report exists}
-\iff
-J\preceq E.
+\iff J\preceq E_D.
 }
 \]
 
-A requested target may still factor through \(E\) even when the full state does not.
+A coarser target may remain reportable when the full state is not.
 
 Hence preserve
 
@@ -188,9 +136,9 @@ Hence preserve
 
 in general.
 
-## Mathematical headline — capability–resolution divergence
+## 6. Main theorem — capability–resolution divergence
 
-For every integer \(m\ge1\), the connected finite family satisfies
+For every integer \(m\ge1\), one connected finite construction gives
 
 \[
 \boxed{
@@ -200,200 +148,53 @@ For every integer \(m\ge1\), the connected finite family satisfies
 }
 \]
 
-On the same retained present slice:
+On the retained present slice:
 
-- required exact state refines from \(1\) class to \(2^m\) classes;
+- required state refines from \(1\) class to \(2^m\) classes;
 - monitoring-resolution debt grows from \(0\) to \(m\) bits;
-- full-state licensing can change from yes to no under fixed evidence;
-- a coarser target can remain reportable.
+- full-state licensing changes from yes to no under fixed evidence;
+- a coarse target remains reportable.
 
-Therefore
+Therefore no finite function of carrier-size gain alone universally upper-bounds the increase in required state complexity.
 
-\[
-\boxed{
-\text{no finite function of }\Delta|K^*|\text{ alone universally upper-bounds }\Delta K_{U_0}.
-}
-\]
+This is an extremal impossibility result. It does not claim that real ecosystems typically show exponential state growth.
 
-This is the main theorem-level result to carry into the philosophical conclusion.
+## 7. Conservation consequence
 
-Its interpretation is representational, not empirical:
+The manuscript's main ecological conclusion is not simply “monitor more” or “management response can differ.” It is the asymmetry:
 
-> **A small expansion in what futures are scientifically relevant can force an arbitrarily larger refinement of what the present state must distinguish.**
+> **A new conservation capability can make the system more manageable while making the old state description less adequate.**
 
----
+The intervention need not be executed. Once the scientific responsibility includes predicting its effect, previously hidden distinctions can become state-relevant.
 
-# 5. Structural sources of state inadequacy
+This yields four consequences:
 
-CCOC, MLTR, and MRM are used as three structural ways in which apparent present sameness can fail.
+1. conservation-state categories that include intervention response are partly indexed to feasible management space;
+2. successful target reporting does not imply full state identification;
+3. monitoring deficits can be structural and require a new measurement channel rather than more replication;
+4. whenever the management repertoire changes, state adequacy should be re-audited.
 
-- **CCOC — future/composition insufficiency:** newly legal futures can expose dormant distinctions.
-- **MLTR — inherited-history/semantic insufficiency:** structural replacement can invalidate carried state meaning.
-- **MRM — mechanism-response insufficiency:** latent mechanisms can agree under the current view and disagree under a required future response.
+## 8. Relation to prior theory
 
-CED remains downstream:
+The manuscript explicitly credits prior work on:
 
-- **CED — evidence licensing:** the evidence may fail to identify distinctions that the required state already needs.
-
-These are not four equal ontic ingredients. The first three concern what distinctions are structurally required; CED concerns what distinctions are scientifically identified and reportable.
-
----
-
-# 6. Ecological projection — not empirical validation
-
-The manuscript ends by projecting the formal result back into ecology.
-
-This section must answer:
-
-> **What changes in ecological reasoning if ecological state is contract-relative and temporally thick?**
-
-It should develop consequences at the level of ecological concepts, not case-study evidence.
-
-## 6.1 Present-state variables are conditional achievements
-
-A biomass value, species list, guild label, connectivity class, resilience category, or management state is not automatically an adequate state variable. Its adequacy depends on whether the differences it erases remain irrelevant to the scientific responsibility.
-
-The correct question is not
-
-> What is the true ecological state variable?
-
-but
-
-> Under which future, historical, mechanistic, evidential, and reporting responsibilities is this state variable sufficient?
-
-## 6.2 Functional equivalence is future-relative
-
-Two communities that perform the same function now can cease to be equivalent when colonization, reconnection, rewiring, invasion, restoration, or another intervention becomes part of the admissible future grammar.
-
-Thus
-
-\[
-\boxed{
-\text{current functional equivalence}
-\not\Rightarrow
-\text{future causal equivalence}.
-}
-\]
-
-This is a conceptual projection of CCOC, not a claim that one particular field system has already demonstrated the theorem.
-
-## 6.3 Ecological history matters only when it changes declared responsibility
-
-CREST does not say that every historical detail belongs in ecological state. History earns representational status exactly when forgetting it merges worlds that differ in a required response, inherited meaning, or target.
-
-This converts the vague instruction “history matters” into a state-sufficiency criterion.
-
-## 6.4 Hidden mechanisms belong in state only when they change response
-
-Likewise, latent mechanisms are not privileged merely because they are hidden. They belong in the scientific state only when alternative mechanisms produce different responses under the declared contract.
-
-This prevents CREST from becoming an argument for maximal mechanistic description.
-
-## 6.5 Monitoring and state are not the same object
-
-A monitoring programme may be sufficient for a coarse target while insufficient for the full state required by a broader responsibility.
-
-This is why
-
-\[
-\text{successful target report}
-\not\Rightarrow
-\text{full ecological state identification}.
-\]
-
-The distinction is conceptual and formal; the manuscript does not need to attach it to a particular empirical monitoring case.
-
-## 6.6 Representational stability is distinct from dynamical stability
-
-An ecosystem can remain dynamically unchanged while its scientifically adequate state representation changes because the future action set, mechanism family, observation regime, inherited meaning, or report target changes.
-
-Therefore distinguish:
-
-1. dynamical stability of the ecological trajectory;
-2. evolutionary stability under a declared evolutionary model;
-3. representational stability of the state quotient;
-4. portability of the quotient-level law.
-
-The theorem shows that representational instability can be much larger than the capability change that makes the hidden distinction relevant.
-
----
-
-# 7. Manuscript ending
-
-The paper should close at the level of ecological theory, not by proposing a new empirical programme.
-
-The final argumentative arc is:
-
-```text
-PHILOSOPHY
-possible ecological worlds
-→ temporally thick state
-→ scientific access and responsibility
-→ quotient-level ecological laws
-
-MATHEMATICS
-finite carrier
-→ least-information required state
-→ evidence licensing
-→ capability–resolution divergence
-
-ECOLOGY
-state variables are conditional compressions
-→ functional equivalence is future-relative
-→ history/mechanism matter only when response-relevant
-→ monitoring success need not identify full state
-→ representational stability differs from dynamical stability
-```
-
-The closing claim should be approximately:
-
-> **Ecology does not need one privileged state description of nature. It needs explicit conditions under which a coarse description remains adequate for the predictions, interventions, meanings, and reports assigned to it. CREST formalizes those conditions and shows that expanding the futures a state must support can change present representational requirements far more than the expansion in capability itself.**
-
-A stronger final sentence may be:
-
-> **What counts as the same ecological state is therefore neither an intrinsic property of a snapshot nor a matter of arbitrary perspective: it is constrained by which differences can be erased without changing the ecological work the state is required to do.**
-
----
-
-# 8. Explicit exclusions from the manuscript spine
-
-Do not add any of the following as manuscript sections or Discussion arcs:
-
-- Izu/Campanula empirical validation;
-- prospective CREST field tests;
-- restoration/conservation case-study validation;
-- urban/island validation registries;
-- claims that existing empirical studies test CREST end to end;
-- sample-size, field-admission, or measurement-QC workflows;
-- a requirement that real data validate the finite theorem.
-
-These can remain separate repository assets or independent future research programmes. They do not define the CREST paper.
-
-Literature from restoration, resilience, state-and-transition models, POMDPs, predictive-state representations, causal abstraction, philosophy of modelling, complex adaptive systems, and coarse-grained/effective-law traditions should be used for **positioning and conceptual comparison**, not as an empirical validation section.
-
----
-
-# 9. Novelty firewall
-
-Do not claim novelty for:
-
-- history dependence;
-- ecological memory;
-- management-sensitive ecological states;
-- adaptive monitoring;
-- predictive states;
 - purpose-relative model adequacy;
-- coarse-graining or effective laws;
+- idealization and abstraction;
+- multiple realization and levels of description;
+- predictive state representations;
+- POMDPs;
 - causal abstraction;
-- the existence of complex adaptive ecological dynamics.
+- state/action abstraction coupling;
+- ecological state-and-transition modelling;
+- ecological model transferability.
 
-The defended CREST contribution is the connected architecture
+The defended CREST contribution is the ecology-specific state-sameness architecture
 
 \[
 \boxed{
-\text{world}
+\text{admissible worlds}
 \to
-\text{contract-relative required state}
+\text{required state}
 \to
 \text{evidence-identified state}
 \to
@@ -403,14 +204,33 @@ The defended CREST contribution is the connected architecture
 }
 \]
 
-combined with the finite capability–resolution separation
+plus the connected cross-layer no-bound construction.
 
-\[
-\boxed{
-\Delta|K^*|=1
-\quad\text{with arbitrary}\quad
-\Delta K_{U_0}=m.
-}
-\]
+## 9. Explicit exclusions
 
-That is the manuscript spine.
+Do not reintroduce any of the following as empirical validation arcs:
+
+- Izu/Campanula field validation;
+- prospective CREST field testing;
+- restoration/conservation cross-domain validation registries;
+- urban/island validation series;
+- claims that published case studies test the finite theorem end to end.
+
+A single ecology-grounded worked example is allowed and required for readability. Its role is conceptual demonstration, not empirical confirmation.
+
+## 10. Submission structure
+
+The main manuscript should read in this order:
+
+```text
+1. conservation-capacity paradox
+2. ecological state as justified equivalence
+3. shallow-lake worked case
+4. finite carrier/state/evidence architecture
+5. capability–resolution divergence theorem
+6. conservation consequences
+7. philosophical and formal positioning
+8. limits and conclusion
+```
+
+Detailed proof machinery and software reproducibility belong in Supplementary Information.
