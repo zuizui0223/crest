@@ -213,150 +213,215 @@ Adding response obligations cannot make a previously necessary distinction unnec
 
 These monotonicity results establish direction only. They do not determine how the size of the state refinement relates to the size of the carrier gain.
 
-## S6. Capability–resolution divergence
+## S6. Capability–resolution divergence and sharp response-depth law
 
-### S6.1 Construction
+### S6.1 Carrier-gain no-bound result
 
-Fix \(m\ge1\) and let
-
-\[
-X_m=\{0,1\}^m.
-\]
-
-For each address \(x=(x_1,\ldots,x_m)\), create neutral states
+The earlier connected family establishes that for every \(m\ge1\), one newly admitted controllable action can realize
 
 \[
-p_{x,0},p_{x,1},\ldots,p_{x,m}
+\boxed{
+\Delta|K^*|=1,
+\qquad
+\Delta K_{U_0}=m.
+}
 \]
 
-and readout states
+Consequently no universal finite function depending only on carrier-size gain can upper-bound added state information. This is an impossibility result about the explanatory variable \(\Delta|K^*|\); it does not imply that state debt lacks other finite bounds.
+
+### S6.2 Sequential response-capacity upper bound
+
+Fix one old state class \(C\). Suppose a newly relevant sequential intervention has response-relevant depth \(H\), and stage \(h\) can produce at most \(r_h\) distinguishable retained response types within \(C\).
+
+For \(u\in C\), let
 
 \[
-q_{x,0},\ldots,q_{x,m-1}.
+\Sigma_H(u)=(Y_1(u),\ldots,Y_H(u))
 \]
 
-Add two further worlds
+be the complete sequential response record. The strengthened state can split \(C\) only according to distinctions in \(\Sigma_H\).
+
+**Theorem S6.1 — sequential state-debt bound.** The class \(C\) can split into at most
+
+\[
+\boxed{
+\prod_{h=1}^{H}r_h
+}
+\]
+
+strengthened classes, and therefore
+
+\[
+\boxed{
+\Delta K_C
+\le
+\sum_{h=1}^{H}\log_2r_h.
+}
+\]
+
+**Proof.** The strengthened classes inject into the response-vector space \(R_1\times\cdots\times R_H\), whose cardinality is at most \(\prod_h r_h\). Taking \(\log_2\) yields the bit bound. ∎
+
+For a homogeneous \(r\)-ary response path,
+
+\[
+\boxed{
+|J_H^+|/|J_H^-|\le r^H,
+\qquad
+\Delta K\le H\log_2r.
+}
+\]
+
+The inverse necessary condition is
+
+\[
+\boxed{
+H\ge\left\lceil\frac{k}{\log_2r}\right\rceil
+}
+\]
+
+for generating \(k\) added bits through an \(r\)-ary sequential channel.
+
+### S6.3 Sharp connected construction
+
+Fix integers \(r\ge2\) and \(H\ge1\), and let
+
+\[
+X_{r,H}=\{0,1,\ldots,r-1\}^{H}.
+\]
+
+For every address
+
+\[
+x=(x_1,\ldots,x_H)\in X_{r,H},
+\]
+
+create states
+
+\[
+p_{x,0},p_{x,1},\ldots,p_{x,H}.
+\]
+
+All \(p_{x,0}\) output `neutral`. For \(h\ge1\), state \(p_{x,h}\) outputs `response-\(x_h\)`. Add two common compatible worlds
 
 \[
 s=\texttt{safe},
 \qquad
-r=\texttt{fragile}.
+f=\texttt{fragile},
 \]
 
-The retained present slice is
-
-\[
-U_0=\{p_{x,0}:x\in X_m\}.
-\]
-
-Use the fixed output alphabet
-
-\[
-\{\texttt{neutral},\texttt{bit0},\texttt{bit1},\texttt{done}\}.
-\]
-
-For \(j<m\), \(p_{x,j}\) outputs `neutral`; \(p_{x,m}\), \(r\), and \(s\) output `done`; and \(q_{x,j}\) outputs the \((j+1)\)-st binary coordinate of \(x\).
+both with output `done`.
 
 The old controllable repertoire is
 
 \[
-A_c^- = \{\texttt{hold}\}.
+A_c^-=\{\texttt{hold}\}.
 \]
 
-Every chain state and \(s\) self-loops under `hold`; `hold` is unavailable at \(r\).
+Every path state and \(s\) self-loops under `hold`, while `hold` is unavailable at \(f\).
 
 The expanded repertoire is
 
 \[
-A_c^+ = \{\texttt{hold},\texttt{probe}\}.
+A_c^+=\{\texttt{hold},\texttt{probe}\}.
 \]
 
-The old transitions are unchanged and
+Old transitions are unchanged and
 
 \[
-p_{x,j}\xrightarrow{\rm probe}q_{x,j}
-\xrightarrow{\rm probe}p_{x,j+1}
-\qquad(j<m),
+p_{x,h}\xrightarrow{\rm probe}p_{x,h+1}
+\qquad(0\le h<H),
 \]
 
-with terminal transitions
+followed by
 
 \[
-p_{x,m}\xrightarrow{\rm probe}r
+p_{x,H}\xrightarrow{\rm probe}f
 \xrightarrow{\rm probe}s,
 \qquad
 s\xrightarrow{\rm probe}s.
 \]
 
-The same action therefore both traverses the readout chain and rescues the previously nonviable world \(r\).
+Thus the same new action exposes the sequential response address and rescues the unique previously nonviable world.
 
-### S6.2 Carrier gain
+### S6.4 Exact carrier gain
 
-Under the old repertoire, every chain state and \(s\) has the safe action `hold`, while \(r\) has no safe control. Hence
+Under the old repertoire, every path state and \(s\) has the safe action `hold`, while \(f\) has no safe control. Therefore \(f\) is excluded from the old maximal controlled carrier. After `probe` is admitted, \(f\to s\), so it becomes viable and every old viable world remains viable.
+
+Hence
 
 \[
-K_m^{*-}=W_m\setminus\{r\}.
+\boxed{
+\Delta|K^*|=1.
+}
 \]
 
-After `probe` is admitted, \(r\to s\), so
+### S6.5 Exact present-state refinement
+
+Let
 
 \[
-K_m^{*+}=W_m.
+U_0=\{p_{x,0}:x\in X_{r,H}\}.
+\]
+
+Before expansion, every world in \(U_0\) has the same output and self-loops under the only action, so
+
+\[
+\boxed{|J^-\restriction_{U_0}|=1.}
+\]
+
+After expansion, applying `probe` \(h\) times reaches \(p_{x,h}\), whose output is `response-\(x_h\)`. The H-stage response record is therefore exactly
+
+\[
+(\texttt{response-}x_1,\ldots,\texttt{response-}x_H).
+\]
+
+All \(r^H\) addresses are realized and distinct addresses differ at at least one stage. Hence
+
+\[
+\boxed{|J^+\restriction_{U_0}|=r^H.}
 \]
 
 Therefore
 
 \[
-\boxed{|K_m^{*+}|-|K_m^{*-}|=1.}
+\boxed{
+\Delta K_{U_0}=H\log_2r.
+}
 \]
 
-### S6.3 Present-state refinement
-
-Before expansion, every world in \(U_0\) has the same output and the same self-loop under the only action, so
+At every prefix depth \(d\le H\), exactly the first \(d\) address coordinates have been exposed, so
 
 \[
-|J_m^-\restriction_{U_0}|=1.
+\boxed{
+|J_d\restriction_{U_0}|=r^d,
+\qquad
+K_d(U_0)=d\log_2r.
+}
 \]
 
-Take distinct addresses \(x,y\). Let \(j+1\) be their first differing coordinate. The word
+The upper bound is attained at every prefix depth.
+
+### S6.6 Exact evidence debt and target
+
+Fix one evidence record on all worlds in \(U_0\). Before expansion the evidence identifies the single old required state. After expansion it merges all \(r^H\) required states.
+
+The minimum additional resolution required for full-state identification is therefore
 
 \[
-\texttt{probe}^{2j+1}
+\boxed{
+D_E=H\log_2r.
+}
 \]
 
-reaches \(q_{x,j}\) from \(p_{x,0}\) and \(q_{y,j}\) from \(p_{y,0}\), and those states have different outputs. Thus no exact future-sensitive partition can merge the two starting worlds. Since \(|U_0|=2^m\),
-
-\[
-|J_m^+\restriction_{U_0}|=2^m.
-\]
-
-With
-
-\[
-K_{U_0}(J)=\log_2|J\restriction_{U_0}|,
-\]
-
-we obtain
-
-\[
-\boxed{\Delta K_{U_0}=m.}
-\]
-
-### S6.4 Evidence and target
-
-Fix an evidence map that assigns every world in \(U_0\) the same record. Before expansion the evidence identifies the one required present state. After expansion it merges \(2^m\) required states.
-
-The minimum additional resolution required for full-state identification is therefore exactly \(m\) bits. A target constant on \(U_0\) remains reportable before and after.
-
-The connected family realizes
+A target constant on \(U_0\) remains reportable before and after. The sharp family realizes
 
 \[
 \boxed{
 \Delta|K^*|=1,
 \quad
-\Delta K_{U_0}=m,
+|J_H^+|/|J_H^-|=r^H,
 \quad
-D_{U_0}:0\to m,
+\Delta K=D_E=H\log_2r,
 \quad
 \text{full state: yes}\to\text{no},
 \quad
@@ -364,17 +429,19 @@ D_{U_0}:0\to m,
 }
 \]
 
-### S6.5 No-bound corollary
-
-There is no universal finite function \(f\) depending only on carrier-size gain such that every capability expansion in the family satisfies
+For binary response stages,
 
 \[
-\Delta K_{U_0}\le f(\Delta|K^*|).
+\boxed{
+\Delta|K^*|=1,
+\qquad
+|J_H^+|/|J_H^-|=2^H,
+\qquad
+\Delta K=D_E=H\text{ bits}.
+}
 \]
 
-The proof fixes the carrier gain at one while allowing \(m\) to be arbitrary.
-
-The result is an impossibility statement about bounds without further structural assumptions. It is not a claim that real ecological systems generically display exponential state growth.
+This is the preferred sharp construction. The older \(m\)-bit / \(2m-1\)-depth readout remains repository provenance for the no-bound result.
 
 ## S7. Monitoring-resolution debt
 
@@ -392,7 +459,11 @@ D_E(J)=\log_2|E\vee J|-\log_2|E|.
 }
 \]
 
-The debt is nonnegative and vanishes exactly when the existing evidence already identifies the required state.
+The debt is nonnegative and vanishes exactly when the existing evidence already identifies the required state. In the sharp sequential family with one-block present evidence,
+
+\[
+\boxed{D_E=H\log_2r.}
+\]
 
 This quantity measures state resolution, not sampling effort. If the observation map has a structural symmetry that merges two response-relevant mechanisms, repeated observations through the same channel can leave the ambiguity unchanged. In such cases, debt is repaired by a new discriminating measurement type rather than replication alone.
 
@@ -458,15 +529,17 @@ pytest
 python scripts/verify_crest_philosophy_submission.py --write-report
 ```
 
-The automated suite includes direct construction and verification of the capability–resolution family for several finite values of \(m\), including checks that:
+The automated suite includes direct construction and verification of the sharp sequential family across binary and multi-outcome examples, including checks that:
 
 - the controlled-carrier gain is exactly one world;
-- the retained present slice refines from one class to \(2^m\) classes;
-- monitoring-resolution debt is exactly \(m\) bits under the declared fixed evidence;
-- the newly viable `fragile` world lies on the same `probe` trajectories used for readout, preventing a disjoint-union interpretation of the construction;
-- the coarse target remains reportable when full-state identification is lost.
+- one old present state refines to exactly \(r^H\) states;
+- each partial response depth \(d\) yields exactly \(r^d\) present response signatures;
+- state information and monitoring-resolution debt are exactly \(H\log_2r\) bits;
+- the newly viable `fragile` world lies on the same `probe` trajectories used for sequential readout;
+- the coarse target remains reportable when full-state identification is lost;
+- the inverse minimum-depth calculations agree with the analytic bound.
 
-The same tests are executed under multiple supported Python versions in continuous integration. The submission verifier independently checks abstract length, keyword count, blinded identifiers, required manuscript sections, and presence of the theorem headline.
+The older arbitrary-\(m\) connected witness remains tested as provenance for the carrier-gain no-bound result. The same tests are executed under multiple supported Python versions in continuous integration. The submission verifier independently checks abstract length, keyword count, blinded identifiers, required manuscript sections, and presence of the theorem headline.
 
 No empirical dataset is needed to establish the finite theorem. The shallow-lake example in the main text is a literature-grounded worked interpretation, not an empirical calibration of the witness construction.
 
@@ -481,8 +554,10 @@ CREST does not claim novelty for the following mathematical substrates by themse
 - viability-kernel monotonicity;
 - predictive state representations;
 - state/action abstraction coupling;
+- finite-state distinguishing sequences and response trees;
+- the product/information capacity of finite \(r\)-ary response vectors;
 - logarithmic state complexity.
 
-The theorem-level claim developed in the main text is the connected cross-layer separation: one fixed-size capability expansion can add exactly one viable world while forcing arbitrarily many additional bits of least-state and evidence resolution on a retained present slice, with full-state identification lost and a coarse target preserved.
+The theorem-level CREST claim is the matched cross-layer result. Carrier-size gain alone cannot upper-bound added state burden, finite counterfactual response capacity can, and a connected family attains the sharp sequential equality while carrier gain remains exactly one world, full-state licensing is lost under fixed evidence, and a coarse target is preserved.
 
-This conjunction is what supports the conservation interpretation. The mathematical witness does not establish how frequently large state-resolution changes occur in nature. It establishes that management-capability gain alone cannot provide a universal upper bound on the information an adequate ecological state may require.
+The mathematical witness does not establish how frequently large state-resolution changes occur in nature. It identifies a precise structural quantity for future empirical work: response-relevant depth and the number of independently distinguishable retained outcomes exposed at each stage.
