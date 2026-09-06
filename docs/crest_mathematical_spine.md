@@ -20,9 +20,11 @@ Gate C: evidence identifies that state?
 Cross-gate: how can one capability expansion move viability,
             state complexity, evidence adequacy, and target reportability
             in different directions and at different scales?
+        ↓
+Capacity law: what response resource actually bounds the added state debt?
 ```
 
-The first three gates define the object. The cross-gate theorem is the main non-obvious scaling result.
+The first three gates define the object. The cross-gate results first rule out carrier gain as a sufficient complexity parameter, then identify counterfactual response capacity as the relevant finite bound.
 
 ## 2. Gate A — carrier feasibility
 
@@ -214,13 +216,11 @@ This establishes direction: more management capability can make more worlds viab
 
 Detailed proof: `crest_action_expansion_cross_gate_theorem_2026-08-22.md`.
 
-## 6. Cross-gate scaling — capability–resolution divergence
+## 6. Cross-gate scale separation and the resource that controls it
 
-The qualitative theorem does not say how large the representational consequence can be relative to the viability benefit. The connected capability–resolution family supplies that missing scale result.
+### 6.1 Carrier gain alone does not bound state burden
 
-### Theorem
-
-For every integer \(m\ge1\), there is one finite deterministic system in which adding the single controllable action `probe` gives
+The original connected capability–resolution family shows that for every integer \(m\ge1\), adding the single controllable action `probe` can give
 
 \[
 \boxed{
@@ -230,31 +230,13 @@ For every integer \(m\ge1\), there is one finite deterministic system in which a
 }
 \]
 
-On the retained present slice \(U_0\):
+On the retained present slice \(U_0\), the old least exact state has one class, the new least exact state has \(2^m\) classes, unchanged one-block evidence loses full-state adequacy, the monitoring-resolution debt becomes exactly \(m\) bits, and a constant coarse target remains reportable.
 
-- the old least exact state has one class;
-- the new least exact state has \(2^m\) classes;
-- unchanged one-block evidence moves from full-state adequate to inadequate;
-- monitoring-resolution debt changes from \(0\) to exactly \(m\) bits;
-- a constant coarse target remains reportable.
-
-The action alphabet changes only from `{hold}` to `{hold, probe}`, and the static output alphabet remains
-
-\[
-\{\texttt{neutral},\texttt{bit0},\texttt{bit1},\texttt{done}\}.
-\]
-
-Repeated `probe` reveals one binary coordinate at a time. Every readout chain terminates in the same `fragile` world that `probe` newly makes viable, then reaches `safe`. Thus the scaling result is realized in one connected future-response system rather than by placing independent rescue and readout gadgets side by side.
-
-### No-bound corollary
-
-There is no universal finite function \(f\) depending only on carrier-size gain such that all such capability expansions satisfy
+Hence there is no universal finite function \(f\) depending only on carrier-size gain such that
 
 \[
 \Delta K_{U_0}\le f(\Delta|K^*|).
 \]
-
-The family holds \(\Delta|K^*|=1\) fixed while \(\Delta K_{U_0}=m\) is arbitrary.
 
 Therefore
 
@@ -264,11 +246,106 @@ Therefore
 }
 \]
 
-This is the main mathematical headline beyond the conditional existence/minimality substrate: a fixed-size expansion of what can be done can have a constant effect at the viability gate and an arbitrarily large effect at the state/evidence gates.
-
 Detailed proof: `crest_capability_resolution_divergence_theorem_2026-08-22.md`.
 
-Executable witness: `tests/test_crest_capability_resolution_divergence.py`.
+### 6.2 Finite counterfactual response capacity does bound state burden
+
+For a finite response alphabet of size \(q\), action alphabet size \(a\), and counterfactual horizon \(H\), the number of complete response signatures is finite. With
+
+\[
+N_H(a)=\sum_{d=0}^{H}a^d,
+\]
+
+we have
+
+\[
+\boxed{
+|J_H|\le(q+1)^{N_H(a)},
+\qquad
+K_H\le N_H(a)\log_2(q+1).
+}
+\]
+
+The extra symbol accounts for illegality of a word. More generally, if only a finite response-test basis \(w_1,\ldots,w_r\) is needed and test \(i\) realizes \(r_i\) outcomes within an old state class, then
+
+\[
+\boxed{
+\Delta K\le\sum_i\log_2r_i.
+}
+\]
+
+Thus the arbitrary burden in the no-bound theorem is not free: some source of counterfactual distinguishing capacity must grow.
+
+Detailed proof: `crest_counterfactual_response_capacity_bound_2026-09-06.md`.
+
+### 6.3 Sharp sequential state-debt law
+
+The response-capacity result becomes directly ecological when the new responsibility is one sequential intervention path of response-relevant depth \(H\). If stage \(h\) has at most \(r_h\) distinguishable retained outcomes, then
+
+\[
+\boxed{
+\Delta K
+\le
+\sum_{h=1}^{H}\log_2r_h.
+}
+\]
+
+For a homogeneous \(r\)-ary path,
+
+\[
+\boxed{
+|J_H^+|/|J_H^-|\le r^H,
+\qquad
+\Delta K\le H\log_2r.
+}
+\]
+
+Equivalently, generating \(k\) additional bits through an \(r\)-ary sequential channel requires at least
+
+\[
+\boxed{
+H\ge\left\lceil\frac{k}{\log_2r}\right\rceil.
+}
+\]
+
+This bound is sharp in one connected CREST family. The same single new action `probe`:
+
+- rescues exactly one previously nonviable world, so \(\Delta|K^*|=1\);
+- exposes one \(r\)-ary response coordinate at each of \(H\) stages;
+- splits one old present state into exactly \(r^H\) present states;
+- creates exactly \(H\log_2r\) bits of state information and monitoring-resolution debt;
+- changes full-state licensing from yes to no under fixed one-block evidence;
+- leaves a constant coarse target reportable.
+
+Hence the full equality package is
+
+\[
+\boxed{
+\Delta|K^*|=1,
+\qquad
+|J_H^+|/|J_H^-|=r^H,
+\qquad
+\Delta K=D_E=H\log_2r.
+}
+\]
+
+For binary response stages,
+
+\[
+\boxed{
+\Delta|K^*|=1,
+\qquad
+|J_H^+|/|J_H^-|=2^H,
+\qquad
+\Delta K=D_E=H\text{ bits}.
+}
+\]
+
+At every prefix depth \(d\le H\), the sharp family has exactly \(r^d\) present classes and \(d\log_2r\) bits. The operative resource is therefore **response-relevant depth × response information per stage**, not the number of new actions or newly viable worlds.
+
+Detailed proof: `crest_sharp_sequential_state_debt_law_2026-09-06.md`.
+
+Executable witness: `tests/test_crest_sharp_sequential_debt.py`.
 
 ## 7. Minimum monitoring refinement
 
@@ -288,7 +365,13 @@ D_E(J)=\log_2|E\vee J|-\log_2|E|.
 
 It is nonnegative, vanishes exactly when evidence already identifies \(J\), and is monotone under required-state refinement.
 
-The capability–resolution theorem gives a sharp family in which a one-action expansion produces exactly \(m\) bits of debt on a retained present slice for arbitrary \(m\).
+The sharp sequential family gives the explicit equality
+
+\[
+\boxed{D_E=H\log_2r}
+\]
+
+under fixed one-block evidence.
 
 Detailed proof: `crest_monitoring_resolution_debt_2026-08-21.md`.
 
@@ -347,7 +430,8 @@ Still open:
 - a canonical common carrier supplied by nature;
 - infinite/continuous/stochastic trajectory analogues of the finite joint-state theorem;
 - a general relation between dynamical, evolutionary, and representational stability;
-- a general observation-symmetry theorem for arbitrary measurement families.
+- a general observation-symmetry theorem for arbitrary measurement families;
+- empirical calibration of response-relevant depth \(H\) and stage response cardinalities \(r_h\) in real ecological systems.
 
 Not required for the current finite mathematical claims:
 
