@@ -12,16 +12,23 @@ def test_novelty_is_not_generic_purpose_relativism() -> None:
     assert "state/action abstraction coupling" in AUDIT
 
 
-def test_quantitative_headline_is_preserved() -> None:
+def test_quantitative_headline_is_preserved_and_strengthened() -> None:
+    # Preserve the audited no-carrier-gain-only-bound provenance.
     assert "\\Delta |K^*|=1" in AUDIT
     assert "\\Delta K_{U_0}=m" in AUDIT
-    assert "2^m" in MANUSCRIPT
     assert "no universal finite" in MANUSCRIPT
+
+    # The current manuscript must also expose the sharper positive law.
+    assert "r^H" in MANUSCRIPT
+    assert "H\\log_2r" in MANUSCRIPT
+    assert "response-relevant depth" in MANUSCRIPT
+    assert "counterfactual response capacity" in MANUSCRIPT
 
 
 def test_artificial_witness_claim_ceiling() -> None:
     assert "counterexample to a universal upper bound" in AUDIT
     assert "Do not infer exponential growth in real ecosystems" in AUDIT
+    assert "does not claim that real ecosystems generally realize" in MANUSCRIPT
 
 
 def test_conservation_implications_are_theoretical_not_validation() -> None:

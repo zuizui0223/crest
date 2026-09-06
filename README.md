@@ -168,38 +168,82 @@ J\preceq E.
 }
 \]
 
-## 7. Main cross-gate theorem — capability–resolution divergence
+## 7. Quantitative headline — capability gain versus response depth
 
-The qualitative action-expansion result gives the direction: adding safe control options can enlarge the viable carrier, while strengthening the future responsibility can refine the least-information state and make fixed monitoring insufficient.
+The first cross-gate result shows that carrier gain alone is not the right complexity parameter. For every \(m\ge1\), one connected finite system can satisfy
 
-The stronger result is quantitative. For every integer \(m\ge1\), there is one connected finite deterministic CREST system in which adding a **single** controllable action `probe` gives
+\[
+\Delta|K^*|=1
+\qquad\text{while}\qquad
+\Delta K_{U_0}=m\text{ bits},
+\]
+
+so no universal finite function of carrier-size gain alone can upper-bound representational burden.
+
+The next result identifies what *does* bound the burden. For one sequential intervention path of response-relevant depth \(H\), if stage \(h\) has at most \(r_h\) distinguishable retained outcomes, then
+
+\[
+\boxed{
+\Delta K
+\le
+\sum_{h=1}^{H}\log_2r_h.
+}
+\]
+
+For a homogeneous \(r\)-ary response path,
+
+\[
+\boxed{
+\Delta K\le H\log_2r,
+\qquad
+|J_H^+|/|J_H^-|\le r^H.
+}
+\]
+
+The inverse necessary condition is
+
+\[
+\boxed{
+H\ge\left\lceil\frac{k}{\log_2r}\right\rceil
+}
+\]
+
+for exposing \(k\) additional bits through such a sequential channel.
+
+Most importantly, CREST has a connected equality family. A **single** newly admitted action `probe` can simultaneously
+
+- add exactly one viable world: \(\Delta|K^*|=1\);
+- expose one \(r\)-ary response coordinate per stage;
+- split one old present state into exactly \(r^H\) states;
+- create exactly \(H\log_2r\) bits of least-state and monitoring-resolution debt;
+- destroy full-state licensing under unchanged one-block evidence;
+- preserve a constant coarse target.
+
+Thus
 
 \[
 \boxed{
 \Delta|K^*|=1,
 \qquad
-\Delta K_{U_0}=m\text{ bits}.
+|J_H^+|/|J_H^-|=r^H,
+\qquad
+\Delta K=D_E=H\log_2r.
 }
 \]
 
-On the retained present slice \(U_0\):
-
-- required state classes change from \(1\) to \(2^m\);
-- fixed-monitoring resolution debt changes from \(0\) to exactly \(m\) bits;
-- full-state identification changes from yes to no;
-- a constant coarse target remains reportable.
-
-The action alphabet changes only from `{hold}` to `{hold, probe}` and the output alphabet remains `{neutral, bit0, bit1, done}`. Repeated `probe` reads one latent coordinate at a time, and the readout paths terminate in the same `fragile` world that `probe` newly makes viable before reaching `safe`.
-
-Therefore no universal finite function depending only on carrier-size gain can upper-bound required state complexity:
+For binary response stages this becomes
 
 \[
 \boxed{
-\text{viability gain alone cannot upper-bound representational burden.}
+\Delta|K^*|=1,
+\qquad
+|J_H^+|/|J_H^-|=2^H,
+\qquad
+\Delta K=D_E=H\text{ bits}.
 }
 \]
 
-This is the main nontrivial mathematical headline beyond the conditional J1 state construction. CREST does **not** claim novelty for generic state/action abstraction coupling, automaton minimization, viability kernels, or predictive states separately.
+At each prefix depth \(d\le H\), the sharp family has exactly \(r^d\) present classes. The operative complexity parameter is therefore not merely the number of interventions or newly viable worlds but **response-relevant depth × information exposed per stage**.
 
 ## 8. Ecological rules as quotient laws
 
@@ -223,7 +267,7 @@ CREST distinguishes at least:
 - **evolutionary stability** — whether strategies or traits resist invasion under the relevant evolutionary model;
 - **representational stability** — whether the same state quotient remains adequate when observation, intervention, future, mechanism, or reporting responsibility changes.
 
-A newly available intervention can refine the state distinction before that intervention is executed. The connected scaling family shows that this representational change can be arbitrarily large in bits even while the controlled-carrier gain stays fixed at one world.
+A newly available intervention can refine the state distinction before that intervention is executed. The sharp sequential family shows how fast that refinement can accumulate: at most \(\log_2r\) bits per response-relevant stage in an \(r\)-ary path, with equality attainable.
 
 > **The future does not have to happen to change the present scientific state; a counterfactual future only has to become relevant to the contract.**
 
@@ -255,19 +299,22 @@ CREST does not claim novelty for:
 - purpose-relative or task-specific state abstraction;
 - POMDP state reduction;
 - the generic coupling of state and action abstraction, including the direction emphasized by Konidaris (2019) in which action abstraction can drive the state abstraction needed to support those actions;
+- finite-state distinguishing sequences, response trees, or the information capacity of an \(r\)-ary sequence;
 - generic viability/observability mathematics;
 - adaptive monitoring or target-oriented experimental design.
 
-The candidate CREST-level contribution is the **carrier/state/evidence/target cross-gate conjunction and its scale separation**: a fixed-size capability expansion can add exactly one viable world while forcing arbitrarily many additional bits of least-state and monitoring resolution, with full-state licensing lost but a coarse target retained.
+The candidate CREST-level contribution is the **carrier/state/evidence/target cross-gate conjunction plus a matched lower/upper quantitative story**: carrier gain alone does not bound state debt, whereas finite counterfactual response capacity does; a connected family attains the sharp sequential equality while carrier gain remains exactly one world and a coarse target remains reportable.
 
 ## 11. Canonical reading order
 
 1. [`docs/contract_relative_ecological_state_theory.md`](docs/contract_relative_ecological_state_theory.md) — trajectory-first philosophical statement and state definition.
-2. [`docs/crest_mathematical_spine.md`](docs/crest_mathematical_spine.md) — canonical finite theorem chain and scaling result.
-3. [`docs/crest_capability_resolution_divergence_theorem_2026-08-22.md`](docs/crest_capability_resolution_divergence_theorem_2026-08-22.md) — analytic connected scaling construction and no-bound corollary.
-4. [`docs/crest_ecological_projection.md`](docs/crest_ecological_projection.md) — ecology-facing interpretation, quotient laws, and stability.
-5. [`manuscript/crest_biology_philosophy_blinded_submission.md`](manuscript/crest_biology_philosophy_blinded_submission.md) — Biology & Philosophy target manuscript.
-6. [`docs/README.md`](docs/README.md) — supporting proofs, audits, optional applications, and archived development concepts.
+2. [`docs/crest_mathematical_spine.md`](docs/crest_mathematical_spine.md) — canonical finite theorem chain, no-bound result, response-capacity bound, and sharp sequential law.
+3. [`docs/crest_sharp_sequential_state_debt_law_2026-09-06.md`](docs/crest_sharp_sequential_state_debt_law_2026-09-06.md) — sharp \(H\log_2r\) theorem and connected equality construction.
+4. [`docs/crest_counterfactual_response_capacity_bound_2026-09-06.md`](docs/crest_counterfactual_response_capacity_bound_2026-09-06.md) — finite response-capacity upper bounds.
+5. [`docs/crest_capability_resolution_divergence_theorem_2026-08-22.md`](docs/crest_capability_resolution_divergence_theorem_2026-08-22.md) — original arbitrary-m connected no-bound construction retained as provenance.
+6. [`docs/crest_ecological_projection.md`](docs/crest_ecological_projection.md) — ecology-facing interpretation, quotient laws, and stability.
+7. [`manuscript/crest_biology_philosophy_blinded_submission.md`](manuscript/crest_biology_philosophy_blinded_submission.md) — Biology & Philosophy target manuscript.
+8. [`docs/README.md`](docs/README.md) — supporting proofs, audits, optional applications, and archived development concepts.
 
 ## 12. Scope firewall
 
@@ -278,12 +325,13 @@ CREST does **not** currently claim:
 - that every present snapshot is insufficient;
 - a general theorem that all ecological dynamics are deterministic, chaotic, or globally fitness-maximizing;
 - a general infinite, continuous, stochastic, approximate, or delayed-observation trajectory theorem;
-- that generic partition refinement, state abstraction, action abstraction, purpose-relative modelling, causal states, or effective theories are new;
+- that generic partition refinement, state abstraction, action abstraction, purpose-relative modelling, causal states, effective theories, or finite response-vector counting are new;
 - that a one-world viability gain generically creates large state complexity in real ecosystems;
+- that \(H\) is calendar time rather than response-relevant causal/management depth;
 - that empirical data are required to establish the finite theorem;
 - that finite state-memory bits equal financial or field sampling costs.
 
-The trajectory-first framing organizes the finite theory; the connected scaling theorem is an exact finite existence result, not an empirical frequency claim.
+The trajectory-first framing organizes the finite theory; the sharp sequential law is an exact finite extremal result, not an empirical frequency claim.
 
 ## Run
 
