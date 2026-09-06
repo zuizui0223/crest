@@ -1,7 +1,7 @@
 """Finite counterfactual response-capacity bounds for CREST.
 
 The generic counting bounds in this module are finite-state / finite-test
-substrate, not an independent novelty claim.  Their CREST role is to identify a
+substrate, not an independent novelty claim. Their CREST role is to identify a
 quantity that *does* upper-bound representational burden, in contrast to the
 capability-resolution theorem showing that carrier-size gain alone does not.
 """
@@ -36,19 +36,19 @@ def words_through_horizon(
 ) -> tuple[Word, ...]:
     """Enumerate all action words of length at most ``horizon``.
 
-    The empty word is always included.  This helper is intended for finite
-    theorem witnesses and tests; its output grows exponentially with horizon.
+    The empty word is always included. This helper is intended for finite theorem
+    witnesses and tests; its output grows exponentially with horizon.
     """
 
     horizon = _require_nonnegative_integer("horizon", horizon)
     action_tuple = tuple(actions)
-    if len(set(action_tuple)) != len(action_tuple):
-        raise ValueError("actions must be unique")
     for action in action_tuple:
         try:
             hash(action)
         except TypeError as error:
             raise ValueError("actions must be hashable") from error
+    if len(set(action_tuple)) != len(action_tuple):
+        raise ValueError("actions must be unique")
 
     words: list[Word] = [()]
     for depth in range(1, horizon + 1):
@@ -141,7 +141,7 @@ def action_expansion_bit_bound(
     new_action_count: int,
     horizon: int,
 ) -> float:
-    """Upper bound on added log2 state classes from newly admitted words."""
+    """Upper-bound added log2 state classes from newly admitted words."""
 
     observation_count = _require_positive_integer(
         "observation_count", observation_count
@@ -163,9 +163,15 @@ def terminal_response(
     because intermediate labels are terminal labels of shorter prefixes.
     """
 
-    if not isinstance(start, int) or isinstance(start, bool) or not 0 <= start < audit.world_count:
+    if (
+        not isinstance(start, int)
+        or isinstance(start, bool)
+        or not 0 <= start < audit.world_count
+    ):
         raise ValueError("start must be a valid world index")
-    action_columns = {action: index for index, action in enumerate(audit.actions)}
+    action_columns = {
+        action: index for index, action in enumerate(audit.actions)
+    }
     state = start
     for action in tuple(word):
         if action not in action_columns:
@@ -185,7 +191,9 @@ def response_signature(
     """Return the response vector of one world on a declared finite test set."""
 
     word_tuple = tuple(tuple(word) for word in words)
-    return tuple(terminal_response(audit, start, word) for word in word_tuple)
+    return tuple(
+        terminal_response(audit, start, word) for word in word_tuple
+    )
 
 
 def signature_class_count(
