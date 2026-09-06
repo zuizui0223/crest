@@ -3,7 +3,7 @@
 
 ## Abstract
 
-Ecologists and conservation practitioners routinely classify ecosystems by present states, yet the distinctions required for management can change when new interventions become possible. We develop Contract-Relative Ecological State Theory (CREST) to ask when different ecological worlds may legitimately count as the same state. CREST treats state as a scientifically licensed quotient of temporally extended ecological worlds and separates four questions: which worlds are jointly admissible, which distinctions a task requires, which distinctions available evidence identifies, and which target can nevertheless be reported. A shallow-lake worked case shows the practical issue: two currently turbid lakes can be equivalent for present-status reporting yet require different states once sediment-phosphorus treatment and food-web restoration become relevant alternatives. On a declared finite carrier, CREST constructs the unique coarsest state satisfying the implemented responsibilities. Its main quantitative result shows that, for every integer \(m\ge1\), one newly admitted controllable action can increase the viable carrier by exactly one world while forcing a retained present slice to refine from one state to \(2^m\) states. Under unchanged monitoring, full-state identification is lost and the resolution deficit is exactly \(m\) bits, while a coarse target remains reportable. The result formalizes a conservation-relevant asymmetry: **conservation capacity can outgrow conservation knowledge**. New capability can make an ecosystem more manageable while simultaneously making the old state description scientifically insufficient.
+Ecologists and conservation practitioners routinely classify ecosystems by present states, yet the distinctions required for management can change when new interventions become possible. We develop Contract-Relative Ecological State Theory (CREST) to ask when different ecological worlds may legitimately count as the same state. CREST treats state as a scientifically licensed quotient of temporally extended ecological worlds and separates which worlds are admissible, which distinctions a task requires, which distinctions evidence identifies, and which target can nevertheless be reported. A shallow-lake worked case shows the practical issue: two currently turbid lakes can be equivalent for status reporting yet require different states when mechanism-specific restoration becomes relevant. On a declared finite carrier, CREST constructs the unique coarsest state satisfying the implemented responsibilities. Quantitatively, carrier gain alone cannot bound state burden. More sharply, along one sequential intervention path of response-relevant depth \(H\), with at most \(r\) distinguishable outcomes per stage, added state information is bounded by \(H\log_2r\) bits. A connected family attains equality while one new action adds exactly one viable world: one present state splits into \(r^H\), fixed-monitoring debt is exactly \(H\log_2r\), full-state identification is lost, and a coarse target remains reportable. Thus conservation capacity can outgrow conservation knowledge, with the gap governed by counterfactual response capacity rather than capability count alone.
 
 **Keywords:** philosophy of ecology; ecological state; conservation decision-making; scientific representation; model adequacy; monitoring
 
@@ -39,7 +39,7 @@ The conservation consequence is the paper's organizing claim:
 }
 \]
 
-A new management option can improve what can be done while simultaneously increasing what must be distinguished to say what state the system is in. The finite theorem later shows that the first increase can be fixed while the second is arbitrarily large.
+A new management option can improve what can be done while simultaneously increasing what must be distinguished to say what state the system is in. The finite results below show both why carrier-size gain cannot bound that increase and what finite response resource does bound it.
 
 ## 2. Ecological state as scientifically constrained equivalence
 
@@ -254,7 +254,7 @@ It also identifies a concrete ecological disagreement that a generic adequacy-fo
 
 ![Figure 1. Conservation capacity and state resolution in CREST.](../figures/crest_capacity_knowledge_paradox.svg)
 
-**Figure 1.** Left: two currently similar shallow-lake worlds can share a coarse state under a restricted responsibility but split when mechanism-specific restoration actions enter the management repertoire. Right: the finite capability–resolution construction generalizes this logic: a single new action can expose arbitrarily many present distinctions while adding only one viable world.
+**Figure 1.** Left: two currently similar shallow-lake worlds can share a coarse state under a restricted responsibility but split when mechanism-specific restoration actions enter the management repertoire. Right: the finite construction generalizes this logic: one new action can add only one viable world while an \(H\)-stage binary response path can split one present state into \(2^H\) states.
 
 ## 4. The finite CREST architecture
 
@@ -311,11 +311,9 @@ Detailed definitions, proofs, witnesses, and executable checks are given in the 
 
 ## 5. Main result: capability–resolution divergence
 
-The qualitative direction is immediate: enlarging a future or management repertoire can make more worlds viable and can also refine the state needed to represent their responses. The nontrivial question is whether the representational increase must be commensurate with the capability gain.
+The qualitative direction is immediate: enlarging a future or management repertoire can make more worlds viable and can also refine the state needed to represent their responses. The nontrivial questions are whether the representational increase must be commensurate with capability gain, and if not, what finite response resource bounds it.
 
-The answer is no.
-
-### Theorem — capability–resolution divergence
+### 5.1 Carrier gain alone does not bound state burden
 
 For every integer \(m\ge1\), there exists a finite deterministic controlled system in which adding a **single** controllable action `probe` gives
 
@@ -327,29 +325,91 @@ For every integer \(m\ge1\), there exists a finite deterministic controlled syst
 }
 \]
 
-Here \(K^*\) is the greatest robust controlled carrier and
+Thus there is no universal finite function \(f\) depending only on carrier-size gain such that
 
 \[
-K_{U_0}(J)=\log_2|J\restriction_{U_0}|
+\Delta K_{U_0}\le f(\Delta|K^*|)
 \]
 
-is state complexity on a retained present slice \(U_0\).
+for all such contracts. Small improvement in the number of viable worlds therefore does not guarantee a commensurately small increase in required state information.
 
-Before expansion, the present slice contains \(2^m\) worlds that are equivalent under the only old action `hold`. The least exact state therefore has one class on \(U_0\). After `probe` is admitted, repeated use of that same action reveals one binary coordinate at a time, so every pair of present worlds can be distinguished by some finite future word. The least exact state therefore has \(2^m\) classes on \(U_0\), an increase of exactly \(m\) bits.
+This first result is a no-bound theorem. It deliberately does not say that state burden is unconstrained. The missing quantity is the information capacity of the future responses that the strengthened responsibility can distinguish.
 
-The same `probe` trajectories terminate in one additional compatible world `fragile`. Under the old repertoire `fragile` lacks a safe action. Under the expanded repertoire `probe` carries it to a safe sink, so the robust controlled carrier grows by exactly one world. The readout and rescue effects occur in one connected future-response graph rather than in disjoint gadgets.
+### 5.2 Sharp response-depth law
 
-Now hold the evidence on \(U_0\) fixed at one record class. Before expansion it identifies the single required state. After expansion it merges \(2^m\) required states, creating exactly \(m\) bits of monitoring-resolution debt. Full-state licensing changes from yes to no. Yet a target constant on \(U_0\) remains reportable throughout.
+Consider one sequential intervention path of response-relevant depth \(H\). Suppose that at stage \(h\), the strengthened responsibility distinguishes at most \(r_h\) retained response types within an old state class. The complete sequential response vector then has at most
 
-Thus one fixed-size capability expansion realizes
+\[
+\prod_{h=1}^{H}r_h
+\]
+
+possible values. Hence
+
+\[
+\boxed{
+\Delta K
+\le
+\sum_{h=1}^{H}\log_2r_h.
+}
+\]
+
+For a homogeneous \(r\)-ary pathway,
+
+\[
+\boxed{
+|J_H^+|/|J_H^-|\le r^H,
+\qquad
+\Delta K\le H\log_2r.
+}
+\]
+
+The inverse form is equally useful. If \(k\) additional bits must be distinguished through an \(r\)-ary sequential response channel, then necessarily
+
+\[
+\boxed{
+H\ge\left\lceil\frac{k}{\log_2r}\right\rceil.
+}
+\]
+
+The quantity \(H\) is not calendar time. It counts response-relevant causal or management stages: a long delay with no new distinguishable response contributes no extra information.
+
+### 5.3 The bound is attainable in the same cross-gate system
+
+The upper bound is sharp while retaining the conservation-capacity paradox. Fix \(r\ge2\) and \(H\ge1\). Construct \(r^H\) present worlds indexed by addresses
+
+\[
+x=(x_1,\ldots,x_H)\in\{0,\ldots,r-1\}^H.
+\]
+
+Before expansion, all present worlds have the same output and the same `hold` future, so they occupy one state. After `probe` is admitted, its first application exposes response \(x_1\), its second exposes \(x_2\), and so on. After \(H\) response-relevant stages the response record is exactly the address \(x\), so every present world is distinguished. The same `probe` path then enters a single compatible `fragile` world that lacked a safe old action; `probe` sends `fragile` to a safe sink. Thus only one additional world becomes viable.
+
+Consequently the connected family realizes
+
+\[
+\boxed{
+\Delta|K^*|=1,
+\qquad
+|J_H^+|/|J_H^-|=r^H,
+\qquad
+\Delta K=H\log_2r.
+}
+\]
+
+Hold the present evidence fixed at one record class. Before expansion it identifies the one required state. After expansion it merges all \(r^H\) required states, so the minimum monitoring-resolution debt is also exactly
+
+\[
+\boxed{D_E=H\log_2r.}
+\]
+
+Full-state licensing changes from yes to no, while a target constant across the present slice remains reportable. The full equality package is therefore
 
 \[
 \boxed{
 \Delta|K^*|=1,
 \quad
-\Delta K_{U_0}=m,
+|J_H^+|/|J_H^-|=r^H,
 \quad
-D_{U_0}:0\to m,
+\Delta K=D_E=H\log_2r,
 \quad
 \text{full state: yes}\to\text{no},
 \quad
@@ -357,23 +417,25 @@ D_{U_0}:0\to m,
 }
 \]
 
-### Corollary — no carrier-gain-only upper bound
-
-There is no universal finite function \(f\) depending only on carrier-size gain such that
+For binary response stages, this reduces to the especially transparent result
 
 \[
-\Delta K_{U_0}\le f(\Delta|K^*|)
+\boxed{
+\Delta|K^*|=1,
+\qquad
+|J_H^+|/|J_H^-|=2^H,
+\qquad
+\Delta K=D_E=H\text{ bits}.
+}
 \]
 
-for all such contracts. The family fixes \(\Delta|K^*|=1\) while \(m\) is arbitrary.
+At every partial depth \(d\le H\), the sharp family has exactly \(2^d\) present states in the binary case. One additional response-relevant binary stage can therefore at most double the number of states required at present, and the bound is achievable.
 
-The theorem is an extremal existence result. It does **not** predict exponential state growth in typical ecosystems. Its role is to rule out a general inference: without additional ecological structure, small improvement in the number of viable worlds does not guarantee small increase in the information required for an adequate state.
-
-This is stronger than the qualitative observation that state abstractions can depend on available actions. State/action coupling is established in reinforcement learning and controlled-system representation (Konidaris 2019), and future-test-defined state is central to Predictive State Representations (Littman et al. 2002; Singh et al. 2004). CREST's theorem concerns the scale separation across four linked quantities—carrier feasibility, least-state complexity, evidence adequacy, and target reportability—in one connected construction.
+This is stronger and more informative than saying only that state abstraction can depend on available actions. State/action coupling is established in reinforcement learning and controlled-system representation (Konidaris 2019), and future-test-defined state is central to Predictive State Representations (Littman et al. 2002; Singh et al. 2004). CREST couples carrier feasibility, least-state complexity, evidence adequacy, and target reportability, then identifies a sharp response-capacity law for their divergence.
 
 ## 6. Conservation capacity can outgrow conservation knowledge
 
-The theorem's main ecological use is not a recommendation to measure everything. It identifies a structural tension between intervention and representation.
+The theorem's main ecological use is not a recommendation to measure everything. It identifies which structural property of an intervention can create large representational debt.
 
 ### 6.1 New capability can invalidate old state knowledge before anything is done
 
@@ -395,25 +457,41 @@ The finite family also shows that a management target can remain reportable when
 
 This is not a defect. A coarse target may be all that a decision requires. But it changes what can legitimately be inferred from a successful management decision.
 
-### 6.3 The limiting resource can be measurement type rather than sample size
+### 6.3 Response-relevant depth, not intervention count alone, controls the sharp debt
+
+The new quantitative result changes the ecological interpretation. A management programme with one intervention name can still carry a deep sequence of response-relevant consequences. Conversely, many nominal interventions can be redundant if they do not expose additional distinctions.
+
+For a sequential pathway with at most \(r\) distinguishable retained response types per relevant stage,
+
+\[
+\boxed{
+\Delta K\le H\log_2r.
+}
+\]
+
+Thus large knowledge debt requires either deeper response-relevant memory, richer response branching, or both. In the binary sharp case, each additional response-relevant stage can add exactly one bit and double the required present-state count.
+
+This gives ecological memory a precise role. Hysteresis, delayed internal loading, seed-bank legacies, successional bottlenecks, or sequential interaction rewiring matter not merely because they last a long time, but because different latent worlds can reveal additional management-relevant responses at successive stages. Calendar duration without new distinguishable responses does not increase \(H\).
+
+### 6.4 The limiting resource can be measurement type rather than sample size
 
 When the newly relevant distinction lies in a latent response mechanism, collecting more observations of the same aggregate channel may leave the state unresolved. A monitoring programme can therefore face a structural deficit rather than a merely statistical one. The appropriate repair may be a different measurement channel, not greater replication.
 
-### 6.4 A conservation-state category is partly defined by feasible intervention space
+### 6.5 A conservation-state category is partly defined by feasible intervention space
 
 Labels such as `recoverable`, `restoration-ready`, `functionally redundant`, or `managed stable` are not simply properties of a momentary snapshot when their scientific meaning includes intervention response. Two populations or ecosystems can occupy one state under one management repertoire and require different states under another.
 
 This does not make ecological reality socially constructed by management. The worlds and their response differences are independent constraints. What management changes is which of those real differences the state must preserve.
 
-The resulting principle is:
+The resulting practical principle is stronger than simply re-auditing after every new tool:
 
 \[
 \boxed{
-\text{when the management repertoire changes, state adequacy must be re-audited.}
+\text{monitoring resolution should scale with response-relevant intervention depth, not capability count alone.}
 }
 \]
 
-The shallow-lake case shows the principle concretely. `Currently turbid` remains a valid coarse description when sediment treatment and food-web intervention become available. What fails is the inference that one `turbid` state is sufficient for predicting which supplementary restoration path will work.
+The shallow-lake case shows the principle concretely. `Currently turbid` remains a valid coarse description when sediment treatment and food-web intervention become available. What fails is the inference that one `turbid` state is sufficient for predicting which supplementary restoration path will work. In a fully developed empirical application, the relevant task would be to estimate which stages of sediment, food-web, macrophyte, and recovery dynamics actually reveal independent response distinctions; those stages, rather than elapsed years alone, would define the empirical analogue of \(H\).
 
 The same logic can arise in other conservation settings whenever new actions make dormant differences operational: connectivity restoration can expose dispersal-source differences, assisted migration can expose genotype-by-environment response differences, and targeted species removal can expose alternative interaction structures. These are theoretical projections of the state criterion, not empirical validations of the extremal theorem.
 
@@ -427,31 +505,39 @@ Second, adequacy-for-purpose accounts correctly make evaluation task-relative (P
 
 Third, multiple-realizability and levels-of-description debates ask how heterogeneous lower-level systems can support the same higher-level regularity (Batterman 2000; Wimsatt 2007). CREST gives this issue an intervention-sensitive ecological form. Micro- or history-level heterogeneity can remain inside one macrostate while every responsibility-relevant response is invariant. A newly relevant intervention can break the macroequivalence by making one formerly hidden realization respond differently.
 
-Fourth, predictive-state, causal-abstraction, POMDP, and state/action-abstraction theories already provide powerful controlled-system formalisms (Shalizi and Crutchfield 2001; Littman et al. 2002; Singh et al. 2004; Beckers and Halpern 2019; Konidaris 2019). CREST does not claim greater expressive power. Its explanatory target is different: it separates ecological-world admissibility, task-required state, evidence-identified state, reportable target, and quotient-law validity so that failures at these layers are not mistaken for one another. The quantitative result then couples those layers in a single no-bound construction.
+Fourth, predictive-state, causal-abstraction, POMDP, and state/action-abstraction theories already provide powerful controlled-system formalisms (Shalizi and Crutchfield 2001; Littman et al. 2002; Singh et al. 2004; Beckers and Halpern 2019; Konidaris 2019). CREST does not claim greater expressive power. Its explanatory target is different: it separates ecological-world admissibility, task-required state, evidence-identified state, reportable target, and quotient-law validity so that failures at these layers are not mistaken for one another. The quantitative contribution is the matched result that carrier gain alone does not bound state debt, finite response capacity does, and a connected cross-gate family attains the sharp sequential equality.
 
-Finally, ecology itself has a long history of questioning the transferability and adequacy of state variables and models. Ecological model-adequacy frameworks explicitly scrutinize state variables and controls (Getz et al. 2018), conservation POMDPs ask which states matter for decisions (Nicol and Chadès 2012; Chadès et al. 2021), State-and-Transition Models make state concepts management-sensitive (Stringham et al. 2003), and model transferability under novel conditions is a recognized challenge (Yates et al. 2018). CREST's contribution is to place these concerns under one state-sameness question and to show that expanding what can be done can have a mathematically disproportionate effect on what must be represented.
+Finally, ecology itself has a long history of questioning the transferability and adequacy of state variables and models. Ecological model-adequacy frameworks explicitly scrutinize state variables and controls (Getz et al. 2018), conservation POMDPs ask which states matter for decisions (Nicol and Chadès 2012; Chadès et al. 2021), State-and-Transition Models make state concepts management-sensitive (Stringham et al. 2003), and model transferability under novel conditions is a recognized challenge (Yates et al. 2018). CREST's contribution is to place these concerns under one state-sameness question and to show quantitatively that the relevant burden is governed by counterfactual response capacity rather than the size of a capability gain alone.
 
 ## 8. Limits and conclusion
 
 CREST does not provide one universal partition of nature. Its state is conditional on a well-posed scientific responsibility, and different responsibilities can legitimately yield different state spaces. Nor does CREST infer the correct intervention grammar, mechanism family, historical variables, evidence system, or normative target from data. Those remain substantive scientific and, in some cases, ethical choices.
 
-The present proofs are finite and exact. Infinite-state, continuous-time, stochastic, approximate, and delayed-control generalizations require additional mathematics. The capability–resolution theorem is an existence result and does not claim that real ecosystems generally exhibit exponential state growth. Its conclusion is negative and conditional: a carrier-gain-only bound is unavailable without additional structural assumptions.
+The present proofs are finite and exact. Infinite-state, continuous-time, stochastic, approximate, and delayed-control generalizations require additional mathematics. The sharp response-depth theorem is an extremal result; it does not claim that real ecosystems generally realize \(r^H\) states. Its positive statement is conditional: if one sequential responsibility has response-relevant depth \(H\) and at most \(r\) distinguishable retained outcomes per stage, it cannot add more than \(H\log_2r\) bits, and a connected finite CREST family attains that bound. Here \(H\) is response-relevant depth, not calendar duration.
 
-The worked shallow-lake example is likewise not an empirical performance test of CREST. It demonstrates that the theory makes a concrete distinction in an ecological management problem using intervention channels independently supported by the lake-restoration literature. A full empirical application would require data-driven specification of the possible worlds, response model, evidence partition, and comparison against alternative representations.
+The worked shallow-lake example is likewise not an empirical performance test of CREST. It demonstrates that the theory makes a concrete distinction in an ecological management problem using intervention channels independently supported by the lake-restoration literature. A full empirical application would require data-driven specification of the possible worlds, response model, evidence partition, response-relevant stages, and comparison against alternative representations.
 
 The philosophical claim is also limited. CREST does not say that every scientific aim is equally good or that ecological truth is observer-relative. It says that scientific states are representations with responsibilities, and a state merge is legitimate only while the ecological differences inside it do not change what that representation is required to support.
 
-The central result can therefore be stated without the full formal vocabulary. An ecosystem can become **more manageable** while becoming **harder to represent adequately**. A new intervention can expose distinctions that were previously irrelevant, and the amount of newly required state information need not be bounded by the gain in viable ecological worlds. Under fixed monitoring, this can make full-state knowledge fail even while a coarser management target remains answerable.
-
-Hence:
+The central quantitative result can therefore be stated without the full formal vocabulary. A small capability gain can create a large state burden, but the burden is not arbitrary once the future-response structure is specified. In the homogeneous sequential case,
 
 \[
 \boxed{
-\textbf{conservation capacity can outgrow conservation knowledge.}
+\text{maximum added state information}=H\log_2r\text{ bits},
 }
 \]
 
-This is not because new management changes the ecosystem before it is applied. It is because new capability changes which counterfactual differences a scientifically adequate present state must preserve. CREST turns that conservation paradox into a precise question about ecological state, evidence, and the domain of coarse ecological laws.
+and this maximum is achievable while the controlled carrier grows by only one world. For binary response stages, every additional response-relevant stage can at most double the number of present states and can add exactly one bit in the sharp family.
+
+Hence conservation capacity can outgrow conservation knowledge for a precise reason: not merely because a new intervention exists, but because the intervention opens a counterfactual response path with enough depth and branching to make previously hidden ecological differences operationally distinct.
+
+\[
+\boxed{
+\textbf{conservation capacity can outgrow conservation knowledge,}
+\quad
+\textbf{at a rate bounded by counterfactual response capacity.}
+}
+\]
 
 ## References
 
