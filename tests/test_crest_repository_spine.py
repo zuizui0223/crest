@@ -27,6 +27,7 @@ def test_root_readme_exposes_trajectory_first_state_question() -> None:
         "docs/contract_relative_ecological_state_theory.md",
         "docs/crest_mathematical_spine.md",
         "docs/crest_ecological_projection.md",
+        "docs/crest_sharp_sequential_state_debt_law_2026-09-06.md",
     ):
         assert path in README
 
@@ -39,14 +40,17 @@ def test_philosophy_doc_keeps_world_level_frame_and_finite_firewall_separate() -
     assert "general continuous/stochastic trajectory theorem" in PHILOSOPHY
 
 
-def test_mathematical_spine_prioritizes_gates_and_cross_gate_scaling() -> None:
+def test_mathematical_spine_prioritizes_gates_scale_separation_and_sharp_bound() -> None:
     for term in (
         "Gate A — carrier feasibility",
         "Gate B — unique least-information state",
         "Gate C — evidence licensing",
         "Cross-gate monotonicity — qualitative action expansion",
-        "Cross-gate scaling — capability–resolution divergence",
+        "Cross-gate scale separation and the resource that controls it",
         "viability gain alone cannot upper-bound representational burden",
+        "Finite counterfactual response capacity does bound state burden",
+        "Sharp sequential state-debt law",
+        "H\\log_2r",
         "Supporting theorem infrastructure",
     ):
         assert term in MATH
