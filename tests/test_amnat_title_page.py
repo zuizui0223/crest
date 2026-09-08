@@ -2,8 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from scripts.amnat_submission_metadata import MANUSCRIPT, load_metadata, text_word_count
-from scripts.build_amnat_title_page import build_title_page
+from crest.amnat_submission import MANUSCRIPT, build_title_page, load_metadata, text_word_count
 
 
 def test_generated_title_page_contains_required_review_metadata(tmp_path: Path) -> None:
