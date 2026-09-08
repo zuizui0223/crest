@@ -96,6 +96,18 @@ The contribution is the modeling architecture: non-circular companion semantics,
 
 All remain noncanonical.
 
+## Retained Biology & Philosophy bundle
+
+The earlier philosophy-facing submission surface remains intact for provenance and comparison and is deliberately separate from the AmNat flagship:
+
+1. `crest_biology_philosophy_blinded_submission.md` — retained blinded manuscript.
+2. `CREST_supplementary_information.md` — retained supplementary definitions and worked-case material.
+3. `biology_philosophy_title_page_TEMPLATE.md` — separate identifying title page.
+4. `SUBMISSION_BLOCKERS_2026-08-24.md` — historical author-controlled blockers.
+5. `crest_canonical_scope_2026-08-24.md` — historical manuscript-scope contract.
+
+The legacy verifier continues to target `crest_biology_philosophy_blinded_submission.md`; it is not the AmNat verifier.
+
 ## Current scientific spine
 
 ```text
@@ -136,7 +148,7 @@ Default output:
 
 `dist/anonymous_review_code.zip`
 
-The v0.7 archive should contain the minimal code needed for:
+The v0.7 archive contains the minimal code needed for:
 
 - temporal-cut representation;
 - strict companion-realizability checks;
