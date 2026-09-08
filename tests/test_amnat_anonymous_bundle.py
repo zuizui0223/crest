@@ -61,13 +61,21 @@ def test_anonymous_manifest_hashes_every_whitelisted_source(tmp_path: Path) -> N
 
     with zipfile.ZipFile(output) as archive:
         manifest = json.loads(archive.read("ANONYMOUS_MANIFEST.json"))
+        assert manifest["schema_version"] == 2
         assert set(manifest["files"]) == set(builder.SOURCE_PATHS)
         for name, metadata in manifest["files"].items():
             payload = archive.read(name)
             assert hashlib.sha256(payload).hexdigest() == metadata["sha256"]
             assert len(payload) == metadata["bytes"]
-        assert manifest["numeric_anchor"]["adequate_state_classes"] == 1024
-        assert manifest["numeric_anchor"]["genuine_three_way_bits"] == 8.415037499278844
+
+        anchor = manifest["numeric_anchor"]
+        assert anchor["history_mechanism_classes"] == 4
+        assert anchor["joint_classes"] == 4096
+        assert anchor["joint_bits"] == 12
+        assert anchor["genuine_three_way_bits"] == 10
+        assert anchor["pairwise_interaction_bits"] == 0
+        assert anchor["state_count_amplification"] == 1024
+        assert anchor["three_way_fraction_of_interaction"] == 1.0
 
 
 def test_anonymous_bundle_runs_focused_theorem_tests(tmp_path: Path) -> None:
@@ -85,6 +93,9 @@ def test_anonymous_bundle_runs_focused_theorem_tests(tmp_path: Path) -> None:
             "-q",
             "tests/test_crest_temporal_cut.py",
             "tests/test_crest_temporal_interaction.py",
+            "tests/test_companion_realizability.py",
+            "tests/test_conditioned_temporal_bridges.py",
+            "tests/test_compositional_temporal_game.py",
         ],
         cwd=extracted,
         text=True,
