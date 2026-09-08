@@ -2,6 +2,12 @@
 
 CREST asks what information must be retained when an ecological system is observed at one temporal cut but scientific responsibilities reach into its history, hidden contemporaneous response structure, and future.
 
+The underlying trajectory-first question remains:
+
+> **Why can a finite ecological state exist at all in a world whose relevant dynamics, interactions, mechanisms, and scientific observables depend on context?**
+
+The current answer is sharper:
+
 > **An ecological state is the least information that must survive an observational temporal cut under the declared scientific responsibilities.**
 
 The current finite theory does not identify the present with a finite-width interval or with the state itself. At time \(t\), an observation map
@@ -117,6 +123,27 @@ At \(b=10\):
 
 This is the current flagship numerical closure.
 
+## Retained obstruction-change diagnostics
+
+The earlier six-world CCOC/MLTR/MRM obstruction-spectrum comparison remains part of the mainline regression surface. Turning on the activation cascade changes the required joint state from 3 to 5 classes while all standalone debts stay fixed. The joint-debt change is
+
+\[
+\delta D_{\rm joint}=\delta\Delta=0.7369655942\text{ bit},
+\]
+
+with exact interaction-order decomposition
+
+\[
+0.7369655942
+=
+0.4150374993
++
+0.3219280949
+\quad\text{bits}.
+\]
+
+The before/after diagnostic reports `active_interaction_orders = [2, 3]`, with the pairwise term dominant in that six-world comparison. These values are retained as a smaller compatibility witness; the temporal-cut \(b=10\) theorem is now the flagship endpoint.
+
 ## Publication roles
 
 - **CREST flagship:** state at a temporal cut and interaction-generated state information.
@@ -152,6 +179,7 @@ The previous Δ-centered `crest_flagship_amnat_v0.2.md` remains in the repositor
 - `artifacts/crest_temporal_cut_numeric_benchmarks_2026-09-08.json` — reproducible numeric anchors.
 - `crest/joint_debt.py` — generic joint-debt accounting.
 - `crest/obstruction_spectrum.py` — coalition, Shapley, and Möbius/Harsanyi decomposition.
+- `crest/obstruction_compare.py` — before/after change diagnosis and active interaction orders.
 
 ## Scope firewall
 
