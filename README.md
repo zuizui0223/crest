@@ -167,6 +167,18 @@ The temporal-cut framing refines rather than deletes the earlier responsibility 
 
 These labels remain useful for theorem provenance and cross-repository routing even though the flagship now organizes them geometrically around the cut.
 
+## Prior-art position of the flagship
+
+The submission-facing manuscript now cites neighboring literatures directly rather than leaving the novelty boundary only in repository notes.
+
+- ecological memory / antecedent effects: Ogle et al. (2015);
+- hysteresis and ecosystem state shifts: Scheffer et al. (2001);
+- transient ecological dynamics: Hastings et al. (2018);
+- causal/predictive state: Shalizi and Crutchfield (2001) and Littman, Sutton, and Singh (2001);
+- bisimulation and task-preserving state abstraction: Givan, Dean, and Greig (2003) and Li, Walsh, and Littman (2006).
+
+CREST does not claim that these phenomena or mathematical substrates are new. Its claim is that retrospective, latent-contemporaneous, and prospective responsibilities acting on one observational cut can generate unbounded interaction state debt, including a genuine three-way term that can asymptotically dominate the required state information.
+
 ## Publication roles
 
 - **CREST flagship:** state at a temporal cut and interaction-generated state information.
@@ -181,15 +193,15 @@ The companion theories remain separate. CREST uses their responsibilities on a c
 
 Canonical manuscript:
 
-`manuscript/crest_flagship_amnat_v0.3_temporal_cut.md`
+`manuscript/crest_flagship_amnat_v0.4_positioned.md`
 
 Title:
 
-**What Must Survive the Present? Ecological State at a Temporal Cut and Interaction Across History, Latent Response, and Future**
+**Ecological State at a Temporal Cut: Interaction Across Time**
 
 Target: **The American Naturalist — Major Article**.
 
-The previous Δ-centered `crest_flagship_amnat_v0.2.md` remains in the repository as provenance but is no longer canonical.
+Submission-facing constraints are now regression-tested: the abstract is below 200 words, keywords are at most six, the title is 9 words, Methods precede Results, and Literature Cited is present. The theorem-correct `crest_flagship_amnat_v0.3_temporal_cut.md` and the earlier Δ-centered `crest_flagship_amnat_v0.2.md` remain as provenance but are no longer canonical.
 
 ## Canonical reading paths
 
@@ -198,6 +210,7 @@ The previous Δ-centered `crest_flagship_amnat_v0.2.md` remains in the repositor
 - `docs/crest_ecological_projection.md` — ecology-facing quotient interpretation and representational stability.
 - `docs/crest_sharp_sequential_state_debt_law_2026-09-06.md` — sharp sequential response-capacity law.
 - `docs/crest_temporal_state_interaction_theorem_2026-09-08.md` — temporal-cut interaction theorem and exact finite witnesses.
+- `docs/flagship_integration/amnat_v03_readiness_audit_2026-09-08.md` — AmNat readiness audit that motivated v0.4 positioning.
 
 ## Proof and implementation map
 
@@ -205,6 +218,7 @@ The previous Δ-centered `crest_flagship_amnat_v0.2.md` remains in the repositor
 - `crest/temporal_interaction.py` — exact past/future and three-way sharp families.
 - `tests/test_crest_temporal_cut.py` — cut/fiber regression tests.
 - `tests/test_crest_temporal_interaction.py` — pairwise and three-way interaction regressions.
+- `tests/test_amnat_manuscript_compliance.py` — title/abstract/keyword/method-order/literature-positioning checks.
 - `docs/crest_temporal_state_interaction_theorem_2026-09-08.md` — analytic theorem statement and proof.
 - `docs/flagship_integration/temporal_cut_state_section.md` — manuscript-ready theorem section.
 - `artifacts/crest_temporal_cut_numeric_benchmarks_2026-09-08.json` — reproducible numeric anchors.
