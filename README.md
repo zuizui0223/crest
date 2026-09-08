@@ -72,86 +72,106 @@ Three no-go facts prevent overinterpreting arbitrary refinement cascades as lite
 
 The old marked-cycle result \(\Delta=\log_2 n-1\) and old fixed-closure three-way result \(b-\log_2 3\) remain exact **abstract fixed-closure extrema**, not the flagship companion-derived claim.
 
-## Flagship theorem: interface prerequisites determine interaction order
+## v0.7 flagship: prerequisite order and semantic coverage
 
-The v0.6 flagship no longer defines coalition values directly.
+The current flagship does not assign coalition values directly and does not claim mathematical novelty for Möbius/Harsanyi accounting.
 
-Use the explicit carrier
+CREST first derives two companion semantic interfaces:
 
-\[
-\Omega_m=P_H\times P_\Theta\times\{0,1\}^m,
-\]
+- MLTR raw routes are quotiented by equality of their complete carried terminal maps;
+- MRM primitive candidate laws are quotiented by equality of their complete declared response tables.
 
-where \(P_H\) contains MLTR replacement-history primitives distinguished by complete carried maps and \(P_\Theta\) contains MRM primitive candidate laws distinguished by complete response tables.
+A future target then has two separate modeling objects:
 
-For each coalition \(S\), the code:
+1. a **minimum prerequisite set** specifying which interfaces must be retained before the target is well formed; and
+2. a **semantic access relation** specifying on which combinations of those retained semantic interfaces the target is actually addressable.
 
-1. generates the legal grammar;
-2. evaluates every legal trace on every world;
-3. groups worlds with equal trace profiles;
-4. computes
-   \[
-   v_R(S)=\log_2|Q_S|.
-   \]
-
-A future decoder has a minimal prerequisite set
+Let
 
 \[
-R\subseteq\{H,\Theta\}.
+N=|H_{\min}|\,|\Theta|
 \]
 
-An exterior word exists exactly when
+be the number of semantic history × response-type pairs and let
 
 \[
-F\in S
-\quad\text{and}\quad
-R\subseteq S.
+k=|A_f|
 \]
 
-The induced quotient therefore satisfies
+be the number of pairs on which an \(m\)-bit future decoder is licensed. When both H and Θ are syntactic prerequisites, the exact grand-coalition quotient is
+
+\[
+\boxed{|Q_{H\Theta F}|=(N-k)+k2^m.}
+\]
+
+The three-way state dividend is
 
 \[
 \boxed{
-|Q_S|=
-2^{\mathbf 1_{H\in S}+\mathbf 1_{\Theta\in S}+m\mathbf 1_{F\in S,\ R\subseteq S}}.
-}
+d_{H\Theta F}
+=
+\log_2\frac{(N-k)+k2^m}{N}.}
 \]
 
-This formula is now a theorem about generated trace quotients rather than the implementation definition.
+For fixed \(N\) and \(k>0\),
 
-Its Möbius consequence is a complete classification:
+\[
+\boxed{
+d_{H\Theta F}=m-\log_2(N/k)+o(1).}
+\]
 
-- \(R=\varnothing\): the \(m\)-bit exterior burden is an **F main effect**;
-- \(R=\{H\}\): it is pure **H × F pairwise interaction**;
-- \(R=\{\Theta\}\): it is pure **Θ × F pairwise interaction**;
-- \(R=\{H,\Theta\}\): it is pure **H × Θ × F three-way interaction**.
+Thus **prerequisite order fixes the interaction order, whereas semantic access coverage controls its magnitude**. Complete addressability is only the boundary case \(k=N\).
 
-Thus the **minimal interface prerequisite set determines the interaction order of state addressability debt**.
+## Canonical sparse witness
 
-Pure three-way interaction is therefore conditional, not automatic. If F is allowed to decode the exterior signature without both interfaces, the three-way dividend becomes zero.
+The v0.7 companion witness has
 
-## Numerical illustration
+- 3 raw MLTR-facing routes → **2 carried-semantic history modes**;
+- 3 raw MRM candidates → **2 candidate-safe response types**;
+- \(N=4\) semantic pairs;
+- only \(k=1\) addressable pair.
 
-For \(m=10\) and \(R=\{H,\Theta\}\):
+Hence
 
-- visible cut: **1 class**;
-- history interface: **2 classes / 1 bit**;
-- mechanism interface: **2 classes / 1 bit**;
+\[
+|Q_{H\Theta F}|=3+2^m.
+\]
+
+At \(m=10\):
+
 - history + mechanism: **4 classes / 2 bits**;
-- full grammar: **4096 classes / 12 bits**;
-- state-count amplification over history + mechanism: **1024×**;
-- genuine three-way interaction: **10 bits**;
-- three-way share of the full state: **83.33%**.
+- full semantic quotient: **1027 classes / 10.00422 bits**;
+- genuine three-way dividend: **8.00422 bits**;
+- asymptotic sparsity penalty relative to complete access: **2 bits**.
 
-These numbers illustrate the two-interface-complete decoder case; they are not universal ecological constants.
+The earlier **4096 classes / 12 bits / 10-bit three-way** result is retained as the full-addressability boundary \(k=N=4\), not the canonical v0.7 witness.
+
+## Executable shallow-lake prerequisite audit
+
+The shallow-lake worked case now uses a finite counterfactual decision model rather than markdown labels alone. Four lake worlds share one coarse visible status and cross two retrospective modes with two latent-response types. For each declared target, the code asks whether the target factors through no interface, H only, Θ only, or both, and then substitutes one interface counterfactually while holding the other fixed.
+
+The executable minimum prerequisite sets are
+
+\[
+R_{\rm status}=\varnothing,
+\quad
+R_{\rm legacy}=\{H\},
+\quad
+R_{\rm mechanism}=\{\Theta\},
+\quad
+R_{\rm composed}=\{H,\Theta\}.
+\]
+
+This is a **literature-grounded finite decision model, not empirical validation** and not a claim that every shallow lake has the same prerequisite structure.
 
 ## Ecological interpretation
 
-The immediate implication concerns modular state design.
+CREST therefore asks two distinct questions:
 
-If every future query factors through component interfaces independently, state components can often be budgeted modularly. If a future query is only meaningful or executable when several retained interfaces are simultaneously available, the representational burden associated with that query belongs to a higher-order interaction term.
+1. **Which retained ecological interfaces are minimally required by this future target?**
+2. **On which semantic combinations of those interfaces is the future target actually addressable?**
 
-CREST therefore asks not only which past, latent, or future quantities matter separately, but **which combinations of interfaces are prerequisites for the questions the state must answer**.
+Modular state design can fail either because a target jointly requires several interfaces or because complete access across their Cartesian product is incorrectly assumed. Interaction accounting is downstream of those modeling choices.
 
 ## Retained smaller diagnostics
 
@@ -173,7 +193,7 @@ Its diagnosis remains **`interaction-only`** because standalone debts are unchan
 
 ## Publication roles
 
-- **CREST flagship:** state at a temporal cut, realizability no-go, and decoder-prerequisite interaction-order characterization.
+- **CREST flagship:** state at a temporal cut, realizability no-go, semantic companion composition, target-relative prerequisite identification, and sparse semantic access.
 - **CCOC:** law-fixed future grammar, addressability, and open-composition response-interface lower bounds.
 - **MLTR:** source-relative carried semantics, route coherence, and minimum historical completion.
 - **MRM:** primitive candidate laws, response-type quotients, candidate-safe state, and active discrimination.
@@ -183,15 +203,15 @@ Its diagnosis remains **`interaction-only`** because standalone debts are unchan
 
 Canonical manuscript:
 
-`manuscript/crest_flagship_amnat_v0.6_addressability.md`
+`manuscript/crest_flagship_amnat_v0.7_semantic_access.md`
 
 Title:
 
-**Ecological State at a Temporal Cut: Interface-Dependent Interaction**
+**Ecological State at a Temporal Cut: Sparse Semantic Access**
 
 Target: **The American Naturalist — Major Article**.
 
-The previous `crest_flagship_amnat_v0.5_compositional.md` is retained as the pre-characterization draft. v0.4, v0.3, and v0.2 remain provenance manuscripts.
+The previous `crest_flagship_amnat_v0.6_addressability.md` is retained as the complete-addressability predecessor. v0.5, v0.4, v0.3, and v0.2 remain provenance manuscripts.
 
 ## Canonical reading paths
 
@@ -201,27 +221,30 @@ The previous `crest_flagship_amnat_v0.5_compositional.md` is retained as the pre
 - `docs/crest_sharp_sequential_state_debt_law_2026-09-06.md` — sharp sequential response-capacity law.
 - `docs/crest_temporal_companion_definition_firewall_2026-09-08.md` — non-circular companion dependency order.
 - `docs/crest_companion_realizability_no_go_2026-09-08.md` — strict realizability boundary.
-- `docs/crest_explicit_grammar_addressability_theorem_2026-09-08.md` — explicit grammar and interaction-order characterization.
+- `docs/crest_sparse_semantic_access_theorem_2026-09-08.md` — sparse semantic-access quotient and sparsity penalty.
+- `docs/shallow_lake_v07_prerequisite_identification_2026-09-08.md` — target-relative ecological prerequisite identification.
 
 ## Proof and implementation map
 
 - `crest/temporal_cut.py` — observational cut and fiber representation.
 - `crest/companion_realizability.py` — strict no-go checks.
-- `crest/explicit_temporal_grammar.py` — companion primitives, grammar generation, traces, quotients, and Möbius calculation.
-- `tests/test_explicit_temporal_grammar.py` — all 8 coalition quotients plus counterfactual decoder rules.
-- `artifacts/crest_explicit_grammar_benchmarks_2026-09-08.json` — canonical v0.6 benchmark.
-- `crest/compositional_temporal_game.py` — retained pre-characterization direct-value implementation for provenance/regression only.
+- `crest/semantic_access.py` — companion semantic quotients and sparse access relation.
+- `crest/semantic_temporal_quotient.py` — semantic world enumeration, trace profiles, induced quotients, and exact sparse-access dividends.
+- `crest/shallow_lake_prerequisites.py` — executable target factorization and counterfactual substitution audit.
+- `crest/explicit_temporal_grammar.py` — retained complete-addressability grammar boundary.
+- `crest/compositional_temporal_game.py` — closed-form corollary cross-checked against the explicit complete-access quotient.
 - `crest/temporal_interaction.py` — retained abstract fixed-closure extrema.
 
 ## Scope firewall
 
-The current result is finite, exact, and conditional on declared companion primitives and legal grammar structure. CREST does **not** claim:
+The current result is finite, exact, and conditional on declared companion semantic outputs and legal future access structure. CREST does **not** claim:
 
 - that history, latent response, and future exhaust every ecological state responsibility;
 - a unique natural decomposition of every ecological system into these roles;
 - that every future decoder requires both companion interfaces;
-- that pure three-way interaction is automatic;
-- that decoder prerequisites can be inferred from state accounting alone;
+- that complete semantic access is automatic;
+- that prerequisite sets or access relations can be inferred from state accounting alone;
+- that the shallow-lake finite decision model is empirical validation;
 - statistical confounding;
 - a general continuous-time infinitesimal-germ theorem;
 - stochastic, infinite-state, delayed-observation, or approximate generality.
@@ -235,4 +258,4 @@ python -m pip install -e '.[dev]'
 pytest
 ```
 
-The finite theorem surface, non-circularity firewall, realizability boundary, explicit grammar quotient, manuscript routing, and submission packaging are regression-tested.
+The finite theorem surface, non-circularity firewall, realizability boundary, semantic access quotient, shallow-lake prerequisite audit, manuscript routing, and submission packaging are regression-tested.
