@@ -40,6 +40,7 @@ def test_compare_contracts_quantifies_emergent_interaction_burden() -> None:
     result = compare_contract_payloads(_contract(cascade=False), _contract(cascade=True))
     comparison = result["comparison"]
 
+    assert comparison["change_class"] == "interaction-only"
     assert comparison["joint_blocks"] == {"before": 3, "after": 5, "change": 2}
     assert comparison["joint_debt_change_bits"] == pytest.approx(log2(5 / 3))
     assert comparison["delta_change_bits"] == pytest.approx(log2(5 / 3))
@@ -53,9 +54,16 @@ def test_compare_contracts_quantifies_emergent_interaction_burden() -> None:
     }
     assert dividends[("CCOC", "MLTR")] == pytest.approx(log2(4 / 3))
     assert dividends[("CCOC", "MLTR", "MRM")] == pytest.approx(log2(5 / 4))
-    assert sum(value for coalition, value in dividends.items() if len(coalition) >= 2) == pytest.approx(
-        comparison["delta_change_bits"]
-    )
+    assert sum(
+        value for coalition, value in dividends.items() if len(coalition) >= 2
+    ) == pytest.approx(comparison["delta_change_bits"])
+
+
+def test_comparison_classifies_null_change() -> None:
+    spectrum = spectrum_from_payload(_contract(cascade=False))
+    comparison = compare_spectrum_payloads(spectrum, spectrum)
+    assert comparison.change_class() == "null"
+    assert comparison.verify()
 
 
 def test_compare_spectra_requires_same_named_responsibilities() -> None:
