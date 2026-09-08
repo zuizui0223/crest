@@ -34,6 +34,10 @@ jobs:
         if: matrix.python-version == '3.12'
         run: python scripts/verify_crest_philosophy_submission.py --write-report
 
+      - name: Rebuild numeric obstruction spectrum
+        if: matrix.python-version == '3.12'
+        run: python scripts/report_obstruction_spectrum.py --write-report
+
       - name: Check repository hygiene and deterministic outputs
         run: |
           git diff --check
@@ -43,9 +47,11 @@ jobs:
           fi
           test -z "$(git status --porcelain)"
 
-      - name: Upload submission-control report
+      - name: Upload submission and obstruction reports
         if: matrix.python-version == '3.12'
         uses: actions/upload-artifact@v4
         with:
-          name: crest-submission-control-report
-          path: artifacts/crest_philosophy_submission_report.json
+          name: crest-reproducibility-reports
+          path: |
+            artifacts/crest_philosophy_submission_report.json
+            artifacts/crest_obstruction_spectrum.json
