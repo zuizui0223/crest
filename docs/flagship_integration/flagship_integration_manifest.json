@@ -1,35 +1,54 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "target_journal": "The American Naturalist",
   "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.2.md",
-  "headline": "non-additive joint ecological state debt",
+  "state_concept": "state is the least information that must survive an observational temporal cut under declared scientific responsibilities",
+  "temporal_geometry": {
+    "present": "observation cut O_t and its kernel partition B_t, not a finite-width temporal axis",
+    "past": "retrospective history H^-_t to the left of the cut",
+    "latent_present": "response structure Theta_t inside fibers O_t^{-1}(y), transverse to the cut",
+    "future": "prospective or counterfactual response structure F^+_t to the right of the cut"
+  },
+  "headline": "interaction-generated ecological state at a temporal cut",
   "headline_quantity": "Delta = D_joint - sum_i D_i",
-  "headline_sharp_family": "marked directed cycle",
+  "headline_temporal_result": "past-by-future interaction is unbounded and genuine history-by-latent-present-by-future interaction is unbounded",
+  "headline_temporal_extremum": "m(H,Theta,F) = m - log2(3), with m(H,Theta,F)/D_joint -> 1",
+  "headline_sharp_family": "marked directed cycle and temporal three-way activation cascade",
   "headline_extremum": "Delta = log2(n) - 1",
   "numeric_closure": {
     "state_count_underestimate_factor": "n/2",
     "debt_underestimate_factor": "log2(n)",
     "interaction_share": "1 - 1/log2(n)",
     "anchor_n": 1024,
-    "anchor_result": "2 standalone-predicted classes versus 1024 joint classes; 512-fold class-count underestimate; 10-bit joint debt with 9 interaction bits (90%)"
+    "anchor_result": "2 standalone-predicted classes versus 1024 joint classes; 512-fold class-count underestimate; 10-bit joint debt with 9 interaction bits (90%)",
+    "temporal_anchor_m": 10,
+    "temporal_anchor_result": "one visible cut value; 1024 adequate-state classes; 10 total bits; 8.4150374993 bits (84.15%) are genuine history x latent-present x future interaction"
   },
   "zero_debt_lemma": "all D_i = 0 implies D_joint = Delta = 0",
-  "novelty_boundary": "The closure, fixed-point, partition-refinement, marked-cycle, Shapley, and Mobius/Harsanyi mathematics are classical substrate; the CREST contribution is the cross-responsibility accounting interpretation on one declared ecological common lift.",
+  "novelty_boundary": "The closure, fixed-point, partition-refinement, marked-cycle, Shapley, and Mobius/Harsanyi mathematics are classical substrate; the CREST contribution is the ecological state interpretation at an observational temporal cut and the cross-responsibility/temporal-position accounting on one declared finite common lift.",
   "supporting_results": [
+    "past-by-future interaction m(H,F)=log2(n)-1 is unbounded",
+    "genuine three-way temporal interaction m(H,Theta,F)=m-log2(3) is unbounded and asymptotically dominates joint state debt",
     "carrier-size gain does not upper-bound state burden",
     "sequential response debt is at most H log2(r) in the homogeneous r-ary path",
     "the existing connected sequential family attains the H log2(r) bound",
     "the six-world CCOC/MLTR/MRM witness requires 5 classes versus 3 predicted by standalone accounting and has 0.7369655942 interaction bits"
   ],
   "companion_roles": {
-    "CCOC": "future/composition obstruction",
-    "MLTR": "inherited semantic/history obstruction",
-    "MRM": "retained-mechanism obstruction",
+    "CCOC": "prospective/future-response obstruction to the right of the cut",
+    "MLTR": "retrospective inherited-semantic/history obstruction to the left of the cut",
+    "MRM": "latent contemporaneous response structure inside the observational cut fiber",
     "CED": "downstream evidence licensing"
   },
   "implementation": {
     "joint_debt_module": "crest/joint_debt.py",
     "joint_debt_tests": "tests/test_crest_joint_debt.py",
+    "temporal_interaction_module": "crest/temporal_interaction.py",
+    "temporal_interaction_tests": "tests/test_crest_temporal_interaction.py",
+    "temporal_cut_module": "crest/temporal_cut.py",
+    "temporal_cut_tests": "tests/test_crest_temporal_cut.py",
+    "temporal_theorem": "docs/crest_temporal_state_interaction_theorem_2026-09-08.md",
+    "temporal_flagship_section": "docs/flagship_integration/temporal_cut_state_section.md",
     "sequential_witness_module": "crest/sequential_witnesses.py",
     "sequential_regression": "tests/test_crest_sharp_sequential_debt.py",
     "flagship_section": "docs/flagship_integration/joint_debt_delta_section.md",
