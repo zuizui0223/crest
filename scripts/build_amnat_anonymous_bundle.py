@@ -2,9 +2,9 @@
 """Build a deterministic, identity-scrubbed review-code ZIP for the CREST paper.
 
 The archive is whitelist-only and contains the finite implementation needed for
-the v0.5 temporal-cut, companion-realizability, conditioned-bridge, and literal
-compositional three-way results. Repository history, provenance notes, empirical
-bridges, public URLs, and submission metadata are excluded by construction.
+the v0.6 temporal-cut, companion-realizability, and explicit grammar/trace
+quotient characterization theorem. Repository history, provenance notes,
+empirical bridges, public URLs, and submission metadata are excluded.
 """
 
 from __future__ import annotations
@@ -23,19 +23,14 @@ SOURCE_PATHS = (
     "pyproject.toml",
     "crest/__init__.py",
     "crest/joint_state.py",
-    "crest/joint_debt.py",
-    "crest/obstruction_spectrum.py",
     "crest/temporal_cut.py",
     "crest/temporal_interaction.py",
     "crest/companion_realizability.py",
-    "crest/conditioned_temporal_bridges.py",
-    "crest/compositional_temporal_game.py",
+    "crest/explicit_temporal_grammar.py",
     "tests/test_crest_temporal_cut.py",
-    "tests/test_crest_temporal_interaction.py",
     "tests/test_companion_realizability.py",
-    "tests/test_conditioned_temporal_bridges.py",
-    "tests/test_compositional_temporal_game.py",
-    "artifacts/crest_compositional_temporal_benchmarks_2026-09-08.json",
+    "tests/test_explicit_temporal_grammar.py",
+    "artifacts/crest_explicit_grammar_benchmarks_2026-09-08.json",
 )
 
 FORBIDDEN_PATTERNS = {
@@ -48,9 +43,9 @@ FORBIDDEN_PATTERNS = {
 ANONYMOUS_README = """# Anonymous review code
 
 This archive contains the minimal finite implementation used to reproduce the
-manuscript's temporal-cut and literal conditioned compositional results. It
-intentionally excludes repository history, provenance notes, empirical material,
-author metadata, and external repository links.
+manuscript's temporal-cut, strict realizability, and explicit grammar/trace
+quotient results. It intentionally excludes repository history, provenance notes,
+empirical material, author metadata, and external repository links.
 
 ## Reproduce the focused theorem tests
 
@@ -58,19 +53,18 @@ author metadata, and external repository links.
 python -m pip install -e '.[dev]'
 pytest -q \\
   tests/test_crest_temporal_cut.py \\
-  tests/test_crest_temporal_interaction.py \\
   tests/test_companion_realizability.py \\
-  tests/test_conditioned_temporal_bridges.py \\
-  tests/test_compositional_temporal_game.py
+  tests/test_explicit_temporal_grammar.py
 ```
 
-The canonical literal benchmark is stored at
-`artifacts/crest_compositional_temporal_benchmarks_2026-09-08.json`.
+The canonical benchmark is stored at
+`artifacts/crest_explicit_grammar_benchmarks_2026-09-08.json`.
 
-The review package covers finite exact claims only. The older fixed-closure
-cascade remains included as supporting mathematics and is not labeled a literal
-simultaneous companion realization. No continuous-time, stochastic, infinite-
-state, or empirical extension is claimed.
+The focused package includes counterfactual decoder rules: allowing the future
+decoder to bypass one or both component interfaces moves the exterior burden to
+a lower-order term and destroys the pure three-way result. The review package
+therefore tests a falsifiable interaction-order characterization rather than a
+directly assigned coalition-value table.
 """
 
 
@@ -110,27 +104,31 @@ def _manifest(source_payloads: dict[str, bytes]) -> bytes:
         for name, payload in sorted(source_payloads.items())
     }
     manifest = {
-        "schema_version": 2,
+        "schema_version": 3,
         "package_role": "anonymous_review_code",
-        "scope": "finite_exact_literal_conditioned_temporal_cut_theorems",
+        "scope": "finite_exact_explicit_grammar_trace_quotient_theorems",
         "files": files,
         "numeric_anchor": {
             "bit_depth": 10,
-            "visible_cut_classes": 1,
+            "decoder_required_interfaces": ["H", "Theta"],
             "history_mechanism_classes": 4,
             "joint_classes": 4096,
             "history_mechanism_bits": 2,
             "joint_bits": 12,
-            "interaction_bits": 10,
             "genuine_three_way_bits": 10,
-            "pairwise_interaction_bits": 0,
             "state_count_amplification": 1024,
             "three_way_fraction_of_joint": 10 / 12,
-            "three_way_fraction_of_interaction": 1.0,
+        },
+        "counterfactual_rules": {
+            "no_required_interface_three_way_bits": 0,
+            "history_only_required_three_way_bits": 0,
+            "mechanism_only_required_three_way_bits": 0,
+            "both_interfaces_required_three_way_bits": 10,
         },
         "claim_boundary": [
-            "finite exact conditioned cross-contract theory only",
-            "the fixed-closure cascade is supporting mathematics, not the literal companion headline",
+            "coalition values are induced by explicit legal grammars and trace quotients",
+            "pure three-way interaction is conditional on both interfaces being decoder prerequisites",
+            "alternative decoder rules move the same exterior burden to lower-order terms",
             "no empirical data are included",
             "no continuous-time or stochastic generalization is claimed",
         ],

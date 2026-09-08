@@ -61,7 +61,7 @@ def test_anonymous_manifest_hashes_every_whitelisted_source(tmp_path: Path) -> N
 
     with zipfile.ZipFile(output) as archive:
         manifest = json.loads(archive.read("ANONYMOUS_MANIFEST.json"))
-        assert manifest["schema_version"] == 2
+        assert manifest["schema_version"] == 3
         assert set(manifest["files"]) == set(builder.SOURCE_PATHS)
         for name, metadata in manifest["files"].items():
             payload = archive.read(name)
@@ -69,13 +69,18 @@ def test_anonymous_manifest_hashes_every_whitelisted_source(tmp_path: Path) -> N
             assert len(payload) == metadata["bytes"]
 
         anchor = manifest["numeric_anchor"]
+        assert anchor["decoder_required_interfaces"] == ["H", "Theta"]
         assert anchor["history_mechanism_classes"] == 4
         assert anchor["joint_classes"] == 4096
         assert anchor["joint_bits"] == 12
         assert anchor["genuine_three_way_bits"] == 10
-        assert anchor["pairwise_interaction_bits"] == 0
         assert anchor["state_count_amplification"] == 1024
-        assert anchor["three_way_fraction_of_interaction"] == 1.0
+
+        counterfactual = manifest["counterfactual_rules"]
+        assert counterfactual["no_required_interface_three_way_bits"] == 0
+        assert counterfactual["history_only_required_three_way_bits"] == 0
+        assert counterfactual["mechanism_only_required_three_way_bits"] == 0
+        assert counterfactual["both_interfaces_required_three_way_bits"] == 10
 
 
 def test_anonymous_bundle_runs_focused_theorem_tests(tmp_path: Path) -> None:
@@ -92,10 +97,8 @@ def test_anonymous_bundle_runs_focused_theorem_tests(tmp_path: Path) -> None:
             "pytest",
             "-q",
             "tests/test_crest_temporal_cut.py",
-            "tests/test_crest_temporal_interaction.py",
             "tests/test_companion_realizability.py",
-            "tests/test_conditioned_temporal_bridges.py",
-            "tests/test_compositional_temporal_game.py",
+            "tests/test_explicit_temporal_grammar.py",
         ],
         cwd=extracted,
         text=True,

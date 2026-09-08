@@ -9,6 +9,7 @@ CANONICAL = {
     "crest_flagship_amnat_v0.3_temporal_cut.md",
     "crest_flagship_amnat_v0.4_positioned.md",
     "crest_flagship_amnat_v0.5_compositional.md",
+    "crest_flagship_amnat_v0.6_addressability.md",
     "CREST_supplementary_information.md",
     "biology_philosophy_title_page_TEMPLATE.md",
     "amnat_submission_declarations_TEMPLATE.md",
@@ -33,33 +34,27 @@ def test_submission_entrypoints_name_the_blinded_candidate_and_si() -> None:
 
 
 def test_amnat_flagship_is_separate_from_biology_philosophy_submission_entrypoint() -> None:
-    flagship = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.5_compositional.md").read_text(
+    flagship = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.6_addressability.md").read_text(
         encoding="utf-8"
     )
-    positioned_predecessor = (
-        MANUSCRIPT_DIR / "crest_flagship_amnat_v0.4_positioned.md"
-    ).read_text(encoding="utf-8")
-    theorem_predecessor = (
-        MANUSCRIPT_DIR / "crest_flagship_amnat_v0.3_temporal_cut.md"
-    ).read_text(encoding="utf-8")
+    v05 = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.5_compositional.md").read_text(
+        encoding="utf-8"
+    )
     delta_predecessor = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.2.md").read_text(
         encoding="utf-8"
     )
     assert "The American Naturalist" in flagship
-    assert "Ecological State at a Temporal Cut: Compositional Interaction Across Time" in flagship
+    assert "Ecological State at a Temporal Cut: Interface-Dependent Interaction" in flagship
     assert "Literature Cited" in flagship
     assert "Ogle et al. 2015" in flagship
     assert "Shalizi and Crutchfield 2001" in flagship
-    assert "m(H,\\Theta,F)=m" in flagship
-    assert "4096" in flagship
-    assert "1024-fold" in flagship
-    assert "crest_flagship_amnat_v0.5_compositional.md" in (
+    assert "decoder prerequisite set" in flagship.lower()
+    assert "formula is now a theorem" in flagship.lower()
+    assert "three-way dividend is zero" in flagship
+    assert "crest_flagship_amnat_v0.6_addressability.md" in (
         MANUSCRIPT_DIR / "SUBMISSION_README.md"
     ).read_text(encoding="utf-8")
-    assert "The American Naturalist" in positioned_predecessor
-    assert "temporal cut" in positioned_predecessor
-    assert "The American Naturalist" in theorem_predecessor
-    assert "temporal cut" in theorem_predecessor
+    assert "4096" in v05
     assert "The American Naturalist" in delta_predecessor
     assert "Delta" in delta_predecessor
 
