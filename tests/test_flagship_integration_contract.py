@@ -21,7 +21,11 @@ from crest.semantic_temporal_quotient import (
     semantic_quotient_size,
     semantic_three_way_dividend,
 )
-from crest.shallow_lake_prerequisites import canonical_target_prerequisites
+from crest.shallow_lake_prerequisites import (
+    LAKE_WORLDS,
+    canonical_target_prerequisites,
+    composed_restoration_policy_target,
+)
 from crest.temporal_interaction import temporal_three_way_closed_form
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -69,9 +73,9 @@ def test_sparse_semantic_numeric_anchor_matches_manifest() -> None:
         anchor["semantic_pairs"],
         anchor["addressable_pairs"],
     )
-    assert semantic_quotient_size(routes, candidates, model, m, (HISTORY, MECHANISM, FUTURE)) == anchor[
-        "grand_classes"
-    ]
+    assert semantic_quotient_size(
+        routes, candidates, model, m, (HISTORY, MECHANISM, FUTURE)
+    ) == anchor["grand_classes"]
     assert semantic_three_way_dividend(routes, candidates, model, m) == pytest.approx(
         anchor["three_way_bits"], abs=1e-9
     )
@@ -94,6 +98,16 @@ def test_shallow_lake_prerequisite_manifest_matches_executable_audit() -> None:
     assert audit["legacy_sensitive_recovery"] == ["H"]
     assert audit["mechanism_specific_intervention"] == ["THETA"]
     assert audit["composed_restoration_policy"] == ["H", "THETA"]
+
+    outputs = {composed_restoration_policy_target(world) for world in LAKE_WORLDS}
+    assert len(LAKE_WORLDS) == 4
+    assert outputs == {"standard_pathway", "cross_interface_review"}
+    assert audit["composed_target_output_cardinality"] == 2
+    assert audit["single_interface_factorization"] is False
+    assert "parity" in audit["literature_boundary"]
+    assert (
+        ROOT / "docs" / "shallow_lake_v07_prerequisite_identification_2026-09-08.md"
+    ).is_file()
 
 
 def test_v06_complete_access_is_retained_as_boundary_case() -> None:
