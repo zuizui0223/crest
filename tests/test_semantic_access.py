@@ -8,7 +8,7 @@ from crest.semantic_access import (
 )
 
 
-def test_companion_semantics_reduce_three_primitives_to_two_exact_classes() -> None:
+def test_companion_outputs_reduce_three_primitives_to_two_exact_classes() -> None:
     routes, candidates, model = canonical_nontrivial_companion_model()
 
     assert len(routes) == 3
@@ -29,7 +29,7 @@ def test_access_depends_on_semantics_not_route_or_candidate_identity() -> None:
     routes, candidates, model = canonical_nontrivial_companion_model()
     exterior = (1, 0, 1)
 
-    # route_a and route_b are different raw histories but carry the same semantic map.
+    # route_a and route_b are different raw histories but carry the same completed map.
     w_a = SemanticWorld(routes[0], candidates[2], exterior)
     w_b = SemanticWorld(routes[1], candidates[2], exterior)
     assert decoder_can_address(w_a, model) is False
@@ -41,21 +41,21 @@ def test_access_depends_on_semantics_not_route_or_candidate_identity() -> None:
     assert decoder_can_address(w_c_a, model) is False
     assert decoder_can_address(w_c_b, model) is False
 
-    # Only the path-incoherent carried-map class crossed with the distinct response type is addressable.
+    # Only the distinct carried-map class crossed with the distinct response type is addressable.
     w_open = SemanticWorld(routes[2], candidates[2], exterior)
     assert decoder_can_address(w_open, model) is True
     assert tuple(semantic_trace(w_open, model, i) for i in range(3)) == exterior
 
 
-def test_changing_route_coherence_changes_access_without_changing_raw_axis_count() -> None:
+def test_changing_carried_semantic_mode_changes_access_without_changing_raw_axis_count() -> None:
     routes, candidates, model = canonical_nontrivial_companion_model()
     exterior = (1, 1)
 
-    coherent_route = SemanticWorld(routes[0], candidates[2], exterior)
-    incoherent_route = SemanticWorld(routes[2], candidates[2], exterior)
+    shared_map_route = SemanticWorld(routes[0], candidates[2], exterior)
+    distinct_map_route = SemanticWorld(routes[2], candidates[2], exterior)
 
-    assert semantic_trace(coherent_route, model, 0) is None
-    assert semantic_trace(incoherent_route, model, 0) == 1
+    assert semantic_trace(shared_map_route, model, 0) is None
+    assert semantic_trace(distinct_map_route, model, 0) == 1
 
 
 def test_changing_candidate_safe_type_changes_access_at_fixed_history_mode() -> None:
