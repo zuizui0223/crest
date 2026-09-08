@@ -37,10 +37,17 @@ class NormalizedObstructionMetrics:
         ) > tolerance and self.normalized_joint_burden > tolerance:
             return False
         if self.active_interaction_orders != tuple(
-            sorted(order for order, value in self.interaction_order_bits.items() if abs(value) > tolerance)
+            sorted(
+                order
+                for order, value in self.interaction_order_bits.items()
+                if abs(value) > tolerance
+            )
         ):
             return False
-        if self.dominant_interaction_order is not None and self.dominant_interaction_order not in self.active_interaction_orders:
+        if (
+            self.dominant_interaction_order is not None
+            and self.dominant_interaction_order not in self.active_interaction_orders
+        ):
             return False
         if self.interaction_order_absolute_shares:
             total = sum(self.interaction_order_absolute_shares.values())
@@ -59,11 +66,14 @@ class NormalizedObstructionMetrics:
             "interaction_fraction_of_joint": self.interaction_fraction_of_joint,
             "direct_fraction_of_joint": self.direct_fraction_of_joint,
             "interaction_order_bits": {
-                str(order): value for order, value in sorted(self.interaction_order_bits.items())
+                str(order): value
+                for order, value in sorted(self.interaction_order_bits.items())
             },
             "interaction_order_absolute_shares": {
                 str(order): value
-                for order, value in sorted(self.interaction_order_absolute_shares.items())
+                for order, value in sorted(
+                    self.interaction_order_absolute_shares.items()
+                )
             },
             "active_interaction_orders": list(self.active_interaction_orders),
             "dominant_interaction_order": self.dominant_interaction_order,
@@ -73,7 +83,7 @@ class NormalizedObstructionMetrics:
 def normalized_obstruction_metrics(
     report: ObstructionSpectrumReport, *, carrier_worlds: int
 ) -> NormalizedObstructionMetrics:
-    """Normalize a finite obstruction spectrum by its available refinement capacity.
+    """Normalize a finite obstruction spectrum by available refinement capacity.
 
     The maximum possible debt from a baseline with B blocks on a carrier with N
     worlds is log2(N/B), attained by the discrete partition. The normalized joint
@@ -84,8 +94,10 @@ def normalized_obstruction_metrics(
 
     if not report.verify():
         raise ValueError("obstruction spectrum report failed verification")
-    if carrier_worlds < report.baseline_blocks:
-        raise ValueError("carrier_worlds must be at least the baseline block count")
+    if carrier_worlds < report.joint_blocks:
+        raise ValueError(
+            "carrier_worlds must be at least the realized joint block count"
+        )
 
     capacity_bits = log2(carrier_worlds / report.baseline_blocks)
     if capacity_bits <= 1e-12:
@@ -103,9 +115,13 @@ def normalized_obstruction_metrics(
     order_bits: dict[int, float] = {}
     for dividend in report.interaction_dividends:
         if dividend.order >= 2:
-            order_bits[dividend.order] = order_bits.get(dividend.order, 0.0) + dividend.bits
+            order_bits[dividend.order] = (
+                order_bits.get(dividend.order, 0.0) + dividend.bits
+            )
 
-    active_orders = tuple(sorted(order for order, value in order_bits.items() if abs(value) > 1e-12))
+    active_orders = tuple(
+        sorted(order for order, value in order_bits.items() if abs(value) > 1e-12)
+    )
     abs_total = sum(abs(order_bits[order]) for order in active_orders)
     order_shares = (
         {order: abs(order_bits[order]) / abs_total for order in active_orders}
