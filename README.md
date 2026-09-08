@@ -6,7 +6,7 @@ The underlying trajectory-first question remains:
 
 > **Why can a finite ecological state exist at all in a world whose relevant dynamics, interactions, mechanisms, and scientific observables depend on context?**
 
-The current answer is sharper:
+The earlier formulation remains valid: an ecological state is a **scientifically licensed compression of a temporally extended ecological world**. The current finite theorem sharpens that statement by locating the compression at an observational temporal cut:
 
 > **An ecological state is the least information that must survive an observational temporal cut under the declared scientific responsibilities.**
 
@@ -142,7 +142,7 @@ with exact interaction-order decomposition
 \quad\text{bits}.
 \]
 
-The before/after diagnostic reports `active_interaction_orders = [2, 3]`, with the pairwise term dominant in that six-world comparison. These values are retained as a smaller compatibility witness; the temporal-cut \(b=10\) theorem is now the flagship endpoint.
+Its change diagnosis is **`interaction-only`** because every standalone debt is unchanged while the joint burden changes. The before/after diagnostic reports `active_interaction_orders = [2, 3]`, with the pairwise term dominant in that six-world comparison. These values are retained as a smaller compatibility witness; the temporal-cut \(b=10\) theorem is now the flagship endpoint.
 
 ## Publication roles
 
