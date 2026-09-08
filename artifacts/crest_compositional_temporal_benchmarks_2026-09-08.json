@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "status": "finite_exact_conditioned_cross_contract_benchmark",
+  "state_concept": "least information required at one observational temporal cut under a declared composed scientific contract",
+  "companion_primitives": {
+    "HISTORY": "binary MLTR history-mode interface derived from immutable replacement history and carried semantics",
+    "LATENT_RESPONSE": "binary MRM response-type interface derived from primitive candidate laws",
+    "FUTURE": "CCOC legal future grammar; cross-interface exterior decoders are declared only in the jointly open full contract"
+  },
+  "coalition_value_bits_formula": "v_m(S) = 1[H in S] + 1[Theta in S] + m * 1[{H,Theta,F} subset S]",
+  "coalition_bits": {
+    "H": 1,
+    "Theta": 1,
+    "F": 0,
+    "H+Theta": 2,
+    "H+F": 1,
+    "Theta+F": 1,
+    "H+Theta+F": "m+2"
+  },
+  "mobius_dividends_bits": {
+    "H+Theta": 0,
+    "H+F": 0,
+    "Theta+F": 0,
+    "H+Theta+F": "m"
+  },
+  "interaction_debt_bits": "m",
+  "three_way_fraction_of_joint": "m/(m+2)",
+  "limit": "three-way fraction of joint state -> 1 as m -> infinity",
+  "anchor_m_10": {
+    "visible_cut_classes": 1,
+    "history_classes": 2,
+    "history_bits": 1,
+    "mechanism_classes": 2,
+    "mechanism_bits": 1,
+    "history_mechanism_classes": 4,
+    "history_mechanism_bits": 2,
+    "joint_classes": 4096,
+    "joint_bits": 12,
+    "interaction_bits": 10,
+    "genuine_three_way_bits": 10,
+    "pairwise_interaction_bits": 0,
+    "three_way_fraction_of_joint": 0.8333333333333334,
+    "three_way_fraction_of_interaction": 1.0,
+    "state_count_amplification_from_history_mechanism": 1024
+  },
+  "anchor_m_18": {
+    "joint_bits": 20,
+    "genuine_three_way_bits": 18,
+    "three_way_fraction_of_joint": 0.9
+  },
+  "claim_boundary": [
+    "This is a conditioned cross-contract coalition game, not the older fixed-closure coalition game.",
+    "Raw MLTR history and primitive MRM candidate law are fixed before the final CREST state quotient.",
+    "The jointly open CCOC grammar is declared exogenously by contract rather than inferred from the resulting state.",
+    "The older b-log2(3) temporal cascade remains an abstract fixed-closure extremum, not the literal companion-derived headline."
+  ]
+}
