@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "target_journal": "The American Naturalist",
+  "headline": "non-additive joint ecological state debt",
+  "headline_quantity": "Delta = D_joint - sum_i D_i",
+  "headline_sharp_family": "marked directed cycle",
+  "headline_extremum": "Delta = log2(n) - 1",
+  "zero_debt_lemma": "all D_i = 0 implies D_joint = Delta = 0",
+  "novelty_boundary": "The closure, fixed-point, partition-refinement, and marked-cycle mathematics are classical substrate; the CREST contribution is the cross-responsibility accounting interpretation on one declared ecological common lift.",
+  "supporting_results": [
+    "carrier-size gain does not upper-bound state burden",
+    "sequential response debt is at most H log2(r) in the homogeneous r-ary path",
+    "the existing connected sequential family attains the H log2(r) bound"
+  ],
+  "companion_roles": {
+    "CCOC": "future/composition obstruction",
+    "MLTR": "inherited semantic/history obstruction",
+    "MRM": "retained-mechanism obstruction",
+    "CED": "downstream evidence licensing"
+  },
+  "implementation": {
+    "joint_debt_module": "crest/joint_debt.py",
+    "joint_debt_tests": "tests/test_crest_joint_debt.py",
+    "sequential_witness_module": "crest/sequential_witnesses.py",
+    "sequential_regression": "tests/test_crest_sharp_sequential_debt.py",
+    "flagship_section": "docs/flagship_integration/joint_debt_delta_section.md"
+  }
+}
