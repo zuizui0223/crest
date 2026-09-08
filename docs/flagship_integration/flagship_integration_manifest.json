@@ -1,66 +1,80 @@
 {
-  "schema_version": 9,
+  "schema_version": 10,
   "target_journal": "The American Naturalist",
-  "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.6_addressability.md",
-  "previous_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.5_compositional.md",
+  "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.7_semantic_access.md",
+  "previous_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.6_addressability.md",
   "earlier_flagship_manuscripts": [
+    "manuscript/crest_flagship_amnat_v0.5_compositional.md",
     "manuscript/crest_flagship_amnat_v0.4_positioned.md",
     "manuscript/crest_flagship_amnat_v0.3_temporal_cut.md",
     "manuscript/crest_flagship_amnat_v0.2.md"
   ],
-  "canonical_title": "Ecological State at a Temporal Cut: Interface-Dependent Interaction",
+  "canonical_title": "Ecological State at a Temporal Cut: Sparse Semantic Access",
   "state_concept": "state is the least information that must survive an observational temporal cut under a declared scientific contract",
-  "temporal_geometry": {
-    "present": "observation cut O_t and its kernel partition B_t, not a finite-width temporal axis",
-    "past": "raw MLTR replacement history is primitive and immutable; retained history information is derived from carried semantics",
-    "latent_present": "MRM primitive candidate law is behind the visible cut; latent response type is derived from response tables under a declared grammar",
-    "future": "CCOC future is an exogenously declared query grammar, not a future state variable"
-  },
-  "headline": "decoder prerequisite structure determines the interaction order of ecological state addressability debt",
-  "headline_quantity": "v_R(S) is computed from explicit grammar traces and quotient size, not assigned directly",
-  "headline_theorem": "an m-bit exterior decoder with minimal prerequisite set R contributes its unique nonzero Mobius dividend of m bits on coalition R union {F}",
-  "headline_special_case": "R={H,Theta} gives pure H x Theta x F interaction m; R=empty gives an F main effect; singleton R gives pairwise interaction",
+  "headline": "semantic prerequisite order and semantic access coverage are distinct state-construction objects",
+  "headline_quantity": "state quotients are computed from companion semantic classes, semantic access relations, legal future traces, and induced equivalence",
+  "modeling_contribution": "identify which ecological interfaces a future target minimally requires and on which semantic combinations of those interfaces the target is actually addressable",
+  "novelty_boundary": "CREST does not claim novelty for quotient state abstraction, Mobius/Harsanyi accounting, unanimity games, or finite counting once the access relation is fixed. The contribution is the temporal-cut modeling architecture, strict companion realizability boundaries, semantic companion composition, and explicit separation of prerequisite order from semantic access coverage.",
   "realizability_boundaries": {
     "fixed_partition_bound": "fixed precomputed partitions on a one-class baseline cannot generate positive interaction by common refinement alone",
-    "immutable_history_no_activation": "a zero-debt post-cut audit preserving raw MLTR history fixes the history partition",
+    "immutable_history_no_activation": "a zero-debt post-cut audit preserving raw MLTR history cannot become nontrivial by rewriting the past",
     "fixed_grammar_mrm_zero_debt": "candidate-safe zero debt under one fixed grammar implies a singleton MRM response type"
   },
-  "explicit_grammar": {
-    "carrier": "P_H x P_Theta x {0,1}^m with MLTR carried-map primitives and MRM response-table primitives",
-    "grammar_rule": "F supplies decoder primitives; decode_i is well typed iff F is present and every interface in decoder prerequisite set R is present",
-    "state_equivalence": "two worlds are equivalent iff all generated legal traces agree",
-    "quotient_formula": "|Q_S| = 2^(1[H in S] + 1[Theta in S] + m*1[F in S and R subset S])",
-    "formula_status": "derived theorem about explicit trace quotients, not implementation definition"
+  "semantic_companions": {
+    "history": "CREST consumes complete MLTR carried maps and quotients raw routes by equality of carried semantics",
+    "latent_response": "CREST quotients primitive MRM candidate laws by equality of complete declared response tables",
+    "future": "CCOC future responsibility is a declared legal query grammar",
+    "canonical_history_raw_count": 3,
+    "canonical_history_mode_count": 2,
+    "canonical_candidate_raw_count": 3,
+    "canonical_response_type_count": 2
   },
-  "decoder_requirement_classification": {
-    "R_empty": "m-bit exterior burden is an F main effect; three-way dividend zero",
-    "R_H": "m-bit exterior burden is pure H x F pairwise interaction; three-way dividend zero",
-    "R_Theta": "m-bit exterior burden is pure Theta x F pairwise interaction; three-way dividend zero",
-    "R_H_Theta": "m-bit exterior burden is pure H x Theta x F interaction",
-    "interpretation": "pure higher-order interaction is conditional on interface completeness and is falsified by grammar rules that bypass required interfaces"
+  "sparse_semantic_access": {
+    "semantic_pair_count_symbol": "N=|H_min|*|Theta|",
+    "addressable_pair_count_symbol": "k=|A_f|",
+    "grand_quotient_formula": "|Q_HThetaF|=(N-k)+k*2^m",
+    "three_way_formula": "d_HThetaF=log2(((N-k)+k*2^m)/N)",
+    "asymptotic_formula": "d_HThetaF=m-log2(N/k)+o(1) for k>0",
+    "sparsity_penalty": "log2(N/k)",
+    "interpretation": "prerequisite order fixes the interaction order; semantic coverage changes its magnitude"
   },
-  "numeric_illustration": {
-    "condition": "R={H,Theta}",
+  "canonical_numeric_witness": {
+    "history_modes": 2,
+    "response_types": 2,
+    "semantic_pairs": 4,
+    "addressable_pairs": 1,
     "anchor_m": 10,
-    "visible_cut_classes": 1,
-    "history_classes": 2,
-    "mechanism_classes": 2,
+    "grand_classes": 1027,
+    "grand_bits": 10.004220466,
     "history_mechanism_classes": 4,
-    "joint_classes": 4096,
     "history_mechanism_bits": 2,
-    "joint_bits": 12,
-    "genuine_three_way_bits": 10,
-    "three_way_share_of_joint": 0.8333333333333334,
-    "state_count_amplification_from_history_mechanism": 1024,
-    "claim_boundary": "illustration of the R={H,Theta} structural case, not a universal ecological constant"
+    "three_way_bits": 8.004220466,
+    "asymptotic_sparsity_penalty_bits": 2,
+    "claim_boundary": "finite semantic-access witness, not an empirical ecological constant"
+  },
+  "complete_access_boundary": {
+    "condition": "k=N=4",
+    "anchor_m": 10,
+    "grand_classes": 4096,
+    "grand_bits": 12,
+    "three_way_bits": 10,
+    "status": "v0.6 full-addressability boundary case, not canonical v0.7 witness"
+  },
+  "shallow_lake_prerequisite_audit": {
+    "status": "executable literature-grounded finite decision model, not empirical validation",
+    "current_status": [],
+    "legacy_sensitive_recovery": ["H"],
+    "mechanism_specific_intervention": ["THETA"],
+    "composed_restoration_policy": ["H", "THETA"],
+    "validation": "minimum prerequisite sets are computed by target factorization and counterfactual interface substitution"
   },
   "submission_constraints": {
     "abstract_word_limit": 200,
     "keyword_max": 6,
     "preferred_title_words": "approximately 8-10",
-    "current_abstract_words": 181,
+    "current_abstract_words": 166,
     "current_keywords": 6,
-    "current_title_words": 8
+    "current_title_words": 9
   },
   "literature_positioning": {
     "ecological_memory": "Ogle et al. 2015",
@@ -70,24 +84,22 @@
     "predictive_state_representations": "Littman, Sutton, and Singh 2001",
     "bisimulation_and_state_abstraction": "Givan, Dean, and Greig 2003; Li, Walsh, and Littman 2006"
   },
-  "novelty_boundary": "CREST does not claim novelty for quotient state abstraction, Mobius accounting, ecological memory, or the existence of grammars with higher-order terms. It claims a temporal-cut state construction with strict companion realizability boundaries and an explicit grammar/trace characterization linking minimal decoder interface prerequisites to the interaction order of state addressability debt.",
-  "ecological_consequence": "modular state design is reliable only when future queries factor through component interfaces without requiring their joint availability; jointly addressable queries create higher-order representational obligations",
-  "supporting_results": [
-    "abstract fixed-closure marked-cycle Delta=log2(n)-1 remains an exact supporting extremum but not a literal immutable-history theorem",
-    "abstract fixed-closure b-log2(3) three-audit family remains a supporting extremum rather than the companion-derived headline",
-    "future-conditioned MLTR and grammar-conditioned MRM 2^k prefix frontiers are retained as illustrative binary-signature examples, not evidence of structural identity",
-    "six-world obstruction-change diagnostics remain compatibility regressions"
-  ],
   "implementation": {
     "temporal_cut_module": "crest/temporal_cut.py",
     "definition_firewall": "docs/crest_temporal_companion_definition_firewall_2026-09-08.md",
     "strict_realizability_module": "crest/companion_realizability.py",
-    "strict_realizability_theorem": "docs/crest_companion_realizability_no_go_2026-09-08.md",
-    "explicit_grammar_module": "crest/explicit_temporal_grammar.py",
-    "explicit_grammar_theorem": "docs/crest_explicit_grammar_addressability_theorem_2026-09-08.md",
-    "explicit_grammar_tests": "tests/test_explicit_temporal_grammar.py",
-    "previous_direct_value_module": "crest/compositional_temporal_game.py",
-    "previous_direct_value_status": "retained for provenance/regression but no longer mathematical support for the flagship claim",
+    "semantic_access_module": "crest/semantic_access.py",
+    "semantic_quotient_module": "crest/semantic_temporal_quotient.py",
+    "semantic_access_theorem": "docs/crest_sparse_semantic_access_theorem_2026-09-08.md",
+    "shallow_lake_prerequisite_module": "crest/shallow_lake_prerequisites.py",
+    "complete_access_module": "crest/explicit_temporal_grammar.py",
+    "direct_value_corollary_module": "crest/compositional_temporal_game.py",
     "abstract_fixed_closure_module": "crest/temporal_interaction.py"
-  }
+  },
+  "supporting_results": [
+    "v0.6 complete addressability is the k=N boundary of the sparse semantic-access model",
+    "abstract fixed-closure marked-cycle Delta=log2(n)-1 remains an exact supporting extremum but not a literal immutable-history theorem",
+    "abstract fixed-closure b-log2(3) three-audit family remains a supporting extremum rather than the companion-derived headline",
+    "six-world obstruction-change diagnostics remain compatibility regressions"
+  ]
 }
