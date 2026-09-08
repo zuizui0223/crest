@@ -7,14 +7,15 @@ This module reports:
 - standalone debt D_i = v({i});
 - joint debt v(N);
 - non-additive excess Delta = v(N) - sum_i D_i;
-- exact Shapley attribution phi_i of the joint debt across audits; and
-- interaction attribution phi_i - D_i, which sums to Delta.
+- exact Shapley attribution phi_i of the joint debt across audits;
+- interaction attribution phi_i - D_i, which sums to Delta; and
+- exact coalition interaction dividends from the Möbius transform of v.
 
-The Shapley calculation is standard cooperative-game accounting. CREST uses it
-only as an order-independent diagnostic of how much joint state resolution is
-assigned to each declared scientific responsibility. Exact enumeration is
-exponential in the number of audits and is intended for the small audit sets
-used by CREST contracts.
+The Shapley and Möbius calculations are standard cooperative-game accounting.
+CREST uses them only as order-independent diagnostics of how much joint state
+resolution is assigned to individual scientific responsibilities and to their
+interactions. Exact enumeration is exponential in the number of audits and is
+intended for the small audit sets used by CREST contracts.
 """
 
 from __future__ import annotations
@@ -56,6 +57,18 @@ class CoalitionDebt:
 
 
 @dataclass(frozen=True)
+class InteractionDividend:
+    """Exact Möbius interaction term for one nonempty audit coalition."""
+
+    audits: tuple[str, ...]
+    bits: float
+
+    @property
+    def order(self) -> int:
+        return len(self.audits)
+
+
+@dataclass(frozen=True)
 class ObstructionSpectrumReport:
     """Standalone, joint, and order-independent audit contributions."""
 
@@ -69,9 +82,15 @@ class ObstructionSpectrumReport:
     baseline_blocks: int
     joint_blocks: int
     coalition_debts: tuple[CoalitionDebt, ...]
+    interaction_dividends: tuple[InteractionDividend, ...]
 
     def verify(self, *, tolerance: float = 1e-12) -> bool:
         size = len(self.audit_names)
+        singleton_dividends = {
+            dividend.audits[0]: dividend.bits
+            for dividend in self.interaction_dividends
+            if dividend.order == 1
+        }
         return (
             size >= 1
             and len(set(self.audit_names)) == size
@@ -96,6 +115,17 @@ class ObstructionSpectrumReport:
                 )
             )
             and abs(sum(self.interaction_attributions) - self.delta) <= tolerance
+            and abs(sum(item.bits for item in self.interaction_dividends) - self.joint_debt)
+            <= tolerance
+            and all(
+                abs(singleton_dividends[name] - standalone) <= tolerance
+                for name, standalone in zip(self.audit_names, self.standalone_debts)
+            )
+            and abs(
+                sum(item.bits for item in self.interaction_dividends if item.order >= 2)
+                - self.delta
+            )
+            <= tolerance
             and (
                 abs(sum(self.shapley_shares) - 1.0) <= tolerance
                 if self.joint_debt > tolerance
@@ -107,11 +137,13 @@ class ObstructionSpectrumReport:
 def obstruction_spectrum(
     audits: Iterable[AuditRefinement], baseline: PartitionLike
 ) -> ObstructionSpectrumReport:
-    """Compute the exact coalition table and Shapley obstruction spectrum.
+    """Compute the exact coalition table and obstruction spectrum.
 
     The characteristic value v(S) is the state debt of the least common fixed
     point of coalition S relative to ``baseline``. The empty coalition has zero
-    debt and leaves the baseline unchanged.
+    debt and leaves the baseline unchanged. Shapley values allocate total joint
+    debt across named audits; Möbius dividends decompose the same joint debt into
+    exact singleton, pairwise, triple, and higher-order coalition terms.
     """
 
     audit_tuple = tuple(audits)
@@ -177,6 +209,24 @@ def obstruction_spectrum(
                 )
         shapley.append(contribution)
 
+    dividends: list[InteractionDividend] = []
+    for size in range(1, len(audit_tuple) + 1):
+        for indices in combinations(range(len(audit_tuple)), size):
+            coalition = frozenset(indices)
+            bits = 0.0
+            index_tuple = tuple(indices)
+            for subset_size in range(size + 1):
+                for subset_tuple in combinations(index_tuple, subset_size):
+                    subset = frozenset(subset_tuple)
+                    sign = -1.0 if (size - subset_size) % 2 else 1.0
+                    bits += sign * coalition_values[subset][0]
+            dividends.append(
+                InteractionDividend(
+                    audits=tuple(names[index] for index in indices),
+                    bits=bits,
+                )
+            )
+
     shapley_tuple = tuple(shapley)
     interaction = tuple(
         shapley_value - standalone_value
@@ -200,6 +250,7 @@ def obstruction_spectrum(
         baseline_blocks=baseline_blocks,
         joint_blocks=joint_blocks,
         coalition_debts=tuple(coalition_rows),
+        interaction_dividends=tuple(dividends),
     )
     if not report.verify():
         raise AssertionError("constructed obstruction-spectrum report did not verify")
@@ -263,6 +314,7 @@ def three_obstruction_spectrum() -> ObstructionSpectrumReport:
 
 __all__ = [
     "CoalitionDebt",
+    "InteractionDividend",
     "ObstructionSpectrumReport",
     "obstruction_spectrum",
     "three_obstruction_cascade",
