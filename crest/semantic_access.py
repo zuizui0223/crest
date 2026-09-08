@@ -1,19 +1,25 @@
 """Semantic-access construction for CREST v0.7.
 
-This module deliberately derives retained history and mechanism interfaces from
-nontrivial companion semantics before any future decoder is introduced.
+CREST consumes *completed semantic outputs* from the companion theories before any
+future decoder is introduced.
 
-History modes are derived from complete MLTR-style carried maps of declared
-replacement routes.  Mechanism response types are derived from complete MRM-style
-candidate transition tables.  A future decoder is then allowed to depend on
-specific semantic history/response-type pairs, rather than merely on the presence
-of the abstract axes H and THETA.
+- On the MLTR side, a ``ReplacementRoute`` carries the complete terminal map that
+  MLTR's replacement-relation machinery has already derived for that route. CREST
+  does not recompute relation composition here; it quotients routes by equality of
+  those carried maps, exactly the minimum history-mode criterion after route
+  incoherence has been detected upstream.
+- On the MRM side, a ``CandidateLaw`` carries its complete declared response table.
+  CREST quotients primitive candidates by equality of those tables, the exact
+  candidate-safe response-type criterion.
+
+A future decoder can then depend on specific semantic history-mode x response-type
+pairs rather than merely on the presence of abstract H and THETA axis labels.
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Iterable
+from typing import Callable, Iterable, TypeVar
 
 
 @dataclass(frozen=True)
@@ -54,33 +60,49 @@ class SemanticAccessModel:
     access_relation: frozenset[tuple[tuple[int, ...], tuple[int, ...]]]
 
 
-def minimum_history_modes(routes: Iterable[ReplacementRoute]) -> tuple[HistoryMode, ...]:
-    """Derive the exact MLTR-style minimum history completion.
+T = TypeVar("T")
 
-    Routes are equivalent exactly when their complete carried terminal maps agree.
-    This is the route-coherence quotient used by MLTR; no mode labels are supplied
-    by the caller.
-    """
+
+def _group_named_primitives_by_signature(
+    primitives: Iterable[T],
+    *,
+    name_of: Callable[[T], str],
+    signature_of: Callable[[T], tuple[int, ...]],
+) -> tuple[tuple[tuple[int, ...], tuple[str, ...]], ...]:
+    """Shared finite quotient helper; domain semantics live in the wrappers below."""
 
     buckets: dict[tuple[int, ...], list[str]] = {}
-    for route in routes:
-        buckets.setdefault(route.carried_map, []).append(route.name)
-    return tuple(
-        HistoryMode(carried_map=key, routes=tuple(sorted(names)))
-        for key, names in sorted(buckets.items())
+    for primitive in primitives:
+        buckets.setdefault(signature_of(primitive), []).append(name_of(primitive))
+    return tuple((key, tuple(sorted(names))) for key, names in sorted(buckets.items()))
+
+
+def minimum_history_modes(routes: Iterable[ReplacementRoute]) -> tuple[HistoryMode, ...]:
+    """Quotient MLTR routes by complete carried terminal semantics.
+
+    The carried maps are companion outputs, not route labels.  Distinct raw routes
+    collapse exactly when MLTR says their complete carried terminal maps agree.
+    CREST intentionally does not reimplement the upstream replacement-relation
+    composition that produced those maps.
+    """
+
+    grouped = _group_named_primitives_by_signature(
+        routes,
+        name_of=lambda route: route.name,
+        signature_of=lambda route: route.carried_map,
     )
+    return tuple(HistoryMode(carried_map=key, routes=names) for key, names in grouped)
 
 
 def candidate_safe_response_types(candidates: Iterable[CandidateLaw]) -> tuple[ResponseType, ...]:
-    """Derive exact MRM-style response types from complete transition tables."""
+    """Quotient primitive candidate laws by complete declared response tables."""
 
-    buckets: dict[tuple[int, ...], list[str]] = {}
-    for candidate in candidates:
-        buckets.setdefault(candidate.response_table, []).append(candidate.name)
-    return tuple(
-        ResponseType(response_table=key, candidates=tuple(sorted(names)))
-        for key, names in sorted(buckets.items())
+    grouped = _group_named_primitives_by_signature(
+        candidates,
+        name_of=lambda candidate: candidate.name,
+        signature_of=lambda candidate: candidate.response_table,
     )
+    return tuple(ResponseType(response_table=key, candidates=names) for key, names in grouped)
 
 
 def route_mode(route: ReplacementRoute, modes: tuple[HistoryMode, ...]) -> HistoryMode:
@@ -95,7 +117,7 @@ def decoder_can_address(
     world: SemanticWorld,
     model: SemanticAccessModel,
 ) -> bool:
-    """Whether the world's semantic interface pair licenses the future decoder."""
+    """Whether the world's *derived semantic pair* licenses the future decoder."""
 
     h = route_mode(world.route, model.history_modes).carried_map
     theta = candidate_type(world.candidate, model.response_types).response_table
@@ -109,9 +131,9 @@ def semantic_trace(
 ) -> int | None:
     """Evaluate one exterior query under semantic access.
 
-    ``None`` means that the query is not addressable from the semantic history ×
-    response-type interface carried by this world.  When addressable, the decoder
-    returns the requested exterior bit.
+    ``None`` means that the query is not addressable from this semantic history x
+    response-type pair.  When addressable, the decoder returns the requested
+    exterior bit.
     """
 
     if not 0 <= query_index < len(world.exterior):
@@ -124,18 +146,20 @@ def semantic_trace(
 def canonical_nontrivial_companion_model() -> tuple[
     tuple[ReplacementRoute, ...], tuple[CandidateLaw, ...], SemanticAccessModel
 ]:
-    """Return a small model whose companion semantics are genuinely nontrivial.
+    """Return a small model with nontrivial companion semantic quotients.
 
-    MLTR side: three declared routes, two coherent with one another and one
-    path-incoherent, yielding two minimum history modes from three raw histories.
+    MLTR-facing input: three declared routes whose *already-derived* carried maps
+    yield two minimum history modes (two routes share one carried map, the third
+    has another).
 
-    MRM side: three candidate laws, two candidate-safe equivalent and one distinct,
-    yielding two response types from three primitive candidates.
+    MRM-facing input: three primitive candidate laws whose complete response tables
+    yield two candidate-safe response types (two candidates are response-equivalent,
+    the third is distinct).
 
-    The semantic access relation is intentionally sparse: only the combination of
-    the path-incoherent history mode and the distinct response type licenses the
-    exterior decoder.  Thus decoder availability depends on *which* carried
-    semantics and *which* response type are present, not merely on axis labels.
+    The semantic access relation is sparse: only one of the four derived semantic
+    history-mode x response-type pairs licenses the exterior decoder.  Decoder
+    availability therefore depends on which semantic classes are present, not on
+    raw route/candidate identity.
     """
 
     routes = (
@@ -162,8 +186,10 @@ __all__ = [
     "SemanticAccessModel",
     "SemanticWorld",
     "candidate_safe_response_types",
+    "candidate_type",
     "canonical_nontrivial_companion_model",
     "decoder_can_address",
     "minimum_history_modes",
+    "route_mode",
     "semantic_trace",
 ]
