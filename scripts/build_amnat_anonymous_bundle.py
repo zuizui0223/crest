@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Build a deterministic, identity-scrubbed review-code ZIP for the CREST paper.
 
-The archive is intentionally whitelist-only. It contains just the finite theorem
-implementation, focused regression tests, the canonical numeric benchmark, and
-neutral review instructions. Repository history, provenance notes, empirical
+The archive is whitelist-only and contains the finite implementation needed for
+the v0.5 temporal-cut, companion-realizability, conditioned-bridge, and literal
+compositional three-way results. Repository history, provenance notes, empirical
 bridges, public URLs, and submission metadata are excluded by construction.
 """
 
@@ -27,9 +27,15 @@ SOURCE_PATHS = (
     "crest/obstruction_spectrum.py",
     "crest/temporal_cut.py",
     "crest/temporal_interaction.py",
+    "crest/companion_realizability.py",
+    "crest/conditioned_temporal_bridges.py",
+    "crest/compositional_temporal_game.py",
     "tests/test_crest_temporal_cut.py",
     "tests/test_crest_temporal_interaction.py",
-    "artifacts/crest_temporal_cut_numeric_benchmarks_2026-09-08.json",
+    "tests/test_companion_realizability.py",
+    "tests/test_conditioned_temporal_bridges.py",
+    "tests/test_compositional_temporal_game.py",
+    "artifacts/crest_compositional_temporal_benchmarks_2026-09-08.json",
 )
 
 FORBIDDEN_PATTERNS = {
@@ -42,22 +48,29 @@ FORBIDDEN_PATTERNS = {
 ANONYMOUS_README = """# Anonymous review code
 
 This archive contains the minimal finite implementation used to reproduce the
-manuscript's temporal-cut state-interaction results. It intentionally excludes
-repository history, provenance notes, empirical application material, author
-metadata, and external repository links.
+manuscript's temporal-cut and literal conditioned compositional results. It
+intentionally excludes repository history, provenance notes, empirical material,
+author metadata, and external repository links.
 
 ## Reproduce the focused theorem tests
 
 ```bash
 python -m pip install -e '.[dev]'
-pytest tests/test_crest_temporal_cut.py tests/test_crest_temporal_interaction.py
+pytest -q \\
+  tests/test_crest_temporal_cut.py \\
+  tests/test_crest_temporal_interaction.py \\
+  tests/test_companion_realizability.py \\
+  tests/test_conditioned_temporal_bridges.py \\
+  tests/test_compositional_temporal_game.py
 ```
 
-The canonical finite benchmark is stored at
-`artifacts/crest_temporal_cut_numeric_benchmarks_2026-09-08.json`.
+The canonical literal benchmark is stored at
+`artifacts/crest_compositional_temporal_benchmarks_2026-09-08.json`.
 
-The review package covers the exact finite claims only. It does not claim a
-continuous-time, stochastic, infinite-state, or empirical extension.
+The review package covers finite exact claims only. The older fixed-closure
+cascade remains included as supporting mathematics and is not labeled a literal
+simultaneous companion realization. No continuous-time, stochastic, infinite-
+state, or empirical extension is claimed.
 """
 
 
@@ -97,19 +110,27 @@ def _manifest(source_payloads: dict[str, bytes]) -> bytes:
         for name, payload in sorted(source_payloads.items())
     }
     manifest = {
-        "schema_version": 1,
+        "schema_version": 2,
         "package_role": "anonymous_review_code",
-        "scope": "finite_exact_temporal_cut_theorems",
+        "scope": "finite_exact_literal_conditioned_temporal_cut_theorems",
         "files": files,
         "numeric_anchor": {
+            "bit_depth": 10,
             "visible_cut_classes": 1,
-            "adequate_state_classes": 1024,
-            "joint_debt_bits": 10.0,
-            "interaction_bits": 9.0,
-            "genuine_three_way_bits": 8.415037499278844,
+            "history_mechanism_classes": 4,
+            "joint_classes": 4096,
+            "history_mechanism_bits": 2,
+            "joint_bits": 12,
+            "interaction_bits": 10,
+            "genuine_three_way_bits": 10,
+            "pairwise_interaction_bits": 0,
+            "state_count_amplification": 1024,
+            "three_way_fraction_of_joint": 10 / 12,
+            "three_way_fraction_of_interaction": 1.0,
         },
         "claim_boundary": [
-            "finite exact common-carrier theory only",
+            "finite exact conditioned cross-contract theory only",
+            "the fixed-closure cascade is supporting mathematics, not the literal companion headline",
             "no empirical data are included",
             "no continuous-time or stochastic generalization is claimed",
         ],
