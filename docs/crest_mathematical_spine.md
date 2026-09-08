@@ -6,7 +6,7 @@
 
 The mathematical task is:
 
-> Given a declared scientific contract, when can one ecological state exist, what is the least-information such state, when does evidence identify it, and how can those requirements change when the future/management repertoire changes?
+> Given a declared scientific contract, when can one ecological state exist, what is the least-information such state, how much joint resolution does it require, how does that burden change across contracts, when does evidence identify it, and how can those requirements change when the future/management repertoire changes?
 
 The canonical proof chain is
 
@@ -14,6 +14,12 @@ The canonical proof chain is
 Gate A: admissible common carrier?
         ↓
 Gate B: unique least-information joint state?
+        ↓
+Joint-debt layer: how many bits are required jointly,
+                  and which responsibilities/interactions generate them?
+        ↓
+Change layer: when the contract changes, did burden move directly,
+              through interaction, or both—and at what order?
         ↓
 Gate C: evidence identifies that state?
         ↓
@@ -24,7 +30,7 @@ Cross-gate: how can one capability expansion move viability,
 Capacity law: what response resource actually bounds the added state debt?
 ```
 
-The first three gates define the object. The cross-gate results first rule out carrier gain as a sufficient complexity parameter, then identify counterfactual response capacity as the relevant finite bound.
+The first three gates define feasibility, state, and evidence. The debt layers quantify the state constructed at Gate B and make representational change diagnosable before Gate C is evaluated. The cross-gate results then rule out carrier gain as a sufficient complexity parameter and identify counterfactual response capacity as one relevant finite bound.
 
 ## 2. Gate A — carrier feasibility
 
@@ -135,6 +141,194 @@ The generic closure/fixed-point substrate is classical. J1 is important because 
 
 Detailed proof: `crest_joint_state_theorem_2026-08-17.md`.
 
+### Quantitative joint-debt layer
+
+Once \(J\) exists, CREST measures its information burden relative to the baseline:
+
+\[
+D_{\rm joint}=\log_2|J|-\log_2|B|.
+\]
+
+For each responsibility acting alone,
+
+\[
+D_i=\log_2|C_i(B)|-\log_2|B|,
+\]
+
+and
+
+\[
+\boxed{
+\Delta=D_{\rm joint}-\sum_iD_i.
+}
+\]
+
+A positive \(\Delta\) means that separately budgeting the responsibilities against the untouched baseline understates the state resolution needed after joint closure. The marked-cycle family gives
+
+\[
+D_1=1,
+\qquad D_2=0,
+\qquad D_{\rm joint}=\log_2n,
+\qquad
+\boxed{\Delta=\log_2n-1},
+\]
+
+so positive non-additive excess is unbounded. Conversely,
+
+\[
+D_i=0\ \forall i
+\Longrightarrow
+D_{\rm joint}=\Delta=0.
+\]
+
+Detailed proof and implementation:
+
+- `docs/flagship_integration/joint_debt_delta_section.md`
+- `crest/joint_debt.py`
+- `tests/test_crest_joint_debt.py`
+
+### Obstruction spectrum — direct and interaction anatomy
+
+For every audit coalition \(S\), let \(J_S\) be its least common fixed point and define
+
+\[
+v(S)=\log_2|J_S|-\log_2|B|,
+\qquad v(\varnothing)=0.
+\]
+
+Exact coalition enumeration provides the full finite obstruction spectrum. CREST reports:
+
+- singleton debts \(D_i=v(\{i\})\);
+- joint debt \(v(N)\);
+- Shapley attribution of joint debt to named responsibilities; and
+- Möbius/Harsanyi dividends \(m(S)\) that decompose debt by exact coalition.
+
+Thus
+
+\[
+\boxed{
+D_{\rm joint}
+=
+\sum_{\varnothing\ne S\subseteq N}m(S)
+}
+\]
+
+and
+
+\[
+\boxed{
+\Delta
+=
+\sum_{|S|\ge2}m(S).
+}
+\]
+
+In the canonical CCOC/MLTR/MRM witness,
+
+\[
+D_{\rm joint}=1.3219280949\ \text{bit},
+\]
+
+with exact nonzero components
+
+\[
+0.5849625007_{\rm\ CCOC}
++
+0.4150374993_{\rm\ CCOC\times MLTR}
++
+0.3219280949_{\rm\ CCOC\times MLTR\times MRM}.
+\]
+
+So the three obstruction theories are not merely labels on parallel equations: the implemented common closure produces a measurable direct/pairwise/three-way anatomy in bits.
+
+Detailed surface:
+
+- `docs/crest_obstruction_spectrum_2026-09-08.md`
+- `crest/obstruction_spectrum.py`
+- `artifacts/crest_obstruction_spectrum.json`
+
+### Before/after obstruction-change accounting
+
+For two contracts on the same named responsibility set,
+
+\[
+\boxed{
+\delta D_{\rm joint}
+=
+\sum_i\delta D_i+\delta\Delta.
+}
+\]
+
+If every standalone debt is unchanged,
+
+\[
+\delta D_i=0\ \forall i,
+\]
+
+then any nonzero change in joint burden is entirely interaction-generated:
+
+\[
+\boxed{
+\delta D_{\rm joint}=\delta\Delta
+=
+\sum_{|S|\ge2}\delta m(S).
+}
+\]
+
+The comparison engine classifies change as `direct-only`, `interaction-only`, `mixed`, or `null`. It also reports `increase/decrease/unchanged` directions for joint, direct, and interaction components.
+
+For interaction order \(k\), define
+
+\[
+M_k=\sum_{|S|=k}\delta m(S).
+\]
+
+Then
+
+\[
+\boxed{
+\delta D_{\rm joint}=\sum_{k\ge1}M_k,
+\qquad
+M_1=\sum_i\delta D_i,
+\qquad
+\delta\Delta=\sum_{k\ge2}M_k.
+}
+\]
+
+The canonical CCOC/MLTR/MRM activation change has
+
+```text
+source class               interaction-only
+joint direction            increase
+direct direction           unchanged
+interaction direction      increase
+active interaction orders  [2, 3]
+dominant order             2
+```
+
+with
+
+\[
+M_2=+0.4150374993\ \text{bit},
+\qquad
+M_3=+0.3219280949\ \text{bit},
+\]
+
+and
+
+\[
+\delta D_{\rm joint}=+0.7369655942\ \text{bit}.
+\]
+
+The reverse comparison has the same source class and active orders with signs reversed. This is the finite quantitative diagnostic of representational change used by the current CREST program.
+
+Detailed proof and implementation:
+
+- `docs/crest_obstruction_change_accounting_2026-09-08.md`
+- `docs/crest_obstruction_comparison_2026-09-08.md`
+- `crest/obstruction_compare.py`
+- `scripts/compare_obstruction_spectra.py`
+
 ## 4. Gate C — evidence licensing
 
 Let \(E\) be the reliability-qualified evidence partition.
@@ -209,7 +403,6 @@ The original strict `rescue` witness realizes
 \quad |J|\uparrow,
 \quad \text{full-state identification: yes}\to\text{no},
 \quad \text{target reportability: yes}\to\text{yes}.
-}
 \]
 
 This establishes direction: more management capability can make more worlds viable while making fewer worlds scientifically interchangeable.
@@ -243,7 +436,6 @@ Therefore
 \[
 \boxed{
 \text{viability gain alone cannot upper-bound representational burden.}
-}
 \]
 
 Detailed proof: `crest_capability_resolution_divergence_theorem_2026-08-22.md`.
@@ -429,9 +621,9 @@ Still open:
 
 - a canonical common carrier supplied by nature;
 - infinite/continuous/stochastic trajectory analogues of the finite joint-state theorem;
-- a general relation between dynamical, evolutionary, and representational stability;
+- a general relation between dynamical, evolutionary, and representational stability outside the finite obstruction comparison;
 - a general observation-symmetry theorem for arbitrary measurement families;
-- empirical calibration of response-relevant depth \(H\) and stage response cardinalities \(r_h\) in real ecological systems.
+- empirical calibration of response-relevant depth \(H\), stage response cardinalities \(r_h\), and obstruction-spectrum terms in real ecological systems.
 
 Not required for the current finite mathematical claims:
 

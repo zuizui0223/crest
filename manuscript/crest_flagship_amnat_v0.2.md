@@ -5,7 +5,7 @@
 
 ## Abstract
 
-Ecological state variables compress physically different systems into classes treated as equivalent for prediction, intervention, comparison, or reporting. The required resolution of such a state can change when scientific responsibilities are combined. We develop Contract-Relative Ecological State Theory (CREST) around this joint-responsibility problem. On one declared finite ecological common lift, each responsibility induces a refinement closure of a baseline state partition. We define the individual state debt of responsibility i as \(D_i=\log_2|C_i(B)|-\log_2|B|\), the debt of satisfying all responsibilities jointly as \(D_{\rm joint}=\log_2|J|-\log_2|B|\), and the non-additive interaction term \(\Delta=D_{\rm joint}-\sum_iD_i\). A marked-cycle family gives \(D_1=1\), \(D_2=0\), and \(D_{\rm joint}=\log_2 n\), so \(\Delta=\log_2 n-1\) and is unbounded. Thus separately budgeting monitoring or state resolution for future-response, inherited-semantic, mechanistic, and evidential responsibilities can underestimate the resolution required when those responsibilities are enforced together. The converse boundary is sharp: if every individual responsibility leaves the baseline unchanged, then the baseline is already a common fixed point and \(D_{\rm joint}=\Delta=0\). This result is an accounting statement rather than a claim of new generic partition-refinement mathematics. Supporting results show that carrier gain alone does not bound state burden and that sequential response depth bounds one important source of debt by \(H\log_2r\). CREST therefore treats ecological state not as a fixed snapshot but as the least-information quotient licensed for a declared bundle of scientific responsibilities.
+Ecological state variables compress physically different systems into classes treated as equivalent for prediction, intervention, comparison, or reporting. The required resolution of such a state can change when scientific responsibilities are combined. We develop Contract-Relative Ecological State Theory (CREST) around this joint-responsibility problem. On one declared finite ecological common lift, each responsibility induces a refinement closure of a baseline state partition. We define the individual state debt of responsibility i as \(D_i=\log_2|C_i(B)|-\log_2|B|\), the debt of satisfying all responsibilities jointly as \(D_{\rm joint}=\log_2|J|-\log_2|B|\), and the non-additive interaction term \(\Delta=D_{\rm joint}-\sum_iD_i\). A marked-cycle family gives \(D_1=1\), \(D_2=0\), and \(D_{\rm joint}=\log_2 n\), so \(\Delta=\log_2 n-1\) and is unbounded. Thus separately budgeting monitoring or state resolution for future-response, inherited-semantic, mechanistic, and evidential responsibilities can underestimate the resolution required when those responsibilities are enforced together. The converse boundary is sharp: if every individual responsibility leaves the baseline unchanged, then the baseline is already a common fixed point and \(D_{\rm joint}=\Delta=0\). A before/after obstruction-spectrum comparison further shows that joint burden can increase even when every standalone debt is unchanged, with the increase decomposable into pairwise and higher-order interaction terms. Supporting results show that carrier gain alone does not bound state burden and that sequential response depth bounds one important source of debt by \(H\log_2r\). CREST therefore treats ecological state not as a fixed snapshot but as the least-information quotient licensed for a declared bundle of scientific responsibilities.
 
 **Keywords:** ecological state; conservation monitoring; coarse graining; scientific representation; counterfactual response; state complexity; model adequacy
 
@@ -110,6 +110,81 @@ then each audit leaves the baseline partition unchanged. The baseline is therefo
 
 This lemma gives the useful boundary. Hidden joint debt requires at least one responsibility to create a real distinction somewhere. Purely dormant audits cannot bootstrap one another from an unchanged baseline.
 
+### Quantitative corollary — representational change can be interaction-only
+
+The static joint-debt result can be compared across two declared contracts on the same named responsibility set. Write before and after quantities with superscripts \(-\) and \(+\). Then
+
+\[
+\boxed{
+\delta D_{\rm joint}
+=
+D_{\rm joint}^+-D_{\rm joint}^-
+=
+\sum_i\delta D_i+\delta\Delta.
+}
+\]
+
+If every standalone debt is unchanged,
+
+\[
+\delta D_i=0\quad\text{for every }i,
+\]
+
+then any nonzero change in joint burden is entirely interaction-generated:
+
+\[
+\boxed{
+\delta D_{\rm joint}=\delta\Delta.
+}
+\]
+
+The finite obstruction spectrum makes that interaction anatomically explicit. Let \(m(S)\) be the Möbius/Harsanyi dividend of responsibility coalition \(S\). For interaction order \(k\), define
+
+\[
+M_k=\sum_{|S|=k}\delta m(S).
+\]
+
+Then
+
+\[
+\boxed{
+\delta D_{\rm joint}=\sum_{k\ge1}M_k,
+\qquad
+M_1=\sum_i\delta D_i,
+\qquad
+\delta\Delta=\sum_{k\ge2}M_k.
+}
+\]
+
+In a six-world CCOC/MLTR/MRM comparison, all three standalone debts are unchanged, but switching on the cross-responsibility activation chain changes the required joint state from three to five classes. Joint debt rises from
+
+\[
+0.5849625007
+\quad\text{to}\quad
+1.3219280949\ \text{bits},
+\]
+
+so
+
+\[
+\boxed{\delta D_{\rm joint}=+0.7369655942\ \text{bit}.}
+\]
+
+The entire increase is interaction-generated and decomposes as
+
+\[
++0.7369655942
+=
+\underbrace{+0.4150374993}_{\text{CCOC × MLTR}}
++
+\underbrace{+0.3219280949}_{\text{CCOC × MLTR × MRM}}
+\quad\text{bits}.
+\]
+
+Thus the change is `interaction-only`: the direct component is unchanged, pairwise and three-way coupling both increase, and the pairwise term is larger in absolute magnitude. Reversing the contract change produces an interaction-only decrease with the same active interaction orders and opposite signs.
+
+This comparison matters because a monitoring programme can appear stable when every responsibility is re-evaluated separately. The state burden can nevertheless change because the responsibilities have become more or less coupled. Representational stability is therefore a property of the joint obstruction structure, not only of the marginal responsibility scores.
+
 ## 3. Where the interacting responsibilities come from
 
 CREST does not treat all sources of refinement as one theorem. The component theories identify distinct ecological reasons that a present merge can fail.
@@ -162,21 +237,23 @@ whereas
 \text{joint debt measures interaction across responsibilities.}
 \]
 
+The before/after obstruction spectrum adds a third level: it determines whether a change in joint burden is attributable to changed standalone responsibilities, changed cross-responsibility interaction, or both.
+
 ## 5. Ecological prediction and monitoring consequence
 
 The framework suggests a concrete empirical programme. Systems should be especially vulnerable to positive joint debt when scientific responsibilities are coupled by the distinctions they expose. Examples include restoration problems where intervention response reveals latent mechanism, structural change alters the meaning of inherited categories, and the newly required categories are not resolved by routine monitoring.
 
 This yields a stronger prediction than “complex ecosystems need more monitoring.” The relevant signal is **activation across responsibilities**. If a distinction introduced for one task changes which pairs must be separated for another task, independent monitoring budgets will be systematically optimistic.
 
-Operationally, a CREST analysis should therefore proceed in the following order: specify the common ecological world set and baseline state; apply all declared responsibilities to their common fixed point; measure \(D_{\rm joint}\) and compare it with the individual debts; only then design or evaluate the evidence system against the final required state. A positive \(\Delta\) is a warning that modular monitoring design misses interaction-generated distinctions.
+Operationally, a CREST analysis should therefore proceed in the following order: specify the common ecological world set and baseline state; apply all declared responsibilities to their common fixed point; measure \(D_{\rm joint}\) and compare it with the individual debts; when the contract changes, compare the full obstruction spectra and diagnose direct versus interaction-generated change; only then design or evaluate the evidence system against the final required state. A positive \(\Delta\) is a warning that modular monitoring design misses interaction-generated distinctions, while an interaction-only increase shows that this deficit can worsen without any standalone responsibility score increasing.
 
-The marked-cycle family is an extremal proof, not an ecological frequency claim. Real applications may have \(\Delta<0\), \(\Delta=0\), or \(\Delta>0\). Negative values would indicate overlap or redundancy among responsibilities; zero would indicate additive accounting at the chosen baseline; positive values indicate synergistic refinement. Estimating the distribution and magnitude of these regimes in empirical ecological models is a separate task.
+The marked-cycle family is an extremal proof, not an ecological frequency claim. Real applications may have \(\Delta<0\), \(\Delta=0\), or \(\Delta>0\). Negative values would indicate overlap or redundancy among responsibilities; zero would indicate additive accounting at the chosen baseline; positive values indicate synergistic refinement. Likewise, before/after changes may be direct-only, interaction-only, mixed, or null. Estimating the distribution and magnitude of these regimes in empirical ecological models is a separate task.
 
 ## 6. Novelty boundary
 
-CREST does not claim novelty for closure operators, partition lattices, bisimulation-style refinement, marked cycles, automata minimization, or the elementary logarithmic accounting used above. Those are mathematical substrate.
+CREST does not claim novelty for closure operators, partition lattices, bisimulation-style refinement, marked cycles, automata minimization, Shapley values, Möbius inversion, Harsanyi dividends, or the elementary logarithmic accounting used above. Those are mathematical substrate.
 
-The contribution claimed here is narrower and ecological: once future response, inherited semantics, retained mechanisms, and evidence obligations are treated as distinct scientific responsibilities on a common ecological world set, their state-resolution burdens need not add. The interaction term \(\Delta\) makes that failure explicit and testable inside the CREST architecture.
+The contribution claimed here is narrower and ecological: once future response, inherited semantics, retained mechanisms, and evidence obligations are treated as distinct scientific responsibilities on a common ecological world set, their state-resolution burdens need not add. The interaction term \(\Delta\) makes that failure explicit, while the obstruction spectrum makes its direct, pairwise, and higher-order anatomy measurable and its before/after change diagnosable inside the CREST architecture.
 
 This boundary also protects the companion papers. CCOC remains a future-interface theory, MLTR a carried-semantics theory, MRM a mechanism-ambiguity and active-resolution theory, and CED an evidence-licensing theory. The synthesis uses them as responsibility classes without absorbing their strongest standalone results.
 
@@ -198,4 +275,4 @@ More strongly, the positive discrepancy can be unbounded:
 
 in a finite sharp family, while zero individual debt for every responsibility forces zero joint debt. Conservation science therefore cannot assume that the monitoring resolution required for prediction, intervention, historical continuity, mechanism robustness, and evidence licensing can be budgeted independently. The distinctions one responsibility creates can be exactly those that activate another.
 
-CREST reframes state design accordingly: first determine what the full scientific responsibility requires of the world, then ask what evidence is needed to identify that state. The practical question is no longer only how much each task costs in isolation, but how much information is created by having to satisfy them together.
+The same logic applies to change. Joint state burden can increase or decrease entirely through interaction even when every standalone responsibility debt remains fixed. CREST therefore reframes state design and state revision together: first determine what the full scientific responsibility requires of the world, then measure the joint obstruction structure and its changes, and only then ask what evidence is needed to identify that state. The practical question is no longer only how much each task costs in isolation, but how much information is created by having to satisfy them together—and how that information burden changes when the scientific contract changes.
