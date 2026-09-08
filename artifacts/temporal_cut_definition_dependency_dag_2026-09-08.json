@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "purpose": "Machine-readable non-circularity contract for temporal-cut companion definitions",
+  "nodes": {
+    "Omega": [],
+    "O_t": ["Omega"],
+    "B_t": ["Omega", "O_t"],
+
+    "q_r": [],
+    "replacement_DAG": [],
+    "edge_relations": ["replacement_DAG"],
+    "history_path_p": ["replacement_DAG"],
+    "history_composite_R_p": ["history_path_p", "edge_relations"],
+    "history_carried_map_c_p": ["q_r", "history_composite_R_p"],
+    "history_type_H": ["history_carried_map_c_p"],
+
+    "Q_visible": [],
+    "A_mechanism": [],
+    "candidate_family_C": [],
+    "candidate_laws_G": ["Q_visible", "A_mechanism", "candidate_family_C"],
+    "mechanism_response_equivalence": ["candidate_laws_G"],
+    "mechanism_type_Theta": ["candidate_family_C", "mechanism_response_equivalence"],
+
+    "M_ccoc": [],
+    "future_grammar_L": [],
+    "cut_raw_configuration_s_t": ["Omega"],
+    "future_trace_profile_rho": ["M_ccoc", "future_grammar_L", "cut_raw_configuration_s_t"],
+    "future_type_F": ["future_trace_profile_rho"],
+
+    "C_H": ["B_t", "history_type_H"],
+    "C_Theta": ["B_t", "mechanism_type_Theta"],
+    "C_F": ["B_t", "future_type_F"],
+    "J_t": ["B_t", "C_H", "C_Theta", "C_F"]
+  },
+  "pre_state_responsibility_nodes": [
+    "history_path_p",
+    "history_carried_map_c_p",
+    "history_type_H",
+    "candidate_family_C",
+    "candidate_laws_G",
+    "mechanism_type_Theta",
+    "future_grammar_L",
+    "future_trace_profile_rho",
+    "future_type_F"
+  ],
+  "final_state_node": "J_t",
+  "assertions": [
+    "dependency graph is acyclic",
+    "J_t is not an ancestor of any pre-state responsibility node",
+    "J_t has no dependents",
+    "history is rooted and source-relative rather than terminal-state recursive",
+    "mechanism candidates precede response-type quotient",
+    "future grammar and raw law precede response-interface quotient"
+  ]
+}
