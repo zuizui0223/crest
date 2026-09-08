@@ -59,6 +59,44 @@ def test_three_obstruction_coalitions_show_activation_cascade() -> None:
     }
 
 
+def test_mobius_dividends_separate_direct_pairwise_and_three_way_bits() -> None:
+    report = three_obstruction_spectrum()
+    dividends = {row.audits: row.bits for row in report.interaction_dividends}
+
+    direct_ccoc = log2(3) - 1.0
+    pair_ccoc_mltr = 1.0 - direct_ccoc
+    triple = log2(5) - 2.0
+
+    assert dividends == pytest.approx(
+        {
+            ("CCOC",): direct_ccoc,
+            ("MLTR",): 0.0,
+            ("MRM",): 0.0,
+            ("CCOC", "MLTR"): pair_ccoc_mltr,
+            ("CCOC", "MRM"): 0.0,
+            ("MLTR", "MRM"): 0.0,
+            ("CCOC", "MLTR", "MRM"): triple,
+        }
+    )
+    assert sum(dividends.values()) == pytest.approx(report.joint_debt)
+    assert sum(
+        value for coalition, value in dividends.items() if len(coalition) >= 2
+    ) == pytest.approx(report.delta)
+
+
+def test_shapley_equals_equal_split_of_interaction_dividends() -> None:
+    report = three_obstruction_spectrum()
+    by_name = {name: 0.0 for name in report.audit_names}
+    for dividend in report.interaction_dividends:
+        share = dividend.bits / len(dividend.audits)
+        for name in dividend.audits:
+            by_name[name] += share
+
+    assert tuple(by_name[name] for name in report.audit_names) == pytest.approx(
+        report.shapley_contributions
+    )
+
+
 def test_shapley_spectrum_is_invariant_to_audit_input_order() -> None:
     baseline, audits = three_obstruction_cascade()
     reference = three_obstruction_spectrum()
@@ -68,6 +106,9 @@ def test_shapley_spectrum_is_invariant_to_audit_input_order() -> None:
     reference_standalone = dict(
         zip(reference.audit_names, reference.standalone_debts)
     )
+    reference_dividends = {
+        frozenset(row.audits): row.bits for row in reference.interaction_dividends
+    }
 
     for ordering in permutations(audits):
         report = obstruction_spectrum(ordering, baseline)
@@ -79,6 +120,9 @@ def test_shapley_spectrum_is_invariant_to_audit_input_order() -> None:
         assert dict(zip(report.audit_names, report.standalone_debts)) == pytest.approx(
             reference_standalone
         )
+        assert {
+            frozenset(row.audits): row.bits for row in report.interaction_dividends
+        } == pytest.approx(reference_dividends)
 
 
 def test_obstruction_spectrum_rejects_duplicate_audit_names() -> None:
