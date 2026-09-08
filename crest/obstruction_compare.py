@@ -21,6 +21,14 @@ def _interaction_map(payload: Mapping[str, Any]) -> dict[tuple[str, ...], float]
     return result
 
 
+def _direction(value: float, *, tolerance: float = 1e-12) -> str:
+    if value > tolerance:
+        return "increase"
+    if value < -tolerance:
+        return "decrease"
+    return "unchanged"
+
+
 @dataclass(frozen=True)
 class SpectrumComparison:
     audit_names: tuple[str, ...]
@@ -38,6 +46,53 @@ class SpectrumComparison:
     @property
     def joint_block_change(self) -> int:
         return self.joint_blocks_after - self.joint_blocks_before
+
+    @property
+    def direct_change_bits(self) -> float:
+        """Net change in responsibility-wise standalone debt."""
+
+        return sum(self.standalone_change_bits.values())
+
+    @property
+    def interaction_change_bits(self) -> float:
+        """Net change in non-additive interaction debt."""
+
+        return self.delta_change_bits
+
+    def joint_debt_direction(self, *, tolerance: float = 1e-12) -> str:
+        return _direction(self.joint_debt_change_bits, tolerance=tolerance)
+
+    def direct_direction(self, *, tolerance: float = 1e-12) -> str:
+        return _direction(self.direct_change_bits, tolerance=tolerance)
+
+    def interaction_direction(self, *, tolerance: float = 1e-12) -> str:
+        return _direction(self.interaction_change_bits, tolerance=tolerance)
+
+    def interaction_order_change_bits(self) -> dict[int, float]:
+        """Aggregate Möbius-dividend change by coalition order."""
+
+        result: dict[int, float] = {}
+        for coalition, value in self.interaction_dividend_change_bits.items():
+            order = len(coalition)
+            result[order] = result.get(order, 0.0) + value
+        return dict(sorted(result.items()))
+
+    def active_interaction_orders(self, *, tolerance: float = 1e-12) -> tuple[int, ...]:
+        return tuple(
+            order
+            for order, value in self.interaction_order_change_bits().items()
+            if order >= 2 and abs(value) > tolerance
+        )
+
+    def dominant_interaction_order(self, *, tolerance: float = 1e-12) -> int | None:
+        active = {
+            order: value
+            for order, value in self.interaction_order_change_bits().items()
+            if order >= 2 and abs(value) > tolerance
+        }
+        if not active:
+            return None
+        return min(active, key=lambda order: (-abs(active[order]), order))
 
     def change_class(self, *, tolerance: float = 1e-12) -> str:
         """Classify the source of before/after state-debt change.
@@ -62,19 +117,21 @@ class SpectrumComparison:
     def verify(self, *, tolerance: float = 1e-12) -> bool:
         """Verify the exact before/after accounting identities."""
 
-        direct_change = sum(self.standalone_change_bits.values())
         higher_order_change = sum(
             value
             for coalition, value in self.interaction_dividend_change_bits.items()
             if len(coalition) >= 2
         )
+        order_change = self.interaction_order_change_bits()
         return (
             abs(
                 self.joint_debt_change_bits
-                - (direct_change + self.delta_change_bits)
+                - (self.direct_change_bits + self.delta_change_bits)
             )
             <= tolerance
             and abs(higher_order_change - self.delta_change_bits) <= tolerance
+            and abs(sum(order_change.values()) - self.joint_debt_change_bits)
+            <= tolerance
             and (
                 self.change_class(tolerance=tolerance) != "interaction-only"
                 or abs(self.joint_debt_change_bits - self.delta_change_bits)
@@ -85,9 +142,14 @@ class SpectrumComparison:
     def to_payload(self) -> dict[str, Any]:
         if not self.verify():
             raise ValueError("spectrum comparison failed accounting verification")
+        order_change = self.interaction_order_change_bits()
+        dominant_order = self.dominant_interaction_order()
         return {
             "audit_names": list(self.audit_names),
             "change_class": self.change_class(),
+            "joint_debt_direction": self.joint_debt_direction(),
+            "direct_direction": self.direct_direction(),
+            "interaction_direction": self.interaction_direction(),
             "baseline_blocks": {
                 "before": self.baseline_blocks_before,
                 "after": self.baseline_blocks_after,
@@ -99,10 +161,25 @@ class SpectrumComparison:
                 "change": self.joint_block_change,
             },
             "joint_debt_change_bits": self.joint_debt_change_bits,
+            "direct_change_bits": self.direct_change_bits,
+            "interaction_change_bits": self.interaction_change_bits,
             "delta_change_bits": self.delta_change_bits,
             "standalone_change_bits": self.standalone_change_bits,
             "shapley_change_bits": self.shapley_change_bits,
             "interaction_attribution_change_bits": self.interaction_attribution_change_bits,
+            "interaction_order_change_bits": [
+                {
+                    "order": order,
+                    "change_bits": value,
+                    "direction": _direction(value),
+                }
+                for order, value in order_change.items()
+            ],
+            "active_interaction_orders": list(self.active_interaction_orders()),
+            "dominant_interaction_order": dominant_order,
+            "dominant_interaction_order_change_bits": (
+                None if dominant_order is None else order_change[dominant_order]
+            ),
             "interaction_dividend_change_bits": [
                 {"audits": list(coalition), "order": len(coalition), "change_bits": value}
                 for coalition, value in sorted(
