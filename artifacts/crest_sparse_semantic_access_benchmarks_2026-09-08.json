@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "role": "canonical_v0.7_sparse_semantic_access_benchmark",
+  "history_modes": 2,
+  "response_types": 2,
+  "semantic_pairs": 4,
+  "addressable_pairs": 1,
+  "coverage_fraction": 0.25,
+  "grand_quotient_formula": "(N-k)+k*2^m",
+  "three_way_formula": "log2(((N-k)+k*2^m)/N)",
+  "asymptotic_sparsity_penalty_bits": 2.0,
+  "benchmarks": [
+    {
+      "m": 4,
+      "grand_classes": 19,
+      "grand_bits": 4.247927513443585,
+      "three_way_bits": 2.2479275134435852
+    },
+    {
+      "m": 8,
+      "grand_classes": 259,
+      "grand_bits": 8.016808287686552,
+      "three_way_bits": 6.016808287686552
+    },
+    {
+      "m": 10,
+      "grand_classes": 1027,
+      "grand_bits": 10.004220466318195,
+      "three_way_bits": 8.004220466318195
+    }
+  ],
+  "complete_access_boundary": {
+    "semantic_pairs": 4,
+    "addressable_pairs": 4,
+    "m": 10,
+    "grand_classes": 4096,
+    "grand_bits": 12.0,
+    "three_way_bits": 10.0
+  },
+  "claim_boundary": "This artifact is an exact finite semantic-access benchmark, not an empirical ecological estimate."
+}
