@@ -1,6 +1,7 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "target_journal": "The American Naturalist",
+  "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.2.md",
   "headline": "non-additive joint ecological state debt",
   "headline_quantity": "Delta = D_joint - sum_i D_i",
   "headline_sharp_family": "marked directed cycle",
