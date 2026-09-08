@@ -6,11 +6,11 @@ This file is a submission-preparation surface, not part of the blinded manuscrip
 
 ### Double-anonymous review version
 
-> All code required to reproduce the finite mathematical results reported in this manuscript is provided in an anonymized review archive at **[ANONYMOUS REVIEW ARCHIVE OR JOURNAL FILE IDENTIFIER]**. The archive contains the minimal theorem implementation, focused regression tests, and the canonical explicit-grammar benchmark used in the manuscript, including the strict companion-realizability audit, generated legal grammars, trace-equivalence quotients, and counterfactual decoder rules that move the same exterior information among main, pairwise, and three-way terms. No empirical data are analyzed in this study. The review archive is generated deterministically from a whitelist-only source package and excludes repository history and author-identifying metadata.
+> All code required to reproduce the finite mathematical and modeling results reported in this manuscript is provided in an anonymized review archive at **[ANONYMOUS REVIEW ARCHIVE OR JOURNAL FILE IDENTIFIER]**. The archive contains the temporal-cut implementation, strict companion-realizability audit, companion semantic quotients, sparse semantic-access state quotient, focused regression tests, and the executable shallow-lake prerequisite audit. The shallow-lake component is a literature-grounded finite decision model rather than an empirical data analysis. The review archive is generated deterministically from a whitelist-only source package and excludes repository history and author-identifying metadata.
 
 ### Publication / post-acceptance version
 
-> All code required to reproduce the finite mathematical results reported in this manuscript is archived at **[PUBLIC REPOSITORY OR DOI]**. The archived release contains the theorem implementation, focused regression tests, and the canonical numerical benchmark. No empirical data are analyzed in this study. The archived software release is cited in the Literature Cited as **[SOFTWARE CITATION]**.
+> All code required to reproduce the finite mathematical and modeling results reported in this manuscript is archived at **[PUBLIC REPOSITORY OR DOI]**. The archived release contains the theorem implementation, semantic-access quotient, shallow-lake prerequisite audit, focused regression tests, and canonical numerical benchmarks. The archived software release is cited in the Literature Cited as **[SOFTWARE CITATION]**.
 
 Do not substitute the public author-identifying repository URL into the blinded review version.
 
@@ -85,7 +85,7 @@ The final anonymous archive location is then inserted into Section 1 above.
 
 ## 7. Final submission checklist
 
-- [ ] Canonical manuscript is `crest_flagship_amnat_v0.6_addressability.md`.
+- [ ] Canonical manuscript is `crest_flagship_amnat_v0.7_semantic_access.md`.
 - [ ] Blinded manuscript contains no author names, affiliations, acknowledgments, repository-owner handles, or identifying URLs.
 - [ ] Abstract remains at or below 200 words.
 - [ ] Keywords remain at or below 6.
