@@ -18,5 +18,6 @@
   ],
   "cover_letter_expected": false,
   "anonymous_review_archive": "dist/anonymous_review_code.zip",
+  "review_code_delivery": "upload anonymous ZIP directly to Editorial Manager or provide a reviewer-accessible anonymous repository link",
   "word_count_method": "Introduction through Conclusion; exclude abstract, Literature Cited, display/inline math, and markdown table rows"
 }
