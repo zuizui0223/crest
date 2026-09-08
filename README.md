@@ -196,7 +196,7 @@ with interaction-order decomposition
 0.4150374993+0.3219280949.
 \]
 
-Its diagnosis remains **`interaction-only`** because standalone debts are unchanged while the joint burden changes. It is no longer the flagship realization theorem.
+Its diagnosis remains **`interaction-only`** because standalone debts are unchanged while the joint burden changes. The compatibility diagnostic also reports `active_interaction_orders = [2, 3]`. It is no longer the flagship realization theorem.
 
 ## Publication roles
 
