@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "status": "finite_exact_temporal_cut_benchmark",
+  "present_convention": "present is the observational cut O_t; no finite-width or infinitesimal present interval is modeled",
+  "baseline_partition": "B_t = ker(O_t)",
+  "axes": {
+    "HISTORY": "retrospective history to the left of the cut",
+    "LATENT_PRESENT": "response structure inside O_t^{-1}(y), transverse to the cut",
+    "FUTURE": "prospective/counterfactual response responsibility to the right of the cut"
+  },
+  "past_future_family": {
+    "standalone_history_bits": 1.0,
+    "standalone_future_bits": 0.0,
+    "joint_bits_formula": "log2(n)",
+    "past_future_interaction_formula": "log2(n) - 1",
+    "limit": "unbounded as n -> infinity"
+  },
+  "three_way_family": {
+    "bit_depth_symbol": "m",
+    "visible_cut_classes": 1,
+    "joint_blocks_formula": "2^m",
+    "joint_debt_bits_formula": "m",
+    "standalone_debts_bits": {
+      "HISTORY": 1.0,
+      "LATENT_PRESENT": 0.0,
+      "FUTURE": 0.0
+    },
+    "coalition_blocks": {
+      "HISTORY": 2,
+      "LATENT_PRESENT": 1,
+      "FUTURE": 1,
+      "HISTORY+LATENT_PRESENT": 3,
+      "HISTORY+FUTURE": 2,
+      "LATENT_PRESENT+FUTURE": 1,
+      "HISTORY+LATENT_PRESENT+FUTURE": "2^m"
+    },
+    "pairwise_history_latent_bits": 0.5849625007211562,
+    "three_way_bits_formula": "m - log2(3)",
+    "three_way_fraction_of_joint_formula": "1 - log2(3)/m",
+    "limit": "three-way fraction of joint debt -> 1 as m -> infinity"
+  },
+  "anchor_m_10": {
+    "latent_worlds": 1025,
+    "visible_cut_classes": 1,
+    "adequate_state_classes": 1024,
+    "joint_debt_bits": 10.0,
+    "total_interaction_bits": 9.0,
+    "total_interaction_fraction": 0.9,
+    "history_direct_bits": 1.0,
+    "history_latent_pair_bits": 0.5849625007211562,
+    "genuine_three_way_bits": 8.415037499278844,
+    "genuine_three_way_fraction_of_joint": 0.8415037499278844,
+    "genuine_three_way_fraction_of_interaction": 0.9350041665865382
+  },
+  "claim_boundary": [
+    "The result is finite and conditional on declared closures on a common carrier.",
+    "History, latent present, and future are not claimed to exhaust all ecological state responsibilities.",
+    "The result is interaction/coupling, not statistical confounding.",
+    "No continuous-time, infinitesimal-germ, stochastic, or infinite-state theorem is claimed."
+  ]
+}
