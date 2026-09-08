@@ -66,16 +66,18 @@ These results prevent older abstract closure cascades from being overinterpreted
 
 ## Executable shallow-lake prerequisite audit
 
-The shallow-lake worked case is now an executable finite decision model rather than a markdown-only target table. Four worlds behind one coarse visible status cross two retrospective modes with two latent-response types. The code tests target factorization and counterfactual substitution of each interface.
+The shallow-lake worked case is an executable finite decision model. Four worlds behind one coarse visible status cross two retrospective modes with two latent-response types. The code tests target factorization and counterfactual substitution of each interface.
 
 It returns:
 
 - current status: `R = empty`;
 - legacy-sensitive recovery: `R = {H}`;
 - mechanism-specific intervention: `R = {Theta}`;
-- composed restoration policy: `R = {H,Theta}`.
+- composed restoration diagnostic: `R = {H,Theta}`.
 
-This is **literature-grounded conceptual modeling, not empirical validation** and not a universal claim about shallow lakes.
+The composed diagnostic has only two outputs (`standard_pathway`, `cross_interface_review`). Both outputs remain possible within every fixed-history slice and every fixed-response-type slice, so the two-interface requirement is not an artifact of assigning one unique output to each of four semantic pairs.
+
+The ecological ingredients are literature grounded; the exact parity-style two-output map is deliberately a minimal formal witness of joint dependence, not an empirical biological law.
 
 ## Novelty boundary
 
@@ -87,6 +89,26 @@ The flagship does **not** claim mathematical novelty for:
 - finite counting after an access relation is fixed.
 
 The contribution is the modeling architecture: non-circular companion semantics, strict realizability boundaries, target-relative interface-prerequisite identification, explicit semantic access coverage, and propagation of both objects into one exact temporal-cut state quotient.
+
+## AmNat submission metadata
+
+The current American Naturalist instructions require the review title page to identify the article type, keywords, text word count, and manuscript elements; Editorial Manager also requires a short title of no more than 40 characters. Cover letters are not expected.
+
+The machine-readable surface is:
+
+`amnat_submission_metadata.json`
+
+Generate the anonymous title-page metadata with:
+
+```bash
+python scripts/build_amnat_title_page.py
+```
+
+Default output:
+
+`dist/amnat_anonymous_title_page.md`
+
+The text word count is computed reproducibly from the canonical manuscript (Introduction through Conclusion, excluding the abstract, Literature Cited, display/inline mathematics, and markdown table rows) and regression-tested against the pinned metadata value.
 
 ## Retained predecessor manuscripts
 
@@ -163,8 +185,10 @@ The v0.7 archive contains the minimal code needed for:
 1. **Anonymous code upload location.** The generator is complete; the review-safe upload surface depends on the journal workflow.
 2. **Data and Code Accessibility Statement.** Insert the final anonymous/archive identifier in `amnat_submission_declarations_TEMPLATE.md`.
 3. **Generative-AI disclosure.** Confirm actual uses and human verification.
-4. **Title page / author metadata.** Names, affiliations, e-mails, ORCIDs, acknowledgments, funding, contributions, and conflicts stay outside the blinded manuscript.
-5. **PDF preparation.** Final review PDF needs journal-required spacing, line/page numbering, and embedded math fonts.
+4. **Author metadata.** Names, affiliations, e-mails, ORCIDs, acknowledgments, funding, contributions, and conflicts stay outside the blinded manuscript and must be entered in Editorial Manager as appropriate.
+5. **PDF preparation.** Final review PDF needs double spacing, line numbering, page numbering, and embedded math fonts.
+
+A cover letter is not a blocker because The American Naturalist states that cover letters are not expected; any necessary message belongs in the Editorial Manager Comments field.
 
 ## Reproducibility
 
@@ -174,6 +198,7 @@ Run from a clean environment:
 python -m pip install -e '.[dev]'
 pytest
 python scripts/build_amnat_anonymous_bundle.py
+python scripts/build_amnat_title_page.py
 ```
 
-The general pytest suite verifies the temporal-cut surface, definition firewall, strict realizability no-go, semantic-access quotient, shallow-lake prerequisite audit, AmNat manuscript compliance, and anonymous review bundle.
+The general pytest suite verifies the temporal-cut surface, definition firewall, strict realizability no-go, semantic-access quotient, shallow-lake prerequisite audit, AmNat manuscript compliance, submission metadata, generated anonymous title page, and anonymous review bundle.
