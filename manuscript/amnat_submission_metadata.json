@@ -1,0 +1,22 @@
+{
+  "article_type": "Major Article",
+  "short_title": "Sparse Semantic Access",
+  "text_word_count": 0,
+  "manuscript_elements": [
+    "Abstract",
+    "Main text",
+    "1 table",
+    "Literature Cited"
+  ],
+  "keywords": [
+    "ecological state",
+    "temporal representation",
+    "ecological memory",
+    "state abstraction",
+    "semantic access",
+    "restoration"
+  ],
+  "cover_letter_expected": false,
+  "anonymous_review_archive": "dist/anonymous_review_code.zip",
+  "word_count_method": "Introduction through Conclusion; exclude abstract, Literature Cited, display/inline math, and markdown table rows"
+}
