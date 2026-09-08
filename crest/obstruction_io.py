@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 from .joint_state import AuditRefinement
+from .obstruction_normalized import normalized_obstruction_metrics
 from .obstruction_spectrum import ObstructionSpectrumReport, obstruction_spectrum
 
 
@@ -17,24 +18,7 @@ def _as_tuple(value: Any, *, name: str) -> tuple[Any, ...]:
 def parse_obstruction_contract(
     payload: dict[str, Any],
 ) -> tuple[tuple[Any, ...], tuple[AuditRefinement, ...]]:
-    """Parse one explicit finite obstruction contract from a JSON-like mapping.
-
-    Expected shape::
-
-        {
-          "baseline": [0, 1, 1],
-          "audits": [
-            {
-              "name": "CCOC",
-              "static_labels": ["same", "same", "same"],
-              "actions": ["future"],
-              "successors": [[0], [0], [2]]
-            }
-          ]
-        }
-
-    Successor entries are integer world indices or null for an illegal action.
-    """
+    """Parse one explicit finite obstruction contract from a JSON-like mapping."""
 
     if not isinstance(payload, dict):
         raise ValueError("contract must be a JSON object")
@@ -77,12 +61,14 @@ def parse_obstruction_contract(
     return baseline, tuple(audits)
 
 
-def spectrum_payload(report: ObstructionSpectrumReport) -> dict[str, Any]:
+def spectrum_payload(
+    report: ObstructionSpectrumReport, *, carrier_worlds: int | None = None
+) -> dict[str, Any]:
     """Convert a verified spectrum into a stable JSON-serializable payload."""
 
     if not report.verify():
         raise ValueError("obstruction spectrum report failed verification")
-    return {
+    payload: dict[str, Any] = {
         "audit_names": list(report.audit_names),
         "baseline_blocks": report.baseline_blocks,
         "joint_blocks": report.joint_blocks,
@@ -107,11 +93,18 @@ def spectrum_payload(report: ObstructionSpectrumReport) -> dict[str, Any]:
             for row in report.interaction_dividends
         ],
     }
+    if carrier_worlds is not None:
+        payload["normalized"] = normalized_obstruction_metrics(
+            report, carrier_worlds=carrier_worlds
+        ).to_payload()
+    return payload
 
 
 def spectrum_from_payload(payload: dict[str, Any]) -> dict[str, Any]:
     baseline, audits = parse_obstruction_contract(payload)
-    return spectrum_payload(obstruction_spectrum(audits, baseline))
+    return spectrum_payload(
+        obstruction_spectrum(audits, baseline), carrier_worlds=len(baseline)
+    )
 
 
 __all__ = [
