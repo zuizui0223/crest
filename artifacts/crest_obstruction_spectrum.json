@@ -144,5 +144,26 @@
       "order": 3,
       "bits": 0.3219280948873622
     }
-  ]
+  ],
+  "normalized": {
+    "carrier_worlds": 6,
+    "baseline_blocks": 2,
+    "capacity_bits": 1.584962500721156,
+    "normalized_joint_burden": 0.8340437671464697,
+    "interaction_fraction_of_joint": 0.5574929506502401,
+    "direct_fraction_of_joint": 0.44250704934975993,
+    "interaction_order_bits": {
+      "2": 0.4150374992788439,
+      "3": 0.3219280948873622
+    },
+    "interaction_order_absolute_shares": {
+      "2": 0.5631707946263248,
+      "3": 0.43682920537367514
+    },
+    "active_interaction_orders": [
+      2,
+      3
+    ],
+    "dominant_interaction_order": 2
+  }
 }
