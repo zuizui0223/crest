@@ -13,7 +13,7 @@
   "state_concept": "state is the least information that must survive an observational temporal cut under a declared scientific contract",
   "headline": "semantic prerequisite order and semantic access coverage are distinct state-construction objects",
   "headline_quantity": "state quotients are computed from companion semantic classes, semantic access relations, legal future traces, and induced equivalence",
-  "modeling_contribution": "identify which ecological interfaces a future target minimally requires and on which semantic combinations of those interfaces the target is actually addressable",
+  "modeling_contribution": "identify which ecological interfaces a future target minimally requires, identify the semantic access relation on those interfaces, and determine on which semantic combinations the target is actually addressable",
   "novelty_boundary": "CREST does not claim novelty for quotient state abstraction, Mobius/Harsanyi accounting, unanimity games, or finite counting once the access relation is fixed. The contribution is the temporal-cut modeling architecture, strict companion realizability boundaries, semantic companion composition, and explicit separation of prerequisite order from semantic access coverage.",
   "realizability_boundaries": {
     "fixed_partition_bound": "fixed precomputed partitions on a one-class baseline cannot generate positive interaction by common refinement alone",
