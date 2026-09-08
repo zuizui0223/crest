@@ -4,116 +4,92 @@
 
 The current CREST flagship is:
 
-**Ecological State at a Temporal Cut: Compositional Interaction Across Time**
+**Ecological State at a Temporal Cut: Interface-Dependent Interaction**
 
 Target: **The American Naturalist — Major Article**.
 
-Canonical manuscript: `crest_flagship_amnat_v0.5_compositional.md`.
+Canonical manuscript: `crest_flagship_amnat_v0.6_addressability.md`.
 
-The paper defines ecological state as the least information that must survive an observational temporal cut under a declared composed scientific contract.
+The paper defines ecological state as the least information that must survive an observational temporal cut under a declared scientific contract.
 
-The three pre-state companion responsibilities are deliberately non-circular and non-identical:
+The three motivating companion responsibilities remain non-circular and non-identical:
 
-- **MLTR / history \(H\):** a fixed root semantic law plus immutable declared replacement histories; retained history is a relevance quotient of carried terminal maps.
-- **MRM / latent response \(\Theta\):** primitive candidate laws first, response-type equivalence second.
-- **CCOC / future \(F\):** a fixed controlled law plus an exogenously declared right-of-cut future grammar; response equivalence is induced by the legal queries.
-
-The final state quotient is downstream of these objects.
+- **MLTR / history H:** primitive replacement histories first, carried-map equivalence second;
+- **MRM / latent response Theta:** primitive candidate laws first, response-type equivalence second;
+- **CCOC / future F:** controlled law plus exogenously declared legal query grammar, response quotient afterward.
 
 ## Flagship theorem
 
-The literal conditioned cross-contract family has coalition value
+v0.6 no longer assigns coalition values directly. It uses an explicit finite carrier, generated legal grammar, trace semantics, and the induced quotient
 
 \[
-\boxed{
-v_m(S)=
-\mathbf 1_{H\in S}
-+
-\mathbf 1_{\Theta\in S}
-+
-m\,\mathbf 1_{\{H,\Theta,F\}\subseteq S}.
-}
+Q_S=\Omega/\!\sim_S.
 \]
 
-Hence
+A future decoder has a minimal prerequisite set
 
 \[
-v(H)=1,
-\quad v(\Theta)=1,
-\quad v(F)=0,
+R\subseteq\{H,\Theta\}.
 \]
+
+The decoder for an exterior coordinate is legal exactly when
 
 \[
-v(H\Theta)=2,
-\quad v(HF)=1,
-\quad v(\Theta F)=1,
+F\in S
+\quad\text{and}\quad
+R\subseteq S.
 \]
 
-and
+The induced quotient then satisfies
 
 \[
-v(H\Theta F)=m+2.
+|Q_S|
+=
+2^{\mathbf 1_{H\in S}+\mathbf 1_{\Theta\in S}+m\mathbf 1_{F\in S,\ R\subseteq S}}.
 \]
 
-All pairwise Möbius dividends are zero and
+This formula is a theorem about generated traces, not the definition used by the implementation.
 
-\[
-\boxed{m(H,\Theta,F)=m.}
-\]
+The characterization is:
 
-Therefore the genuine three-way interaction is unbounded and occupies
+- `R = empty`: the m-bit exterior burden is an F main effect;
+- `R = {H}`: it is pure H x F pairwise interaction;
+- `R = {Theta}`: it is pure Theta x F pairwise interaction;
+- `R = {H,Theta}`: it is pure H x Theta x F interaction.
 
-\[
-\frac{m}{m+2}\to1
-\]
+Thus the **minimal interface prerequisite set determines interaction order**.
 
-of the full joint state information.
+The earlier v0.5 result `m(H,Theta,F)=m` is retained only as the `R={H,Theta}` corollary. It is no longer presented as an unconditional property of the three-axis framework.
 
-At \(m=10\): history + mechanism require 4 classes / 2 bits, while the jointly open contract requires 4096 classes / 12 bits. The amplification is **1024×**; **10 bits are genuine three-way interaction**, equal to **83.33% of the full state and 100% of interaction debt**.
+## Numerical illustration
 
-## Why v0.5 replaces v0.4
+For `m=10` and `R={H,Theta}`:
 
-v0.4 established the temporal-cut framing and the exact fixed-closure extrema, but a subsequent companion-definition audit showed that those activation cascades should not be read literally as simultaneous canonical MLTR, MRM, and CCOC models.
+- history + mechanism: 4 classes / 2 bits;
+- full grammar: 4096 classes / 12 bits;
+- state-count amplification: 1024x;
+- genuine three-way term: 10 bits.
 
-v0.5 therefore adds two layers before making the headline claim:
+But this is explicitly conditional. If F can decode without both interfaces, the same exterior information moves to a lower-order term and the three-way dividend becomes zero.
 
-1. **strict realizability no-go:** immutable MLTR history and fixed-grammar MRM rule out the naive zero-debt activation interpretation;
-2. **positive conditioned bridge:** future grammar conditions which immutable histories and primitive candidate laws remain state-relevant, while CCOC's jointly open composition supplies an \(m\)-bit exterior coordinate only when all three responsibilities are active.
+## Realizability no-go remains a main result
 
-The old results remain exact supporting mathematics:
+The paper keeps three strict boundaries before the positive theorem:
 
-- marked-cycle \(\Delta=\log_2 n-1\);
-- fixed-closure three-way \(b-\log_2 3\), including the 8.415-bit \(b=10\) endpoint.
+1. fixed precomputed partitions on a one-class baseline cannot generate positive interaction by common refinement alone;
+2. a zero-debt post-cut audit preserving immutable MLTR history cannot later be activated by that history partition;
+3. candidate-safe zero debt under one fixed MRM grammar implies a singleton response type.
 
-They are now labeled **abstract fixed-closure extrema**, not the literal companion-derived headline.
-
-## Literal pairwise frontiers
-
-For an \(m\)-bit MLTR carried-map family, \(k\) declared future queries induce exactly
-
-\[
-2^k
-\]
-
-relevant history classes and \(k\) bits.
-
-For the matching MRM family, \(k\) declared binary probes induce exactly
-
-\[
-2^k
-\]
-
-response types and \(k\) bits.
-
-At \(m=10\), both run from 1 class / 0 bits to 1024 classes / 10 bits without changing the raw history or primitive mechanism identity.
+These results prevent the older abstract closure cascades from being overinterpreted as literal companion models.
 
 ## Retained predecessor manuscripts
 
-- `crest_flagship_amnat_v0.4_positioned.md` — temporal-cut manuscript before the strict companion-realizability audit.
-- `crest_flagship_amnat_v0.3_temporal_cut.md` — earlier theorem-correct temporal-cut draft.
+- `crest_flagship_amnat_v0.5_compositional.md` — pre-characterization draft whose coalition-value function was too directly assigned;
+- `crest_flagship_amnat_v0.4_positioned.md` — temporal-cut manuscript before strict companion realizability;
+- `crest_flagship_amnat_v0.3_temporal_cut.md` — earlier temporal-cut theorem draft;
 - `crest_flagship_amnat_v0.2.md` — earlier generic-Delta-centered draft.
 
-All are retained for provenance and are no longer canonical.
+All remain for provenance and are no longer canonical.
 
 ## Retained Biology & Philosophy bundle
 
@@ -124,9 +100,8 @@ The previous Biology & Philosophy surface remains intact for provenance and comp
 3. `biology_philosophy_title_page_TEMPLATE.md` — separate identifying title page and declarations.
 4. `SUBMISSION_BLOCKERS_2026-08-24.md` — author-controlled upload blockers.
 5. `crest_canonical_scope_2026-08-24.md` — historical manuscript-scope contract.
-6. `../figures/crest_capacity_knowledge_paradox.svg` — retained figure source.
 
-The legacy philosophy verifier intentionally still targets `crest_biology_philosophy_blinded_submission.md`; it is not the Am Nat verifier.
+The legacy philosophy verifier intentionally continues to target `crest_biology_philosophy_blinded_submission.md`; it is not the verifier for the Am Nat flagship.
 
 ## Current scientific spine
 
@@ -134,11 +109,12 @@ The legacy philosophy verifier intentionally still targets `crest_biology_philos
 possible ecological worlds Omega
 -> observational temporal cut O_t
 -> primitive MLTR / MRM / CCOC objects
--> non-circular responsibility equivalences
--> strict realizability audit
--> future-conditioned history + grammar-conditioned mechanism bridges
--> jointly open compositional coalition game
--> pure three-way interaction m bits
+-> strict realizability no-go
+-> explicit grammar generation
+-> legal traces
+-> induced quotient Q_S
+-> decoder prerequisite set R
+-> interaction-order characterization
 -> evidence licensing downstream
 ```
 
@@ -147,14 +123,14 @@ possible ecological worlds Omega
 The flagship does **not** claim:
 
 - that history, latent response, and future are independent ontic coordinates;
-- that they exhaust every legitimate ecological state responsibility;
-- that the old fixed-closure cascades are literal companion realizations;
+- that they exhaust every ecological state responsibility;
+- that all legal future grammars require both companion interfaces;
+- that pure three-way interaction is automatic;
+- that decoder prerequisites can be inferred from state accounting alone;
 - statistical confounding;
-- a continuous-time infinitesimal-germ theorem;
-- stochastic, infinite-state, or approximate generality;
-- empirical identification of histories or candidate mechanisms.
+- continuous-time, stochastic, infinite-state, or approximate generality.
 
-The present remains a zero-width observational cut in the finite representation, not a metaphysical claim about physical instants.
+The scientific application must justify its decoder/query architecture. CREST gives the representational consequence of that architecture.
 
 ## Anonymous review-code package
 
@@ -168,27 +144,24 @@ Default output:
 
 `dist/anonymous_review_code.zip`
 
-The v0.5 archive contains the minimal finite code needed for:
+The v0.6 archive contains the minimal code needed for:
 
 - temporal-cut representation;
 - strict companion-realizability checks;
-- conditioned MLTR/MRM pairwise frontiers;
-- the literal compositional three-way theorem;
-- the canonical \(m=10\) 4→4096 / 12-bit numeric benchmark.
+- explicit MLTR/MRM primitive objects;
+- compositional grammar generation;
+- trace-equivalence quotient calculation;
+- counterfactual decoder rules that move the same exterior burden among main, pairwise, and three-way terms.
 
-It excludes `.git` history, provenance notes, empirical application material, public repository URLs, and submission metadata. Regression tests check whitelist-only contents, identity scrubbing, deterministic ZIP bytes, SHA-256 manifest integrity, and focused theorem execution after extraction.
-
-The final anonymous upload location or archive identifier remains author-controlled.
+The canonical benchmark is `artifacts/crest_explicit_grammar_benchmarks_2026-09-08.json`.
 
 ## Submission blockers that remain author-controlled
 
-1. **Anonymous code upload location.** The generator is complete; the review-safe upload surface still depends on the journal workflow.
+1. **Anonymous code upload location.** The generator is complete; the review-safe upload surface depends on the journal workflow.
 2. **Data and Code Accessibility Statement.** Insert the final anonymous/archive identifier in `amnat_submission_declarations_TEMPLATE.md`.
-3. **Generative-AI disclosure.** Confirm the actual uses and human verification described in the template.
+3. **Generative-AI disclosure.** Confirm actual uses and human verification.
 4. **Title page / author metadata.** Names, affiliations, e-mails, ORCIDs, acknowledgments, funding, contributions, and conflicts stay outside the blinded manuscript.
-5. **PDF preparation.** Final review PDF needs the journal-required spacing, line/page numbering, and embedded math fonts.
-
-These are packaging/disclosure tasks, not missing mathematical results.
+5. **PDF preparation.** Final review PDF needs journal-required spacing, line/page numbering, and embedded math fonts.
 
 ## Reproducibility
 
@@ -201,4 +174,4 @@ python scripts/build_amnat_anonymous_bundle.py
 python scripts/verify_crest_philosophy_submission.py --write-report
 ```
 
-The general pytest suite verifies the theorem surface, non-circularity firewall, strict realizability boundary, conditioned bridges, literal three-way game, AmNat manuscript compliance, and anonymous review bundle. The philosophy verifier remains specific to the retained Biology & Philosophy manuscript.
+The general pytest suite verifies the temporal-cut state surface, definition firewall, strict realizability no-go, explicit grammar quotient theorem, AmNat manuscript compliance, and anonymous review bundle.
