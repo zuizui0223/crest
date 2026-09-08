@@ -5,6 +5,7 @@ MANUSCRIPT_DIR = ROOT / "manuscript"
 ARCHIVE = ROOT / "archive" / "graphify-cleanup-2026-08-24"
 CANONICAL = {
     "crest_biology_philosophy_blinded_submission.md",
+    "crest_flagship_amnat_v0.2.md",
     "CREST_supplementary_information.md",
     "biology_philosophy_title_page_TEMPLATE.md",
     "SUBMISSION_README.md",
@@ -13,7 +14,7 @@ CANONICAL = {
 }
 
 
-def test_manuscript_surface_is_single_and_canonical() -> None:
+def test_manuscript_surface_contains_only_declared_canonical_files() -> None:
     assert {p.name for p in MANUSCRIPT_DIR.iterdir() if p.is_file()} == CANONICAL
 
 
@@ -25,6 +26,13 @@ def test_submission_entrypoints_name_the_blinded_candidate_and_si() -> None:
     assert 'TARGET = Path("manuscript/crest_biology_philosophy_blinded_submission.md")' in verifier
     assert "crest_philosophy_biology_philosophy.md" not in readme
     assert "crest_philosophy_biology_philosophy.md" not in verifier
+
+
+def test_amnat_flagship_is_separate_from_biology_philosophy_submission_entrypoint() -> None:
+    flagship = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.2.md").read_text(encoding="utf-8")
+    assert "The American Naturalist" in flagship
+    assert "Delta" in flagship
+    assert "D_{\\rm joint}" in flagship
 
 
 def test_superseded_submission_material_is_archived() -> None:
