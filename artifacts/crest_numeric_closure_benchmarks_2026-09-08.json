@@ -1,0 +1,45 @@
+{
+  "sharp_family": {
+    "baseline_classes": 1,
+    "standalone_predicted_classes": 2,
+    "rows": [
+      {"n_worlds": 2, "joint_classes": 2, "joint_debt_bits": 1.0, "delta_bits": 0.0, "state_count_underestimate_factor": 1.0, "debt_underestimate_factor": 1.0, "interaction_share": 0.0},
+      {"n_worlds": 4, "joint_classes": 4, "joint_debt_bits": 2.0, "delta_bits": 1.0, "state_count_underestimate_factor": 2.0, "debt_underestimate_factor": 2.0, "interaction_share": 0.5},
+      {"n_worlds": 8, "joint_classes": 8, "joint_debt_bits": 3.0, "delta_bits": 2.0, "state_count_underestimate_factor": 4.0, "debt_underestimate_factor": 3.0, "interaction_share": 0.6666666666666666},
+      {"n_worlds": 16, "joint_classes": 16, "joint_debt_bits": 4.0, "delta_bits": 3.0, "state_count_underestimate_factor": 8.0, "debt_underestimate_factor": 4.0, "interaction_share": 0.75},
+      {"n_worlds": 32, "joint_classes": 32, "joint_debt_bits": 5.0, "delta_bits": 4.0, "state_count_underestimate_factor": 16.0, "debt_underestimate_factor": 5.0, "interaction_share": 0.8},
+      {"n_worlds": 64, "joint_classes": 64, "joint_debt_bits": 6.0, "delta_bits": 5.0, "state_count_underestimate_factor": 32.0, "debt_underestimate_factor": 6.0, "interaction_share": 0.8333333333333334},
+      {"n_worlds": 256, "joint_classes": 256, "joint_debt_bits": 8.0, "delta_bits": 7.0, "state_count_underestimate_factor": 128.0, "debt_underestimate_factor": 8.0, "interaction_share": 0.875},
+      {"n_worlds": 1024, "joint_classes": 1024, "joint_debt_bits": 10.0, "delta_bits": 9.0, "state_count_underestimate_factor": 512.0, "debt_underestimate_factor": 10.0, "interaction_share": 0.9}
+    ],
+    "closed_forms": {
+      "joint_debt_bits": "log2(n)",
+      "delta_bits": "log2(n)-1",
+      "state_count_underestimate_factor": "n/2",
+      "debt_underestimate_factor": "log2(n)",
+      "interaction_share": "1 - 1/log2(n)"
+    }
+  },
+  "three_obstruction_witness": {
+    "baseline_classes": 2,
+    "standalone_predicted_classes": 3,
+    "joint_classes": 5,
+    "joint_debt_bits": 1.3219280949,
+    "delta_bits": 0.7369655942,
+    "joint_vs_standalone_class_factor": 1.6666666667,
+    "mobius_bits": {
+      "CCOCxMLTR": 0.4150374993,
+      "CCOCxMLTRxMRM": 0.3219280949
+    },
+    "interaction_order_shares": {
+      "pairwise": 0.5631707946,
+      "three_way": 0.4368292054
+    },
+    "shapley_bits": {
+      "CCOC": 0.899791,
+      "MLTR": 0.314828,
+      "MRM": 0.107309
+    }
+  },
+  "interpretation": "Pure finite mathematical benchmarks only; no empirical calibration or field-data claim."
+}

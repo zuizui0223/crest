@@ -1,17 +1,25 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "target_journal": "The American Naturalist",
   "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.2.md",
   "headline": "non-additive joint ecological state debt",
   "headline_quantity": "Delta = D_joint - sum_i D_i",
   "headline_sharp_family": "marked directed cycle",
   "headline_extremum": "Delta = log2(n) - 1",
+  "numeric_closure": {
+    "state_count_underestimate_factor": "n/2",
+    "debt_underestimate_factor": "log2(n)",
+    "interaction_share": "1 - 1/log2(n)",
+    "anchor_n": 1024,
+    "anchor_result": "2 standalone-predicted classes versus 1024 joint classes; 512-fold class-count underestimate; 10-bit joint debt with 9 interaction bits (90%)"
+  },
   "zero_debt_lemma": "all D_i = 0 implies D_joint = Delta = 0",
-  "novelty_boundary": "The closure, fixed-point, partition-refinement, and marked-cycle mathematics are classical substrate; the CREST contribution is the cross-responsibility accounting interpretation on one declared ecological common lift.",
+  "novelty_boundary": "The closure, fixed-point, partition-refinement, marked-cycle, Shapley, and Mobius/Harsanyi mathematics are classical substrate; the CREST contribution is the cross-responsibility accounting interpretation on one declared ecological common lift.",
   "supporting_results": [
     "carrier-size gain does not upper-bound state burden",
     "sequential response debt is at most H log2(r) in the homogeneous r-ary path",
-    "the existing connected sequential family attains the H log2(r) bound"
+    "the existing connected sequential family attains the H log2(r) bound",
+    "the six-world CCOC/MLTR/MRM witness requires 5 classes versus 3 predicted by standalone accounting and has 0.7369655942 interaction bits"
   ],
   "companion_roles": {
     "CCOC": "future/composition obstruction",
@@ -24,6 +32,8 @@
     "joint_debt_tests": "tests/test_crest_joint_debt.py",
     "sequential_witness_module": "crest/sequential_witnesses.py",
     "sequential_regression": "tests/test_crest_sharp_sequential_debt.py",
-    "flagship_section": "docs/flagship_integration/joint_debt_delta_section.md"
+    "flagship_section": "docs/flagship_integration/joint_debt_delta_section.md",
+    "numeric_closure_section": "docs/flagship_integration/numeric_closure_section.md",
+    "numeric_closure_artifact": "artifacts/crest_numeric_closure_benchmarks_2026-09-08.json"
   }
 }
