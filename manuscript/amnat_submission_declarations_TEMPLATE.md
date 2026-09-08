@@ -6,7 +6,7 @@ This file is a submission-preparation surface, not part of the blinded manuscrip
 
 ### Double-anonymous review version
 
-> All code required to reproduce the finite mathematical results reported in this manuscript is provided in an anonymized review archive at **[ANONYMOUS REVIEW ARCHIVE OR JOURNAL FILE IDENTIFIER]**. The archive contains the minimal theorem implementation, focused regression tests, and the canonical numerical benchmark used in the manuscript. No empirical data are analyzed in this study. The review archive is generated deterministically from a whitelist-only source package and excludes repository history and author-identifying metadata.
+> All code required to reproduce the finite mathematical results reported in this manuscript is provided in an anonymized review archive at **[ANONYMOUS REVIEW ARCHIVE OR JOURNAL FILE IDENTIFIER]**. The archive contains the minimal theorem implementation, focused regression tests, and the canonical numerical benchmark used in the manuscript, including the strict companion-realizability audit, conditioned history/mechanism bridges, and literal compositional three-way result. No empirical data are analyzed in this study. The review archive is generated deterministically from a whitelist-only source package and excludes repository history and author-identifying metadata.
 
 ### Publication / post-acceptance version
 
@@ -16,7 +16,7 @@ Do not substitute the public author-identifying repository URL into the blinded 
 
 ## 2. Generative-AI disclosure — author confirmation required
 
-The journal's current instructions require transparent disclosure when generative-AI tools contributed to manuscript content, analysis, code, or figures. The final wording must describe the actual submitted workflow rather than a generic policy statement.
+The final wording must describe the actual submitted workflow rather than a generic policy statement.
 
 Working disclosure draft:
 
@@ -85,7 +85,7 @@ The final anonymous archive location is then inserted into Section 1 above.
 
 ## 7. Final submission checklist
 
-- [ ] Canonical manuscript is `crest_flagship_amnat_v0.4_positioned.md`.
+- [ ] Canonical manuscript is `crest_flagship_amnat_v0.5_compositional.md`.
 - [ ] Blinded manuscript contains no author names, affiliations, acknowledgments, repository-owner handles, or identifying URLs.
 - [ ] Abstract remains at or below 200 words.
 - [ ] Keywords remain at or below 6.

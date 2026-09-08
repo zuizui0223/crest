@@ -1,39 +1,60 @@
 {
-  "schema_version": 7,
+  "schema_version": 8,
   "target_journal": "The American Naturalist",
-  "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.4_positioned.md",
-  "previous_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.3_temporal_cut.md",
-  "earlier_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.2.md",
-  "canonical_title": "Ecological State at a Temporal Cut: Interaction Across Time",
-  "state_concept": "state is the least information that must survive an observational temporal cut under declared scientific responsibilities",
+  "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.5_compositional.md",
+  "previous_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.4_positioned.md",
+  "earlier_flagship_manuscripts": [
+    "manuscript/crest_flagship_amnat_v0.3_temporal_cut.md",
+    "manuscript/crest_flagship_amnat_v0.2.md"
+  ],
+  "canonical_title": "Ecological State at a Temporal Cut: Compositional Interaction Across Time",
+  "state_concept": "state is the least information that must survive an observational temporal cut under a declared composed scientific contract",
   "temporal_geometry": {
     "present": "observation cut O_t and its kernel partition B_t, not a finite-width temporal axis",
-    "past": "retrospective history H^-_t to the left of the cut",
-    "latent_present": "response structure Theta_t inside fibers O_t^{-1}(y), transverse to the cut",
-    "future": "prospective or counterfactual response structure F^+_t to the right of the cut"
+    "past": "raw MLTR replacement history is primitive and immutable; retained history information is carried-semantic relevance under the declared task",
+    "latent_present": "MRM primitive candidate law is behind the visible cut; latent response type is a grammar-conditioned relevance quotient of candidate laws",
+    "future": "CCOC future is an exogenously declared right-of-cut query grammar, not a future state variable"
   },
-  "headline": "interaction-generated ecological state at a temporal cut",
-  "headline_quantity": "Delta = D_joint - sum_i D_i",
-  "headline_temporal_result": "past-by-future interaction is unbounded and genuine history-by-latent-present-by-future interaction is unbounded",
-  "headline_temporal_extremum": "m(H,Theta,F) = b - log2(3), with m(H,Theta,F)/D_joint -> 1",
-  "headline_sharp_family": "marked directed cycle and temporal three-way activation cascade",
-  "headline_extremum": "Delta = log2(n) - 1",
+  "headline": "pure compositional three-way ecological state interaction at a temporal cut",
+  "headline_quantity": "conditioned coalition value v_m(S) = 1[H in S] + 1[Theta in S] + m*1[{H,Theta,F} subset S]",
+  "headline_temporal_result": "literal conditioned MLTR x MRM x CCOC construction has zero pairwise Mobius dividends and genuine three-way dividend m bits",
+  "headline_temporal_extremum": "m(H,Theta,F) = m, Delta = m, and m/(m+2) -> 1",
+  "headline_sharp_family": "binary history interface x binary mechanism interface x m-bit CCOC exterior addressability under a jointly open contract",
   "numeric_closure": {
-    "state_count_underestimate_factor": "n/2",
-    "debt_underestimate_factor": "log2(n)",
-    "interaction_share": "1 - 1/log2(n)",
-    "anchor_n": 1024,
-    "anchor_result": "one visible present class; history alone 2 classes / 1 bit; future alone 1 class / 0 bits; joint history-future state 1024 classes / 10 bits; 9 interaction bits (90%)",
-    "temporal_anchor_b": 10,
-    "temporal_anchor_result": "one visible cut value; 1024 adequate-state classes; 10 total bits; 8.4150374993 bits (84.15%) are genuine history x latent-present x future interaction"
+    "anchor_m": 10,
+    "visible_cut_classes": 1,
+    "history_classes": 2,
+    "mechanism_classes": 2,
+    "history_mechanism_classes": 4,
+    "joint_classes": 4096,
+    "history_mechanism_bits": 2,
+    "joint_bits": 12,
+    "interaction_bits": 10,
+    "genuine_three_way_bits": 10,
+    "pairwise_interaction_bits": 0,
+    "three_way_share_of_joint": 0.8333333333333334,
+    "three_way_share_of_interaction": 1.0,
+    "state_count_amplification_from_history_mechanism": 1024,
+    "anchor_m_18_three_way_share": 0.9
+  },
+  "literal_pairwise_bridges": {
+    "future_conditioned_history": "k declared binary future queries induce exactly 2^k relevant MLTR history classes and k bits",
+    "grammar_conditioned_mechanism": "k declared binary probes induce exactly 2^k MRM response types and k bits",
+    "anchor_m_10": "both literal pairwise bridges move from 1 class / 0 bits to 1024 classes / 10 bits"
+  },
+  "strict_realizability_boundaries": {
+    "fixed_partition_bound": "on a one-class baseline, common refinement of fixed precomputed responsibility partitions cannot have positive interaction debt",
+    "immutable_history_no_activation": "a zero-debt post-cut audit whose legal transitions preserve MLTR history fixes the history partition",
+    "fixed_grammar_mrm_zero_debt": "if the visible Q partition is already candidate-safe under a fixed grammar, the MRM response-type set is singleton",
+    "interpretation": "the older marked-cycle and b-log2(3) families remain exact abstract fixed-closure extrema but are not the literal companion-derived headline"
   },
   "submission_constraints": {
     "abstract_word_limit": 200,
     "keyword_max": 6,
     "preferred_title_words": "approximately 8-10",
-    "current_abstract_words": 193,
+    "current_abstract_words": 184,
     "current_keywords": 6,
-    "current_title_words": 9
+    "current_title_words": 10
   },
   "literature_positioning": {
     "ecological_memory": "Ogle et al. 2015",
@@ -43,37 +64,40 @@
     "predictive_state_representations": "Littman, Sutton, and Singh 2001",
     "bisimulation_and_state_abstraction": "Givan, Dean, and Greig 2003; Li, Walsh, and Littman 2006"
   },
-  "zero_debt_lemma": "all D_i = 0 implies D_joint = Delta = 0",
-  "novelty_boundary": "Ecological memory, hysteresis, predictive states, bisimulation, state abstraction, closure, fixed-point, partition-refinement, marked-cycle, Shapley, and Mobius/Harsanyi machinery are prior substrate. CREST claims the temporal-cut state construction and the unbounded interaction-generated information burden among retrospective, latent-contemporaneous, and prospective responsibilities on one declared finite common lift.",
+  "novelty_boundary": "Prior substrate includes ecological memory, hysteresis, predictive states, state abstraction, finite quotient refinement, Mobius/Harsanyi accounting, and generic automata distinguishability. CREST claims the temporal-cut state construction, the strict companion-realizability boundaries, and a literal conditioned cross-contract MLTR x MRM x CCOC family with unbounded pure three-way state interaction.",
   "supporting_results": [
-    "past-by-future interaction m(H,F)=log2(n)-1 is unbounded",
-    "genuine three-way temporal interaction m(H,Theta,F)=b-log2(3) is unbounded and asymptotically dominates joint state debt",
+    "abstract fixed-closure marked-cycle interaction Delta=log2(n)-1 is unbounded, but its history mark is not interpreted as literal immutable MLTR history",
+    "abstract fixed-closure three-audit dividend b-log2(3) is unbounded, but it is not the literal simultaneous companion bridge",
+    "future-conditioned MLTR history relevance has the exact frontier 2^k classes / k bits",
+    "grammar-conditioned MRM response type has the exact frontier 2^k classes / k bits",
     "carrier-size gain does not upper-bound state burden",
     "sequential response debt is at most H log2(r) in the homogeneous r-ary path",
-    "the existing connected sequential family attains the H log2(r) bound",
-    "the six-world CCOC/MLTR/MRM witness requires 5 classes versus 3 predicted by standalone accounting and has 0.7369655942 interaction bits"
+    "the six-world CCOC/MLTR/MRM-labeled abstract witness retains 0.7369655942 interaction bits as a compatibility example"
   ],
   "companion_roles": {
-    "CCOC": "prospective/future-response obstruction to the right of the cut",
-    "MLTR": "retrospective inherited-semantic/history obstruction to the left of the cut",
-    "MRM": "latent contemporaneous response structure inside the observational cut fiber",
+    "CCOC": "law-fixed future/composition grammar and addressability; supplies the jointly open exterior-response contribution",
+    "MLTR": "source-relative immutable replacement history and carried semantics; supplies the retrospective history interface",
+    "MRM": "primitive candidate law and response-type quotient; supplies the latent response interface",
     "CED": "downstream evidence licensing"
   },
   "implementation": {
     "joint_debt_module": "crest/joint_debt.py",
-    "joint_debt_tests": "tests/test_crest_joint_debt.py",
-    "temporal_interaction_module": "crest/temporal_interaction.py",
-    "temporal_interaction_tests": "tests/test_crest_temporal_interaction.py",
     "temporal_cut_module": "crest/temporal_cut.py",
-    "temporal_cut_tests": "tests/test_crest_temporal_cut.py",
-    "temporal_theorem": "docs/crest_temporal_state_interaction_theorem_2026-09-08.md",
-    "temporal_flagship_section": "docs/flagship_integration/temporal_cut_state_section.md",
-    "temporal_numeric_artifact": "artifacts/crest_temporal_cut_numeric_benchmarks_2026-09-08.json",
-    "submission_readiness_audit": "docs/flagship_integration/amnat_v03_readiness_audit_2026-09-08.md",
-    "sequential_witness_module": "crest/sequential_witnesses.py",
-    "sequential_regression": "tests/test_crest_sharp_sequential_debt.py",
-    "flagship_section": "docs/flagship_integration/joint_debt_delta_section.md",
-    "numeric_closure_section": "docs/flagship_integration/numeric_closure_section.md",
-    "numeric_closure_artifact": "artifacts/crest_numeric_closure_benchmarks_2026-09-08.json"
+    "definition_firewall": "docs/crest_temporal_companion_definition_firewall_2026-09-08.md",
+    "definition_dag": "artifacts/crest_temporal_definition_dependencies_2026-09-08.json",
+    "definition_tests": "tests/test_temporal_definition_firewall.py",
+    "strict_realizability_module": "crest/companion_realizability.py",
+    "strict_realizability_theorem": "docs/crest_companion_realizability_no_go_2026-09-08.md",
+    "strict_realizability_tests": "tests/test_companion_realizability.py",
+    "conditioned_pairwise_module": "crest/conditioned_temporal_bridges.py",
+    "conditioned_pairwise_theorem": "docs/crest_conditioned_temporal_bridges_2026-09-08.md",
+    "conditioned_pairwise_tests": "tests/test_conditioned_temporal_bridges.py",
+    "literal_three_way_module": "crest/compositional_temporal_game.py",
+    "literal_three_way_theorem": "docs/crest_compositional_temporal_three_way_theorem_2026-09-08.md",
+    "literal_three_way_tests": "tests/test_compositional_temporal_game.py",
+    "literal_numeric_artifact": "artifacts/crest_compositional_temporal_benchmarks_2026-09-08.json",
+    "abstract_fixed_closure_module": "crest/temporal_interaction.py",
+    "abstract_fixed_closure_theorem": "docs/crest_temporal_state_interaction_theorem_2026-09-08.md",
+    "abstract_numeric_artifact": "artifacts/crest_temporal_cut_numeric_benchmarks_2026-09-08.json"
   }
 }

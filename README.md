@@ -1,32 +1,32 @@
 # CREST — Contract-Relative Ecological State Theory
 
-CREST asks what information must be retained when an ecological system is observed at one temporal cut but scientific responsibilities reach into its history, hidden contemporaneous response structure, and future.
+CREST asks what information must be retained when an ecological system is observed at one temporal cut but scientific responsibilities reach into its history, hidden contemporaneous response structure, and future composition.
 
-The underlying trajectory-first question remains:
+The trajectory-first question remains:
 
 > **Why can a finite ecological state exist at all in a world whose relevant dynamics, interactions, mechanisms, and scientific observables depend on context?**
 
-The earlier formulation remains valid: an ecological state is a **scientifically licensed compression of a temporally extended ecological world**. The current finite theorem sharpens that statement by locating the compression at an observational temporal cut:
+An ecological state is a **scientifically licensed compression of a temporally extended ecological world**. The current finite formulation locates that compression at an observational temporal cut:
 
-> **An ecological state is the least information that must survive an observational temporal cut under the declared scientific responsibilities.**
+> **An ecological state is the least information that must survive an observational temporal cut under the declared scientific contract.**
 
-The current finite theory does not identify the present with a finite-width interval or with the state itself. At time \(t\), an observation map
+At time \(t\), an observation map
 
 \[
 O_t:\Omega\to Y_t
 \]
 
-induces the visible-present baseline
+induces the visible baseline
 
 \[
 B_t=\ker O_t.
 \]
 
-Worlds in one block of \(B_t\) look the same at the cut. CREST asks which distinctions among those worlds may safely be erased.
+The present is this cut, not a finite-width temporal coordinate and not the state itself.
 
 ## Snapshot sufficiency at the cut
 
-Snapshot sufficiency is therefore a factorization question, not an assumption that the cut value is the state. For a required state map \(q_t:\Omega\to Q_t\), the visible present is sufficient exactly when
+Snapshot sufficiency is a factorization question. For a required state map \(q_t:\Omega\to Q_t\), the visible present is sufficient exactly when
 
 \[
 O_t(\omega)=O_t(\omega')
@@ -34,174 +34,191 @@ O_t(\omega)=O_t(\omega')
 q_t(\omega)=q_t(\omega').
 \]
 
-Equivalently, \(q_t\) factors through \(O_t\). A same-cut pair that is separated by the adequate state is a finite witness that the visible present is insufficient for the declared responsibility.
+A same-cut pair separated by the adequate state is therefore a finite witness that the visible present is insufficient for the declared contract.
 
-The three temporal-position responsibilities developed here are:
+## Primitive responsibilities before state
 
-- **history / MLTR:** retrospective inherited-semantic distinctions to the left of the cut;
-- **latent present / MRM:** response-relevant contemporaneous structure inside the fiber \(O_t^{-1}(y)\), transverse to the cut;
-- **future / CCOC:** prospective or counterfactual response distinctions to the right of the cut.
+The current companion-definition firewall makes the dependency order explicit.
 
-CED remains downstream evidence licensing rather than a fourth temporal-position axis.
+- **history / MLTR:** a root law and raw replacement path are declared first; carried maps are derived; retained history is a quotient of immutable histories by carried-semantic relevance.
+- **latent present / MRM:** primitive candidate laws are declared first; response types are derived from their declared response tables.
+- **future / CCOC:** a controlled law is fixed and a legal right-of-cut future grammar is declared; response equivalence is derived from the traces that grammar can query.
+- **CED:** downstream evidence licensing, not a fourth temporal-position responsibility.
 
-## Canonical state construction
+Thus history, mechanism, and future are not assumed independent ontic coordinates. They are distinct pre-state responsibilities with different quantifier structures.
 
-On one declared finite common carrier, let
+For compatibility with the earlier CREST vocabulary:
+
+- **future sufficiency** = CCOC prospective/open-composition responsibility;
+- **semantic coherence** = MLTR inherited-semantic/history responsibility;
+- **mechanism robustness** = MRM latent-response responsibility;
+- **evidence licensing** = downstream CED identification/reportability.
+
+## Non-circular state construction
+
+The dependency direction is
 
 \[
-C_H,\qquad C_\Theta,\qquad C_F
+\text{primitive companion objects}
+\longrightarrow
+\text{responsibility equivalences / contracts}
+\longrightarrow
+J_t.
 \]
 
-be the history, latent-present, and future refinement closures acting above \(B_t\). The least-information adequate state is
+There is no reverse arrow from the final state \(J_t\) into the primitive history, candidate law, or future grammar. The machine-readable dependency DAG is regression-tested to be acyclic, with \(J_t\) as a sink.
+
+## Strict realizability boundary
+
+The earlier fixed-closure temporal cascades remain exact finite closure theorems, but they cannot simply be renamed as literal MLTR × MRM × CCOC models.
+
+Three no-go facts matter:
+
+1. fixed precomputed responsibility partitions on a one-class baseline cannot generate positive interaction merely by common refinement;
+2. a zero-debt post-cut audit that preserves immutable MLTR history cannot later be activated by that history partition; and
+3. under one fixed MRM grammar, if the visible partition is already candidate-safe, the response-type set is trivial.
+
+Therefore the old marked-cycle result \(\Delta=\log_2 n-1\) and the old fixed-closure three-way result \(b-\log_2 3\) are retained as **abstract fixed-closure extrema**, not as the literal companion-derived headline.
+
+## Literal pairwise bridges
+
+The correct companion bridge conditions *relevance* on the declared future/intervention grammar without changing the raw past or primitive mechanism.
+
+For an \(m\)-bit MLTR carried-map family, after \(k\) declared future queries,
+
+\[
+|H(k)|=2^k,
+\qquad
+K_H(k)=k.
+\]
+
+For the matching MRM candidate family under \(k\) declared probes,
+
+\[
+|R(k)|=2^k,
+\qquad
+K_\Theta(k)=k.
+\]
+
+At \(m=10\), both frontiers move from 1 relevant class / 0 bits to 1024 classes / 10 bits while the raw histories and primitive candidate laws remain unchanged.
+
+## Flagship theorem: pure three-way compositional interaction
+
+The literal cross-contract theorem uses CCOC's own closed-versus-jointly-open quantifier structure.
+
+For \(S\subseteq\{H,\Theta,F\}\), define the exact coalition value
 
 \[
 \boxed{
-J_t=(C_H\vee C_\Theta\vee C_F)(B_t).
+v_m(S)
+=
+\mathbf 1_{H\in S}
++
+\mathbf 1_{\Theta\in S}
++
+m\,\mathbf 1_{\{H,\Theta,F\}\subseteq S}.
 }
 \]
 
-For a coalition \(S\subseteq\{H,\Theta,F\}\), let
+Interpretation:
 
-\[
-v(S)=\log_2|J_S|-\log_2|B_t|.
-\]
-
-The general joint-debt accounting quantity is
-
-\[
-\boxed{
-\Delta=D_{\rm joint}-\sum_iD_i.
-}
-\]
-
-## Headline temporal interaction results
-
-### Past × future
-
-For every \(n\ge2\), there is a finite family with one visible present class such that
-
-\[
-D_H=1,\qquad D_F=0,\qquad D_{HF}=\log_2n,
-\]
-
-so
-
-\[
-\boxed{m(H,F)=\log_2n-1}
-\]
-
-is unbounded.
-
-Thus how much of the past must be retained at the cut cannot in general be computed independently of what future the state must support.
-
-### History × latent present × future
-
-For every integer \(b\ge2\), there is a finite family with
-
-\[
-D_H=1,\qquad D_\Theta=D_F=0,
-\]
-
-but
-
-\[
-D_{H\Theta F}=b\text{ bits}
-\]
-
-and genuine three-way interaction
-
-\[
-\boxed{m(H,\Theta,F)=b-\log_2 3.}
-\]
+- MLTR supplies one binary history interface;
+- MRM supplies one binary latent-response interface;
+- an \(m\)-bit CCOC exterior/addressability coordinate becomes legally decodable only in the declared jointly open \(H+\Theta+F\) contract.
 
 Therefore
 
 \[
-\frac{m(H,\Theta,F)}{D_{H\Theta F}}
-=1-\frac{\log_2 3}{b}\to1.
+v(H)=1,
+\quad v(\Theta)=1,
+\quad v(F)=0,
 \]
 
-The required state can therefore be asymptotically dominated by information generated only through coupling among history, latent contemporaneous response structure, and future.
+\[
+v(H\Theta)=2,
+\quad v(HF)=1,
+\quad v(\Theta F)=1,
+\]
+
+while
+
+\[
+v(H\Theta F)=m+2.
+\]
+
+Every pairwise Möbius dividend is exactly zero, but
+
+\[
+\boxed{m(H,\Theta,F)=m.}
+\]
+
+Hence the genuine three-way interaction is unbounded and
+
+\[
+\frac{m(H,\Theta,F)}{D_{H\Theta F}}
+=
+\frac{m}{m+2}
+\to1.
+\]
+
+This is the current literal MLTR × MRM × CCOC headline.
 
 ## Numeric endpoint
 
-At \(b=10\):
+At \(m=10\):
 
-- visible present: **1 class**;
-- adequate state: **1024 classes**;
-- joint debt: **10 bits**;
-- total interaction debt: **9 bits (90%)**;
-- genuine history × latent-present × future interaction: **8.4150374993 bits (84.15% of the full state)**.
+- visible cut: **1 class**;
+- history interface: **2 classes / 1 bit**;
+- mechanism interface: **2 classes / 1 bit**;
+- history + mechanism: **4 classes / 2 bits**;
+- jointly open state: **4096 classes / 12 bits**;
+- state-count amplification over history + mechanism: **1024×**;
+- pairwise interaction: **0 bit**;
+- genuine history × latent-response × future interaction: **10 bits**;
+- three-way share of the full state: **83.33%**;
+- three-way share of interaction debt: **100%**.
 
-This is the current flagship numerical closure.
+At \(m=18\), the pure three-way term is 90% of the full state information.
 
-## Retained obstruction-change diagnostics
+## Retained smaller diagnostics
 
-The earlier six-world CCOC/MLTR/MRM obstruction-spectrum comparison remains part of the mainline regression surface. Turning on the activation cascade changes the required joint state from 3 to 5 classes while all standalone debts stay fixed. The joint-debt change is
+The six-world CCOC/MLTR/MRM-labeled obstruction comparison remains a compatibility witness. Its before/after change is
 
 \[
 \delta D_{\rm joint}=\delta\Delta=0.7369655942\text{ bit},
 \]
 
-with exact interaction-order decomposition
+with interaction-order decomposition
 
 \[
 0.7369655942
 =
-0.4150374993
-+
-0.3219280949
-\quad\text{bits}.
+0.4150374993+0.3219280949.
 \]
 
-Its change diagnosis is **`interaction-only`** because every standalone debt is unchanged while the joint burden changes. The before/after diagnostic reports `active_interaction_orders = [2, 3]`, with the pairwise term dominant in that six-world comparison. These values are retained as a smaller compatibility witness; the temporal-cut \(b=10\) theorem is now the flagship endpoint.
-
-## Compatibility with established CREST terminology
-
-The temporal-cut framing refines rather than deletes the earlier responsibility labels:
-
-- **future sufficiency** = the CCOC prospective/future responsibility to the right of the cut;
-- **semantic coherence** = the MLTR historical/inherited-semantic responsibility to the left of the cut;
-- **mechanism robustness** = the MRM latent contemporaneous response responsibility inside a cut fiber;
-- **evidence licensing** = the downstream CED question of whether observations resolve the state distinctions already required.
-
-These labels remain useful for theorem provenance and cross-repository routing even though the flagship now organizes them geometrically around the cut.
-
-## Prior-art position of the flagship
-
-The submission-facing manuscript now cites neighboring literatures directly rather than leaving the novelty boundary only in repository notes.
-
-- ecological memory / antecedent effects: Ogle et al. (2015);
-- hysteresis and ecosystem state shifts: Scheffer et al. (2001);
-- transient ecological dynamics: Hastings et al. (2018);
-- causal/predictive state: Shalizi and Crutchfield (2001) and Littman, Sutton, and Singh (2001);
-- bisimulation and task-preserving state abstraction: Givan, Dean, and Greig (2003) and Li, Walsh, and Littman (2006).
-
-CREST does not claim that these phenomena or mathematical substrates are new. Its claim is that retrospective, latent-contemporaneous, and prospective responsibilities acting on one observational cut can generate unbounded interaction state debt, including a genuine three-way term that can asymptotically dominate the required state information.
+Its diagnosis remains **`interaction-only`** because standalone debts are unchanged while the joint burden changes. The compatibility diagnostic reports `active_interaction_orders = [2, 3]`, and the pairwise term is dominant in that retained six-world comparison. It is no longer the flagship realization theorem.
 
 ## Publication roles
 
-- **CREST flagship:** state at a temporal cut and interaction-generated state information.
-- **CCOC:** future/composition obstruction and open-future response-interface lower bounds.
-- **MLTR:** carried semantics, route coherence, and minimum historical completion after structural replacement.
-- **MRM:** latent mechanism/response ambiguity, candidate-safe state, and active-discrimination frontier.
+- **CREST flagship:** state at a temporal cut, strict companion-realizability boundaries, and literal conditioned compositional interaction.
+- **CCOC:** law-fixed future grammar, addressability, and open-composition response-interface lower bounds.
+- **MLTR:** source-relative carried semantics, route coherence, and minimum historical completion.
+- **MRM:** primitive candidate laws, response-type quotients, candidate-safe state, and active discrimination.
 - **CED:** downstream evidence licensing and monitoring/reportability.
-
-The companion theories remain separate. CREST uses their responsibilities on a common cut and studies the joint state they require.
 
 ## Current flagship manuscript
 
 Canonical manuscript:
 
-`manuscript/crest_flagship_amnat_v0.4_positioned.md`
+`manuscript/crest_flagship_amnat_v0.5_compositional.md`
 
 Title:
 
-**Ecological State at a Temporal Cut: Interaction Across Time**
+**Ecological State at a Temporal Cut: Compositional Interaction Across Time**
 
 Target: **The American Naturalist — Major Article**.
 
-Submission-facing constraints are now regression-tested: the abstract is below 200 words, keywords are at most six, the title is 9 words, Methods precede Results, and Literature Cited is present. The theorem-correct `crest_flagship_amnat_v0.3_temporal_cut.md` and the earlier Δ-centered `crest_flagship_amnat_v0.2.md` remain as provenance but are no longer canonical.
+The previous `crest_flagship_amnat_v0.4_positioned.md` is retained as the pre-realizability-audit predecessor. v0.3 and v0.2 remain provenance manuscripts.
 
 ## Canonical reading paths
 
@@ -209,36 +226,36 @@ Submission-facing constraints are now regression-tested: the abstract is below 2
 - `docs/crest_mathematical_spine.md` — carrier/state/evidence theorem chain and supporting finite bounds.
 - `docs/crest_ecological_projection.md` — ecology-facing quotient interpretation and representational stability.
 - `docs/crest_sharp_sequential_state_debt_law_2026-09-06.md` — sharp sequential response-capacity law.
-- `docs/crest_temporal_state_interaction_theorem_2026-09-08.md` — temporal-cut interaction theorem and exact finite witnesses.
-- `docs/flagship_integration/amnat_v03_readiness_audit_2026-09-08.md` — AmNat readiness audit that motivated v0.4 positioning.
+- `docs/crest_temporal_companion_definition_firewall_2026-09-08.md` — non-circular companion dependency order.
+- `docs/crest_companion_realizability_no_go_2026-09-08.md` — strict fixed-closure/literal-companion boundary.
+- `docs/crest_conditioned_temporal_bridges_2026-09-08.md` — future-conditioned history and grammar-conditioned mechanism frontiers.
+- `docs/crest_compositional_temporal_three_way_theorem_2026-09-08.md` — literal pure three-way theorem.
 
 ## Proof and implementation map
 
-- `crest/temporal_cut.py` — temporal-cut contract and fiber representation.
-- `crest/temporal_interaction.py` — exact past/future and three-way sharp families.
-- `tests/test_crest_temporal_cut.py` — cut/fiber regression tests.
-- `tests/test_crest_temporal_interaction.py` — pairwise and three-way interaction regressions.
-- `tests/test_amnat_manuscript_compliance.py` — title/abstract/keyword/method-order/literature-positioning checks.
-- `docs/crest_temporal_state_interaction_theorem_2026-09-08.md` — analytic theorem statement and proof.
-- `docs/flagship_integration/temporal_cut_state_section.md` — manuscript-ready theorem section.
-- `artifacts/crest_temporal_cut_numeric_benchmarks_2026-09-08.json` — reproducible numeric anchors.
-- `crest/joint_debt.py` — generic joint-debt accounting.
-- `crest/obstruction_spectrum.py` — coalition, Shapley, and Möbius/Harsanyi decomposition.
-- `crest/obstruction_compare.py` — before/after change diagnosis and active interaction orders.
+- `crest/temporal_cut.py` — observational cut and fiber representation.
+- `crest/companion_realizability.py` — strict realizability no-go checks.
+- `crest/conditioned_temporal_bridges.py` — literal pairwise relevance frontiers.
+- `crest/compositional_temporal_game.py` — literal cross-contract coalition game.
+- `tests/test_companion_realizability.py` — no-go regressions.
+- `tests/test_conditioned_temporal_bridges.py` — pairwise bridge regressions.
+- `tests/test_compositional_temporal_game.py` — pure three-way regression.
+- `artifacts/crest_compositional_temporal_benchmarks_2026-09-08.json` — canonical v0.5 numeric anchor.
+- `crest/temporal_interaction.py` — retained abstract fixed-closure extrema.
 
 ## Scope firewall
 
-The current result is finite, exact, and conditional on a declared common carrier and responsibility closures. CREST does **not** currently claim:
+The current result is finite, exact, and conditional on declared companion primitives and declared finite contracts. CREST does **not** claim:
 
-- that history, latent present, and future exhaust every legitimate ecological state responsibility;
-- a unique natural decomposition of every ecological system into these axes;
+- that history, latent response, and future exhaust every ecological state responsibility;
+- a unique natural decomposition of every ecological system into these roles;
 - statistical confounding;
 - a general continuous-time infinitesimal-germ theorem;
 - stochastic, infinite-state, delayed-observation, or approximate generality;
-- that latent response structure is identifiable from the visible cut;
-- that activation order must follow chronological order.
+- that candidate mechanisms or replacement histories are inferred from the visible cut;
+- that the abstract fixed-closure cascade is itself a literal simultaneous companion realization.
 
-The present is a zero-width **observational cut in the finite representation**, not a proved metaphysical claim about physical instants.
+The present is a zero-width **observational cut in the finite representation**, not a metaphysical theorem about physical instants.
 
 ## Run
 
@@ -247,4 +264,4 @@ python -m pip install -e '.[dev]'
 pytest
 ```
 
-The finite theorem surface and flagship routing are regression-tested.
+The finite theorem surface, non-circularity firewall, realizability boundary, literal bridge, manuscript routing, and submission packaging are regression-tested.
