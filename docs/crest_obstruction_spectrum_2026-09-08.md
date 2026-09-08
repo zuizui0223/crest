@@ -25,9 +25,7 @@ D_{\rm joint}=v(N),
 \]
 
 `D_i` measures what responsibility `i` demands when run alone from the untouched
-baseline. `Delta` measures what standalone accounting misses. These numbers do
-not yet say how to assign the jointly generated burden back to named
-responsibilities without choosing an audit order.
+baseline. `Delta` measures what standalone accounting misses.
 
 ## Order-independent obstruction attribution
 
@@ -43,7 +41,7 @@ For a small responsibility set `N`, define the exact Shapley attribution
 
 This is standard cooperative-game accounting, not a new generic theorem. CREST
 uses it as an order-independent diagnostic for the declared coalition game
-`v(S)`. It has the useful efficiency identity
+`v(S)`. It obeys
 
 \[
 \sum_i\phi_i=D_{\rm joint}.
@@ -53,27 +51,47 @@ We also report
 
 \[
 I_i=\phi_i-D_i,
-\]
-
-so that
-
-\[
+\qquad
 \sum_i I_i=\Delta.
 \]
 
-`I_i` is an **interaction attribution**, not an intrinsic causal effect. It says
-how the Shapley allocation differs from responsibility `i`'s standalone debt.
-Positive values mean that the responsibility receives some of the burden that is
-visible only after coalition formation; negative values can occur when
-responsibilities overlap or are redundant.
+`I_i` is an interaction attribution, not an intrinsic causal effect.
 
-For presentation, the normalized obstruction share is
+## Exact interaction-order decomposition
+
+Shapley values answer **which named responsibility receives how much of the joint
+debt**. A separate question is **which combination of responsibilities generated
+the debt**. CREST now reports the exact Möbius/Harsanyi dividend of every nonempty
+coalition:
 
 \[
-s_i=\phi_i/D_{\rm joint}
+\eta(S)=\sum_{T\subseteq S}(-1)^{|S|-|T|}v(T).
 \]
 
-when `D_joint > 0`.
+These terms reconstruct every coalition debt:
+
+\[
+v(S)=\sum_{T\subseteq S}\eta(T),
+\]
+
+and in particular
+
+\[
+D_{\rm joint}=\sum_{\varnothing\ne S\subseteq N}\eta(S).
+\]
+
+Singleton dividends are exactly the standalone debts. Therefore the existing
+non-additive excess has the exact decomposition
+
+\[
+\boxed{
+\Delta=\sum_{|S|\ge2}\eta(S).
+}
+\]
+
+This distinguishes pairwise activation from genuinely higher-order activation.
+The decomposition is standard cooperative-game algebra; the CREST use is as a
+numeric diagnostic of cross-responsibility state burden.
 
 ## Six-world CCOC–MLTR–MRM cascade
 
@@ -92,8 +110,8 @@ with baseline state partition
 so the baseline has two states.
 
 - **CCOC** can distinguish `a` because its declared future successor reaches `z`.
-- Once `a` is split, **MLTR** can distinguish `b` through the declared inherited-semantic transition `b -> a`.
-- Once `b` is split, **MRM** can distinguish `c` through the declared mechanism transition `c -> b`.
+- Once `a` is split, **MLTR** can distinguish `b` through `b -> a`.
+- Once `b` is split, **MRM** can distinguish `c` through `c -> b`.
 - MLTR and MRM each do nothing when applied alone to the original baseline.
 
 The exact coalition table is:
@@ -116,20 +134,55 @@ Thus
 =(0.584963,0,0)\;\text{bits},
 \]
 
-while
+\[
+D_{\rm joint}=1.321928\;\text{bits},
+\qquad
+\boxed{\Delta=0.736966\;\text{bits}.}
+\]
+
+Standalone accounting sees only a 2 -> 3 state refinement, whereas the joint
+contract requires 2 -> 5 states.
+
+## Exact interaction anatomy of the witness
+
+The Möbius decomposition is especially simple:
+
+| interaction term | bits | interpretation |
+|---|---:|---|
+| CCOC | 0.584963 | direct future-sufficiency burden |
+| MLTR | 0.000000 | no standalone burden |
+| MRM | 0.000000 | no standalone burden |
+| CCOC × MLTR | **0.415037** | pairwise activation: CCOC split makes MLTR informative |
+| CCOC × MRM | 0.000000 | no direct pairwise activation |
+| MLTR × MRM | 0.000000 | no direct pairwise activation from baseline |
+| CCOC × MLTR × MRM | **0.321928** | genuinely three-way cascade needed to expose MRM burden |
+
+Hence
 
 \[
-D_{\rm joint}=1.321928\;\text{bits}
+\boxed{
+1.321928
+=
+0.584963
++0.415037
++0.321928
+\quad\text{bits}.
+}
 \]
 
 and
 
 \[
-\boxed{\Delta=0.736966\;\text{bits}.}
+\boxed{
+\Delta
+=0.415037+0.321928
+=0.736966\quad\text{bits}.
+}
 \]
 
-Standalone accounting therefore sees only a 2 -> 3 state refinement, whereas the
-joint contract requires 2 -> 5 states.
+This is more informative than reporting `Delta` alone. In this witness about
+56.3% of the non-additive excess is pairwise CCOC×MLTR activation and about 43.7%
+is genuinely three-way CCOC×MLTR×MRM activation.
 
 ## Obstruction spectrum of the witness
 
@@ -142,20 +195,22 @@ Exact Shapley attribution gives
 | MRM | 0.000000 | 0.107309 | 0.107309 | 8.12% |
 | **total** | **0.584963** | **1.321928** | **0.736966** | **100%** |
 
-The resulting numeric report can be written compactly as
+The Shapley values equal the equal split of every interaction dividend among its
+members. Thus CCOC receives its direct 0.584963 bit plus half of the pair term and
+one third of the triple term; MLTR receives half of the pair term plus one third
+of the triple term; MRM receives one third of the triple term.
+
+Compact report:
 
 ```text
 standalone bits : CCOC 0.584963 | MLTR 0.000000 | MRM 0.000000
+pair interaction: CCOC×MLTR 0.415037
+triple interaction: CCOC×MLTR×MRM 0.321928
 Shapley bits    : CCOC 0.899791 | MLTR 0.314828 | MRM 0.107309
 joint debt      : 1.321928 bit
 interaction Δ   : 0.736966 bit
 joint states    : 5 from a 2-state baseline
 ```
-
-This is stronger than a three-label obstruction list. MLTR and MRM have zero
-standalone debt in this system but nonzero order-independent joint attribution:
-their distinctions become state-relevant only after another responsibility has
-refined the carrier partition.
 
 ## What the numbers mean
 
@@ -164,25 +219,21 @@ from ecological data and not posterior information about which mechanism is true
 The spectrum is conditional on the declared common carrier, baseline, transition
 contracts, and responsibility set.
 
-The Shapley vector is useful for three purposes:
+The Shapley vector answers attribution to named axes. The interaction dividends
+answer interaction order and coalition structure. Neither should be described as
+a unique causal decomposition supplied by nature.
 
-1. compare systems that use the same declared contract;
-2. distinguish a genuinely dominant obstruction from one activated mainly by
-   cross-responsibility interaction;
-3. expose systems where standalone audit budgets substantially understate joint
-   monitoring or representation burden.
-
-It should not be described as a unique causal decomposition supplied by nature.
 Changing the carrier, baseline, contract, or responsibility set changes the
-coalition game and can change the spectrum.
+coalition game and can change both decompositions.
 
 ## Implementation
 
 - `crest/obstruction_spectrum.py` — exact coalition enumeration, Shapley
-  attribution, interaction attribution, and canonical six-world witness.
+  attribution, Möbius interaction dividends, and canonical six-world witness.
 - `tests/test_crest_obstruction_spectrum.py` — fixes the coalition table, numeric
-  spectrum, efficiency identity, and invariance to all six input orders of the
-  three audits.
+  spectrum, interaction decomposition, Shapley efficiency, and invariance to all
+  six input orders.
+- `scripts/report_obstruction_spectrum.py` — deterministic JSON report surface.
 
 Exact enumeration scales exponentially with the number of responsibilities, so
 this implementation is intended for the small CREST contract sets for which the
