@@ -10,6 +10,7 @@ CANONICAL = {
     "crest_flagship_amnat_v0.4_positioned.md",
     "crest_flagship_amnat_v0.5_compositional.md",
     "crest_flagship_amnat_v0.6_addressability.md",
+    "crest_flagship_amnat_v0.7_semantic_access.md",
     "CREST_supplementary_information.md",
     "biology_philosophy_title_page_TEMPLATE.md",
     "amnat_submission_declarations_TEMPLATE.md",
@@ -33,28 +34,28 @@ def test_submission_entrypoints_name_the_blinded_candidate_and_si() -> None:
     assert "crest_philosophy_biology_philosophy.md" not in verifier
 
 
-def test_amnat_flagship_is_separate_from_biology_philosophy_submission_entrypoint() -> None:
-    flagship = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.6_addressability.md").read_text(
+def test_amnat_v07_flagship_is_separate_from_biology_philosophy_submission_entrypoint() -> None:
+    flagship = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.7_semantic_access.md").read_text(
         encoding="utf-8"
     )
-    v05 = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.5_compositional.md").read_text(
+    v06 = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.6_addressability.md").read_text(
         encoding="utf-8"
     )
     delta_predecessor = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.2.md").read_text(
         encoding="utf-8"
     )
     assert "The American Naturalist" in flagship
-    assert "Ecological State at a Temporal Cut: Interface-Dependent Interaction" in flagship
+    assert "Ecological State at a Temporal Cut: Sparse Semantic Access" in flagship
     assert "Literature Cited" in flagship
     assert "Ogle et al. 2015" in flagship
     assert "Shalizi and Crutchfield 2001" in flagship
-    assert "decoder prerequisite set" in flagship.lower()
-    assert "formula is now a theorem" in flagship.lower()
-    assert "three-way dividend is zero" in flagship
-    assert "crest_flagship_amnat_v0.6_addressability.md" in (
+    assert "semantic access relation" in flagship.lower()
+    assert "(N-k)+k2^m" in flagship
+    assert "1027" in flagship
+    assert "crest_flagship_amnat_v0.7_semantic_access.md" in (
         MANUSCRIPT_DIR / "SUBMISSION_README.md"
     ).read_text(encoding="utf-8")
-    assert "4096" in v05
+    assert "4096" in v06
     assert "The American Naturalist" in delta_predecessor
     assert "Delta" in delta_predecessor
 
