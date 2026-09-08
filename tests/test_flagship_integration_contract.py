@@ -12,47 +12,38 @@ from crest.explicit_temporal_grammar import (
     MECHANISM,
     DecoderRule,
     coalition_table,
-    exclusive_joint_addressability,
     mobius_three_way,
 )
 from crest.joint_debt import marked_cycle_report
+from crest.semantic_access import canonical_nontrivial_companion_model
+from crest.semantic_temporal_quotient import (
+    semantic_pair_counts,
+    semantic_quotient_size,
+    semantic_three_way_dividend,
+)
+from crest.shallow_lake_prerequisites import canonical_target_prerequisites
 from crest.temporal_interaction import temporal_three_way_closed_form
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "docs" / "flagship_integration" / "flagship_integration_manifest.json"
 
 
-def test_flagship_headline_is_addressability_characterization() -> None:
+def test_flagship_headline_is_sparse_semantic_access_modeling() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    assert manifest["schema_version"] == 9
+    assert manifest["schema_version"] == 10
     assert manifest["canonical_flagship_manuscript"] == (
-        "manuscript/crest_flagship_amnat_v0.6_addressability.md"
+        "manuscript/crest_flagship_amnat_v0.7_semantic_access.md"
     )
     assert manifest["previous_flagship_manuscript"] == (
-        "manuscript/crest_flagship_amnat_v0.5_compositional.md"
+        "manuscript/crest_flagship_amnat_v0.6_addressability.md"
     )
     assert (ROOT / manifest["canonical_flagship_manuscript"]).is_file()
     assert manifest["canonical_title"] == (
-        "Ecological State at a Temporal Cut: Interface-Dependent Interaction"
+        "Ecological State at a Temporal Cut: Sparse Semantic Access"
     )
-    assert "prerequisite" in manifest["headline"]
-    assert "explicit grammar traces" in manifest["headline_quantity"]
-    assert "minimal prerequisite set R" in manifest["headline_theorem"]
-    assert "R={H,Theta}" in manifest["headline_special_case"]
-
-
-def test_flagship_temporal_geometry_and_realizability_boundaries() -> None:
-    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    geometry = manifest["temporal_geometry"]
-    assert "cut O_t" in geometry["present"]
-    assert "primitive and immutable" in geometry["past"]
-    assert "primitive candidate law" in geometry["latent_present"]
-    assert "query grammar" in geometry["future"]
-
-    boundaries = manifest["realizability_boundaries"]
-    assert "cannot generate positive interaction" in boundaries["fixed_partition_bound"]
-    assert "preserving raw MLTR history" in boundaries["immutable_history_no_activation"]
-    assert "singleton MRM response type" in boundaries["fixed_grammar_mrm_zero_debt"]
+    assert "semantic prerequisite order" in manifest["headline"]
+    assert "semantic access relation" in manifest["modeling_contribution"]
+    assert "does not claim novelty" in manifest["novelty_boundary"]
 
 
 def test_flagship_submission_constraints_are_pinned() -> None:
@@ -62,41 +53,60 @@ def test_flagship_submission_constraints_are_pinned() -> None:
     assert constraints["keyword_max"] == 6
     assert constraints["current_abstract_words"] <= constraints["abstract_word_limit"]
     assert constraints["current_keywords"] <= constraints["keyword_max"]
-    assert constraints["current_title_words"] == 8
+    assert constraints["current_title_words"] == 9
 
     for value in manifest["literature_positioning"].values():
         assert value
 
 
-def test_explicit_grammar_numeric_anchor_matches_manifest() -> None:
+def test_sparse_semantic_numeric_anchor_matches_manifest() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    anchor = manifest["numeric_illustration"]
+    anchor = manifest["canonical_numeric_witness"]
+    routes, candidates, model = canonical_nontrivial_companion_model()
     m = anchor["anchor_m"]
+
+    assert semantic_pair_counts(model) == (
+        anchor["semantic_pairs"],
+        anchor["addressable_pairs"],
+    )
+    assert semantic_quotient_size(routes, candidates, model, m, (HISTORY, MECHANISM, FUTURE)) == anchor[
+        "grand_classes"
+    ]
+    assert semantic_three_way_dividend(routes, candidates, model, m) == pytest.approx(
+        anchor["three_way_bits"], abs=1e-9
+    )
+    assert anchor["grand_classes"] == 1027
+    assert anchor["asymptotic_sparsity_penalty_bits"] == 2
+
+
+def test_shallow_lake_prerequisite_manifest_matches_executable_audit() -> None:
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    audit = manifest["shallow_lake_prerequisite_audit"]
+    observed = canonical_target_prerequisites()
+
+    assert observed["current_status"] == (frozenset(),)
+    assert observed["legacy_sensitive_recovery"] == (frozenset({HISTORY}),)
+    assert observed["mechanism_specific_intervention"] == (frozenset({MECHANISM}),)
+    assert observed["composed_restoration_policy"] == (
+        frozenset({HISTORY, MECHANISM}),
+    )
+    assert audit["current_status"] == []
+    assert audit["legacy_sensitive_recovery"] == ["H"]
+    assert audit["mechanism_specific_intervention"] == ["THETA"]
+    assert audit["composed_restoration_policy"] == ["H", "THETA"]
+
+
+def test_v06_complete_access_is_retained_as_boundary_case() -> None:
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    boundary = manifest["complete_access_boundary"]
+    m = boundary["anchor_m"]
     rule = DecoderRule(frozenset((HISTORY, MECHANISM)))
     table = coalition_table(m, rule)
 
-    assert table[frozenset((HISTORY, MECHANISM))] == pytest.approx(2.0)
     assert table[frozenset((HISTORY, MECHANISM, FUTURE))] == pytest.approx(12.0)
-    assert mobius_three_way(m, rule) == pytest.approx(anchor["genuine_three_way_bits"])
-    assert exclusive_joint_addressability(m, rule)
-    assert anchor["joint_classes"] == 4096
-    assert anchor["state_count_amplification_from_history_mechanism"] == 1024
-
-
-def test_decoder_requirement_classification_is_falsifiable() -> None:
-    m = 7
-    no_requirement = DecoderRule(frozenset())
-    h_only = DecoderRule(frozenset((HISTORY,)))
-    theta_only = DecoderRule(frozenset((MECHANISM,)))
-    both = DecoderRule(frozenset((HISTORY, MECHANISM)))
-
-    assert mobius_three_way(m, no_requirement) == pytest.approx(0.0)
-    assert mobius_three_way(m, h_only) == pytest.approx(0.0)
-    assert mobius_three_way(m, theta_only) == pytest.approx(0.0)
-    assert mobius_three_way(m, both) == pytest.approx(m)
-
-    table = coalition_table(m, no_requirement)
-    assert table[frozenset((FUTURE,))] == pytest.approx(m)
+    assert mobius_three_way(m, rule) == pytest.approx(boundary["three_way_bits"])
+    assert boundary["grand_classes"] == 4096
+    assert "boundary case" in boundary["status"]
 
 
 def test_old_fixed_closure_extrema_remain_supporting_results_only() -> None:
