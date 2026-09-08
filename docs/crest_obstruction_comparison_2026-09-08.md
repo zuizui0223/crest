@@ -4,7 +4,7 @@
 
 The obstruction spectrum is most useful when two declared contracts can be compared on the same named responsibility set. The comparison surface answers a change question:
 
-> Which part of the required state burden changed, and was the change direct, pairwise, or higher-order?
+> Which part of the required state burden changed, and was the change direct, interaction-generated, or both?
 
 For before/after spectra with the same named audits, CREST now reports changes in:
 
@@ -16,6 +16,49 @@ For before/after spectra with the same named audits, CREST now reports changes i
 - exact Möbius/Harsanyi interaction dividends for every coalition.
 
 The comparison is conditional on each declared finite carrier and baseline. A numeric difference is therefore a contract-relative representational change, not an intrinsic ecological constant.
+
+## Exact accounting identity
+
+For before/after changes,
+
+\[
+\delta D_{\rm joint}
+=
+\sum_i\delta D_i
++
+\delta\Delta.
+\]
+
+Because singleton Möbius dividends are the standalone debts,
+
+\[
+\delta\Delta
+=
+\sum_{|S|\ge2}\delta m(S).
+\]
+
+Therefore if every standalone debt is unchanged, the entire change in joint debt is interaction-generated:
+
+\[
+\boxed{
+\delta D_i=0\ \forall i
+\Longrightarrow
+\delta D_{\rm joint}=\delta\Delta
+=
+\sum_{|S|\ge2}\delta m(S).
+}
+\]
+
+The implementation classifies every comparison into one of four diagnostic classes:
+
+| class | standalone change | interaction change |
+|---|---|---|
+| `direct-only` | yes | no |
+| `interaction-only` | no | yes |
+| `mixed` | yes | yes |
+| `null` | no | no |
+
+These labels are accounting diagnostics, not causal categories supplied by nature.
 
 ## Canonical comparison
 
@@ -43,7 +86,11 @@ The before contract requires 3 states from the 2-state baseline. The after contr
 | standalone MLTR | 0 | 0 | **0** |
 | standalone MRM | 0 | 0 | **0** |
 
-Thus the entire increase in joint burden occurs with **zero change in all three standalone debts**.
+Thus the entire increase in joint burden occurs with **zero change in all three standalone debts**. The comparison is therefore classified as
+
+```text
+interaction-only
+```
 
 The added burden decomposes exactly as
 
@@ -78,7 +125,7 @@ Before/after comparison:
 python scripts/compare_obstruction_spectra.py before.json after.json
 ```
 
-The comparison output contains the complete before and after spectra plus a `comparison` object with all deltas.
+The comparison output contains the complete before and after spectra plus a `comparison` object containing `change_class` and all numeric deltas.
 
 ## Interpretation firewall
 

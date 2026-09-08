@@ -39,9 +39,55 @@ class SpectrumComparison:
     def joint_block_change(self) -> int:
         return self.joint_blocks_after - self.joint_blocks_before
 
+    def change_class(self, *, tolerance: float = 1e-12) -> str:
+        """Classify the source of before/after state-debt change.
+
+        Returns one of ``direct-only``, ``interaction-only``, ``mixed``, or
+        ``null``. ``direct`` means at least one standalone debt changed;
+        ``interaction`` means the non-additive excess Delta changed.
+        """
+
+        direct_changed = any(
+            abs(value) > tolerance for value in self.standalone_change_bits.values()
+        )
+        interaction_changed = abs(self.delta_change_bits) > tolerance
+        if direct_changed and interaction_changed:
+            return "mixed"
+        if direct_changed:
+            return "direct-only"
+        if interaction_changed:
+            return "interaction-only"
+        return "null"
+
+    def verify(self, *, tolerance: float = 1e-12) -> bool:
+        """Verify the exact before/after accounting identities."""
+
+        direct_change = sum(self.standalone_change_bits.values())
+        higher_order_change = sum(
+            value
+            for coalition, value in self.interaction_dividend_change_bits.items()
+            if len(coalition) >= 2
+        )
+        return (
+            abs(
+                self.joint_debt_change_bits
+                - (direct_change + self.delta_change_bits)
+            )
+            <= tolerance
+            and abs(higher_order_change - self.delta_change_bits) <= tolerance
+            and (
+                self.change_class(tolerance=tolerance) != "interaction-only"
+                or abs(self.joint_debt_change_bits - self.delta_change_bits)
+                <= tolerance
+            )
+        )
+
     def to_payload(self) -> dict[str, Any]:
+        if not self.verify():
+            raise ValueError("spectrum comparison failed accounting verification")
         return {
             "audit_names": list(self.audit_names),
+            "change_class": self.change_class(),
             "baseline_blocks": {
                 "before": self.baseline_blocks_before,
                 "after": self.baseline_blocks_after,
@@ -80,7 +126,7 @@ def compare_spectrum_payloads(
     after_dividends = _interaction_map(after)
     all_coalitions = set(before_dividends) | set(after_dividends)
 
-    return SpectrumComparison(
+    comparison = SpectrumComparison(
         audit_names=names,
         baseline_blocks_before=int(before["baseline_blocks"]),
         baseline_blocks_after=int(after["baseline_blocks"]),
@@ -108,6 +154,9 @@ def compare_spectrum_payloads(
             for coalition in all_coalitions
         },
     )
+    if not comparison.verify():
+        raise AssertionError("constructed spectrum comparison did not verify")
+    return comparison
 
 
 def compare_contract_payloads(
