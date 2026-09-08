@@ -2,11 +2,8 @@ from __future__ import annotations
 
 import json
 import re
-from pathlib import Path
 
-from scripts.amnat_submission_metadata import MANUSCRIPT, METADATA, text_word_count
-
-ROOT = Path(__file__).resolve().parents[1]
+from crest.amnat_submission import MANUSCRIPT, METADATA, text_word_count
 
 
 def test_amnat_submission_metadata_matches_current_requirements() -> None:
