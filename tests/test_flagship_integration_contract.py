@@ -8,22 +8,39 @@ import pytest
 
 from crest.joint_debt import marked_cycle_report
 from crest.sequential_witnesses import sharp_sequential_problem
+from crest.temporal_interaction import temporal_three_way_closed_form
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "docs" / "flagship_integration" / "flagship_integration_manifest.json"
 SECTION = ROOT / "docs" / "flagship_integration" / "joint_debt_delta_section.md"
+TEMPORAL_SECTION = ROOT / "docs" / "flagship_integration" / "temporal_cut_state_section.md"
 
 
-def test_flagship_headline_is_joint_delta_not_component_no_bound() -> None:
+def test_flagship_headline_is_temporal_cut_state_interaction() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    assert manifest["schema_version"] == 3
-    assert manifest["canonical_flagship_manuscript"] == "manuscript/crest_flagship_amnat_v0.2.md"
+    assert manifest["schema_version"] == 6
+    assert manifest["canonical_flagship_manuscript"] == (
+        "manuscript/crest_flagship_amnat_v0.3_temporal_cut.md"
+    )
     assert (ROOT / manifest["canonical_flagship_manuscript"]).is_file()
-    assert manifest["headline"] == "non-additive joint ecological state debt"
+    assert manifest["headline"] == "interaction-generated ecological state at a temporal cut"
     assert manifest["headline_quantity"] == "Delta = D_joint - sum_i D_i"
     assert manifest["headline_extremum"] == "Delta = log2(n) - 1"
+    assert "past-by-future interaction" in manifest["headline_temporal_result"]
+    assert "b - log2(3)" in manifest["headline_temporal_extremum"]
     assert "classical substrate" in manifest["novelty_boundary"]
     assert any("H log2(r)" in item for item in manifest["supporting_results"])
+
+
+def test_flagship_temporal_geometry_keeps_present_as_cut() -> None:
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    geometry = manifest["temporal_geometry"]
+    assert "cut O_t" in geometry["present"]
+    assert "not a finite-width temporal axis" in geometry["present"]
+    assert "left of the cut" in geometry["past"]
+    assert "O_t^{-1}(y)" in geometry["latent_present"]
+    assert "transverse to the cut" in geometry["latent_present"]
+    assert "right of the cut" in geometry["future"]
 
 
 def test_flagship_section_preserves_claim_firewall() -> None:
@@ -34,6 +51,12 @@ def test_flagship_section_preserves_claim_firewall() -> None:
     assert "carrier-gain no-bound" in text
     assert "H\\log_2 r" in text
 
+    temporal = TEMPORAL_SECTION.read_text(encoding="utf-8")
+    assert "temporal cut" in temporal
+    assert "latent" in temporal
+    assert "continuous-time" in temporal
+    assert "statistical confounding" in temporal
+
 
 def test_flagship_marked_cycle_matches_declared_extremum() -> None:
     for n in (2, 3, 4, 8, 17, 32):
@@ -41,6 +64,21 @@ def test_flagship_marked_cycle_matches_declared_extremum() -> None:
         assert report.individual_debts == pytest.approx((1.0, 0.0))
         assert report.joint_debt == pytest.approx(log2(n))
         assert report.delta == pytest.approx(log2(n) - 1.0)
+
+
+def test_flagship_temporal_anchor_matches_manifest() -> None:
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    anchor = manifest["numeric_closure"]
+    assert anchor["temporal_anchor_b"] == 10
+
+    closed = temporal_three_way_closed_form(anchor["temporal_anchor_b"])
+    assert closed["joint_blocks"] == 1024
+    assert closed["joint_debt_bits"] == pytest.approx(10.0)
+    assert closed["interaction_bits"] == pytest.approx(9.0)
+    assert closed["three_way_bits"] == pytest.approx(8.415037499278844)
+    assert closed["three_way_fraction_of_joint"] == pytest.approx(
+        0.8415037499278844
+    )
 
 
 def test_sharp_sequential_family_is_exposed_from_package_surface() -> None:
