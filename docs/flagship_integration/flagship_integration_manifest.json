@@ -1,7 +1,8 @@
 {
-  "schema_version": 5,
+  "schema_version": 6,
   "target_journal": "The American Naturalist",
-  "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.2.md",
+  "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.3_temporal_cut.md",
+  "previous_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.2.md",
   "state_concept": "state is the least information that must survive an observational temporal cut under declared scientific responsibilities",
   "temporal_geometry": {
     "present": "observation cut O_t and its kernel partition B_t, not a finite-width temporal axis",
@@ -12,7 +13,7 @@
   "headline": "interaction-generated ecological state at a temporal cut",
   "headline_quantity": "Delta = D_joint - sum_i D_i",
   "headline_temporal_result": "past-by-future interaction is unbounded and genuine history-by-latent-present-by-future interaction is unbounded",
-  "headline_temporal_extremum": "m(H,Theta,F) = m - log2(3), with m(H,Theta,F)/D_joint -> 1",
+  "headline_temporal_extremum": "m(H,Theta,F) = b - log2(3), with m(H,Theta,F)/D_joint -> 1",
   "headline_sharp_family": "marked directed cycle and temporal three-way activation cascade",
   "headline_extremum": "Delta = log2(n) - 1",
   "numeric_closure": {
@@ -20,15 +21,15 @@
     "debt_underestimate_factor": "log2(n)",
     "interaction_share": "1 - 1/log2(n)",
     "anchor_n": 1024,
-    "anchor_result": "2 standalone-predicted classes versus 1024 joint classes; 512-fold class-count underestimate; 10-bit joint debt with 9 interaction bits (90%)",
-    "temporal_anchor_m": 10,
+    "anchor_result": "one visible present class; history alone 2 classes / 1 bit; future alone 1 class / 0 bits; joint history-future state 1024 classes / 10 bits; 9 interaction bits (90%)",
+    "temporal_anchor_b": 10,
     "temporal_anchor_result": "one visible cut value; 1024 adequate-state classes; 10 total bits; 8.4150374993 bits (84.15%) are genuine history x latent-present x future interaction"
   },
   "zero_debt_lemma": "all D_i = 0 implies D_joint = Delta = 0",
   "novelty_boundary": "The closure, fixed-point, partition-refinement, marked-cycle, Shapley, and Mobius/Harsanyi mathematics are classical substrate; the CREST contribution is the ecological state interpretation at an observational temporal cut and the cross-responsibility/temporal-position accounting on one declared finite common lift.",
   "supporting_results": [
     "past-by-future interaction m(H,F)=log2(n)-1 is unbounded",
-    "genuine three-way temporal interaction m(H,Theta,F)=m-log2(3) is unbounded and asymptotically dominates joint state debt",
+    "genuine three-way temporal interaction m(H,Theta,F)=b-log2(3) is unbounded and asymptotically dominates joint state debt",
     "carrier-size gain does not upper-bound state burden",
     "sequential response debt is at most H log2(r) in the homogeneous r-ary path",
     "the existing connected sequential family attains the H log2(r) bound",
@@ -49,6 +50,7 @@
     "temporal_cut_tests": "tests/test_crest_temporal_cut.py",
     "temporal_theorem": "docs/crest_temporal_state_interaction_theorem_2026-09-08.md",
     "temporal_flagship_section": "docs/flagship_integration/temporal_cut_state_section.md",
+    "temporal_numeric_artifact": "artifacts/crest_temporal_cut_numeric_benchmarks_2026-09-08.json",
     "sequential_witness_module": "crest/sequential_witnesses.py",
     "sequential_regression": "tests/test_crest_sharp_sequential_debt.py",
     "flagship_section": "docs/flagship_integration/joint_debt_delta_section.md",
