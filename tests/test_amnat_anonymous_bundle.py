@@ -61,26 +61,31 @@ def test_anonymous_manifest_hashes_every_whitelisted_source(tmp_path: Path) -> N
 
     with zipfile.ZipFile(output) as archive:
         manifest = json.loads(archive.read("ANONYMOUS_MANIFEST.json"))
-        assert manifest["schema_version"] == 3
+        assert manifest["schema_version"] == 4
         assert set(manifest["files"]) == set(builder.SOURCE_PATHS)
         for name, metadata in manifest["files"].items():
             payload = archive.read(name)
             assert hashlib.sha256(payload).hexdigest() == metadata["sha256"]
             assert len(payload) == metadata["bytes"]
 
-        anchor = manifest["numeric_anchor"]
-        assert anchor["decoder_required_interfaces"] == ["H", "Theta"]
-        assert anchor["history_mechanism_classes"] == 4
-        assert anchor["joint_classes"] == 4096
-        assert anchor["joint_bits"] == 12
-        assert anchor["genuine_three_way_bits"] == 10
-        assert anchor["state_count_amplification"] == 1024
+        anchor = manifest["semantic_anchor"]
+        assert anchor["semantic_pairs"] == 4
+        assert anchor["addressable_pairs"] == 1
+        assert anchor["grand_classes"] == 1027
+        assert abs(anchor["grand_bits"] - 10.004220466) < 1e-9
+        assert abs(anchor["three_way_bits"] - 8.004220466) < 1e-9
+        assert anchor["asymptotic_sparsity_penalty_bits"] == 2
 
-        counterfactual = manifest["counterfactual_rules"]
-        assert counterfactual["no_required_interface_three_way_bits"] == 0
-        assert counterfactual["history_only_required_three_way_bits"] == 0
-        assert counterfactual["mechanism_only_required_three_way_bits"] == 0
-        assert counterfactual["both_interfaces_required_three_way_bits"] == 10
+        boundary = manifest["complete_access_boundary"]
+        assert boundary["addressable_pairs"] == 4
+        assert boundary["grand_classes"] == 4096
+        assert boundary["three_way_bits"] == 10
+
+        lake = manifest["shallow_lake_prerequisites"]
+        assert lake["current_status"] == []
+        assert lake["legacy_sensitive_recovery"] == ["H"]
+        assert lake["mechanism_specific_intervention"] == ["THETA"]
+        assert lake["composed_restoration_policy"] == ["H", "THETA"]
 
 
 def test_anonymous_bundle_runs_focused_theorem_tests(tmp_path: Path) -> None:
@@ -99,6 +104,9 @@ def test_anonymous_bundle_runs_focused_theorem_tests(tmp_path: Path) -> None:
             "tests/test_crest_temporal_cut.py",
             "tests/test_companion_realizability.py",
             "tests/test_explicit_temporal_grammar.py",
+            "tests/test_semantic_access.py",
+            "tests/test_semantic_temporal_quotient.py",
+            "tests/test_shallow_lake_prerequisites.py",
         ],
         cwd=extracted,
         text=True,
