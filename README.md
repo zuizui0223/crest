@@ -156,6 +156,17 @@ with exact interaction-order decomposition
 
 Its change diagnosis is **`interaction-only`** because every standalone debt is unchanged while the joint burden changes. The before/after diagnostic reports `active_interaction_orders = [2, 3]`, with the pairwise term dominant in that six-world comparison. These values are retained as a smaller compatibility witness; the temporal-cut \(b=10\) theorem is now the flagship endpoint.
 
+## Compatibility with established CREST terminology
+
+The temporal-cut framing refines rather than deletes the earlier responsibility labels:
+
+- **future sufficiency** = the CCOC prospective/future responsibility to the right of the cut;
+- **semantic coherence** = the MLTR historical/inherited-semantic responsibility to the left of the cut;
+- **mechanism robustness** = the MRM latent contemporaneous response responsibility inside a cut fiber;
+- **evidence licensing** = the downstream CED question of whether observations resolve the state distinctions already required.
+
+These labels remain useful for theorem provenance and cross-repository routing even though the flagship now organizes them geometrically around the cut.
+
 ## Publication roles
 
 - **CREST flagship:** state at a temporal cut and interaction-generated state information.
@@ -179,6 +190,14 @@ Title:
 Target: **The American Naturalist — Major Article**.
 
 The previous Δ-centered `crest_flagship_amnat_v0.2.md` remains in the repository as provenance but is no longer canonical.
+
+## Canonical reading paths
+
+- `docs/contract_relative_ecological_state_theory.md` — world-before-state and Snapshot sufficiency framing.
+- `docs/crest_mathematical_spine.md` — carrier/state/evidence theorem chain and supporting finite bounds.
+- `docs/crest_ecological_projection.md` — ecology-facing quotient interpretation and representational stability.
+- `docs/crest_sharp_sequential_state_debt_law_2026-09-06.md` — sharp sequential response-capacity law.
+- `docs/crest_temporal_state_interaction_theorem_2026-09-08.md` — temporal-cut interaction theorem and exact finite witnesses.
 
 ## Proof and implementation map
 
