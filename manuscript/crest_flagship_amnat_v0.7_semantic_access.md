@@ -338,11 +338,9 @@ The earlier 4096-class, 12-bit, 10-bit-three-way calculation is retained as the 
 
 ## 8. Target-relative shallow-lake prerequisite identification
 
-Shallow-lake restoration supplies an ecology-grounded finite decision model because the same coarse current water-quality description can be compatible with different nutrient histories and different feedback structures, while restoration questions require different retained information.
+Shallow-lake restoration supplies an ecology-grounded finite decision model because the same coarse current water-quality description can be compatible with different nutrient histories and different feedback structures, while restoration questions require different retained information. Internal phosphorus released from sediment accumulated during earlier high loading can delay recovery after external loading is reduced (Søndergaard, Jensen, and Jeppesen 2003). Long-term restoration outcomes also depend on fish dynamics, internal phosphorus loading, and the recovery or persistence of submerged macrophytes (Søndergaard et al. 2007). More broadly, chemical and biological within-lake inertia can delay recovery, motivating combinations of physicochemical and biological restoration measures (Jeppesen et al. 2012).
 
-The model uses published restoration literature only to justify qualitative ingredients: historical nutrient loading and sediment phosphorus legacy; internal phosphorus persistence; fish-community and macrophyte feedbacks; and multiple restoration actions including load reduction, sediment-focused treatment, biomanipulation, and macrophyte restoration. It is not an empirical estimate of a universal CREST partition.
-
-The executable model contains four worlds behind the same coarse visible status, crossing two retrospective modes with two latent-response types. For each target, CREST tests whether the target output factors through no retained interface, history only, latent response only, or both. It also performs explicit counterfactual substitution of one interface while holding the other fixed.
+These studies support the ecological ingredients used by the finite model; they do not specify the exact finite target maps used below. The executable model contains four worlds behind the same coarse visible status, crossing two retrospective modes with two latent-response types. For each target, CREST tests whether the target output factors through no retained interface, history only, latent response only, or both. It also performs explicit counterfactual substitution of one interface while holding the other fixed.
 
 The resulting minimum prerequisite sets are
 
@@ -364,7 +362,7 @@ and
 \boxed{R_{\rm composed}=\{H,\Theta\}.}
 \]
 
-For the composed restoration target, substituting either the retained history mode or the latent response type can change the policy output while the other interface and visible cut are held fixed. Thus the two-interface prerequisite is an executable property of the declared finite decision map, not a markdown label.
+The composed target is deliberately minimal. It has only two outputs, `standard_pathway` and `cross_interface_review`, across the four history-by-response combinations. The output records concordance versus mismatch between the retrospective sediment-legacy signal and the present sediment-response signal. For every fixed history mode, varying the response type reaches both outputs; for every fixed response type, varying history also reaches both outputs. Consequently neither \(H\) nor \(\Theta\) alone is sufficient, despite the target having only two output classes. The exact parity-style map is a formal witness of joint dependence, not a biological law asserted by the restoration literature.
 
 This does not assert that every real shallow lake or every restoration objective has this prerequisite set. The same ecological system produces four different prerequisite structures because the target changes.
 
@@ -414,7 +412,7 @@ The realizability results show that positive interaction does not appear merely 
 
 Sparse access adds a second correction. Even after both semantic interfaces are retained, a future query need not be meaningful across their entire product. Complete addressability therefore overestimates the number of exterior distinctions that survive into the state whenever only a subset of semantic combinations licenses the decoder.
 
-The shallow-lake example illustrates the ecological payoff. “What is the lake now?”, “does historical nutrient legacy matter?”, “which mechanism-specific intervention is appropriate?”, and “which composed restoration policy is adequate?” are questions about the same system but induce different prerequisite sets. A second layer of system-specific work would then ask which history-response combinations actually support each future query.
+The shallow-lake example illustrates the ecological payoff. “What is the lake now?”, “does historical nutrient legacy matter?”, “which mechanism-specific intervention is appropriate?”, and “which composed restoration diagnostic is adequate?” are questions about the same system but induce different prerequisite sets. The ecological ingredients behind those distinctions are supported by restoration studies of internal phosphorus legacy, biomanipulation, fish and macrophyte dynamics, and combined restoration approaches (Søndergaard, Jensen, and Jeppesen 2003; Søndergaard et al. 2007; Jeppesen et al. 2012). A second layer of system-specific work would then ask which history-response combinations actually support each future query.
 
 This is the practical sense in which ecological state is contract relative without being arbitrary. The scientific question is declared by the investigator, but admissible compression is constrained by semantic transport, candidate response structure, legal future queries, and the evidence required to distinguish the resulting state classes.
 
@@ -432,6 +430,8 @@ Givan, R., T. Dean, and M. Greig. 2003. Equivalence notions and model minimizati
 
 Hastings, A., K. C. Abbott, K. Cuddington, T. Francis, G. Gellner, Y.-C. Lai, A. Morozov, S. Petrovskii, K. Scranton, and M. L. Zeeman. 2018. Transient phenomena in ecology. *Science* 361:eaat6412. https://doi.org/10.1126/science.aat6412.
 
+Jeppesen, E., M. Søndergaard, T. L. Lauridsen, T. A. Davidson, Z. Liu, N. Mazzeo, C. Trochine, K. Özkan, H. S. Jensen, D. Trolle, F. Starling, X. Lazzaro, L. S. Johansson, R. B. Hansen, L. Liboriussen, S. E. Larsen, F. Landkildehus, S. Egemose, and M. Meerhoff. 2012. Biomanipulation as a restoration tool to combat eutrophication: recent advances and future challenges. *Advances in Ecological Research* 47:411–488. https://doi.org/10.1016/B978-0-12-398315-2.00006-5.
+
 Li, L., T. J. Walsh, and M. L. Littman. 2006. Towards a unified theory of state abstraction for MDPs. In *Proceedings of the 9th International Symposium on Artificial Intelligence and Mathematics (AI&M 2006)*, Fort Lauderdale, Florida.
 
 Littman, M. L., R. S. Sutton, and S. Singh. 2001. Predictive representations of state. *Advances in Neural Information Processing Systems* 14:1555–1561.
@@ -441,3 +441,7 @@ Ogle, K., J. J. Barber, G. A. Barron-Gafford, L. P. Bentley, J. M. Young, T. E. 
 Scheffer, M., S. Carpenter, J. A. Foley, C. Folke, and B. Walker. 2001. Catastrophic shifts in ecosystems. *Nature* 413:591–596. https://doi.org/10.1038/35098000.
 
 Shalizi, C. R., and J. P. Crutchfield. 2001. Computational mechanics: pattern and prediction, structure and simplicity. *Journal of Statistical Physics* 104:817–879. https://doi.org/10.1023/A:1010388907793.
+
+Søndergaard, M., J. P. Jensen, and E. Jeppesen. 2003. Role of sediment and internal loading of phosphorus in shallow lakes. *Hydrobiologia* 506–509:135–145. https://doi.org/10.1023/B:HYDR.0000008611.12704.dd.
+
+Søndergaard, M., E. Jeppesen, T. L. Lauridsen, C. Skov, E. H. van Nes, R. Roijackers, E. Lammens, and R. Portielje. 2007. Lake restoration: successes, failures and long-term effects. *Journal of Applied Ecology* 44:1095–1105. https://doi.org/10.1111/j.1365-2664.2007.01363.x.
