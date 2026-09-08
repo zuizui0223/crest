@@ -36,7 +36,8 @@ def test_metadata_is_consistent_with_manuscript_surface() -> None:
     text = MANUSCRIPT.read_text(encoding="utf-8")
     title = text.splitlines()[0].removeprefix("# ").strip()
     keywords_line = next(line for line in text.splitlines() if line.startswith("**Keywords:**"))
-    manuscript_keywords = [item.strip() for item in keywords_line.split(":", 1)[1].split(";")]
+    keyword_text = keywords_line.removeprefix("**Keywords:**").strip()
+    manuscript_keywords = [item.strip() for item in keyword_text.split(";")]
 
     assert 8 <= len(re.findall(r"\b[\w-]+\b", title)) <= 10
     assert manuscript_keywords == metadata["keywords"]
