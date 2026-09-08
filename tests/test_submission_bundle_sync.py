@@ -7,6 +7,7 @@ CANONICAL = {
     "crest_biology_philosophy_blinded_submission.md",
     "crest_flagship_amnat_v0.2.md",
     "crest_flagship_amnat_v0.3_temporal_cut.md",
+    "crest_flagship_amnat_v0.4_positioned.md",
     "CREST_supplementary_information.md",
     "biology_philosophy_title_page_TEMPLATE.md",
     "SUBMISSION_README.md",
@@ -30,18 +31,26 @@ def test_submission_entrypoints_name_the_blinded_candidate_and_si() -> None:
 
 
 def test_amnat_flagship_is_separate_from_biology_philosophy_submission_entrypoint() -> None:
-    flagship = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.3_temporal_cut.md").read_text(
+    flagship = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.4_positioned.md").read_text(
         encoding="utf-8"
     )
-    predecessor = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.2.md").read_text(
+    theorem_predecessor = (
+        MANUSCRIPT_DIR / "crest_flagship_amnat_v0.3_temporal_cut.md"
+    ).read_text(encoding="utf-8")
+    delta_predecessor = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.2.md").read_text(
         encoding="utf-8"
     )
     assert "The American Naturalist" in flagship
-    assert "temporal cut" in flagship
+    assert "Ecological State at a Temporal Cut: Interaction Across Time" in flagship
+    assert "Literature Cited" in flagship
+    assert "Ogle et al. 2015" in flagship
+    assert "Shalizi and Crutchfield 2001" in flagship
     assert "m(H,\\Theta,F)" in flagship
     assert "1024" in flagship
-    assert "The American Naturalist" in predecessor
-    assert "Delta" in predecessor
+    assert "The American Naturalist" in theorem_predecessor
+    assert "temporal cut" in theorem_predecessor
+    assert "The American Naturalist" in delta_predecessor
+    assert "Delta" in delta_predecessor
 
 
 def test_superseded_submission_material_is_archived() -> None:

@@ -18,17 +18,23 @@ TEMPORAL_SECTION = ROOT / "docs" / "flagship_integration" / "temporal_cut_state_
 
 def test_flagship_headline_is_temporal_cut_state_interaction() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    assert manifest["schema_version"] == 6
+    assert manifest["schema_version"] == 7
     assert manifest["canonical_flagship_manuscript"] == (
+        "manuscript/crest_flagship_amnat_v0.4_positioned.md"
+    )
+    assert manifest["previous_flagship_manuscript"] == (
         "manuscript/crest_flagship_amnat_v0.3_temporal_cut.md"
     )
     assert (ROOT / manifest["canonical_flagship_manuscript"]).is_file()
+    assert manifest["canonical_title"] == (
+        "Ecological State at a Temporal Cut: Interaction Across Time"
+    )
     assert manifest["headline"] == "interaction-generated ecological state at a temporal cut"
     assert manifest["headline_quantity"] == "Delta = D_joint - sum_i D_i"
     assert manifest["headline_extremum"] == "Delta = log2(n) - 1"
     assert "past-by-future interaction" in manifest["headline_temporal_result"]
     assert "b - log2(3)" in manifest["headline_temporal_extremum"]
-    assert "classical substrate" in manifest["novelty_boundary"]
+    assert "prior substrate" in manifest["novelty_boundary"]
     assert any("H log2(r)" in item for item in manifest["supporting_results"])
 
 
@@ -41,6 +47,27 @@ def test_flagship_temporal_geometry_keeps_present_as_cut() -> None:
     assert "O_t^{-1}(y)" in geometry["latent_present"]
     assert "transverse to the cut" in geometry["latent_present"]
     assert "right of the cut" in geometry["future"]
+
+
+def test_flagship_submission_constraints_are_pinned() -> None:
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    constraints = manifest["submission_constraints"]
+    assert constraints["abstract_word_limit"] == 200
+    assert constraints["keyword_max"] == 6
+    assert constraints["current_abstract_words"] <= constraints["abstract_word_limit"]
+    assert constraints["current_keywords"] <= constraints["keyword_max"]
+    assert constraints["current_title_words"] == 9
+
+    literature = manifest["literature_positioning"]
+    for key in (
+        "ecological_memory",
+        "hysteresis_and_state_shifts",
+        "transient_ecology",
+        "causal_predictive_states",
+        "predictive_state_representations",
+        "bisimulation_and_state_abstraction",
+    ):
+        assert literature[key]
 
 
 def test_flagship_section_preserves_claim_firewall() -> None:

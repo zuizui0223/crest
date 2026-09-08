@@ -1,8 +1,10 @@
 {
-  "schema_version": 6,
+  "schema_version": 7,
   "target_journal": "The American Naturalist",
-  "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.3_temporal_cut.md",
-  "previous_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.2.md",
+  "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.4_positioned.md",
+  "previous_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.3_temporal_cut.md",
+  "earlier_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.2.md",
+  "canonical_title": "Ecological State at a Temporal Cut: Interaction Across Time",
   "state_concept": "state is the least information that must survive an observational temporal cut under declared scientific responsibilities",
   "temporal_geometry": {
     "present": "observation cut O_t and its kernel partition B_t, not a finite-width temporal axis",
@@ -25,8 +27,24 @@
     "temporal_anchor_b": 10,
     "temporal_anchor_result": "one visible cut value; 1024 adequate-state classes; 10 total bits; 8.4150374993 bits (84.15%) are genuine history x latent-present x future interaction"
   },
+  "submission_constraints": {
+    "abstract_word_limit": 200,
+    "keyword_max": 6,
+    "preferred_title_words": "approximately 8-10",
+    "current_abstract_words": 193,
+    "current_keywords": 6,
+    "current_title_words": 9
+  },
+  "literature_positioning": {
+    "ecological_memory": "Ogle et al. 2015",
+    "hysteresis_and_state_shifts": "Scheffer et al. 2001",
+    "transient_ecology": "Hastings et al. 2018",
+    "causal_predictive_states": "Shalizi and Crutchfield 2001",
+    "predictive_state_representations": "Littman, Sutton, and Singh 2001",
+    "bisimulation_and_state_abstraction": "Givan, Dean, and Greig 2003; Li, Walsh, and Littman 2006"
+  },
   "zero_debt_lemma": "all D_i = 0 implies D_joint = Delta = 0",
-  "novelty_boundary": "The closure, fixed-point, partition-refinement, marked-cycle, Shapley, and Mobius/Harsanyi mathematics are classical substrate; the CREST contribution is the ecological state interpretation at an observational temporal cut and the cross-responsibility/temporal-position accounting on one declared finite common lift.",
+  "novelty_boundary": "Ecological memory, hysteresis, predictive states, bisimulation, state abstraction, closure, fixed-point, partition-refinement, marked-cycle, Shapley, and Mobius/Harsanyi machinery are prior substrate. CREST claims the temporal-cut state construction and the unbounded interaction-generated information burden among retrospective, latent-contemporaneous, and prospective responsibilities on one declared finite common lift.",
   "supporting_results": [
     "past-by-future interaction m(H,F)=log2(n)-1 is unbounded",
     "genuine three-way temporal interaction m(H,Theta,F)=b-log2(3) is unbounded and asymptotically dominates joint state debt",
@@ -51,6 +69,7 @@
     "temporal_theorem": "docs/crest_temporal_state_interaction_theorem_2026-09-08.md",
     "temporal_flagship_section": "docs/flagship_integration/temporal_cut_state_section.md",
     "temporal_numeric_artifact": "artifacts/crest_temporal_cut_numeric_benchmarks_2026-09-08.json",
+    "submission_readiness_audit": "docs/flagship_integration/amnat_v03_readiness_audit_2026-09-08.md",
     "sequential_witness_module": "crest/sequential_witnesses.py",
     "sequential_regression": "tests/test_crest_sharp_sequential_debt.py",
     "flagship_section": "docs/flagship_integration/joint_debt_delta_section.md",
