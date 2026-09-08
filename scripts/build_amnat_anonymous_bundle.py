@@ -2,9 +2,9 @@
 """Build a deterministic, identity-scrubbed review-code ZIP for the CREST paper.
 
 The archive is whitelist-only and contains the finite implementation needed for
-the v0.6 temporal-cut, companion-realizability, and explicit grammar/trace
-quotient characterization theorem. Repository history, provenance notes,
-empirical bridges, public URLs, and submission metadata are excluded.
+the v0.7 temporal-cut, strict realizability, semantic-access quotient, and
+executable shallow-lake prerequisite audit. Repository history, provenance notes,
+public URLs, and submission metadata are excluded.
 """
 
 from __future__ import annotations
@@ -24,13 +24,19 @@ SOURCE_PATHS = (
     "crest/__init__.py",
     "crest/joint_state.py",
     "crest/temporal_cut.py",
-    "crest/temporal_interaction.py",
     "crest/companion_realizability.py",
     "crest/explicit_temporal_grammar.py",
+    "crest/semantic_access.py",
+    "crest/semantic_temporal_quotient.py",
+    "crest/shallow_lake_prerequisites.py",
     "tests/test_crest_temporal_cut.py",
     "tests/test_companion_realizability.py",
     "tests/test_explicit_temporal_grammar.py",
-    "artifacts/crest_explicit_grammar_benchmarks_2026-09-08.json",
+    "tests/test_semantic_access.py",
+    "tests/test_semantic_temporal_quotient.py",
+    "tests/test_shallow_lake_prerequisites.py",
+    "tests/test_sparse_semantic_access_benchmark.py",
+    "artifacts/crest_sparse_semantic_access_benchmarks_2026-09-08.json",
 )
 
 FORBIDDEN_PATTERNS = {
@@ -43,28 +49,37 @@ FORBIDDEN_PATTERNS = {
 ANONYMOUS_README = """# Anonymous review code
 
 This archive contains the minimal finite implementation used to reproduce the
-manuscript's temporal-cut, strict realizability, and explicit grammar/trace
-quotient results. It intentionally excludes repository history, provenance notes,
-empirical material, author metadata, and external repository links.
+manuscript's temporal-cut, strict realizability, semantic-access quotient, and
+shallow-lake prerequisite results. It intentionally excludes repository history,
+provenance notes, author metadata, and external repository links.
 
-## Reproduce the focused theorem tests
+## Reproduce the focused tests
 
 ```bash
 python -m pip install -e '.[dev]'
 pytest -q \\
   tests/test_crest_temporal_cut.py \\
   tests/test_companion_realizability.py \\
-  tests/test_explicit_temporal_grammar.py
+  tests/test_explicit_temporal_grammar.py \\
+  tests/test_semantic_access.py \\
+  tests/test_semantic_temporal_quotient.py \\
+  tests/test_shallow_lake_prerequisites.py \\
+  tests/test_sparse_semantic_access_benchmark.py
 ```
 
-The canonical benchmark is stored at
-`artifacts/crest_explicit_grammar_benchmarks_2026-09-08.json`.
+The v0.7 canonical semantic witness has four retained history-mode x response-type
+pairs, only one of which licenses the future decoder. For an m=10 exterior
+signature the induced grand quotient contains 1027 classes and the exact
+three-way dividend is approximately 8.004220466 bits. The complete-access v0.6
+4096-class case is retained only as the k=N boundary.
 
-The focused package includes counterfactual decoder rules: allowing the future
-decoder to bypass one or both component interfaces moves the exterior burden to
-a lower-order term and destroys the pure three-way result. The review package
-therefore tests a falsifiable interaction-order characterization rather than a
-directly assigned coalition-value table.
+The exact numeric table is stored at
+`artifacts/crest_sparse_semantic_access_benchmarks_2026-09-08.json` and is
+cross-checked against the quotient code.
+
+The shallow-lake code is a finite counterfactual decision model, not empirical
+validation. It verifies that different declared targets can require no interface,
+history only, response type only, or both retained interfaces.
 """
 
 
@@ -104,32 +119,39 @@ def _manifest(source_payloads: dict[str, bytes]) -> bytes:
         for name, payload in sorted(source_payloads.items())
     }
     manifest = {
-        "schema_version": 3,
+        "schema_version": 4,
         "package_role": "anonymous_review_code",
-        "scope": "finite_exact_explicit_grammar_trace_quotient_theorems",
+        "scope": "finite_exact_sparse_semantic_access_and_prerequisite_audit",
         "files": files,
-        "numeric_anchor": {
+        "semantic_anchor": {
             "bit_depth": 10,
-            "decoder_required_interfaces": ["H", "Theta"],
-            "history_mechanism_classes": 4,
-            "joint_classes": 4096,
-            "history_mechanism_bits": 2,
-            "joint_bits": 12,
-            "genuine_three_way_bits": 10,
-            "state_count_amplification": 1024,
-            "three_way_fraction_of_joint": 10 / 12,
+            "history_modes": 2,
+            "response_types": 2,
+            "semantic_pairs": 4,
+            "addressable_pairs": 1,
+            "grand_classes": 1027,
+            "grand_bits": 10.004220466,
+            "three_way_bits": 8.004220466,
+            "asymptotic_sparsity_penalty_bits": 2,
         },
-        "counterfactual_rules": {
-            "no_required_interface_three_way_bits": 0,
-            "history_only_required_three_way_bits": 0,
-            "mechanism_only_required_three_way_bits": 0,
-            "both_interfaces_required_three_way_bits": 10,
+        "complete_access_boundary": {
+            "semantic_pairs": 4,
+            "addressable_pairs": 4,
+            "bit_depth": 10,
+            "grand_classes": 4096,
+            "grand_bits": 12,
+            "three_way_bits": 10,
+        },
+        "shallow_lake_prerequisites": {
+            "current_status": [],
+            "legacy_sensitive_recovery": ["H"],
+            "mechanism_specific_intervention": ["THETA"],
+            "composed_restoration_policy": ["H", "THETA"],
         },
         "claim_boundary": [
-            "coalition values are induced by explicit legal grammars and trace quotients",
-            "pure three-way interaction is conditional on both interfaces being decoder prerequisites",
-            "alternative decoder rules move the same exterior burden to lower-order terms",
-            "no empirical data are included",
+            "Mobius and Harsanyi accounting are not claimed as mathematical novelty",
+            "semantic access coverage is distinct from syntactic interface prerequisite order",
+            "the shallow-lake audit is an executable finite decision model, not empirical validation",
             "no continuous-time or stochastic generalization is claimed",
         ],
     }
