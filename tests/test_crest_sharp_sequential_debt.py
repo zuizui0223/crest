@@ -1,11 +1,9 @@
 from __future__ import annotations
 
-from itertools import product
 from math import log2
 
 import pytest
 
-from crest.carrier import ComponentCoverage
 from crest.controlled_carrier import (
     ControlledSynchronizedLiftProblem,
     maximal_controlled_common_lift,
@@ -20,78 +18,7 @@ from crest.sequential_debt import (
     sequential_split_bit_bound,
     sequential_split_class_bound,
 )
-
-World = tuple[str, tuple[int, ...], int]
-
-
-def _sharp_problem(
-    response_cardinality: int,
-    horizon: int,
-    include_probe: bool,
-) -> tuple[
-    ControlledSynchronizedLiftProblem,
-    tuple[tuple[int, ...], ...],
-    dict[World, int],
-]:
-    addresses = tuple(product(range(response_cardinality), repeat=horizon))
-    worlds: list[World] = []
-    index: dict[World, int] = {}
-
-    for address in addresses:
-        for depth in range(horizon + 1):
-            world = ("path", address, depth)
-            index[world] = len(worlds)
-            worlds.append(world)
-
-    safe: World = ("safe", (), 0)
-    fragile: World = ("fragile", (), 0)
-    index[safe] = len(worlds)
-    worlds.append(safe)
-    index[fragile] = len(worlds)
-    worlds.append(fragile)
-
-    actions = ("hold", "probe") if include_probe else ("hold",)
-    successors: list[tuple[int | None, ...]] = []
-    for world in worlds:
-        kind, address, depth = world
-        if kind == "path":
-            hold = index[world]
-            if include_probe:
-                probe = (
-                    index[("path", address, depth + 1)]
-                    if depth < horizon
-                    else index[fragile]
-                )
-                successors.append((hold, probe))
-            else:
-                successors.append((hold,))
-        elif kind == "safe":
-            successors.append(
-                (index[safe], index[safe])
-                if include_probe
-                else (index[safe],)
-            )
-        else:
-            successors.append(
-                (None, index[safe]) if include_probe else (None,)
-            )
-
-    problem = ControlledSynchronizedLiftProblem(
-        worlds=tuple(worlds),
-        compatible=(True,) * len(worlds),
-        uncontrollable_actions=(),
-        controllable_actions=actions,
-        uncontrollable_successors=tuple(() for _ in worlds),
-        controllable_successors=tuple(successors),
-        components=(
-            ComponentCoverage(
-                "compatibility-role",
-                ("live",) * len(worlds),
-                ("live",),
-            ),
-        ),
-    )
-    return problem, addresses, index
+from crest.sequential_witnesses import World, sharp_sequential_problem
 
 
 def _label(world: World) -> str:
@@ -115,7 +42,7 @@ def _audit_on_kernel(
     AuditRefinement,
     tuple[int, ...],
 ]:
-    problem, addresses, index = _sharp_problem(
+    problem, addresses, index = sharp_sequential_problem(
         response_cardinality, horizon, include_probe
     )
     kernel = maximal_controlled_common_lift(problem)
@@ -198,8 +125,8 @@ def test_sharp_connected_family_attains_r_to_h_classes() -> None:
 
 def test_same_probe_rescues_exactly_one_world_after_readout() -> None:
     r, horizon = 3, 4
-    old_problem, addresses, old_index = _sharp_problem(r, horizon, False)
-    new_problem, _, new_index = _sharp_problem(r, horizon, True)
+    old_problem, addresses, old_index = sharp_sequential_problem(r, horizon, False)
+    new_problem, _, new_index = sharp_sequential_problem(r, horizon, True)
     old = maximal_controlled_common_lift(old_problem)
     new = maximal_controlled_common_lift(new_problem)
 
