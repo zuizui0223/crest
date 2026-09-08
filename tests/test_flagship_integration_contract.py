@@ -16,7 +16,9 @@ SECTION = ROOT / "docs" / "flagship_integration" / "joint_debt_delta_section.md"
 
 def test_flagship_headline_is_joint_delta_not_component_no_bound() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    assert manifest["schema_version"] == 2
+    assert manifest["schema_version"] == 3
+    assert manifest["canonical_flagship_manuscript"] == "manuscript/crest_flagship_amnat_v0.2.md"
+    assert (ROOT / manifest["canonical_flagship_manuscript"]).is_file()
     assert manifest["headline"] == "non-additive joint ecological state debt"
     assert manifest["headline_quantity"] == "Delta = D_joint - sum_i D_i"
     assert manifest["headline_extremum"] == "Delta = log2(n) - 1"
