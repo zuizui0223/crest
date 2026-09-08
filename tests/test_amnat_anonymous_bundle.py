@@ -107,6 +107,7 @@ def test_anonymous_bundle_runs_focused_theorem_tests(tmp_path: Path) -> None:
             "tests/test_semantic_access.py",
             "tests/test_semantic_temporal_quotient.py",
             "tests/test_shallow_lake_prerequisites.py",
+            "tests/test_sparse_semantic_access_benchmark.py",
         ],
         cwd=extracted,
         text=True,
