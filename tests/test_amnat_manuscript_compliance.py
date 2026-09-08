@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MANUSCRIPT = ROOT / "manuscript" / "crest_flagship_amnat_v0.6_addressability.md"
+MANUSCRIPT = ROOT / "manuscript" / "crest_flagship_amnat_v0.7_semantic_access.md"
 TEXT = MANUSCRIPT.read_text(encoding="utf-8")
 PLAIN = TEXT.replace("**", "").replace("*", "")
 
@@ -20,17 +20,17 @@ def _word_count(text: str) -> int:
 
 def test_amnat_title_is_concise_and_searchable() -> None:
     title = TEXT.splitlines()[0].removeprefix("# ").strip()
-    assert title == "Ecological State at a Temporal Cut: Interface-Dependent Interaction"
+    assert title == "Ecological State at a Temporal Cut: Sparse Semantic Access"
     assert 8 <= _word_count(title) <= 10
 
 
 def test_amnat_major_article_abstract_is_within_200_words() -> None:
     abstract = _section_between("## Abstract", "**Keywords:**")
     assert _word_count(abstract) <= 200
-    assert "explicit finite grammar" in abstract
-    assert "minimal interface prerequisite set" in abstract
-    assert "pure three-way" in abstract
-    assert "compositional access structure" in abstract
+    assert "semantic pairs" in abstract
+    assert "future-addressable" in abstract
+    assert "(N-k)+k2^m" in abstract
+    assert "target relative" in abstract
 
 
 def test_amnat_keywords_do_not_exceed_six() -> None:
@@ -39,12 +39,18 @@ def test_amnat_keywords_do_not_exceed_six() -> None:
     assert 1 <= len(keywords) <= 6
 
 
-def test_model_and_explicit_grammar_precede_main_result() -> None:
+def test_scientific_spine_is_in_correct_order() -> None:
     assert TEXT.index("## 2. State at an observational temporal cut") < TEXT.index(
-        "## 5. Explicit grammar and trace quotient"
+        "## 4. Realizability boundaries"
     )
-    assert TEXT.index("## 5. Explicit grammar and trace quotient") < TEXT.index(
-        "## 6. Main theorem: interface prerequisites determine interaction order"
+    assert TEXT.index("## 4. Realizability boundaries") < TEXT.index(
+        "## 5. Activating companion semantics"
+    )
+    assert TEXT.index("## 5. Activating companion semantics") < TEXT.index(
+        "## 6. Sparse semantic access"
+    )
+    assert TEXT.index("## 6. Sparse semantic access") < TEXT.index(
+        "## 8. Target-relative shallow-lake prerequisite identification"
     )
 
 
@@ -63,16 +69,24 @@ def test_submission_manuscript_has_literature_positioning() -> None:
         assert token in TEXT
 
 
-def test_manuscript_makes_three_way_claim_conditional_and_falsifiable() -> None:
-    assert "Fixed-partition no-go" in TEXT
-    assert "decoder prerequisite set" in TEXT.lower()
-    assert "formula is now a theorem" in TEXT.lower()
-    assert "If \\(F\\) can decode the exterior signature alone, the three-way dividend is zero" in TEXT
-    assert "pure three-way interaction is conditional, not automatic" in TEXT.lower()
+def test_sparse_access_and_full_access_boundary_are_both_explicit() -> None:
+    assert "|Q_{H\\Theta F}|=(N-k)+k2^m" in TEXT
+    assert "m-\\log_2(N/k)+o(1)" in TEXT
+    assert "1027" in TEXT
+    assert "8.00422" in TEXT
+    assert "4096-class" in TEXT
+    assert "full-access boundary" in TEXT
 
 
-def test_novelty_firewall_distinguishes_prior_art_from_crest_claim() -> None:
-    assert "CREST does not claim novelty" in PLAIN
-    assert "composition layer" in PLAIN
-    assert "minimal interface set required to address that information" in PLAIN
-    assert "Higher-order state debt is therefore not assumed" in PLAIN
+def test_novelty_firewall_distinguishes_modeling_from_accounting() -> None:
+    assert "does not claim mathematical novelty for Möbius inversion or unanimity games" in PLAIN
+    assert "prerequisite set" in PLAIN
+    assert "semantic access relation" in PLAIN
+    assert "finite counting" in PLAIN
+    assert "modeling contribution" in PLAIN
+
+
+def test_shallow_lake_is_executable_model_not_empirical_validation() -> None:
+    assert "counterfactual substitution" in TEXT
+    assert "R_{\\rm composed}=\\{H,\\Theta\\}" in TEXT
+    assert "not an empirical estimate" in TEXT
