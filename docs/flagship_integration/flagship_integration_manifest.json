@@ -66,7 +66,11 @@
     "legacy_sensitive_recovery": ["H"],
     "mechanism_specific_intervention": ["THETA"],
     "composed_restoration_policy": ["H", "THETA"],
-    "validation": "minimum prerequisite sets are computed by target factorization and counterfactual interface substitution"
+    "composed_target_output_cardinality": 2,
+    "composed_target_form": "binary history-response concordance versus mismatch diagnostic",
+    "single_interface_factorization": false,
+    "validation": "minimum prerequisite sets are computed by target factorization and counterfactual interface substitution; the binary composed target has both outputs within every fixed-H and every fixed-Theta slice",
+    "literature_boundary": "Sondergaard et al. 2003, Sondergaard et al. 2007, and Jeppesen et al. 2012 support sediment-P legacy, biological inertia, and multiple restoration channels; they do not assert the exact parity diagnostic used as the minimal finite joint-dependence witness"
   },
   "submission_constraints": {
     "abstract_word_limit": 200,
@@ -82,7 +86,10 @@
     "transient_ecology": "Hastings et al. 2018",
     "causal_predictive_states": "Shalizi and Crutchfield 2001",
     "predictive_state_representations": "Littman, Sutton, and Singh 2001",
-    "bisimulation_and_state_abstraction": "Givan, Dean, and Greig 2003; Li, Walsh, and Littman 2006"
+    "bisimulation_and_state_abstraction": "Givan, Dean, and Greig 2003; Li, Walsh, and Littman 2006",
+    "shallow_lake_internal_phosphorus": "Sondergaard, Jensen, and Jeppesen 2003",
+    "shallow_lake_restoration_long_term": "Sondergaard et al. 2007",
+    "shallow_lake_combined_restoration": "Jeppesen et al. 2012"
   },
   "implementation": {
     "temporal_cut_module": "crest/temporal_cut.py",
@@ -92,6 +99,7 @@
     "semantic_quotient_module": "crest/semantic_temporal_quotient.py",
     "semantic_access_theorem": "docs/crest_sparse_semantic_access_theorem_2026-09-08.md",
     "shallow_lake_prerequisite_module": "crest/shallow_lake_prerequisites.py",
+    "shallow_lake_prerequisite_document": "docs/shallow_lake_v07_prerequisite_identification_2026-09-08.md",
     "complete_access_module": "crest/explicit_temporal_grammar.py",
     "direct_value_corollary_module": "crest/compositional_temporal_game.py",
     "abstract_fixed_closure_module": "crest/temporal_interaction.py"
