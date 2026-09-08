@@ -24,6 +24,18 @@ B_t=\ker O_t.
 
 Worlds in one block of \(B_t\) look the same at the cut. CREST asks which distinctions among those worlds may safely be erased.
 
+## Snapshot sufficiency at the cut
+
+Snapshot sufficiency is therefore a factorization question, not an assumption that the cut value is the state. For a required state map \(q_t:\Omega\to Q_t\), the visible present is sufficient exactly when
+
+\[
+O_t(\omega)=O_t(\omega')
+\Longrightarrow
+q_t(\omega)=q_t(\omega').
+\]
+
+Equivalently, \(q_t\) factors through \(O_t\). A same-cut pair that is separated by the adequate state is a finite witness that the visible present is insufficient for the declared responsibility.
+
 The three temporal-position responsibilities developed here are:
 
 - **history / MLTR:** retrospective inherited-semantic distinctions to the left of the cut;
