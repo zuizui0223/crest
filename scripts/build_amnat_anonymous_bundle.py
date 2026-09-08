@@ -35,6 +35,8 @@ SOURCE_PATHS = (
     "tests/test_semantic_access.py",
     "tests/test_semantic_temporal_quotient.py",
     "tests/test_shallow_lake_prerequisites.py",
+    "tests/test_sparse_semantic_access_benchmark.py",
+    "artifacts/crest_sparse_semantic_access_benchmarks_2026-09-08.json",
 )
 
 FORBIDDEN_PATTERNS = {
@@ -61,7 +63,8 @@ pytest -q \\
   tests/test_explicit_temporal_grammar.py \\
   tests/test_semantic_access.py \\
   tests/test_semantic_temporal_quotient.py \\
-  tests/test_shallow_lake_prerequisites.py
+  tests/test_shallow_lake_prerequisites.py \\
+  tests/test_sparse_semantic_access_benchmark.py
 ```
 
 The v0.7 canonical semantic witness has four retained history-mode x response-type
@@ -69,6 +72,10 @@ pairs, only one of which licenses the future decoder. For an m=10 exterior
 signature the induced grand quotient contains 1027 classes and the exact
 three-way dividend is approximately 8.004220466 bits. The complete-access v0.6
 4096-class case is retained only as the k=N boundary.
+
+The exact numeric table is stored at
+`artifacts/crest_sparse_semantic_access_benchmarks_2026-09-08.json` and is
+cross-checked against the quotient code.
 
 The shallow-lake code is a finite counterfactual decision model, not empirical
 validation. It verifies that different declared targets can require no interface,
