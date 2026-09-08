@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MANUSCRIPT = ROOT / "manuscript" / "crest_flagship_amnat_v0.4_positioned.md"
 TEXT = MANUSCRIPT.read_text(encoding="utf-8")
+PLAIN = TEXT.replace("**", "").replace("*", "")
 
 
 def _section_between(start: str, end: str) -> str:
@@ -57,7 +58,7 @@ def test_submission_manuscript_has_literature_positioning() -> None:
 
 
 def test_novelty_firewall_distinguishes_prior_art_from_crest_claim() -> None:
-    assert "CREST does not claim novelty" in TEXT
-    assert "The contribution claimed here is narrower" in TEXT
-    assert "interaction can be unbounded" in TEXT
-    assert "asymptotically dominate" in TEXT
+    assert "CREST does not claim novelty" in PLAIN
+    assert "The contribution claimed here is narrower" in PLAIN
+    assert "interaction can be unbounded" in PLAIN
+    assert "asymptotically dominate" in PLAIN
