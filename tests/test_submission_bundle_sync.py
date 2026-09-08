@@ -10,6 +10,7 @@ CANONICAL = {
     "crest_flagship_amnat_v0.4_positioned.md",
     "CREST_supplementary_information.md",
     "biology_philosophy_title_page_TEMPLATE.md",
+    "amnat_submission_declarations_TEMPLATE.md",
     "SUBMISSION_README.md",
     "SUBMISSION_BLOCKERS_2026-08-24.md",
     "crest_canonical_scope_2026-08-24.md",
@@ -51,6 +52,18 @@ def test_amnat_flagship_is_separate_from_biology_philosophy_submission_entrypoin
     assert "temporal cut" in theorem_predecessor
     assert "The American Naturalist" in delta_predecessor
     assert "Delta" in delta_predecessor
+
+
+def test_amnat_declaration_template_keeps_author_fields_outside_blinded_manuscript() -> None:
+    template = (MANUSCRIPT_DIR / "amnat_submission_declarations_TEMPLATE.md").read_text(
+        encoding="utf-8"
+    )
+    assert "Data and Code Accessibility Statement" in template
+    assert "Generative-AI disclosure" in template
+    assert "Author contribution statement" in template
+    assert "[ANONYMOUS REVIEW ARCHIVE OR JOURNAL FILE IDENTIFIER]" in template
+    assert "[AUTHOR TO CONFIRM THE ACTUAL HUMAN VERIFICATION PROCESS]" in template
+    assert "Do not upload author-identifying material inside the blinded review manuscript" in template
 
 
 def test_superseded_submission_material_is_archived() -> None:
