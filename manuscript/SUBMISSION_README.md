@@ -115,10 +115,34 @@ The finite flagship does **not** claim:
 
 The present is a zero-width observational cut in the finite representation, not a proved metaphysical or continuous-time instantaneous state.
 
+## Anonymous review-code package
+
+A deterministic whitelist-only review archive can now be generated locally:
+
+```bash
+python scripts/build_amnat_anonymous_bundle.py
+```
+
+Default output:
+
+`dist/anonymous_review_code.zip`
+
+The generated ZIP contains only the finite theorem implementation required for this paper, focused temporal-cut/interaction tests, the canonical numeric benchmark, a neutral README, and a SHA-256 manifest. It deliberately excludes `.git` history, provenance notes, empirical application material, public repository URLs, and submission metadata.
+
+Regression tests verify that:
+
+- the archive contains only the declared whitelist;
+- the archive contains no repository-owner handle, GitHub URL, e-mail address, or ORCID token;
+- repeated builds are byte-for-byte identical;
+- every source file is hashed in the anonymous manifest; and
+- after extraction, the focused temporal-cut theorem tests run successfully.
+
+The upload location or anonymous repository/archive identifier remains author-controlled because it depends on the journal submission workflow.
+
 ## Submission blockers that remain author-controlled
 
-1. **Double-anonymous code access.** The public GitHub repository identifies the author. For review, prepare an anonymized code archive or other journal-compatible access surface.
-2. **Data and Code Accessibility Statement.** The journal requires a separate statement after Acknowledgments; final repository/archive identifiers must be inserted there and cited in Literature Cited.
+1. **Anonymous code upload location.** The anonymous ZIP generator is complete; the remaining step is placing the generated archive on the journal-approved review surface without exposing author identity.
+2. **Data and Code Accessibility Statement.** The journal requires a separate statement after Acknowledgments; final anonymous/archive identifiers must be inserted there and cited in Literature Cited.
 3. **Generative-AI disclosure.** Current journal instructions require generative-AI use that contributed to content, analysis, code, or figures to be described transparently in the Methods section. The final wording must accurately describe the actual workflow used for the submitted version.
 4. **Title page / author metadata.** Author names, affiliations, e-mails, ORCIDs, acknowledgments, funding, and contributions belong in the appropriate submission fields or title-page surface for double-anonymous review.
 5. **PDF preparation.** Final review PDF needs double spacing, line numbers, page numbers, and embedded math fonts.
@@ -132,7 +156,8 @@ Run from a clean environment:
 ```bash
 python -m pip install -e '.[dev]'
 pytest
+python scripts/build_amnat_anonymous_bundle.py
 python scripts/verify_crest_philosophy_submission.py --write-report
 ```
 
-The general pytest suite verifies the finite CREST theorem surface, including temporal-cut, temporal-interaction, joint-debt, and sharp-family regressions. `verify_crest_philosophy_submission.py` remains specific to the retained Biology & Philosophy manuscript. The flagship routing contract is pinned by `../docs/flagship_integration/flagship_integration_manifest.json` and its regression tests.
+The general pytest suite verifies the finite CREST theorem surface, including temporal-cut, temporal-interaction, joint-debt, sharp-family, AmNat manuscript-compliance, and anonymous-bundle regressions. `verify_crest_philosophy_submission.py` remains specific to the retained Biology & Philosophy manuscript. The flagship routing contract is pinned by `../docs/flagship_integration/flagship_integration_manifest.json` and its regression tests.
