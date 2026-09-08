@@ -1,9 +1,16 @@
 """Executable finite prerequisite audit for the shallow-lake CREST worked case.
 
-This is a literature-grounded *decision model*, not an empirical fit.  The code
+This is a literature-grounded *decision model*, not an empirical fit. The code
 formalizes the manuscript's target-relative claim: the same coarse present lake
 status can require no retained interface, history only, latent response only, or
 both interfaces depending on the declared restoration target.
+
+The composed target is intentionally binary. It asks whether the history-facing
+sediment-legacy signal and the current response-type sediment signal agree. Thus
+both retained interfaces are required even though the output has only two levels;
+R={H,THETA} is not created by assigning a different label to every semantic pair.
+The parity rule is a minimal formal witness of joint dependence, not a claim that
+published lake-restoration studies themselves use this exact binary diagnostic.
 """
 
 from __future__ import annotations
@@ -54,15 +61,24 @@ def mechanism_specific_intervention_target(world: LakeWorld) -> str:
 
 
 def composed_restoration_policy_target(world: LakeWorld) -> str:
-    """Finite policy whose output genuinely depends on both semantic interfaces."""
+    """Binary joint-dependence witness based on history/response concordance.
 
-    table = {
-        ("no_retained_legacy", "sediment_internal_p"): "sediment_channel",
-        ("no_retained_legacy", "biological_feedback"): "biological_channel",
-        ("retained_nutrient_legacy", "sediment_internal_p"): "legacy_plus_sediment",
-        ("retained_nutrient_legacy", "biological_feedback"): "legacy_plus_biological",
-    }
-    return table[(world.history_mode, world.response_type)]
+    The retrospective interface supplies a sediment-legacy signal and the latent
+    response interface supplies a sediment-response signal. The target reports
+    whether those two signals are concordant. This is an XOR/XNOR-style two-level
+    target: either interface alone is insufficient even though only two outputs
+    exist.
+
+    The labels describe a diagnostic pathway, not a fitted treatment recommendation.
+    """
+
+    history_sediment_signal = world.history_mode == "retained_nutrient_legacy"
+    response_sediment_signal = world.response_type == "sediment_internal_p"
+    return (
+        "standard_pathway"
+        if history_sediment_signal == response_sediment_signal
+        else "cross_interface_review"
+    )
 
 
 def interface_signature(world: LakeWorld, retained: Iterable[str]) -> tuple[str, ...]:
@@ -119,25 +135,39 @@ def counterfactual_substitution_changes_target(
 
     if interface == HISTORY:
         alternatives = {
-            candidate.history_mode for candidate in LAKE_WORLDS
+            candidate.history_mode
+            for candidate in LAKE_WORLDS
             if candidate.history_mode != world.history_mode
         }
-        return any(target(replace(world, history_mode=value)) != target(world) for value in alternatives)
+        return any(
+            target(replace(world, history_mode=value)) != target(world)
+            for value in alternatives
+        )
     if interface == MECHANISM:
         alternatives = {
-            candidate.response_type for candidate in LAKE_WORLDS
+            candidate.response_type
+            for candidate in LAKE_WORLDS
             if candidate.response_type != world.response_type
         }
-        return any(target(replace(world, response_type=value)) != target(world) for value in alternatives)
+        return any(
+            target(replace(world, response_type=value)) != target(world)
+            for value in alternatives
+        )
     raise ValueError("unknown interface")
 
 
 def canonical_target_prerequisites() -> dict[str, tuple[frozenset[str], ...]]:
     return {
         "current_status": minimal_prerequisite_sets(current_status_target),
-        "legacy_sensitive_recovery": minimal_prerequisite_sets(legacy_sensitive_recovery_target),
-        "mechanism_specific_intervention": minimal_prerequisite_sets(mechanism_specific_intervention_target),
-        "composed_restoration_policy": minimal_prerequisite_sets(composed_restoration_policy_target),
+        "legacy_sensitive_recovery": minimal_prerequisite_sets(
+            legacy_sensitive_recovery_target
+        ),
+        "mechanism_specific_intervention": minimal_prerequisite_sets(
+            mechanism_specific_intervention_target
+        ),
+        "composed_restoration_policy": minimal_prerequisite_sets(
+            composed_restoration_policy_target
+        ),
     }
 
 
