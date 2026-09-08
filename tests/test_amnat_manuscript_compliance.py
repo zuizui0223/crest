@@ -63,6 +63,9 @@ def test_submission_manuscript_has_literature_positioning() -> None:
         "Littman, Sutton, and Singh 2001",
         "Givan, Dean, and Greig 2003",
         "Li, Walsh, and Littman 2006",
+        "Søndergaard, Jensen, and Jeppesen 2003",
+        "Søndergaard et al. 2007",
+        "Jeppesen et al. 2012",
         "## Literature Cited",
     )
     for token in required:
@@ -87,6 +90,17 @@ def test_novelty_firewall_distinguishes_modeling_from_accounting() -> None:
 
 
 def test_shallow_lake_is_executable_model_not_empirical_validation() -> None:
-    assert "counterfactual substitution" in TEXT
-    assert "R_{\\rm composed}=\\{H,\\Theta\\}" in TEXT
-    assert "not an empirical estimate" in TEXT
+    shallow = _section_between(
+        "## 8. Target-relative shallow-lake prerequisite identification",
+        "## 9. What the modeling result means",
+    )
+    assert "counterfactual substitution" in shallow
+    assert "R_{\\rm composed}=\\{H,\\Theta\\}" in shallow
+    assert "only two outputs" in shallow
+    assert "standard_pathway" in shallow
+    assert "cross_interface_review" in shallow
+    assert "formal witness of joint dependence" in shallow
+    assert "not a biological law asserted by the restoration literature" in shallow
+    assert "Søndergaard, Jensen, and Jeppesen 2003" in shallow
+    assert "Søndergaard et al. 2007" in shallow
+    assert "Jeppesen et al. 2012" in shallow
