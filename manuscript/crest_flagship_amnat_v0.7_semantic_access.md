@@ -70,6 +70,8 @@ Then \(Q_* = \Omega/{\sim_*}\) preserves the cut observation and every declared 
 
 This conclusion is representation invariant. Two different pre-state signature families induce the same cut-state exactly when every signature in each family factors through the state induced by the other. Thus relabeling, reordering, duplicating, packing, or splitting signatures cannot alter the state when the generated distinction structure is unchanged. Equivalently, adding any signature already determined by the existing cut-state is redundant. The mathematical object is therefore the equivalence relation generated jointly with the cut, not a particular coordinate encoding of that relation.
 
+For a fixed cut, these representation classes exhaust the entire finite state space. Representation-equivalence classes of signature families are in one-to-one correspondence with partitions that refine \(B_t\): every induced cut-state refines the visible partition, and conversely any refinement of \(B_t\) can be realized by one signature whose kernel is that refinement. Ordering states by retained information is therefore exactly partition refinement. Adding a nonredundant signature can only move to a finer state, so \(\log_2|Q|\) is monotone nondecreasing along this order.
+
 ## 3. Retrospective, transverse, and prospective structures are pre-state
 
 ### 3.1 MLTR: retrospective carried semantics from the left
