@@ -72,6 +72,8 @@ This conclusion is representation invariant. Two different pre-state signature f
 
 For a fixed cut, these representation classes exhaust the entire finite state space. Representation-equivalence classes of signature families are in one-to-one correspondence with partitions that refine \(B_t\): every induced cut-state refines the visible partition, and conversely any refinement of \(B_t\) can be realized by one signature whose kernel is that refinement. Ordering states by retained information is therefore exactly partition refinement. Adding a nonredundant signature can only move to a finer state, so \(\log_2|Q|\) is monotone nondecreasing along this order.
 
+States at different cuts can be connected only when the underlying world evolution respects their quotient equivalences. For a declared deterministic map \(\phi_{t\to s}:\Omega_t\to\Omega_s\), a state-level map \(\bar\phi:Q_t\to Q_s\) exists exactly when \(\omega\sim_t\omega'\) implies \(\phi(\omega)\sim_s\phi(\omega')\). When this descent condition holds, \(\bar\phi([\omega]_t)=[\phi(\omega)]_s\) is unique; identity and composition descend. Failure is a state-sufficiency obstruction: one source state class evolves into multiple target state classes, so no deterministic quotient transition is well defined. This finite transport result does not imply temporal monotonicity of \(|Q_t|\) or a continuous-time limit.
+
 ## 3. Retrospective, transverse, and prospective structures are pre-state
 
 ### 3.1 MLTR: retrospective carried semantics from the left
