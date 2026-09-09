@@ -13,7 +13,7 @@
   "state_concept": "the present is a zero-duration observational cut; ecological state is the least quotient induced on that cut by retrospective, transverse latent-present, and prospective distinguishability/access constraints",
   "headline": "retrospective-transverse-prospective cut geometry and sparse prospective access determine the induced ecological state quotient",
   "headline_quantity": "state quotients are computed from pre-state semantic classes, prospective access relations, legal traces, and induced equivalence on the temporal cut",
-  "theory_contribution": "characterize ecological state as the unique coarsest quotient preserving the cut observation and declared pre-state signatures; prove representation invariance and identify representation classes with the partition-refinement interval above the visible cut; then specialize retrospective carried semantics, transverse candidate-safe latent response structure, and prospective query accessibility to quantify sparse prospective access",
+  "theory_contribution": "characterize ecological state as the unique coarsest quotient preserving the cut observation and declared pre-state signatures; prove representation invariance, identify the fixed-cut state space with the partition-refinement interval, and characterize deterministic transport between cuts by quotient descent; then specialize retrospective carried semantics, transverse candidate-safe latent response structure, and prospective query accessibility to quantify sparse prospective access",
   "novelty_boundary": "CREST does not claim novelty for quotient state abstraction, Mobius/Harsanyi accounting, unanimity games, or finite counting once the access relation is fixed. The contribution is the finite temporal-boundary theory, strict companion realizability boundaries, pre-state retrospective/transverse/prospective structure, and explicit separation of prerequisite order from sparse prospective coverage. The manuscript does not claim a proved continuous-time epsilon-to-zero or germ limit theorem.",
   "temporal_boundary_geometry": {
     "present": "zero-duration observational cut represented at one indexed time, not a finite observation interval",
@@ -95,7 +95,7 @@
     "current_abstract_words": 163,
     "current_keywords": 6,
     "current_title_words": 9,
-    "current_main_text_words": 3778
+    "current_main_text_words": 3873
   },
   "literature_positioning": {
     "ecological_memory": "Ogle et al. 2015",
@@ -129,7 +129,9 @@
     "least_cut_quotient_module": "crest/cut_state_quotient.py",
     "least_cut_quotient_theorem": "docs/crest_least_temporal_cut_quotient_theorem_2026-09-09.md",
     "signature_invariance_theorem": "docs/crest_signature_family_invariance_theorem_2026-09-09.md",
-    "cut_state_lattice_theorem": "docs/crest_cut_state_partition_lattice_theorem_2026-09-09.md"
+    "cut_state_lattice_theorem": "docs/crest_cut_state_partition_lattice_theorem_2026-09-09.md",
+    "temporal_cut_transport_module": "crest/temporal_cut_transport.py",
+    "temporal_cut_transport_theorem": "docs/crest_temporal_cut_transport_theorem_2026-09-09.md"
   },
   "supporting_results": [
     "v0.6 complete addressability is the k=N boundary of the sparse semantic-access model",
@@ -148,5 +150,12 @@
     "order": "more information corresponds exactly to partition refinement",
     "realizability": "every refinement of B_t is realizable by one signature whose kernel is that refinement",
     "complexity_monotonicity": "adding signatures can only refine the state, so log2(number of quotient classes) is nondecreasing"
+  },
+  "temporal_cut_transport": {
+    "criterion": "a deterministic world map descends iff source-equivalent worlds always map to target-equivalent worlds",
+    "uniqueness": "the induced quotient transition is unique whenever it exists",
+    "composition": "identity and composition descend for compatible finite world evolutions",
+    "obstruction": "failure means one source state class reaches multiple target state classes",
+    "scope": "no stochastic or multivalued transport theorem, no temporal monotonicity of state cardinality, and no continuous-time limit"
   }
 }

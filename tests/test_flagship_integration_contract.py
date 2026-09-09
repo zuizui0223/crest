@@ -49,6 +49,7 @@ def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
     assert "unique coarsest quotient" in manifest["theory_contribution"]
     assert "representation invariance" in manifest["theory_contribution"]
     assert "partition-refinement interval" in manifest["theory_contribution"]
+    assert "transport between cuts by quotient descent" in manifest["theory_contribution"]
     assert "prospective query accessibility" in manifest["theory_contribution"]
     assert "does not claim novelty" in manifest["novelty_boundary"]
     assert "epsilon-to-zero" in manifest["novelty_boundary"]
@@ -72,6 +73,13 @@ def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
     assert "every refinement of B_t is realizable" in state_space["realizability"]
     assert "nondecreasing" in state_space["complexity_monotonicity"]
 
+    transport = manifest["temporal_cut_transport"]
+    assert "source-equivalent worlds" in transport["criterion"]
+    assert "unique" in transport["uniqueness"]
+    assert "identity and composition descend" in transport["composition"]
+    assert "multiple target state classes" in transport["obstruction"]
+    assert "no temporal monotonicity" in transport["scope"]
+
     implementation = manifest["implementation"]
     assert implementation["least_cut_quotient_module"] == "crest/cut_state_quotient.py"
     assert implementation["least_cut_quotient_theorem"] == (
@@ -83,10 +91,18 @@ def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
     assert implementation["cut_state_lattice_theorem"] == (
         "docs/crest_cut_state_partition_lattice_theorem_2026-09-09.md"
     )
+    assert implementation["temporal_cut_transport_module"] == (
+        "crest/temporal_cut_transport.py"
+    )
+    assert implementation["temporal_cut_transport_theorem"] == (
+        "docs/crest_temporal_cut_transport_theorem_2026-09-09.md"
+    )
     assert (ROOT / implementation["least_cut_quotient_module"]).is_file()
     assert (ROOT / implementation["least_cut_quotient_theorem"]).is_file()
     assert (ROOT / implementation["signature_invariance_theorem"]).is_file()
     assert (ROOT / implementation["cut_state_lattice_theorem"]).is_file()
+    assert (ROOT / implementation["temporal_cut_transport_module"]).is_file()
+    assert (ROOT / implementation["temporal_cut_transport_theorem"]).is_file()
 
 
 def test_flagship_submission_constraints_are_pinned() -> None:
@@ -98,7 +114,7 @@ def test_flagship_submission_constraints_are_pinned() -> None:
     assert constraints["current_abstract_words"] == 163
     assert constraints["current_keywords"] <= constraints["keyword_max"]
     assert constraints["current_title_words"] == 9
-    assert constraints["current_main_text_words"] == 3778
+    assert constraints["current_main_text_words"] == 3873
 
     for value in manifest["literature_positioning"].values():
         assert value
