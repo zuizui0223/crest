@@ -1,0 +1,35 @@
+name: Insert least cut proposition once
+
+on:
+  push:
+    branches:
+      - crest/amnat-least-cut-proposition-2026-09-09
+    paths:
+      - scripts/insert_least_cut_proposition_once.py
+      - .github/workflows/insert-least-cut-proposition-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  insert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: crest/amnat-least-cut-proposition-2026-09-09
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install package
+        run: python -m pip install -e .
+      - name: Insert proposition and recount metadata
+        run: python scripts/insert_least_cut_proposition_once.py
+      - name: Commit generated manuscript update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manuscript/crest_flagship_amnat_v0.7_semantic_access.md manuscript/amnat_submission_metadata.json
+          git diff --cached --check
+          git commit -m "Add least temporal-cut quotient proposition to AmNat manuscript"
+          git push origin HEAD:crest/amnat-least-cut-proposition-2026-09-09
