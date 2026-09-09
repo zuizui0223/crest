@@ -32,9 +32,9 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "docs" / "flagship_integration" / "flagship_integration_manifest.json"
 
 
-def test_flagship_headline_is_sparse_semantic_access_modeling() -> None:
+def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    assert manifest["schema_version"] == 10
+    assert manifest["schema_version"] == 11
     assert manifest["canonical_flagship_manuscript"] == (
         "manuscript/crest_flagship_amnat_v0.7_semantic_access.md"
     )
@@ -45,9 +45,18 @@ def test_flagship_headline_is_sparse_semantic_access_modeling() -> None:
     assert manifest["canonical_title"] == (
         "Ecological State at a Temporal Cut: Sparse Semantic Access"
     )
-    assert "semantic prerequisite order" in manifest["headline"]
-    assert "semantic access relation" in manifest["modeling_contribution"]
+    assert "cut geometry" in manifest["headline"]
+    assert "least quotient" in manifest["theory_contribution"]
+    assert "prospective query accessibility" in manifest["theory_contribution"]
     assert "does not claim novelty" in manifest["novelty_boundary"]
+    assert "epsilon-to-zero" in manifest["novelty_boundary"]
+    assert "modeling_contribution" not in manifest
+
+    geometry = manifest["temporal_boundary_geometry"]
+    assert "zero-duration observational cut" in geometry["present"]
+    assert geometry["visible_fiber"] == "L_t(y)=O_t^{-1}(y)"
+    assert "not complete ontic mechanism identity" in geometry["transverse"]
+    assert "no shrinking-window epsilon-to-zero" in geometry["continuous_time_boundary"]
 
 
 def test_flagship_submission_constraints_are_pinned() -> None:
@@ -56,8 +65,10 @@ def test_flagship_submission_constraints_are_pinned() -> None:
     assert constraints["abstract_word_limit"] == 200
     assert constraints["keyword_max"] == 6
     assert constraints["current_abstract_words"] <= constraints["abstract_word_limit"]
+    assert constraints["current_abstract_words"] == 163
     assert constraints["current_keywords"] <= constraints["keyword_max"]
     assert constraints["current_title_words"] == 9
+    assert constraints["current_main_text_words"] == 3507
 
     for value in manifest["literature_positioning"].values():
         assert value
@@ -105,6 +116,7 @@ def test_shallow_lake_prerequisite_manifest_matches_executable_audit() -> None:
     assert audit["composed_target_output_cardinality"] == 2
     assert audit["single_interface_factorization"] is False
     assert "parity" in audit["literature_boundary"]
+    assert "worked ecological interpretation" in audit["status"]
     assert (
         ROOT / "docs" / "shallow_lake_v07_prerequisite_identification_2026-09-08.md"
     ).is_file()
