@@ -18,7 +18,7 @@ def test_present_is_a_zero_duration_cut_not_a_pregiven_state() -> None:
     assert "not a proved limit of shrinking continuous-time windows" in TEXT
 
 
-def test_cut_state_has_universal_invariance_and_lattice_structure() -> None:
+def test_cut_state_has_universal_invariance_lattice_and_transport_structure() -> None:
     section = _between(
         "## 2. State at a zero-duration temporal cut",
         "## 3. Retrospective, transverse, and prospective structures are pre-state",
@@ -36,6 +36,13 @@ def test_cut_state_has_universal_invariance_and_lattice_structure() -> None:
     assert "Ordering states by retained information is therefore exactly partition refinement" in section
     assert "\\log_2|Q|" in section
     assert "monotone nondecreasing" in section
+    assert "States at different cuts can be connected only when" in section
+    assert "\\phi_{t\\to s}:\\Omega_t\\to\\Omega_s" in section
+    assert "\\omega\\sim_t\\omega'" in section
+    assert "\\phi(\\omega)\\sim_s\\phi(\\omega')" in section
+    assert "identity and composition descend" in section
+    assert "state-sufficiency obstruction" in section
+    assert "does not imply temporal monotonicity" in section
 
 
 def test_three_roles_are_left_transverse_right_constraints() -> None:
