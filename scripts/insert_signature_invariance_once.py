@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from crest.amnat_submission import main_text_word_count
+from crest.amnat_submission import text_word_count
 
 ROOT = Path(__file__).resolve().parents[1]
 MANUSCRIPT = ROOT / "manuscript" / "crest_flagship_amnat_v0.7_semantic_access.md"
@@ -31,7 +31,7 @@ if addition.strip() not in text:
     MANUSCRIPT.write_text(text, encoding="utf-8")
 
 metadata = json.loads(METADATA.read_text(encoding="utf-8"))
-metadata["text_word_count"] = main_text_word_count(text)
+metadata["text_word_count"] = text_word_count(text)
 METADATA.write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 
 manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
