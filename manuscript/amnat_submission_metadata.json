@@ -1,7 +1,7 @@
 {
   "article_type": "Major Article",
   "short_title": "Sparse Semantic Access",
-  "text_word_count": 2306,
+  "text_word_count": 2434,
   "manuscript_elements": [
     "Abstract",
     "Main text",
@@ -19,5 +19,6 @@
   "cover_letter_expected": false,
   "anonymous_review_archive": "dist/anonymous_review_code.zip",
   "review_code_delivery": "upload anonymous ZIP directly to Editorial Manager or provide a reviewer-accessible anonymous repository link",
-  "word_count_method": "Introduction through Conclusion; exclude abstract, Literature Cited, display/inline math, and markdown table rows"
+  "word_count_method": "Assembled review manuscript, Introduction through Conclusion; exclude abstract, Literature Cited, display/inline math, and markdown table rows",
+  "ai_disclosure_source": "docs/amnat_ai_disclosure_2026-09-09.md"
 }
