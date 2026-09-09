@@ -1,28 +1,28 @@
 # The American Naturalist submission declarations — TEMPLATE
 
-This file is a submission-preparation surface, not part of the blinded manuscript. Replace every bracketed field before submission. Do not upload author-identifying material inside the blinded review manuscript.
+This file is a submission-preparation surface, not part of the blinded manuscript. Replace the remaining bracketed author/publication fields before submission. Do not upload author-identifying material inside the blinded review manuscript.
 
 ## 1. Data and Code Accessibility Statement
 
 ### Double-anonymous review version
 
-> All code required to reproduce the finite mathematical and modeling results reported in this manuscript is provided in an anonymized review archive at **[ANONYMOUS REVIEW ARCHIVE OR JOURNAL FILE IDENTIFIER]**. The archive contains the temporal-cut implementation, strict companion-realizability audit, companion semantic quotients, sparse semantic-access state quotient, focused regression tests, and the executable shallow-lake prerequisite audit. The shallow-lake component is a literature-grounded finite decision model rather than an empirical data analysis. The review archive is generated deterministically from a whitelist-only source package and excludes repository history and author-identifying metadata.
+> All code required to reproduce the finite mathematical and modeling results reported in this manuscript is supplied as an anonymized review ZIP uploaded directly with the Editorial Manager submission. The archive contains the temporal-cut implementation, strict companion-realizability audit, companion semantic quotients, sparse semantic-access state quotient, focused regression tests, and the executable shallow-lake prerequisite audit, together with a README describing reproduction steps. The shallow-lake component is a literature-grounded finite decision model rather than an empirical data analysis. The review archive is generated deterministically from a whitelist-only source package and excludes repository history and author-identifying metadata.
 
 ### Publication / post-acceptance version
 
 > All code required to reproduce the finite mathematical and modeling results reported in this manuscript is archived at **[PUBLIC REPOSITORY OR DOI]**. The archived release contains the theorem implementation, semantic-access quotient, shallow-lake prerequisite audit, focused regression tests, and canonical numerical benchmarks. The archived software release is cited in the Literature Cited as **[SOFTWARE CITATION]**.
 
-Do not substitute the public author-identifying repository URL into the blinded review version.
+Do not substitute a public author-identifying repository URL into the blinded review version.
 
-## 2. Generative-AI disclosure — author confirmation required
+## 2. Generative-AI disclosure
 
-The final wording must describe the actual submitted workflow rather than a generic policy statement.
+The review manuscript is assembled with the canonical disclosure stored at `docs/amnat_ai_disclosure_2026-09-09.md` and inserted as Section 11.1, **Reproducibility methods and AI-assisted development**.
 
-Working disclosure draft:
+Canonical disclosure:
 
-> Generative-AI tools were used during development of this work to assist with **[SELECT ALL THAT APPLY: mathematical exploration / code drafting / code review / literature-search assistance / manuscript drafting / language revision / figure preparation]**. All theorem statements, proofs, numerical claims, citations, code included in the review package, and final manuscript text were **[AUTHOR TO CONFIRM THE ACTUAL HUMAN VERIFICATION PROCESS]**. The authors take responsibility for the accuracy and integrity of the submitted work.
+> Generative AI tools were used during mathematical exploration, code drafting and troubleshooting, literature-search assistance, and manuscript drafting and language revision. AI outputs were treated as provisional and were accepted only after human review. Human verification included direct review and editing of the submitted manuscript and code, execution of the full automated test suite across supported Python versions, and independent recomputation of key finite-state numerical claims, including the sparse-access benchmarks and broader parameter sweeps. The submitting authorship retains full responsibility for all content.
 
-Before submission, replace the bracketed fields with an exact account of use. Do not state that an item was independently verified unless that verification was actually performed.
+This wording reflects the documented submitted workflow. Do not weaken the human-verification language or add uses such as figure generation unless they actually occurred.
 
 ## 3. Author contribution statement — nonblinded submission metadata
 
@@ -63,9 +63,9 @@ Conflicts of interest:
 
 > **[DECLARATION]**
 
-## 6. Review-code handoff
+## 6. Review-code and review-manuscript handoff
 
-Generate the anonymous archive from a clean checkout with:
+Generate the anonymous code archive from a clean checkout with:
 
 ```bash
 python scripts/build_amnat_anonymous_bundle.py
@@ -75,22 +75,24 @@ Default output:
 
 `dist/anonymous_review_code.zip`
 
-Before uploading, verify that the generated archive passes:
+Generate the exact review manuscript, including the AI disclosure, with:
 
 ```bash
-pytest tests/test_amnat_anonymous_bundle.py
+python scripts/build_amnat_review_manuscript.py
+python scripts/build_amnat_title_page.py
 ```
 
-The final anonymous archive location is then inserted into Section 1 above.
+Before uploading, verify the full test suite and anonymous bundle checks pass. The anonymous code ZIP can be uploaded directly to Editorial Manager; an external anonymous repository link is optional for review.
 
 ## 7. Final submission checklist
 
-- [ ] Canonical manuscript is `crest_flagship_amnat_v0.7_semantic_access.md`.
+- [ ] Scientific source manuscript is `crest_flagship_amnat_v0.7_semantic_access.md`.
+- [ ] Review manuscript is generated with `scripts/build_amnat_review_manuscript.py` and contains Section 11.1 AI disclosure.
 - [ ] Blinded manuscript contains no author names, affiliations, acknowledgments, repository-owner handles, or identifying URLs.
 - [ ] Abstract remains at or below 200 words.
 - [ ] Keywords remain at or below 6.
-- [ ] Data and Code Accessibility Statement contains the correct anonymous review identifier.
-- [ ] Generative-AI disclosure accurately describes the submitted workflow.
+- [ ] Review title-page word count matches `amnat_submission_metadata.json`.
+- [ ] Anonymous review-code ZIP is attached in Editorial Manager or an equivalent reviewer-accessible anonymous link is supplied.
 - [ ] Software/public archive citation is prepared for the nonblinded or accepted version as appropriate.
 - [ ] Author contributions, funding, conflicts, and ORCID metadata are complete outside the blinded manuscript.
 - [ ] Review PDF is double-spaced, line-numbered, page-numbered, and has embedded math fonts.
