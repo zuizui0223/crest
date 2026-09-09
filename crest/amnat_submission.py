@@ -12,22 +12,18 @@ METADATA = ROOT / "manuscript" / "amnat_submission_metadata.json"
 DEFAULT_TITLE_PAGE = ROOT / "dist" / "amnat_anonymous_title_page.md"
 
 WORD_RE = re.compile(r"\b[A-Za-z0-9][A-Za-z0-9'’-]*\b")
-DISPLAY_MATH_RE = re.compile(r"\\\[.*?\\\]", re.DOTALL)
-INLINE_MATH_RE = re.compile(r"\\\(.*?\\\)", re.DOTALL)
 
 
 def main_text(text: str) -> str:
-    """Return Introduction-through-Conclusion text used for title-page counting."""
+    """Return Introduction-through-Conclusion text for the reported word count."""
 
     body = text.split("## 1. Introduction", 1)[1]
-    body = body.split("## Literature Cited", 1)[0]
-    body = DISPLAY_MATH_RE.sub(" ", body)
-    body = INLINE_MATH_RE.sub(" ", body)
-    body = "\n".join(line for line in body.splitlines() if not line.lstrip().startswith("|"))
-    return body
+    return body.split("## Literature Cited", 1)[0]
 
 
 def text_word_count(text: str) -> int:
+    """Count all word-like tokens in the main text, including math/table source."""
+
     return len(WORD_RE.findall(main_text(text)))
 
 
