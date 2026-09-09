@@ -6,7 +6,9 @@
 
 Target: **The American Naturalist — Major Article**.
 
-Canonical manuscript: `crest_flagship_amnat_v0.7_semantic_access.md`.
+Frozen scientific source: `crest_flagship_amnat_v0.7_semantic_access.md`.
+
+The exact review manuscript is generated from that scientific source plus the transparent AI/reproducibility Methods disclosure stored in `docs/amnat_ai_disclosure_2026-09-09.md`.
 
 The paper defines ecological state as the least information that must survive an observational temporal cut under a declared scientific contract.
 
@@ -18,26 +20,24 @@ The three motivating companion responsibilities remain non-circular and non-iden
 
 ## v0.7 scientific center
 
-The flagship no longer treats full interface addressability as implicit.
-
-It distinguishes two modeling objects:
+The flagship distinguishes two modeling objects:
 
 1. the minimum prerequisite set of retained interfaces needed before a future target is well formed; and
 2. the semantic access relation describing on which retained history-mode x response-type combinations the target is actually addressable.
 
-If `N` semantic pairs exist, `k` are addressable, and an addressable future query distinguishes `2^m` exterior signatures, then the exact grand-coalition quotient is
+If `N` semantic pairs exist, `k` are addressable, and an addressable future query distinguishes `2^m` exterior signatures, then
 
 \[
-|Q_{H\Theta F}|=(N-k)+k2^m.
+|Q_{H\Theta F}|=(N-k)+k2^m,
 \]
 
-When both H and Theta remain syntactic prerequisites, the three-way state dividend is
+and when both H and Theta remain syntactic prerequisites,
 
 \[
 d_{H\Theta F}=\log_2\frac{(N-k)+k2^m}{N}
 \]
 
-and approaches
+with asymptotic form
 
 \[
 m-\log_2(N/k).
@@ -90,15 +90,38 @@ The flagship does **not** claim mathematical novelty for:
 
 The contribution is the modeling architecture: non-circular companion semantics, strict realizability boundaries, target-relative interface-prerequisite identification, explicit semantic access coverage, and propagation of both objects into one exact temporal-cut state quotient.
 
-## AmNat submission metadata
+## Exact AmNat review-manuscript assembly
 
-The current American Naturalist instructions require the review title page to identify the article type, keywords, text word count, and manuscript elements; Editorial Manager also requires a short title of no more than 40 characters. Cover letters are not expected.
+Generate the exact anonymous review manuscript with:
+
+```bash
+python scripts/build_amnat_review_manuscript.py
+```
+
+Default output:
+
+`dist/amnat_anonymous_review_manuscript.md`
+
+The builder inserts Section 11.1, **Reproducibility methods and AI-assisted development**, immediately before Discussion. The disclosure records the documented uses of generative AI for mathematical exploration, code drafting/troubleshooting, literature-search assistance, manuscript drafting, and language revision, together with the human verification actually performed.
+
+The frozen scientific source does not contain this submission-only disclosure, which prevents journal-policy metadata from changing the scientific v0.7 text while keeping the submitted manuscript exactly reproducible.
+
+## AmNat submission metadata
 
 The machine-readable surface is:
 
 `amnat_submission_metadata.json`
 
-Generate the anonymous title-page metadata with:
+Current pinned values:
+
+- article type: **Major Article**;
+- short title: **Sparse Semantic Access**;
+- keywords: **6**;
+- assembled review-manuscript text count: **2434 words**;
+- manuscript elements: Abstract; Main text; 1 table; Literature Cited;
+- cover letter expected: **false**.
+
+Generate the anonymous title page with:
 
 ```bash
 python scripts/build_amnat_title_page.py
@@ -108,7 +131,31 @@ Default output:
 
 `dist/amnat_anonymous_title_page.md`
 
-The text word count is computed reproducibly from the canonical manuscript (Introduction through Conclusion, excluding the abstract, Literature Cited, display/inline mathematics, and markdown table rows) and regression-tested against the pinned metadata value.
+The text word count is computed reproducibly from the assembled review manuscript (Introduction through Conclusion, excluding the abstract, Literature Cited, display/inline mathematics, and markdown table rows) and regression-tested against the pinned metadata value.
+
+## Anonymous review-code package
+
+Generate the deterministic whitelist-only review archive with:
+
+```bash
+python scripts/build_amnat_anonymous_bundle.py
+```
+
+Default output:
+
+`dist/anonymous_review_code.zip`
+
+The v0.7 archive contains the minimal code needed for:
+
+- temporal-cut representation;
+- strict companion-realizability checks;
+- companion semantic quotients;
+- sparse semantic access;
+- semantic trace-equivalence quotient calculation;
+- exact `N-k+k*2^m` benchmark checks;
+- executable shallow-lake prerequisite and counterfactual-substitution audit.
+
+For double-anonymous review, this ZIP can be uploaded **directly to Editorial Manager**. An external anonymous repository URL is therefore optional, not a submission blocker.
 
 ## Retained predecessor manuscripts
 
@@ -158,35 +205,14 @@ The flagship does **not** claim:
 - statistical confounding;
 - continuous-time, stochastic, infinite-state, or approximate generality.
 
-## Anonymous review-code package
-
-Generate the deterministic whitelist-only review archive with
-
-```bash
-python scripts/build_amnat_anonymous_bundle.py
-```
-
-Default output:
-
-`dist/anonymous_review_code.zip`
-
-The v0.7 archive contains the minimal code needed for:
-
-- temporal-cut representation;
-- strict companion-realizability checks;
-- companion semantic quotients;
-- sparse semantic access;
-- semantic trace-equivalence quotient calculation;
-- exact `N-k+k*2^m` benchmark checks;
-- executable shallow-lake prerequisite and counterfactual-substitution audit.
-
 ## Submission blockers that remain author-controlled
 
-1. **Anonymous code upload location.** The generator is complete; the review-safe upload surface depends on the journal workflow.
-2. **Data and Code Accessibility Statement.** Insert the final anonymous/archive identifier in `amnat_submission_declarations_TEMPLATE.md`.
-3. **Generative-AI disclosure.** Confirm actual uses and human verification.
-4. **Author metadata.** Names, affiliations, e-mails, ORCIDs, acknowledgments, funding, contributions, and conflicts stay outside the blinded manuscript and must be entered in Editorial Manager as appropriate.
-5. **PDF preparation.** Final review PDF needs double spacing, line numbering, page numbering, and embedded math fonts.
+The mathematical, ecological-modeling, anonymous-code, AI-disclosure, title-page-metadata, and reproducibility surfaces are complete. Remaining author-controlled fields are:
+
+1. **Author metadata in Editorial Manager:** names, affiliations, e-mail addresses, ORCIDs.
+2. **Acknowledgments / funding / contributions / conflicts:** final identifying statements outside the blinded review manuscript as required by the journal workflow.
+3. **Editorial choices:** suggested reviewers and preferred associate editor, if supplied.
+4. **Final Editorial Manager PDF check:** inspect the system-generated PDF for math rendering after upload.
 
 A cover letter is not a blocker because The American Naturalist states that cover letters are not expected; any necessary message belongs in the Editorial Manager Comments field.
 
@@ -198,7 +224,8 @@ Run from a clean environment:
 python -m pip install -e '.[dev]'
 pytest
 python scripts/build_amnat_anonymous_bundle.py
+python scripts/build_amnat_review_manuscript.py
 python scripts/build_amnat_title_page.py
 ```
 
-The general pytest suite verifies the temporal-cut surface, definition firewall, strict realizability no-go, semantic-access quotient, shallow-lake prerequisite audit, AmNat manuscript compliance, submission metadata, generated anonymous title page, and anonymous review bundle.
+The general pytest suite verifies the temporal-cut surface, definition firewall, strict realizability no-go, semantic-access quotient, shallow-lake prerequisite audit, AmNat manuscript compliance, assembled review manuscript, AI disclosure, submission metadata, generated anonymous title page, and anonymous review bundle.
