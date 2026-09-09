@@ -1,0 +1,31 @@
+name: Insert signature invariance once
+
+on:
+  push:
+    branches:
+      - crest/amnat-signature-invariance-2026-09-09
+
+permissions:
+  contents: write
+
+jobs:
+  insert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: crest/amnat-signature-invariance-2026-09-09
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install package
+        run: python -m pip install -e '.[dev]'
+      - name: Insert invariance statement and sync metadata
+        run: python scripts/insert_signature_invariance_once.py
+      - name: Commit generated updates
+        run: |
+          git config user.name 'ZHANG RUIQI'
+          git config user.email 'rachelzhang0223@gmail.com'
+          git add manuscript/crest_flagship_amnat_v0.7_semantic_access.md manuscript/amnat_submission_metadata.json docs/flagship_integration/flagship_integration_manifest.json
+          git diff --cached --quiet || git commit -m 'Promote signature invariance into canonical manuscript'
+          git push
