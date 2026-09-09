@@ -47,6 +47,7 @@ def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
     )
     assert "cut geometry" in manifest["headline"]
     assert "unique coarsest quotient" in manifest["theory_contribution"]
+    assert "representation invariance" in manifest["theory_contribution"]
     assert "prospective query accessibility" in manifest["theory_contribution"]
     assert "does not claim novelty" in manifest["novelty_boundary"]
     assert "epsilon-to-zero" in manifest["novelty_boundary"]
@@ -58,13 +59,22 @@ def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
     assert "not complete ontic mechanism identity" in geometry["transverse"]
     assert "no shrinking-window epsilon-to-zero" in geometry["continuous_time_boundary"]
 
+    invariance = manifest["representation_invariance"]
+    assert "mutually factors through" in invariance["criterion"]
+    assert "leaves the quotient unchanged" in invariance["redundancy_corollary"]
+    assert "generated equivalence relation" in invariance["interpretation"]
+
     implementation = manifest["implementation"]
     assert implementation["least_cut_quotient_module"] == "crest/cut_state_quotient.py"
     assert implementation["least_cut_quotient_theorem"] == (
         "docs/crest_least_temporal_cut_quotient_theorem_2026-09-09.md"
     )
+    assert implementation["signature_invariance_theorem"] == (
+        "docs/crest_signature_family_invariance_theorem_2026-09-09.md"
+    )
     assert (ROOT / implementation["least_cut_quotient_module"]).is_file()
     assert (ROOT / implementation["least_cut_quotient_theorem"]).is_file()
+    assert (ROOT / implementation["signature_invariance_theorem"]).is_file()
 
 
 def test_flagship_submission_constraints_are_pinned() -> None:
@@ -76,7 +86,7 @@ def test_flagship_submission_constraints_are_pinned() -> None:
     assert constraints["current_abstract_words"] == 163
     assert constraints["current_keywords"] <= constraints["keyword_max"]
     assert constraints["current_title_words"] == 9
-    assert constraints["current_main_text_words"] == 3618
+    assert constraints["current_main_text_words"] == 3700
 
     for value in manifest["literature_positioning"].values():
         assert value
