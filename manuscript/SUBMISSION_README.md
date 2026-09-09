@@ -8,19 +8,19 @@ Target: **The American Naturalist — Major Article**.
 
 Canonical manuscript: `crest_flagship_amnat_v0.7_semantic_access.md`.
 
-The paper defines ecological state as the least information that must survive an observational temporal cut under a declared scientific contract.
+The paper treats the present as a zero-duration observational cut and defines ecological state as the least quotient induced on that cut by retrospective, transverse latent-present, and prospective distinguishability constraints.
 
 The three motivating companion responsibilities remain non-circular and non-identical:
 
-- **MLTR / history H:** primitive replacement histories first, complete carried-map equivalence second;
-- **MRM / latent response Theta:** primitive candidate laws first, complete response-type equivalence second;
-- **CCOC / future F:** controlled law plus exogenously declared legal query grammar, response quotient afterward.
+- **MLTR / retrospective H:** primitive replacement histories first, complete carried-map equivalence second; this is the left-of-cut structure;
+- **MRM / transverse latent present Theta:** primitive candidate laws first, complete response-type equivalence second; this partitions the observation fiber without claiming full ontic mechanism identity;
+- **CCOC / prospective F:** controlled law plus exogenously declared right-of-cut query grammar, response quotient afterward.
 
 ## v0.7 scientific center
 
 The flagship no longer treats full interface addressability as implicit.
 
-It distinguishes two modeling objects:
+It distinguishes two structures controlling prospective refinement of the cut-state:
 
 1. the minimum prerequisite set of retained interfaces needed before a future target is well formed; and
 2. the semantic access relation describing on which retained history-mode x response-type combinations the target is actually addressable.
@@ -66,7 +66,7 @@ These results prevent older abstract closure cascades from being overinterpreted
 
 ## Executable shallow-lake prerequisite audit
 
-The shallow-lake worked case is an executable finite decision model. Four worlds behind one coarse visible status cross two retrospective modes with two latent-response types. The code tests target factorization and counterfactual substitution of each interface.
+The shallow-lake worked case is a worked ecological interpretation with an executable finite model. Four worlds behind one coarse visible status cross two retrospective modes with two latent-response types. The code tests target factorization and counterfactual substitution of each interface.
 
 It returns:
 
@@ -88,7 +88,7 @@ The flagship does **not** claim mathematical novelty for:
 - quotient state abstraction;
 - finite counting after an access relation is fixed.
 
-The contribution is the modeling architecture: non-circular companion semantics, strict realizability boundaries, target-relative interface-prerequisite identification, explicit semantic access coverage, and propagation of both objects into one exact temporal-cut state quotient.
+The contribution is a finite theory of state at a temporal boundary: non-circular retrospective/transverse/prospective semantics, strict realizability boundaries, sparse prospective access, and the exact cut-state quotient induced by those structures.
 
 ## AmNat submission metadata
 
@@ -133,30 +133,30 @@ The legacy verifier continues to target `crest_biology_philosophy_blinded_submis
 ## Current scientific spine
 
 ```text
-possible ecological worlds Omega
--> observational temporal cut O_t
--> companion semantic outputs
+raw ecological possibilities Omega
+-> zero-duration observational cut O_t
+-> visible-cut fibers O_t^{-1}(y)
+-> retrospective / transverse / prospective pre-state structures
 -> strict realizability no-go
--> target prerequisite identification
--> semantic access relation A_f
--> legal semantic traces
--> induced quotient Q_S
+-> prerequisite structure + semantic access relation A_f
+-> legal prospective traces
+-> least induced cut-state quotient Q_S
 -> interaction accounting
--> evidence licensing downstream
+-> ecological interpretation / evidence downstream
 ```
 
 ## Claim firewall
 
 The flagship does **not** claim:
 
-- that history, latent response, and future are independent ontic coordinates;
+- that retrospective, transverse, and prospective structures are independent ontic coordinates;
 - that they exhaust every ecological state responsibility;
 - that all legal future grammars require both companion interfaces;
 - that semantic access is complete across the interface product;
 - that prerequisite sets or access relations can be inferred from state accounting alone;
 - that the shallow-lake decision model is empirical validation;
 - statistical confounding;
-- continuous-time, stochastic, infinite-state, or approximate generality.
+- a proved continuous-time epsilon-to-zero or germ limit, or stochastic, infinite-state, or approximate generality.
 
 ## Anonymous review-code package
 
