@@ -390,11 +390,33 @@ Interaction accounting is a diagnostic consequence of those answers.
 
 ## 10. Relation to existing state concepts
 
-Ecological memory, hysteresis, and transient dynamics establish that antecedent conditions can affect current and future behavior (Ogle et al. 2015; Scheffer et al. 2001; Hastings et al. 2018). CREST does not claim novelty for temporal dependence itself.
+CREST sits at the intersection of several literatures that already make time, hidden variables, or task-relative equivalence central to ecological modeling. Its claim is not that these ideas are absent from ecology. The distinction is representational: those literatures usually establish that antecedent conditions, latent processes, or future consequences matter, whereas CREST asks which distinctions among possible worlds must be retained at one observational cut for a declared scientific task.
 
-Predictive and causal state theories construct states from equivalence of future predictions (Shalizi and Crutchfield 2001; Littman, Sutton, and Singh 2001). State abstraction and bisimulation preserve declared transition or decision properties while removing irrelevant distinctions (Givan, Dean, and Greig 2003; Li, Walsh, and Littman 2006). CREST shares this quotient substrate and does not claim it as new mathematics.
+### 10.1 Ecological memory and historical contingency
 
-The narrower contribution is a scientific modeling architecture in which retrospective semantics, latent-response equivalence, and future-query legality are defined separately before state; strict realizability checks prevent circular temporal interpretations; and both prerequisite structure and semantic coverage are propagated into one exact state quotient.
+Ecological-memory models make antecedent conditions explicit. Ogle et al. (2015), for example, quantify how past environmental conditions contribute to current ecological processes and emphasize the length, temporal pattern, and strength of memory. Historical contingency in community assembly provides a complementary mechanism-level perspective: priority effects can make the order and timing of immigration alter later community structure and function, producing alternative stable or transient outcomes (Fukami 2015). These approaches establish that present behavior can depend on the past, but they do not by themselves determine a minimum retained representation of that past.
+
+CREST therefore does not equate “history matters” with “retain the complete history.” Its retrospective interface is a quotient. Two raw histories are merged when their carried semantics are identical for the declared contract, and separated only when that inherited difference changes what the state must support. In this sense ecological memory motivates the need for retrospective information, while CREST asks which historical distinctions survive compression at the temporal cut.
+
+### 10.2 Hysteresis, alternative states, and restoration
+
+The alternative-states literature makes a second distinction important for CREST. Hysteresis and regime shifts show that similar current environmental conditions can be compatible with different dynamical basins or recovery trajectories (Scheffer et al. 2001). Reviews of alternative stable states emphasize that state changes can be understood through changes in system variables or in underlying drivers and that management requires attention to resilience and hysteresis, not only to the observed configuration (Beisner, Haydon, and Cuddington 2003). Restoration theory likewise shows that strong feedbacks can make degraded systems resistant to attempts that restore only historical disturbance regimes or abiotic conditions (Suding, Gross, and Houseman 2004).
+
+CREST uses these results as a warning against identifying ecological state with the currently visible configuration. However, it makes a narrower move than alternative-state theory: it does not attempt to infer basins of attraction or prove that a system has multiple stable states. Instead it asks whether the declared future task requires distinctions in retrospective history, latent response structure, or both. The shallow-lake example is deliberately framed this way. Sediment legacy and response mechanism are not called two “states” of the lake by fiat; they are candidate interfaces whose necessity is tested relative to a restoration target.
+
+### 10.3 Latent ecological state in state-space models
+
+Ecological state-space models provide perhaps the closest familiar use of the word state. They separate an unobserved process state from an observation process and are widely used for population dynamics, movement, capture-recapture, and other ecological time series (Auger-Méthé et al. 2021). Their central inferential problem is to estimate latent ecological quantities while accounting for process variation and observation error.
+
+CREST addresses a logically earlier question. A state-space model normally begins after the analyst has specified what variables constitute the latent state and how that state evolves. CREST instead asks which distinctions must be represented at all before such estimation is attempted. The observational cut \(O_t\) is therefore not an observation equation for a pre-given latent vector. It is the baseline equivalence from which an adequate state quotient is constructed under the declared contract. This makes CREST complementary to state-space inference rather than a replacement for it: state-space methods estimate a chosen latent representation; CREST audits whether that representation retains the distinctions demanded by the scientific task.
+
+### 10.4 Predictive states and state abstraction
+
+Predictive-state and state-abstraction theories supply the closest mathematical substrate. Computational mechanics groups histories by equality of predictive consequences (Shalizi and Crutchfield 2001), predictive state representations encode state through action-conditional predictions (Littman, Sutton, and Singh 2001), and bisimulation or state-abstraction methods merge states while preserving declared transition or decision properties (Givan, Dean, and Greig 2003; Li, Walsh, and Littman 2006). CREST adopts the same general discipline: states are quotients induced by what must be preserved, not arbitrary labels attached to worlds.
+
+The additional modeling step is to keep several scientific responsibilities separate before quotient composition. Retrospective carried meaning, latent response equivalence, and future-query legality are defined by different companion semantics, and the realizability audit prevents the final state from being used circularly to define those inputs. The sparse-access result then distinguishes two objects that are often collapsed in a single future-equivalence relation: which interfaces a query requires, and on which semantic combinations of those interfaces that query is actually addressable.
+
+The resulting contribution is therefore not a new generic theory of quotient states. It is an identification discipline for ecological modeling: distinguish the visible cut from the adequate state, derive retrospective and latent interfaces from their own semantics, specify the future task independently, identify prerequisite structure and semantic coverage, and only then compute the state quotient. That placement is what connects ecological memory, historical contingency, restoration dynamics, latent-state inference, and predictive-state abstraction without treating any of them as interchangeable.
 
 ## 11. Scope and supporting mathematics
 
@@ -426,6 +448,12 @@ In this view, higher-order state interaction is not an intrinsic property of tim
 
 ## Literature Cited
 
+Auger-Méthé, M., K. Newman, D. Cole, F. Empacher, R. Gryba, A. A. King, V. Leos-Barajas, J. Mills Flemming, A. Nielsen, G. Petris, and L. Thomas. 2021. A guide to state-space modeling of ecological time series. *Ecological Monographs* 91:e01470. https://doi.org/10.1002/ecm.1470.
+
+Beisner, B. E., D. T. Haydon, and K. Cuddington. 2003. Alternative stable states in ecology. *Frontiers in Ecology and the Environment* 1:376–382. https://doi.org/10.1890/1540-9295(2003)001[0376:ASSIE]2.0.CO;2.
+
+Fukami, T. 2015. Historical contingency in community assembly: integrating niches, species pools, and priority effects. *Annual Review of Ecology, Evolution, and Systematics* 46:1–23. https://doi.org/10.1146/annurev-ecolsys-110411-160340.
+
 Givan, R., T. Dean, and M. Greig. 2003. Equivalence notions and model minimization in Markov decision processes. *Artificial Intelligence* 147:163–223. https://doi.org/10.1016/S0004-3702(02)00376-4.
 
 Hastings, A., K. C. Abbott, K. Cuddington, T. Francis, G. Gellner, Y.-C. Lai, A. Morozov, S. Petrovskii, K. Scranton, and M. L. Zeeman. 2018. Transient phenomena in ecology. *Science* 361:eaat6412. https://doi.org/10.1126/science.aat6412.
@@ -445,3 +473,5 @@ Shalizi, C. R., and J. P. Crutchfield. 2001. Computational mechanics: pattern an
 Søndergaard, M., J. P. Jensen, and E. Jeppesen. 2003. Role of sediment and internal loading of phosphorus in shallow lakes. *Hydrobiologia* 506–509:135–145. https://doi.org/10.1023/B:HYDR.0000008611.12704.dd.
 
 Søndergaard, M., E. Jeppesen, T. L. Lauridsen, C. Skov, E. H. van Nes, R. Roijackers, E. Lammens, and R. Portielje. 2007. Lake restoration: successes, failures and long-term effects. *Journal of Applied Ecology* 44:1095–1105. https://doi.org/10.1111/j.1365-2664.2007.01363.x.
+
+Suding, K. N., K. L. Gross, and G. R. Houseman. 2004. Alternative states and positive feedbacks in restoration ecology. *Trends in Ecology & Evolution* 19:46–53. https://doi.org/10.1016/j.tree.2003.10.005.

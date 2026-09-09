@@ -108,7 +108,7 @@ Default output:
 
 `dist/amnat_anonymous_title_page.md`
 
-The text word count is computed reproducibly from the canonical manuscript (Introduction through Conclusion, excluding the abstract, Literature Cited, display/inline mathematics, and markdown table rows) and regression-tested against the pinned metadata value.
+The reported text word count is computed reproducibly from Introduction through Conclusion without subtracting display/inline mathematics or table rows. The Literature Cited is outside the count, matching the journal's stated Major Article limit. The count is regression-tested against the pinned metadata value.
 
 ## Retained predecessor manuscripts
 
@@ -180,13 +180,14 @@ The v0.7 archive contains the minimal code needed for:
 - exact `N-k+k*2^m` benchmark checks;
 - executable shallow-lake prerequisite and counterfactual-substitution audit.
 
-## Submission blockers that remain author-controlled
+The anonymous ZIP can be uploaded directly to Editorial Manager; an external anonymous repository is optional.
 
-1. **Anonymous code upload location.** The generator is complete; the review-safe upload surface depends on the journal workflow.
-2. **Data and Code Accessibility Statement.** Insert the final anonymous/archive identifier in `amnat_submission_declarations_TEMPLATE.md`.
-3. **Generative-AI disclosure.** Confirm actual uses and human verification.
-4. **Author metadata.** Names, affiliations, e-mails, ORCIDs, acknowledgments, funding, contributions, and conflicts stay outside the blinded manuscript and must be entered in Editorial Manager as appropriate.
-5. **PDF preparation.** Final review PDF needs double spacing, line numbering, page numbering, and embedded math fonts.
+## Remaining author-controlled submission fields
+
+1. **Data and Code Accessibility Statement.** State that the anonymous review-code ZIP is uploaded with the submission, or insert the final reviewer-accessible anonymous repository identifier if that route is used.
+2. **Generative-AI disclosure.** Confirm actual uses and human verification.
+3. **Author metadata.** Names, affiliations, e-mails, ORCIDs, acknowledgments, funding, contributions, and conflicts stay outside the blinded manuscript and must be entered in Editorial Manager as appropriate.
+4. **PDF preparation.** Final review PDF needs double spacing, line numbering, page numbering, and embedded math fonts.
 
 A cover letter is not a blocker because The American Naturalist states that cover letters are not expected; any necessary message belongs in the Editorial Manager Comments field.
 
