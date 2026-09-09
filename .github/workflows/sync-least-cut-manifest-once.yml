@@ -1,0 +1,33 @@
+name: Sync least cut manifest once
+
+on:
+  push:
+    branches:
+      - crest/least-cut-manifest-sync-2026-09-09
+    paths:
+      - scripts/sync_least_cut_manifest_once.py
+      - .github/workflows/sync-least-cut-manifest-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: crest/least-cut-manifest-sync-2026-09-09
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Sync manifest
+        run: python scripts/sync_least_cut_manifest_once.py
+      - name: Commit manifest sync
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/flagship_integration/flagship_integration_manifest.json
+          git diff --cached --check
+          git commit -m "Sync flagship manifest with least cut-state theorem"
+          git push origin HEAD:crest/least-cut-manifest-sync-2026-09-09
