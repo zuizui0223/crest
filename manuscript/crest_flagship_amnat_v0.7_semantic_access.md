@@ -56,6 +56,18 @@ q_t(\omega)=q_t(\omega').
 
 Equivalently, \(q_t\) factors through \(O_t\). When this fails, the adequate cut-state is the least quotient refining \(B_t\) enough to preserve the declared retrospective, transverse, and prospective distinguishability constraints. State is therefore structure induced on the cut, not a synonym for the visible cut itself.
 
+This leastness has a companion-independent finite form. Let \(g_i:\Omega\to Z_i\) be any finite family of pre-state signatures defined independently of the final state. Define
+
+\[
+\omega\sim_*\omega'
+\iff
+O_t(\omega)=O_t(\omega')
+\quad\text{and}\quad
+g_i(\omega)=g_i(\omega')\  \text{for every }i.
+\]
+
+Then \(Q_* = \Omega/{\sim_*}\) preserves the cut observation and every declared signature. Moreover, if another quotient \(r:\Omega\to R\) preserves the same objects, every \(r\)-class lies inside one \(Q_*\)-class. Hence \(r\) refines \(Q_*\): the induced cut-state is the unique coarsest admissible quotient, up to relabeling of its classes. The investigator therefore chooses which pre-state signatures define the scientific problem, but once those signatures are fixed the least compatible state is not freely chosen.
+
 ## 3. Retrospective, transverse, and prospective structures are pre-state
 
 ### 3.1 MLTR: retrospective carried semantics from the left
