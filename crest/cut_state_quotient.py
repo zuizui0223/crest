@@ -21,12 +21,18 @@ induce the same cut state exactly when each family factors through the state
 induced by the other. In particular, adding a signature that already factors
 through the induced state cannot change that state.
 
+For a fixed cut, representation-equivalence classes of finite signature
+families correspond exactly to partitions refining the cut partition. This
+identifies the finite CREST state space with the refinement interval above the
+visible cut in the partition lattice.
+
 No temporal-continuum or epsilon->0 limit is used here.
 """
 
 from __future__ import annotations
 
 from collections.abc import Hashable, Iterable, Sequence
+from math import log2
 
 Partition = tuple[frozenset[Hashable], ...]
 
@@ -84,6 +90,26 @@ def validate_partition(worlds: Sequence[Hashable], partition: Iterable[Iterable[
     if union != carrier_set:
         raise ValueError("partition blocks must cover the carrier")
     return blocks
+
+
+def labels_from_partition(
+    worlds: Sequence[Hashable],
+    partition: Iterable[Iterable[Hashable]],
+) -> tuple[int, ...]:
+    """Encode a partition as one signature aligned with ``worlds``.
+
+    The particular integer labels have no mathematical significance; only their
+    kernel partition matters. This supplies the constructive surjectivity step
+    in the cut-state lattice representation theorem.
+    """
+
+    carrier = _validated_worlds(worlds)
+    blocks = validate_partition(carrier, partition)
+    index: dict[Hashable, int] = {}
+    for position, block in enumerate(blocks):
+        for world in block:
+            index[world] = position
+    return tuple(index[world] for world in carrier)
 
 
 def partition_refines(
@@ -152,6 +178,29 @@ def induced_cut_state(
         partition_from_labels(carrier, signature) for signature in constraint_signatures
     )
     return least_common_refinement(carrier, (baseline, *constraints))
+
+
+def is_admissible_cut_state(
+    worlds: Sequence[Hashable],
+    cut_observations: Sequence[Hashable],
+    candidate_partition: Iterable[Iterable[Hashable]],
+) -> bool:
+    """Return whether a partition refines the visible cut partition."""
+
+    carrier = _validated_worlds(worlds)
+    candidate = validate_partition(carrier, candidate_partition)
+    cut = partition_from_labels(carrier, cut_observations)
+    return partition_refines(carrier, candidate, cut)
+
+
+def state_information_bits(
+    worlds: Sequence[Hashable],
+    state_partition: Iterable[Iterable[Hashable]],
+) -> float:
+    """Return log2 of the number of quotient classes."""
+
+    blocks = validate_partition(worlds, state_partition)
+    return log2(len(blocks))
 
 
 def preserves_signature(
@@ -259,6 +308,8 @@ __all__ = [
     "Partition",
     "extension_is_redundant",
     "induced_cut_state",
+    "is_admissible_cut_state",
+    "labels_from_partition",
     "least_common_refinement",
     "partition_from_labels",
     "partition_refines",
@@ -267,5 +318,6 @@ __all__ = [
     "satisfies_cut_universal_property",
     "signature_families_equivalent",
     "signature_family_factors_through",
+    "state_information_bits",
     "validate_partition",
 ]
