@@ -27,10 +27,12 @@ def test_amnat_title_is_concise_and_searchable() -> None:
 def test_amnat_major_article_abstract_is_within_200_words() -> None:
     abstract = _section_between("## Abstract", "**Keywords:**")
     assert _word_count(abstract) <= 200
+    assert "zero-duration temporal cut" in abstract
     assert "semantic pairs" in abstract
     assert "future-addressable" in abstract
     assert "(N-k)+k2^m" in abstract
-    assert "target relative" in abstract
+    assert "worked ecological interpretation" in abstract
+    assert "does not claim a continuous-time epsilon-to-zero limit theorem" in abstract
 
 
 def test_amnat_keywords_do_not_exceed_six() -> None:
@@ -40,7 +42,7 @@ def test_amnat_keywords_do_not_exceed_six() -> None:
 
 
 def test_scientific_spine_is_in_correct_order() -> None:
-    assert TEXT.index("## 2. State at an observational temporal cut") < TEXT.index(
+    assert TEXT.index("## 2. State at a zero-duration temporal cut") < TEXT.index(
         "## 4. Realizability boundaries"
     )
     assert TEXT.index("## 4. Realizability boundaries") < TEXT.index(
@@ -89,6 +91,7 @@ def test_section10_distinguishes_four_neighboring_state_traditions() -> None:
     assert "state-space methods estimate a chosen latent representation" in section
     assert "CREST audits whether that representation retains the distinctions demanded by the scientific task" in section
     assert "not a new generic theory of quotient states" in section
+    assert "finite theory of state at a temporal boundary" in section
 
 
 def test_sparse_access_and_full_access_boundary_are_both_explicit() -> None:
@@ -100,19 +103,21 @@ def test_sparse_access_and_full_access_boundary_are_both_explicit() -> None:
     assert "full-access boundary" in TEXT
 
 
-def test_novelty_firewall_distinguishes_modeling_from_accounting() -> None:
+def test_novelty_firewall_distinguishes_theory_from_accounting() -> None:
     assert "does not claim mathematical novelty for Möbius inversion or unanimity games" in PLAIN
     assert "prerequisite set" in PLAIN
     assert "semantic access relation" in PLAIN
     assert "finite counting" in PLAIN
-    assert "modeling contribution" in PLAIN
+    assert "theoretical contribution" in PLAIN
+    assert "modeling contribution" not in PLAIN
 
 
 def test_shallow_lake_is_executable_model_not_empirical_validation() -> None:
     shallow = _section_between(
         "## 8. Target-relative shallow-lake prerequisite identification",
-        "## 9. What the modeling result means",
+        "## 9. What the cut-state result means",
     )
+    assert "worked ecological interpretation of the abstract cut geometry" in shallow
     assert "counterfactual substitution" in shallow
     assert "R_{\\rm composed}=\\{H,\\Theta\\}" in shallow
     assert "only two outputs" in shallow
