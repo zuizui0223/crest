@@ -1,5 +1,5 @@
 {
-  "schema_version": 10,
+  "schema_version": 11,
   "target_journal": "The American Naturalist",
   "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.7_semantic_access.md",
   "previous_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.6_addressability.md",
@@ -10,20 +10,29 @@
     "manuscript/crest_flagship_amnat_v0.2.md"
   ],
   "canonical_title": "Ecological State at a Temporal Cut: Sparse Semantic Access",
-  "state_concept": "state is the least information that must survive an observational temporal cut under a declared scientific contract",
-  "headline": "semantic prerequisite order and semantic access coverage are distinct state-construction objects",
-  "headline_quantity": "state quotients are computed from companion semantic classes, semantic access relations, legal future traces, and induced equivalence",
-  "modeling_contribution": "identify which ecological interfaces a future target minimally requires, identify the semantic access relation on those interfaces, and determine on which semantic combinations the target is actually addressable",
-  "novelty_boundary": "CREST does not claim novelty for quotient state abstraction, Mobius/Harsanyi accounting, unanimity games, or finite counting once the access relation is fixed. The contribution is the temporal-cut modeling architecture, strict companion realizability boundaries, semantic companion composition, and explicit separation of prerequisite order from semantic access coverage.",
+  "state_concept": "the present is a zero-duration observational cut; ecological state is the least quotient induced on that cut by retrospective, transverse latent-present, and prospective distinguishability/access constraints",
+  "headline": "retrospective-transverse-prospective cut geometry and sparse prospective access determine the induced ecological state quotient",
+  "headline_quantity": "state quotients are computed from pre-state semantic classes, prospective access relations, legal traces, and induced equivalence on the temporal cut",
+  "theory_contribution": "characterize ecological state as the least quotient induced at a temporal boundary by retrospective carried semantics, transverse candidate-safe latent response structure, and prospective query accessibility, and quantify how sparse prospective access changes that quotient",
+  "novelty_boundary": "CREST does not claim novelty for quotient state abstraction, Mobius/Harsanyi accounting, unanimity games, or finite counting once the access relation is fixed. The contribution is the finite temporal-boundary theory, strict companion realizability boundaries, pre-state retrospective/transverse/prospective structure, and explicit separation of prerequisite order from sparse prospective coverage. The manuscript does not claim a proved continuous-time epsilon-to-zero or germ limit theorem.",
+  "temporal_boundary_geometry": {
+    "present": "zero-duration observational cut represented at one indexed time, not a finite observation interval",
+    "visible_fiber": "L_t(y)=O_t^{-1}(y)",
+    "retrospective": "MLTR carried semantics arriving from the left of the cut",
+    "transverse": "MRM candidate-safe latent response structure within a visible-cut fiber; not complete ontic mechanism identity",
+    "prospective": "CCOC legal right-of-cut query accessibility",
+    "state": "least cut quotient compatible with retained retrospective, transverse, and prospective distinctions",
+    "continuous_time_boundary": "finite idealization only; no shrinking-window epsilon-to-zero or continuous-time germ theorem is claimed"
+  },
   "realizability_boundaries": {
     "fixed_partition_bound": "fixed precomputed partitions on a one-class baseline cannot generate positive interaction by common refinement alone",
     "immutable_history_no_activation": "a zero-debt post-cut audit preserving raw MLTR history cannot become nontrivial by rewriting the past",
     "fixed_grammar_mrm_zero_debt": "candidate-safe zero debt under one fixed grammar implies a singleton MRM response type"
   },
   "semantic_companions": {
-    "history": "CREST consumes complete MLTR carried maps and quotients raw routes by equality of carried semantics",
-    "latent_response": "CREST quotients primitive MRM candidate laws by equality of complete declared response tables",
-    "future": "CCOC future responsibility is a declared legal query grammar",
+    "history": "CREST consumes complete MLTR carried maps and quotients raw routes by equality of carried semantics; this is the retrospective left-of-cut structure",
+    "latent_response": "CREST quotients primitive MRM candidate laws by equality of complete declared response tables; this is transverse latent-present structure inside a visible-cut fiber rather than full mechanism identity",
+    "future": "CCOC prospective responsibility is a declared legal right-of-cut query grammar",
     "canonical_history_raw_count": 3,
     "canonical_history_mode_count": 2,
     "canonical_candidate_raw_count": 3,
@@ -36,7 +45,7 @@
     "three_way_formula": "d_HThetaF=log2(((N-k)+k*2^m)/N)",
     "asymptotic_formula": "d_HThetaF=m-log2(N/k)+o(1) for k>0",
     "sparsity_penalty": "log2(N/k)",
-    "interpretation": "prerequisite order fixes the interaction order; semantic coverage changes its magnitude"
+    "interpretation": "prerequisite structure fixes the interaction order; prospective semantic coverage changes its magnitude"
   },
   "canonical_numeric_witness": {
     "history_modes": 2,
@@ -61,7 +70,7 @@
     "status": "v0.6 full-addressability boundary case, not canonical v0.7 witness"
   },
   "shallow_lake_prerequisite_audit": {
-    "status": "executable literature-grounded finite decision model, not empirical validation",
+    "status": "worked ecological interpretation with an executable literature-grounded finite model; not empirical validation and not a state-design prescription",
     "current_status": [],
     "legacy_sensitive_recovery": ["H"],
     "mechanism_specific_intervention": ["THETA"],
@@ -76,14 +85,18 @@
     "abstract_word_limit": 200,
     "keyword_max": 6,
     "preferred_title_words": "approximately 8-10",
-    "current_abstract_words": 174,
+    "current_abstract_words": 163,
     "current_keywords": 6,
-    "current_title_words": 9
+    "current_title_words": 9,
+    "current_main_text_words": 3507
   },
   "literature_positioning": {
     "ecological_memory": "Ogle et al. 2015",
-    "hysteresis_and_state_shifts": "Scheffer et al. 2001",
+    "historical_contingency": "Fukami 2015",
+    "hysteresis_and_state_shifts": "Scheffer et al. 2001; Beisner, Haydon, and Cuddington 2003",
+    "restoration_feedbacks": "Suding, Gross, and Houseman 2004",
     "transient_ecology": "Hastings et al. 2018",
+    "ecological_state_space_models": "Auger-Methe et al. 2021",
     "causal_predictive_states": "Shalizi and Crutchfield 2001",
     "predictive_state_representations": "Littman, Sutton, and Singh 2001",
     "bisimulation_and_state_abstraction": "Givan, Dean, and Greig 2003; Li, Walsh, and Littman 2006",
@@ -93,7 +106,10 @@
   },
   "implementation": {
     "temporal_cut_module": "crest/temporal_cut.py",
-    "definition_firewall": "docs/crest_temporal_companion_definition_firewall_2026-09-08.md",
+    "temporal_cut_geometry_module": "crest/temporal_cut_geometry.py",
+    "definition_firewall": "docs/temporal_cut_companion_definition_firewall_2026-09-08.md",
+    "pure_theory_spine": "docs/crest_pure_theory_spine_2026-09-09.md",
+    "temporal_boundary_reframing": "docs/crest_temporal_cut_latent_present_reframing_2026-09-09.md",
     "strict_realizability_module": "crest/companion_realizability.py",
     "semantic_access_module": "crest/semantic_access.py",
     "semantic_quotient_module": "crest/semantic_temporal_quotient.py",
