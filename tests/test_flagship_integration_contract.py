@@ -46,7 +46,7 @@ def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
         "Ecological State at a Temporal Cut: Sparse Semantic Access"
     )
     assert "cut geometry" in manifest["headline"]
-    assert "least quotient" in manifest["theory_contribution"]
+    assert "unique coarsest quotient" in manifest["theory_contribution"]
     assert "prospective query accessibility" in manifest["theory_contribution"]
     assert "does not claim novelty" in manifest["novelty_boundary"]
     assert "epsilon-to-zero" in manifest["novelty_boundary"]
@@ -58,6 +58,14 @@ def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
     assert "not complete ontic mechanism identity" in geometry["transverse"]
     assert "no shrinking-window epsilon-to-zero" in geometry["continuous_time_boundary"]
 
+    implementation = manifest["implementation"]
+    assert implementation["least_cut_quotient_module"] == "crest/cut_state_quotient.py"
+    assert implementation["least_cut_quotient_theorem"] == (
+        "docs/crest_least_temporal_cut_quotient_theorem_2026-09-09.md"
+    )
+    assert (ROOT / implementation["least_cut_quotient_module"]).is_file()
+    assert (ROOT / implementation["least_cut_quotient_theorem"]).is_file()
+
 
 def test_flagship_submission_constraints_are_pinned() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
@@ -68,7 +76,7 @@ def test_flagship_submission_constraints_are_pinned() -> None:
     assert constraints["current_abstract_words"] == 163
     assert constraints["current_keywords"] <= constraints["keyword_max"]
     assert constraints["current_title_words"] == 9
-    assert constraints["current_main_text_words"] == 3507
+    assert constraints["current_main_text_words"] == 3618
 
     for value in manifest["literature_positioning"].values():
         assert value
