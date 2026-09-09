@@ -1,11 +1,11 @@
 """Least finite quotient induced at an observational temporal cut.
 
 This module is deliberately independent of CREST's particular MLTR/MRM/CCOC
-semantics.  It states the finite set-theoretic core used by the pure temporal-
+semantics. It states the finite set-theoretic core used by the pure temporal-
 boundary formulation.
 
 Let Omega be a finite carrier, O_t an observation signature, and g_i any finite
-family of pre-state distinguishability/access signatures on Omega.  The induced
+family of pre-state distinguishability/access signatures on Omega. The induced
 cut state is the common-refinement quotient
 
     omega ~* omega'
@@ -15,6 +15,11 @@ Among all partitions that preserve the observation and every declared
 signature, this quotient is the unique coarsest one (up to block relabeling).
 Equivalently, it retains the least information compatible with the declared
 constraints.
+
+The quotient is representation invariant: two different signature families
+induce the same cut state exactly when each family factors through the state
+induced by the other. In particular, adding a signature that already factors
+through the induced state cannot change that state.
 
 No temporal-continuum or epsilon->0 limit is used here.
 """
@@ -96,6 +101,18 @@ def partition_refines(
     return all(any(block <= parent for parent in coarse) for block in fine)
 
 
+def partitions_equal_up_to_relabeling(
+    worlds: Sequence[Hashable],
+    left: Iterable[Iterable[Hashable]],
+    right: Iterable[Iterable[Hashable]],
+) -> bool:
+    """Return whether two partitions have exactly the same blocks."""
+
+    lhs = validate_partition(worlds, left)
+    rhs = validate_partition(worlds, right)
+    return frozenset(lhs) == frozenset(rhs)
+
+
 def least_common_refinement(
     worlds: Sequence[Hashable],
     partitions: Iterable[Iterable[Iterable[Hashable]]],
@@ -154,6 +171,65 @@ def preserves_signature(
     return partition_refines(carrier, state, signature)
 
 
+def signature_family_factors_through(
+    worlds: Sequence[Hashable],
+    state_partition: Iterable[Iterable[Hashable]],
+    signatures: Iterable[Sequence[Hashable]],
+) -> bool:
+    """Return whether every signature in a family factors through one state."""
+
+    family = tuple(tuple(signature) for signature in signatures)
+    return all(preserves_signature(worlds, state_partition, signature) for signature in family)
+
+
+def signature_families_equivalent(
+    worlds: Sequence[Hashable],
+    cut_observations: Sequence[Hashable],
+    left_signatures: Iterable[Sequence[Hashable]],
+    right_signatures: Iterable[Sequence[Hashable]],
+) -> bool:
+    """Return whether two pre-state signature families induce the same cut state.
+
+    For a fixed carrier and cut observation, the following are equivalent:
+
+    1. both families induce the same quotient partition (up to block relabeling);
+    2. every left signature factors through the state induced by the right family,
+       and every right signature factors through the state induced by the left.
+
+    The implementation checks the mutual-factorization characterization. This
+    makes representation invariance explicit without privileging signature names,
+    codomain labels, order, duplication, or decomposition into coordinates.
+    """
+
+    carrier = _validated_worlds(worlds)
+    left = tuple(tuple(signature) for signature in left_signatures)
+    right = tuple(tuple(signature) for signature in right_signatures)
+    left_state = induced_cut_state(carrier, cut_observations, left)
+    right_state = induced_cut_state(carrier, cut_observations, right)
+    return signature_family_factors_through(carrier, right_state, left) and signature_family_factors_through(
+        carrier, left_state, right
+    )
+
+
+def extension_is_redundant(
+    worlds: Sequence[Hashable],
+    cut_observations: Sequence[Hashable],
+    base_signatures: Iterable[Sequence[Hashable]],
+    added_signatures: Iterable[Sequence[Hashable]],
+) -> bool:
+    """Return whether adding signatures leaves the induced cut state unchanged.
+
+    By the invariance theorem this holds exactly when every added signature
+    already factors through the state induced by the base family.
+    """
+
+    carrier = _validated_worlds(worlds)
+    base = tuple(tuple(signature) for signature in base_signatures)
+    added = tuple(tuple(signature) for signature in added_signatures)
+    base_state = induced_cut_state(carrier, cut_observations, base)
+    return signature_family_factors_through(carrier, base_state, added)
+
+
 def satisfies_cut_universal_property(
     worlds: Sequence[Hashable],
     cut_observations: Sequence[Hashable],
@@ -163,7 +239,7 @@ def satisfies_cut_universal_property(
     """Check the universal-property implication for one candidate partition.
 
     If ``candidate_partition`` preserves the visible cut and every declared
-    signature, then it must refine the induced cut state.  This function returns
+    signature, then it must refine the induced cut state. This function returns
     True when the implication holds for the supplied candidate.
     """
 
@@ -181,11 +257,15 @@ def satisfies_cut_universal_property(
 
 __all__ = [
     "Partition",
+    "extension_is_redundant",
     "induced_cut_state",
     "least_common_refinement",
     "partition_from_labels",
     "partition_refines",
+    "partitions_equal_up_to_relabeling",
     "preserves_signature",
     "satisfies_cut_universal_property",
+    "signature_families_equivalent",
+    "signature_family_factors_through",
     "validate_partition",
 ]
