@@ -12,12 +12,8 @@ METADATA = ROOT / "manuscript" / "amnat_submission_metadata.json"
 MANIFEST = ROOT / "docs" / "flagship_integration" / "flagship_integration_manifest.json"
 
 anchor = (
-    "Then \\(Q_* = \\Omega/{\\sim_*}\\) preserves the cut observation and every declared signature. "
-    "Moreover, if another quotient \\(r:\\Omega\\to R\\) preserves the same objects, every \\(r\\)-class "
-    "lies inside one \\(Q_*\\)-class. Hence \\(r\\) refines \\(Q_*\\): the induced cut-state is the unique "
-    "coarsest admissible quotient, up to relabeling of its classes. The investigator therefore chooses which "
-    "pre-state signatures define the scientific problem, but once those signatures are fixed the least compatible "
-    "state is not freely chosen.\n"
+    "The investigator therefore chooses which pre-state signatures define the scientific problem, "
+    "but once those signatures are fixed the least compatible state is not freely chosen.\n"
 )
 addition = (
     "\nThis conclusion is representation invariant. Two different pre-state signature families induce the same cut-state "
