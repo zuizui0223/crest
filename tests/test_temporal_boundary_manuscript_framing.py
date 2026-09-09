@@ -18,7 +18,7 @@ def test_present_is_a_zero_duration_cut_not_a_pregiven_state() -> None:
     assert "not a proved limit of shrinking continuous-time windows" in TEXT
 
 
-def test_cut_state_has_an_explicit_universal_property_and_representation_invariance() -> None:
+def test_cut_state_has_universal_invariance_and_lattice_structure() -> None:
     section = _between(
         "## 2. State at a zero-duration temporal cut",
         "## 3. Retrospective, transverse, and prospective structures are pre-state",
@@ -31,6 +31,11 @@ def test_cut_state_has_an_explicit_universal_property_and_representation_invaria
     assert "every signature in each family factors through the state induced by the other" in section
     assert "adding any signature already determined by the existing cut-state is redundant" in section
     assert "equivalence relation generated jointly with the cut" in section
+    assert "representation classes exhaust the entire finite state space" in section
+    assert "one-to-one correspondence with partitions that refine \\(B_t\\)" in section
+    assert "Ordering states by retained information is therefore exactly partition refinement" in section
+    assert "\\log_2|Q|" in section
+    assert "monotone nondecreasing" in section
 
 
 def test_three_roles_are_left_transverse_right_constraints() -> None:
