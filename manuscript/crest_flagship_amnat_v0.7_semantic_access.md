@@ -68,6 +68,8 @@ g_i(\omega)=g_i(\omega')\quad\text{for every }i.
 
 Then \(Q_* = \Omega/{\sim_*}\) preserves the cut observation and every declared signature. Moreover, if another quotient \(r:\Omega\to R\) preserves the same objects, every \(r\)-class lies inside one \(Q_*\)-class. Hence \(r\) refines \(Q_*\): the induced cut-state is the unique coarsest admissible quotient, up to relabeling of its classes. The investigator therefore chooses which pre-state signatures define the scientific problem, but once those signatures are fixed the least compatible state is not freely chosen.
 
+This conclusion is representation invariant. Two different pre-state signature families induce the same cut-state exactly when every signature in each family factors through the state induced by the other. Thus relabeling, reordering, duplicating, packing, or splitting signatures cannot alter the state when the generated distinction structure is unchanged. Equivalently, adding any signature already determined by the existing cut-state is redundant. The mathematical object is therefore the equivalence relation generated jointly with the cut, not a particular coordinate encoding of that relation.
+
 ## 3. Retrospective, transverse, and prospective structures are pre-state
 
 ### 3.1 MLTR: retrospective carried semantics from the left
