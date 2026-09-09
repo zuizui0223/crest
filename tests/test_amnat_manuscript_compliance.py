@@ -59,6 +59,10 @@ def test_submission_manuscript_has_literature_positioning() -> None:
         "Ogle et al. 2015",
         "Scheffer et al. 2001",
         "Hastings et al. 2018",
+        "Fukami 2015",
+        "Beisner, Haydon, and Cuddington 2003",
+        "Suding, Gross, and Houseman 2004",
+        "Auger-Méthé et al. 2021",
         "Shalizi and Crutchfield 2001",
         "Littman, Sutton, and Singh 2001",
         "Givan, Dean, and Greig 2003",
@@ -70,6 +74,21 @@ def test_submission_manuscript_has_literature_positioning() -> None:
     )
     for token in required:
         assert token in TEXT
+
+
+def test_section10_distinguishes_four_neighboring_state_traditions() -> None:
+    section = _section_between(
+        "## 10. Relation to existing state concepts",
+        "## 11. Scope and supporting mathematics",
+    )
+    assert "### 10.1 Ecological memory and historical contingency" in section
+    assert "### 10.2 Hysteresis, alternative states, and restoration" in section
+    assert "### 10.3 Latent ecological state in state-space models" in section
+    assert "### 10.4 Predictive states and state abstraction" in section
+    assert "CREST therefore does not equate “history matters” with “retain the complete history.”" in section
+    assert "state-space methods estimate a chosen latent representation" in section
+    assert "CREST audits whether that representation retains the distinctions demanded by the scientific task" in section
+    assert "not a new generic theory of quotient states" in section
 
 
 def test_sparse_access_and_full_access_boundary_are_both_explicit() -> None:
