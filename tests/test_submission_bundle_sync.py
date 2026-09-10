@@ -15,6 +15,7 @@ CANONICAL = {
     "biology_philosophy_title_page_TEMPLATE.md",
     "amnat_submission_declarations_TEMPLATE.md",
     "amnat_submission_metadata.json",
+    "AMNAT_SUBMISSION_READINESS.md",
     "SUBMISSION_README.md",
     "SUBMISSION_BLOCKERS_2026-08-24.md",
     "crest_canonical_scope_2026-08-24.md",
@@ -56,6 +57,7 @@ def test_amnat_v07_flagship_is_separate_from_biology_philosophy_submission_entry
     submission_readme = (MANUSCRIPT_DIR / "SUBMISSION_README.md").read_text(encoding="utf-8")
     assert "crest_flagship_amnat_v0.7_semantic_access.md" in submission_readme
     assert "amnat_submission_metadata.json" in submission_readme
+    assert "AMNAT_SUBMISSION_READINESS.md" in submission_readme
     assert "4096" in v06
     assert "The American Naturalist" in delta_predecessor
     assert "Delta" in delta_predecessor
