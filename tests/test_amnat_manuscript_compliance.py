@@ -108,7 +108,8 @@ def test_novelty_firewall_distinguishes_theory_from_accounting() -> None:
     assert "prerequisite set" in PLAIN
     assert "semantic access relation" in PLAIN
     assert "finite counting" in PLAIN
-    assert "theoretical contribution" in PLAIN
+    assert "paper-level contribution" in PLAIN
+    assert "structural support, not a claim of new partition theory" in PLAIN
     assert "modeling contribution" not in PLAIN
 
 
