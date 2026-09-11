@@ -2,9 +2,10 @@
 """Build a deterministic, identity-scrubbed review-code ZIP for the CREST paper.
 
 The archive is whitelist-only and contains the finite implementation needed for
-the v0.7 temporal-cut, strict realizability, semantic-access quotient, and
-executable shallow-lake prerequisite audit. Repository history, provenance notes,
-public URLs, and submission metadata are excluded.
+the v0.7 temporal-cut, strict realizability, semantic-access quotient, the
+occupancy-aware Rényi access supplement, and executable shallow-lake prerequisite
+audit. Repository history, provenance notes, public URLs, and submission metadata
+are excluded.
 """
 
 from __future__ import annotations
@@ -28,12 +29,14 @@ SOURCE_PATHS = (
     "crest/explicit_temporal_grammar.py",
     "crest/semantic_access.py",
     "crest/semantic_temporal_quotient.py",
+    "crest/renyi_access.py",
     "crest/shallow_lake_prerequisites.py",
     "tests/test_crest_temporal_cut.py",
     "tests/test_companion_realizability.py",
     "tests/test_explicit_temporal_grammar.py",
     "tests/test_semantic_access.py",
     "tests/test_semantic_temporal_quotient.py",
+    "tests/test_renyi_access.py",
     "tests/test_shallow_lake_prerequisites.py",
     "tests/test_sparse_semantic_access_benchmark.py",
     "artifacts/crest_sparse_semantic_access_benchmarks_2026-09-08.json",
@@ -49,9 +52,10 @@ FORBIDDEN_PATTERNS = {
 ANONYMOUS_README = """# Anonymous review code
 
 This archive contains the minimal finite implementation used to reproduce the
-manuscript's temporal-cut, strict realizability, semantic-access quotient, and
-shallow-lake prerequisite results. It intentionally excludes repository history,
-provenance notes, author metadata, and external repository links.
+manuscript's temporal-cut, strict realizability, semantic-access quotient,
+occupancy-aware Rényi access supplement, and shallow-lake prerequisite results.
+It intentionally excludes repository history, provenance notes, author metadata,
+and external repository links.
 
 ## Reproduce the focused tests
 
@@ -63,6 +67,7 @@ pytest -q \\
   tests/test_explicit_temporal_grammar.py \\
   tests/test_semantic_access.py \\
   tests/test_semantic_temporal_quotient.py \\
+  tests/test_renyi_access.py \\
   tests/test_shallow_lake_prerequisites.py \\
   tests/test_sparse_semantic_access_benchmark.py
 ```
@@ -73,7 +78,13 @@ signature the induced grand quotient contains 1027 classes and the exact
 three-way dividend is approximately 8.004220466 bits. The complete-access v0.6
 4096-class case is retained only as the k=N boundary.
 
-The exact numeric table is stored at
+The Supplement generalizes this support-count result to nonuniform semantic-cell
+occupancies. The q=0 Rényi/Hartley endpoint exactly recovers the main-text count;
+at q=1 the gain is m times accessible occupancy mass. Tests also verify the
+q<1/q=1/q>1 asymptotic slope law, sharp fixed-budget placement extrema, and
+heterogeneous local decoder capacity.
+
+The exact main-text numeric table is stored at
 `artifacts/crest_sparse_semantic_access_benchmarks_2026-09-08.json` and is
 cross-checked against the quotient code.
 
@@ -119,9 +130,9 @@ def _manifest(source_payloads: dict[str, bytes]) -> bytes:
         for name, payload in sorted(source_payloads.items())
     }
     manifest = {
-        "schema_version": 4,
+        "schema_version": 5,
         "package_role": "anonymous_review_code",
-        "scope": "finite_exact_sparse_semantic_access_and_prerequisite_audit",
+        "scope": "finite_exact_sparse_semantic_access_renyi_spectrum_and_prerequisite_audit",
         "files": files,
         "semantic_anchor": {
             "bit_depth": 10,
@@ -133,6 +144,18 @@ def _manifest(source_payloads: dict[str, bytes]) -> bytes:
             "grand_bits": 10.004220466,
             "three_way_bits": 8.004220466,
             "asymptotic_sparsity_penalty_bits": 2,
+        },
+        "renyi_access_anchor": {
+            "uniform_semantic_probabilities": [0.25, 0.25, 0.25, 0.25],
+            "addressable_pairs": 1,
+            "bit_depth": 10,
+            "q0_gain_bits": 8.004220466,
+            "q1_gain_bits": 2.5,
+            "asymptotic_slopes": {
+                "q_below_1": 1,
+                "q_equal_1": 0.25,
+                "q_above_1": 0
+            }
         },
         "complete_access_boundary": {
             "semantic_pairs": 4,
@@ -150,6 +173,8 @@ def _manifest(source_payloads: dict[str, bytes]) -> bytes:
         },
         "claim_boundary": [
             "Mobius and Harsanyi accounting are not claimed as mathematical novelty",
+            "Renyi entropy, Shannon entropy, Hill numbers, and ordinary partition refinement are not claimed as new mathematics",
+            "the new supplemental object is selective semantic-access refinement and its exact finite spectrum, asymptotics, extrema, and heterogeneous-capacity extension",
             "semantic access coverage is distinct from syntactic interface prerequisite order",
             "the shallow-lake audit is an executable finite decision model, not empirical validation",
             "no continuous-time or stochastic generalization is claimed",

@@ -61,8 +61,10 @@ def test_anonymous_manifest_hashes_every_whitelisted_source(tmp_path: Path) -> N
 
     with zipfile.ZipFile(output) as archive:
         manifest = json.loads(archive.read("ANONYMOUS_MANIFEST.json"))
-        assert manifest["schema_version"] == 4
+        assert manifest["schema_version"] == 5
         assert set(manifest["files"]) == set(builder.SOURCE_PATHS)
+        assert "crest/renyi_access.py" in manifest["files"]
+        assert "tests/test_renyi_access.py" in manifest["files"]
         for name, metadata in manifest["files"].items():
             payload = archive.read(name)
             assert hashlib.sha256(payload).hexdigest() == metadata["sha256"]
@@ -75,6 +77,17 @@ def test_anonymous_manifest_hashes_every_whitelisted_source(tmp_path: Path) -> N
         assert abs(anchor["grand_bits"] - 10.004220466) < 1e-9
         assert abs(anchor["three_way_bits"] - 8.004220466) < 1e-9
         assert anchor["asymptotic_sparsity_penalty_bits"] == 2
+
+        renyi = manifest["renyi_access_anchor"]
+        assert renyi["addressable_pairs"] == 1
+        assert renyi["bit_depth"] == 10
+        assert abs(renyi["q0_gain_bits"] - 8.004220466) < 1e-9
+        assert renyi["q1_gain_bits"] == 2.5
+        assert renyi["asymptotic_slopes"] == {
+            "q_below_1": 1,
+            "q_equal_1": 0.25,
+            "q_above_1": 0,
+        }
 
         boundary = manifest["complete_access_boundary"]
         assert boundary["addressable_pairs"] == 4
@@ -106,6 +119,7 @@ def test_anonymous_bundle_runs_focused_theorem_tests(tmp_path: Path) -> None:
             "tests/test_explicit_temporal_grammar.py",
             "tests/test_semantic_access.py",
             "tests/test_semantic_temporal_quotient.py",
+            "tests/test_renyi_access.py",
             "tests/test_shallow_lake_prerequisites.py",
             "tests/test_sparse_semantic_access_benchmark.py",
         ],

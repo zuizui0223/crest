@@ -4,7 +4,8 @@
 
 **Ecological State at a Temporal Cut: Sparse Semantic Access**  
 Target: **The American Naturalist — Major Article**  
-Canonical manuscript: `crest_flagship_amnat_v0.7_semantic_access.md`.
+Canonical manuscript: `crest_flagship_amnat_v0.7_semantic_access.md`.  
+AmNat Supplementary Information: `CREST_AmNat_supplementary_information.md`.
 
 CREST treats the present as a zero-duration observational cut and defines ecological state as the least quotient induced on that cut by retrospective, transverse latent-present, and prospective distinguishability constraints.
 
@@ -41,6 +42,38 @@ d_{H\Theta F}=m-\log_2(N/k)+o(1).
 
 Prerequisite order determines **where** the burden appears; semantic coverage determines **how large** it is. The canonical witness has `N=4`, `k=1`; at `m=10` the grand coalition has 1027 classes / 10.00422 bits and the three-way dividend is 8.00422 bits. The earlier 4096-class / 12-bit / 10-bit-three-way result is retained only as the complete-access boundary `k=N=4`.
 
+## AmNat Supplement: occupancy-aware access spectrum
+
+The Supplement generalizes the support-count result to nonuniform semantic-cell occupancies `p_i`. It does **not** claim Rényi entropy, Shannon entropy, Hill numbers, or ordinary partition-refinement information theory as new mathematics. The new object is CREST's selective semantic-access refinement, in which only licensed cells receive prospective splitting.
+
+For Rényi order `q`, the exact access gain is
+
+\[
+G_q=
+\frac{1}{1-q}\log_2
+\frac{\sum_{i\notin A}p_i^q+2^{m(1-q)}\sum_{i\in A}p_i^q}
+{\sum_i p_i^q},
+\]
+
+with the Shannon limit
+
+\[
+G_1=mP_A.
+\]
+
+The main-text formula is recovered exactly at `q=0`. For nontrivial sparse access, the Supplement proves the large-decoder slope law
+
+\[
+\lim_{m\to\infty}G_q/m=
+\begin{cases}
+1,&q<1,\\
+P_A,&q=1,\\
+0,&q>1,
+\end{cases}
+\]
+
+plus sharp fixed-`k` placement extrema and a heterogeneous local-capacity extension `G_1 = sum_i p_i log2 M_i`.
+
 ## Realizability no-go
 
 The paper keeps three strict boundaries before the positive construction:
@@ -55,9 +88,9 @@ These results prevent older abstract closure cascades from being overinterpreted
 
 The finite partition/quotient/transport spine is **structural support, not a claim of new partition theory**. Common refinement, its unique-coarsest characterization, representation-equivalence of signature families, and the deterministic transport descent condition are treated as elementary finite-structure guarantees that make the cut-state construction well defined, representation safe, and composable when the declared evolution respects the quotient.
 
-The flagship therefore does **not** claim mathematical novelty for Möbius/Harsanyi inversion, unanimity games, generic quotient-state abstraction, common-refinement lattice facts, or finite counting once an access relation is fixed.
+The flagship therefore does **not** claim mathematical novelty for Möbius/Harsanyi inversion, unanimity games, generic quotient-state abstraction, common-refinement lattice facts, finite counting once an access relation is fixed, or Rényi/Hill entropy theory itself.
 
-The **paper-level theoretical contribution** is the separation of prerequisite order from semantic coverage at a temporal cut, together with the non-circular retrospective/transverse/prospective construction and strict realizability boundaries. The **quantitative headline** is the sparse-access degradation `log2(N/k)` relative to complete addressability.
+The **paper-level theoretical contribution** is the separation of prerequisite order from semantic coverage at a temporal cut, together with the non-circular retrospective/transverse/prospective construction and strict realizability boundaries. The **main-text quantitative headline** is the sparse-access degradation `log2(N/k)` relative to complete addressability. The Supplement places that result as the Hartley (`q=0`) endpoint of an exact occupancy-aware semantic-access spectrum.
 
 The phrase `zero-duration cut` remains a finite idealization. The manuscript does not claim an epsilon-to-zero continuous-time limit theorem, continuous-time germ theorem, stochastic generality, approximate-state theorem, or infinite-state extension.
 
@@ -86,7 +119,7 @@ python scripts/build_amnat_title_page.py
 
 Default output: `dist/amnat_anonymous_title_page.md`.
 
-The reported text word count is computed reproducibly from Introduction through Conclusion without subtracting display/inline mathematics or table rows. Literature Cited is outside the count.
+The reported text word count is computed reproducibly from Introduction through Conclusion without subtracting display/inline mathematics or table rows. Literature Cited is outside the count. Supplementary Information is tracked separately and does not alter the pinned main-text count.
 
 ## Current submission-readiness checklist
 
@@ -104,7 +137,7 @@ python scripts/build_amnat_anonymous_bundle.py
 
 Default output: `dist/anonymous_review_code.zip`.
 
-The v0.7 archive contains the minimal code needed for temporal-cut representation, strict companion-realizability checks, companion semantic quotients, sparse semantic access, semantic trace-equivalence quotient calculation, exact `N-k+k*2^m` benchmark checks, and the executable shallow-lake prerequisite/counterfactual-substitution audit.
+The v0.7 archive contains the minimal code needed for temporal-cut representation, strict companion-realizability checks, companion semantic quotients, sparse semantic access, semantic trace-equivalence quotient calculation, exact `N-k+k*2^m` benchmark checks, the Rényi/Hill semantic-access generalization, and the executable shallow-lake prerequisite/counterfactual-substitution audit.
 
 ## Remaining author-controlled fields
 
@@ -130,6 +163,7 @@ raw ecological possibilities Omega
 -> legal prospective traces
 -> least induced cut-state quotient Q_S
 -> interaction accounting
+-> occupancy-aware Rényi/Hill access spectrum in Supplement
 -> ecological interpretation / evidence downstream
 ```
 
@@ -144,4 +178,4 @@ python scripts/build_amnat_anonymous_bundle.py
 python scripts/build_amnat_title_page.py
 ```
 
-The test suite verifies the temporal-cut surface, definition firewall, strict realizability no-go, semantic-access quotient, shallow-lake prerequisite audit, AmNat manuscript compliance, submission metadata, generated anonymous title page, and anonymous review bundle.
+The test suite verifies the temporal-cut surface, definition firewall, strict realizability no-go, semantic-access quotient, Rényi access spectrum and extremal laws, shallow-lake prerequisite audit, AmNat manuscript compliance, submission metadata, generated anonymous title page, and anonymous review bundle.
