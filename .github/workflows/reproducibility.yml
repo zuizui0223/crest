@@ -47,6 +47,10 @@ jobs:
           fi
           test -z "$(git status --porcelain)"
 
+      - name: Build AmNat submission preflight report
+        if: matrix.python-version == '3.12'
+        run: python scripts/check_amnat_submission_preflight.py --output "${RUNNER_TEMP}/amnat_submission_preflight.json"
+
       - name: Upload submission and obstruction reports
         if: matrix.python-version == '3.12'
         uses: actions/upload-artifact@v4
@@ -55,3 +59,4 @@ jobs:
           path: |
             artifacts/crest_philosophy_submission_report.json
             artifacts/crest_obstruction_spectrum.json
+            ${{ runner.temp }}/amnat_submission_preflight.json
