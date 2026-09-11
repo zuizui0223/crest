@@ -169,6 +169,56 @@ def optimal_decoder_allocation(
     return tuple(allocation)
 
 
+def optimal_integer_decoder_allocation(
+    probabilities: Sequence[float],
+    budget_bits: int,
+    q: float,
+) -> tuple[int, ...]:
+    """Return an exact gain-maximizing allocation of an integer bit budget.
+
+    For ``0 <= q <= 1`` an optimum concentrates every bit on a most-occupied
+    semantic cell (at ``q=0`` every simplex vertex is equivalent).
+
+    For finite ``q>1``, after ``x_i`` bits have been assigned to cell ``i``, the
+    next bit reduces the refined q-power sum by a constant multiple of
+
+        p_i**q * 2**(-(q-1)*x_i).
+
+    These marginal reductions decrease geometrically along each cell. Therefore
+    selecting the largest currently available marginal reduction at every step
+    is globally optimal for the separable integer resource-allocation problem.
+    At ``q=inf`` the same rule acts on the current dominant residual
+    ``p_i * 2**(-x_i)`` and exactly minimizes the largest refined atom.
+    """
+
+    ps = _probabilities(probabilities)
+    if (
+        not isinstance(budget_bits, int)
+        or isinstance(budget_bits, bool)
+        or budget_bits < 0
+    ):
+        raise ValueError("budget_bits must be a nonnegative integer")
+    q = float(q)
+    if q < 0.0:
+        raise ValueError("q must be nonnegative")
+    if budget_bits == 0:
+        return tuple(0 for _ in ps)
+
+    if q <= 1.0:
+        target = max(range(len(ps)), key=lambda i: (ps[i], -i))
+        return tuple(budget_bits if i == target else 0 for i in range(len(ps)))
+
+    allocation = [0 for _ in ps]
+    for _ in range(budget_bits):
+        if isinf(q):
+            score = lambda i: ps[i] * (2.0 ** (-allocation[i]))
+        else:
+            score = lambda i: (ps[i] ** q) * (2.0 ** (-(q - 1.0) * allocation[i]))
+        target = max(range(len(ps)), key=lambda i: (score(i), -i))
+        allocation[target] += 1
+    return tuple(allocation)
+
+
 def heterogeneous_renyi_access_gain(
     probabilities: Sequence[float],
     multiplicities: Sequence[int],
