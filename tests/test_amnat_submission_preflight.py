@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from crest.amnat_preflight import preflight, unresolved_placeholders
+from crest.amnat_preflight import classify_placeholders, preflight, unresolved_placeholders
 
 
 def test_repository_preflight_is_green_while_author_template_remains_open() -> None:
@@ -10,7 +10,20 @@ def test_repository_preflight_is_green_while_author_template_remains_open() -> N
     assert report["pdf_visual_and_font_gate_confirmed"] is False
     assert report["literal_upload_ready"] is False
     assert report["text_word_count"] == 4008
-    assert unresolved_placeholders()
+    assert report["unresolved_required_author_placeholders"]
+
+
+def test_placeholder_classification_excludes_task_boxes_and_post_acceptance_from_initial_blockers() -> None:
+    placeholders = unresolved_placeholders()
+    classified = classify_placeholders()
+
+    assert "[ ]" not in placeholders
+    assert "[PUBLIC REPOSITORY OR DOI]" in classified["post_acceptance"]
+    assert "[SOFTWARE CITATION]" in classified["post_acceptance"]
+    assert "[PUBLIC REPOSITORY OR DOI]" not in classified["required_initial_submission"]
+    assert "[SOFTWARE CITATION]" not in classified["required_initial_submission"]
+    assert "[ORCID]" in classified["conditional_initial_submission"]
+    assert "[ADDRESS]" in classified["conditional_initial_submission"]
 
 
 def test_literal_upload_requires_resolved_declarations_and_pdf_confirmation(tmp_path: Path) -> None:
