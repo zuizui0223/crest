@@ -1,6 +1,6 @@
 # Supplementary Information: Information spectra of sparse semantic access
 
-This supplement extends the main-text sparse semantic-access result from support size to nonuniform occupancy, heterogeneous decoder capacity, and constrained decoder allocation. Rényi entropy, Shannon entropy, Hill numbers, monotonicity under ordinary partition refinement, convex optimization, KKT conditions, and water-filling methods are standard and are **not** claimed here as new mathematics. The contribution is narrower: the CREST semantic-access operator refines only declared retrospective-by-transverse semantic cells, and the results below give its exact finite information spectrum, asymptotic regimes, sharp placement bounds, and optimal allocation structure under a fixed decoder budget.
+This supplement extends the main-text sparse semantic-access result from support size to nonuniform occupancy, heterogeneous decoder capacity, and constrained decoder allocation. Rényi entropy, Shannon entropy, Hill numbers, monotonicity under ordinary partition refinement, convex optimization, KKT conditions, water-filling methods, and greedy marginal allocation for separable discrete resource-allocation problems are standard and are **not** claimed here as new mathematics. The contribution is narrower: the CREST semantic-access operator refines only declared retrospective-by-transverse semantic cells, and the results below give its exact finite information spectrum, asymptotic regimes, sharp placement bounds, and optimal allocation structure under continuous and integer decoder budgets.
 
 ## S1. Setup
 
@@ -328,7 +328,57 @@ x_i^*
 
 Hence the optimal design changes qualitatively at \(q=1\): support- and occupancy-sensitive objectives concentrate a finite decoder budget on a most-occupied semantic state, whereas dominant-state-sensitive objectives \(q>1\) progressively spread budget across high-occupancy states to equalize their weighted residual dominance. Water-filling itself is standard optimization machinery; the result here is its appearance as the exact optimum of the CREST selective semantic-access objective.
 
-## S8. Finite bounds
+## S8. Theorem S7: exact integer-budget allocation
+
+The continuous relaxation is not required when decoder depth is restricted to whole bits. Let
+
+\[
+x_i\in\mathbb Z_{\ge0},\qquad \sum_i x_i=B,
+\]
+
+with integer \(B\ge0\).
+
+For \(0\le q\le1\), the continuous optimum already lies at an integer vertex: all \(B\) bits may be assigned to a most-occupied cell (at \(q=0\), any single-cell vertex is optimal).
+
+For finite \(q>1\), maximizing \(G_q\) is equivalent to minimizing
+
+\[
+F_q(x)=\sum_i p_i^q2^{-(q-1)x_i}.
+\]
+
+If cell \(i\) currently has depth \(x_i\), assigning its next bit decreases \(F_q\) by
+
+\[
+\Delta_i(x_i)
+=
+(1-2^{-(q-1)})p_i^q2^{-(q-1)x_i}.
+\]
+
+For each cell, \(\Delta_i(r)\) is a geometrically decreasing sequence in the bit index \(r\). Therefore the globally optimal integer allocation is obtained by the marginal-allocation rule
+
+\[
+\boxed{
+\text{for }b=1,\ldots,B:\quad
+\text{assign bit }b\text{ to an }i\text{ maximizing }
+ p_i^q2^{-(q-1)x_i}.
+}
+\]
+
+Equivalently, the optimum consists of the \(B\) largest available marginal reductions across all cell-specific decreasing chains. Because choosing a later marginal from a cell necessarily includes all earlier, larger marginals from that same cell, the greedy sequence is feasible and globally optimal.
+
+At \(q=\infty\), the exact discrete rule becomes
+
+\[
+\boxed{
+\text{assign each next bit to a cell maximizing }p_i2^{-x_i}.
+}
+\]
+
+This minimizes the largest refined atom after every integer budget level. Thus the continuous water-filling theorem has an exact finite-bit counterpart: no rounding heuristic is required.
+
+The greedy/marginal-allocation method for separable discrete resource allocation is standard optimization machinery; the CREST result is the specialization showing that the Rényi semantic-access objective inherits an exact implementable optimum at every integer decoder budget.
+
+## S9. Finite bounds
 
 For common depth,
 
@@ -338,7 +388,7 @@ For common depth,
 
 for every \(q\in[0,\infty]\). Sparse access cannot create more information than the decoder depth it exposes.
 
-## S9. Ecological interpretation
+## S10. Ecological interpretation
 
 The order \(q\) specifies which parts of the ecological state distribution receive weight. This parallels Rényi/Hill diversity analysis, but the object here is not species diversity: it is the information gain produced by selectively accessible future refinement of semantic state cells.
 
@@ -347,29 +397,32 @@ The order \(q\) specifies which parts of the ecological state distribution recei
 - \(q>1\): dominant-state prediction; common semantic states receive increasing weight.
 - \(q=\infty\): worst-dominant-atom control; only the largest remaining semantic probability matters.
 
-The budget theorem adds an operational distinction. If the scientific objective values support or average occupancy, a constrained intervention/measurement budget is best concentrated on the most occupied semantic state. If the objective emphasizes dominant-state predictability, the optimum becomes water-filling: once the leading state has been sufficiently refined, capacity should spill to the next most dominant state rather than continue deepening one state indefinitely.
+The budget theorems add an operational distinction. If the scientific objective values support or average occupancy, a constrained intervention/measurement budget is best concentrated on the most occupied semantic state. If the objective emphasizes dominant-state predictability, the optimum becomes water-filling: once the leading state has been sufficiently refined, capacity should spill to the next most dominant state rather than continue deepening one state indefinitely. When instrumentation exposes information only in whole-bit increments, the same policy has an exact discrete implementation through sequential marginal allocation.
 
-## S10. Novelty boundary
+## S11. Novelty boundary
 
-The following are standard and are not claimed as new: Rényi, Shannon, Hartley, and min-entropy; Hill-number interpretation; ordinary partition-refinement monotonicity; convex optimization; KKT conditions; and generic water-filling arguments. The results claimed here concern the CREST selective semantic-access operator:
+The following are standard and are not claimed as new: Rényi, Shannon, Hartley, and min-entropy; Hill-number interpretation; ordinary partition-refinement monotonicity; convex optimization; KKT conditions; generic water-filling arguments; and greedy marginal allocation for separable integer resource-allocation problems. The results claimed here concern the CREST selective semantic-access operator:
 
 1. the exact finite \(G_q\) spectrum for selectively refined semantic cells;
 2. recovery of the main-text \(\log_2(N/k)\) theorem as the \(q=0\) endpoint;
 3. the \(q<1/q=1/q>1\) asymptotic regime split;
 4. sharp fixed-cardinality placement extrema under nonuniform occupancy;
 5. heterogeneous local decoder capacity;
-6. the exact min-entropy endpoint; and
-7. the decoder-budget design transition from concentration at \(q\le1\) to water-filling at \(q>1\).
+6. the exact min-entropy endpoint;
+7. the decoder-budget design transition from concentration at \(q\le1\) to water-filling at \(q>1\); and
+8. the exact whole-bit marginal-allocation rule for the same semantic-access objective.
 
-These remain finite-state or finite-dimensional relaxed-design statements. They do not establish stochastic-process convergence, continuous-time limits, or empirical occupancy distributions for any particular ecosystem.
+These remain finite-state or finite-dimensional design statements. They do not establish stochastic-process convergence, continuous-time limits, or empirical occupancy distributions for any particular ecosystem.
 
-## S11. Reproducibility
+## S12. Reproducibility
 
-The formulas are implemented in `crest/renyi_access.py` and tested in `tests/test_renyi_access.py`. Tests include direct expansion of refined distributions, exact recovery of the main-text \(N=4,k=1,m=10\) benchmark, numerical asymptotic convergence, brute-force fixed-cardinality placement checks, the min-entropy endpoint, grid verification of the budget optimum, and KKT residual equalization for the water-filling solution.
+The formulas are implemented in `crest/renyi_access.py` and tested in `tests/test_renyi_access.py`. Tests include direct expansion of refined distributions, exact recovery of the main-text \(N=4,k=1,m=10\) benchmark, numerical asymptotic convergence, brute-force fixed-cardinality placement checks, the min-entropy endpoint, grid verification of the continuous budget optimum, KKT residual equalization for the water-filling solution, exhaustive enumeration of all small integer budget compositions, and one-bit exchange checks of the discrete optimum.
 
 ## Supplementary references
 
 Boyd, S., and L. Vandenberghe. 2004. *Convex Optimization*. Cambridge University Press, Cambridge.
+
+Federgruen, A., and H. Groenevelt. 1986. The greedy procedure for resource allocation problems: necessary and sufficient conditions for optimality. *Operations Research* 34:909–918.
 
 Jost, L. 2006. Entropy and diversity. *Oikos* 113:363–375.
 
