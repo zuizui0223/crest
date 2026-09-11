@@ -49,13 +49,71 @@ For coalition `S`, query `f` is licensed iff `F∈S` and `R_f⊆S`. On every add
 
 The Möbius transform of a unanimity game supported on `T_f=R_f∪{F}` is one at `T_f` and zero elsewhere. Linearity of Möbius inversion therefore gives the coefficient formula above. The direct cellwise form gives the same result because overlapping licensed queries contribute additive local depths before taking the occupancy expectation.
 
+## Shannon uniqueness: non-Shannon orders can leak across prerequisite support
+
+The support theorem above is genuinely Shannon-specific. Consider the minimal symmetric witness with two equiprobable semantic cells. Query `a` requires only `H`, refines cell 0 by one bit, and query `b` requires only `THETA`, refines cell 1 by one bit. No query declares the joint prerequisite `{H, THETA}`.
+
+For one licensed query, the refined distribution is `(1/4, 1/4, 1/2)`, whereas licensing both produces four atoms of probability `1/4`. For finite Rényi order `q != 1`, the single-query gain is
+
+\[
+g_q=\frac{1}{1-q}\log_2\left(\frac12+2^{-q}\right),
+\]
+
+and the two-query gain is exactly one bit. Therefore the `H × THETA × F` Möbius dividend is
+
+\[
+\boxed{
+D_q
+=1-\frac{2}{1-q}\log_2\left(\frac12+2^{-q}\right),
+\qquad q\ne1.
+}
+\]
+
+At `q=1`, each single query contributes `1/2` bit and the joint gain is one bit, so
+
+\[
+\boxed{D_1=0.}
+\]
+
+Moreover `D_q=0` has the unique solution `q=1`. Indeed, setting `D_q=0` is equivalent to
+
+\[
+\frac12+2^{-q}=2^{(1-q)/2}.
+\]
+
+Writing `t=2^{-q/2}` gives
+
+\[
+t^2-\sqrt2\,t+\frac12
+=\left(t-\frac1{\sqrt2}\right)^2=0,
+\]
+
+hence `t=2^{-1/2}` and therefore `q=1`. The same identity shows the sign change:
+
+\[
+D_q<0\quad(0\le q<1),
+\qquad
+D_q>0\quad(q>1),
+\]
+
+with `D_infinity=1` bit.
+
+Thus Shannon order is uniquely **prerequisite-support faithful** within this minimal Rényi witness: only at `q=1` does the prospective Möbius support coincide exactly with the declared prerequisite hyperedges. Other Rényi orders can generate emergent higher-order interaction from the nonlinear aggregation of selectively refined semantic cells even when no query declares that higher-order prerequisite.
+
+This boundary is useful rather than pathological. It separates two notions that should not be conflated:
+
+- **structural interaction**, fixed by declared prerequisite sets and recovered exactly by Shannon-order dividends; and
+- **distributional interaction**, induced by nonlinear weighting of heterogeneous selectively refined cells at non-Shannon Rényi orders.
+
 ## Novelty boundary
 
-Möbius/Harsanyi inversion, unanimity games, and Shannon conditional-information additivity are standard and are not claimed as new mathematics. The CREST-specific contribution is the exact factorization of the declared prerequisite/access architecture: prerequisite hyperedges determine dividend support, whereas semantic-access occupancy determines dividend weights. This theorem formalizes the paper's qualitative distinction that prerequisite order determines **where** the prospective burden appears and semantic coverage determines **how large** it is.
+Möbius/Harsanyi inversion, unanimity games, Shannon conditional-information additivity, and Rényi entropy itself are standard and are not claimed as new mathematics. The CREST-specific contribution is the exact factorization of the declared prerequisite/access architecture at Shannon order, together with the sharp boundary showing why this factorization cannot be extended indiscriminately across Rényi orders. Prerequisite hyperedges determine Shannon dividend support, semantic-access occupancy determines Shannon dividend weights, while non-Shannon orders can add distribution-induced interaction not present in the prerequisite graph.
 
 ## Executable verification
 
 - `crest/prerequisite_access_game.py`
 - `tests/test_prerequisite_access_game.py`
+- `crest/prerequisite_renyi_leakage.py`
+- `tests/test_prerequisite_renyi_leakage.py`
 
-The tests compare the closed-form query sum with direct cellwise combined refinement for every coalition, apply Möbius inversion to the full game, verify zero leakage to an irrelevant interface, verify aggregation of queries with identical prerequisite sets, and recover the canonical pure three-way Shannon support.
+The tests compare the closed-form query sum with direct cellwise combined refinement for every coalition, apply Möbius inversion to the full game, verify zero leakage to an irrelevant interface, verify aggregation of queries with identical prerequisite sets, recover the canonical pure three-way Shannon support, match the exact two-query leakage formula to direct Möbius inversion across multiple Rényi orders, and verify that the leakage changes sign at the unique zero `q=1`.
