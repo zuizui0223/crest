@@ -27,6 +27,7 @@ def test_amnat_submission_metadata_matches_current_requirements() -> None:
         "Main text",
         "1 table",
         "Literature Cited",
+        "Supplementary Information: Rényi semantic-access theory",
     ]
     assert metadata["text_word_count"] == text_word_count(text)
 
