@@ -47,6 +47,30 @@ The repository cannot close these without author input or final approval:
 10. final generative-AI disclosure consistent with actual use and human verification;
 11. confirmation that all authors approve submission and that the manuscript is not under consideration elsewhere.
 
+## Machine-readable preflight
+
+Run:
+
+```bash
+python scripts/check_amnat_submission_preflight.py
+```
+
+The report separates three states rather than collapsing them into one pass/fail flag:
+
+- `repository_ready`: canonical manuscript, metadata, word count, abstract, keywords, short title, and builders are internally consistent;
+- `author_fields_ready`: the supplied declarations file contains no unresolved bracketed author-controlled placeholders;
+- `pdf_visual_and_font_gate_confirmed`: the final review PDF has been manually checked for spacing, line/page numbering, anonymity, equation rendering, and embedded fonts.
+
+The default declarations input is the template, so `repository_ready=true` with `author_fields_ready=false` is the expected pre-submission state until the author supplies the final declarations. To test a completed nonblinded declarations file and explicitly confirm the PDF gate:
+
+```bash
+python scripts/check_amnat_submission_preflight.py \
+  --declarations path/to/final_declarations.md \
+  --pdf-verified
+```
+
+`literal_upload_ready` becomes true only when all three layers are closed. The CLI exits nonzero only for a repository-controlled failure; unresolved author fields are reported as blockers without making the reproducibility suite fail.
+
 ## Literal-upload gate
 
 Repository-controlled work is complete only when all of the following succeed from a clean environment:
@@ -56,6 +80,7 @@ python -m pip install -e '.[dev]'
 pytest
 python scripts/build_amnat_anonymous_bundle.py
 python scripts/build_amnat_title_page.py
+python scripts/check_amnat_submission_preflight.py
 ```
 
 The final review PDF must then be checked visually for double spacing, line numbering, page numbering, anonymity, equation rendering, and embedded fonts.
