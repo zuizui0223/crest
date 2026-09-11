@@ -1,12 +1,14 @@
 # The American Naturalist submission declarations — TEMPLATE
 
-This file is a submission-preparation surface, not part of the blinded manuscript. Replace every bracketed field before submission. Do not upload author-identifying material inside the blinded review manuscript.
+This file is a submission-preparation surface, not part of the blinded manuscript. Replace every bracketed author-controlled field before submission. Do not upload author-identifying material inside the blinded review manuscript.
 
 ## 1. Data and Code Accessibility Statement
 
 ### Double-anonymous review version
 
-> All code required to reproduce the finite mathematical and modeling results reported in this manuscript is provided in an anonymized review archive at **[ANONYMOUS REVIEW ARCHIVE OR JOURNAL FILE IDENTIFIER]**. The archive contains the temporal-cut implementation, strict companion-realizability audit, companion semantic quotients, sparse semantic-access state quotient, focused regression tests, and the executable shallow-lake prerequisite audit. The shallow-lake component is a literature-grounded finite decision model rather than an empirical data analysis. The review archive is generated deterministically from a whitelist-only source package and excludes repository history and author-identifying metadata.
+> All code required to reproduce the finite mathematical and modeling results reported in this manuscript is supplied as an anonymized review-code ZIP uploaded directly with the submission in Editorial Manager. The archive contains the temporal-cut implementation, strict companion-realizability audit, companion semantic quotients, sparse semantic-access state quotient, focused regression tests, and the executable shallow-lake prerequisite audit. The shallow-lake component is a literature-grounded finite decision model rather than an empirical data analysis. The review archive is generated deterministically from a whitelist-only source package and excludes repository history and author-identifying metadata.
+
+This direct-upload route is allowed by the journal's review policy and does not require a public author-identifying URL during double-anonymous review.
 
 ### Publication / post-acceptance version
 
@@ -16,13 +18,13 @@ Do not substitute the public author-identifying repository URL into the blinded 
 
 ## 2. Generative-AI disclosure — author confirmation required
 
-The final wording must describe the actual submitted workflow rather than a generic policy statement.
+The final wording must describe the actual submitted workflow rather than a generic policy statement. The working draft below reflects the documented development workflow in this repository and conversation history; the author must confirm the verification clause before submission.
 
 Working disclosure draft:
 
-> Generative-AI tools were used during development of this work to assist with **[SELECT ALL THAT APPLY: mathematical exploration / code drafting / code review / literature-search assistance / manuscript drafting / language revision / figure preparation]**. All theorem statements, proofs, numerical claims, citations, code included in the review package, and final manuscript text were **[AUTHOR TO CONFIRM THE ACTUAL HUMAN VERIFICATION PROCESS]**. The authors take responsibility for the accuracy and integrity of the submitted work.
+> Generative-AI tools were used during development of this work to assist with mathematical exploration, code drafting and review, literature-search assistance, manuscript drafting, and language revision. All theorem statements, proofs, numerical claims, citations, code included in the review package, and final manuscript text were **[AUTHOR TO CONFIRM THE ACTUAL HUMAN VERIFICATION PROCESS]**. The authors take responsibility for the accuracy and integrity of the submitted work.
 
-Before submission, replace the bracketed fields with an exact account of use. Do not state that an item was independently verified unless that verification was actually performed.
+Before submission, replace the remaining bracketed verification field with an exact account of human review. Do not state that an item was independently verified unless that verification was actually performed.
 
 ## 3. Author contribution statement — nonblinded submission metadata
 
@@ -81,7 +83,7 @@ Before uploading, verify that the generated archive passes:
 pytest tests/test_amnat_anonymous_bundle.py
 ```
 
-The final anonymous archive location is then inserted into Section 1 above.
+Upload that ZIP directly to Editorial Manager for double-anonymous review. A public repository/DOI is a post-acceptance requirement, not an initial-submission blocker when the anonymous ZIP is supplied directly for review.
 
 ## 7. Final submission checklist
 
@@ -89,8 +91,8 @@ The final anonymous archive location is then inserted into Section 1 above.
 - [ ] Blinded manuscript contains no author names, affiliations, acknowledgments, repository-owner handles, or identifying URLs.
 - [ ] Abstract remains at or below 200 words.
 - [ ] Keywords remain at or below 6.
-- [ ] Data and Code Accessibility Statement contains the correct anonymous review identifier.
-- [ ] Generative-AI disclosure accurately describes the submitted workflow.
+- [ ] Anonymous review-code ZIP is uploaded directly with the submission.
+- [ ] Generative-AI disclosure accurately describes the submitted workflow and human verification.
 - [ ] Software/public archive citation is prepared for the nonblinded or accepted version as appropriate.
 - [ ] Author contributions, funding, conflicts, and ORCID metadata are complete outside the blinded manuscript.
 - [ ] Review PDF is double-spaced, line-numbered, page-numbered, and has embedded math fonts.

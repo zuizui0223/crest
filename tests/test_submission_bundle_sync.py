@@ -70,7 +70,9 @@ def test_amnat_declaration_template_keeps_author_fields_outside_blinded_manuscri
     assert "Data and Code Accessibility Statement" in template
     assert "Generative-AI disclosure" in template
     assert "Author contribution statement" in template
-    assert "[ANONYMOUS REVIEW ARCHIVE OR JOURNAL FILE IDENTIFIER]" in template
+    assert "anonymized review-code ZIP uploaded directly with the submission in Editorial Manager" in template
+    assert "[ANONYMOUS REVIEW ARCHIVE OR JOURNAL FILE IDENTIFIER]" not in template
+    assert "[SELECT ALL THAT APPLY:" not in template
     assert "[AUTHOR TO CONFIRM THE ACTUAL HUMAN VERIFICATION PROCESS]" in template
     assert "Do not upload author-identifying material inside the blinded review manuscript" in template
 
