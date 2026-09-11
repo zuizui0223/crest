@@ -65,6 +65,10 @@ def test_anonymous_manifest_hashes_every_whitelisted_source(tmp_path: Path) -> N
         assert set(manifest["files"]) == set(builder.SOURCE_PATHS)
         assert "crest/renyi_access.py" in manifest["files"]
         assert "tests/test_renyi_access.py" in manifest["files"]
+        assert "crest/prerequisite_access_game.py" in manifest["files"]
+        assert "tests/test_prerequisite_access_game.py" in manifest["files"]
+        assert "crest/prerequisite_renyi_leakage.py" in manifest["files"]
+        assert "tests/test_prerequisite_renyi_leakage.py" in manifest["files"]
         for name, metadata in manifest["files"].items():
             payload = archive.read(name)
             assert hashlib.sha256(payload).hexdigest() == metadata["sha256"]
@@ -88,6 +92,21 @@ def test_anonymous_manifest_hashes_every_whitelisted_source(tmp_path: Path) -> N
             "q_equal_1": 0.25,
             "q_above_1": 0,
         }
+
+        support = manifest["prerequisite_support_anchor"]
+        assert support["future_label"] == "F"
+        assert support["canonical_prerequisites"] == ["H", "THETA"]
+        assert support["uniform_accessible_mass"] == 0.25
+        assert support["bit_depth"] == 10
+        assert support["shannon_grand_dividend_bits"] == 2.5
+
+        uniqueness = manifest["shannon_uniqueness_anchor"]
+        assert uniqueness["witness_cells"] == 2
+        assert uniqueness["query_prerequisites"] == [["H"], ["THETA"]]
+        assert uniqueness["joint_prerequisite_declared"] is False
+        assert uniqueness["joint_dividend_q1_bits"] == 0.0
+        assert uniqueness["leakage_sign_q_below_1"] == -1
+        assert uniqueness["leakage_sign_q_above_1"] == 1
 
         boundary = manifest["complete_access_boundary"]
         assert boundary["addressable_pairs"] == 4
@@ -120,6 +139,8 @@ def test_anonymous_bundle_runs_focused_theorem_tests(tmp_path: Path) -> None:
             "tests/test_semantic_access.py",
             "tests/test_semantic_temporal_quotient.py",
             "tests/test_renyi_access.py",
+            "tests/test_prerequisite_access_game.py",
+            "tests/test_prerequisite_renyi_leakage.py",
             "tests/test_shallow_lake_prerequisites.py",
             "tests/test_sparse_semantic_access_benchmark.py",
         ],
