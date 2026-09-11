@@ -14,11 +14,23 @@ READINESS = ROOT / "manuscript" / "AMNAT_SUBMISSION_READINESS.md"
 ANONYMOUS_BUNDLE_BUILDER = ROOT / "scripts" / "build_amnat_anonymous_bundle.py"
 TITLE_PAGE_BUILDER = ROOT / "scripts" / "build_amnat_title_page.py"
 
-# Declaration placeholders are deliberately broad: anything left in square brackets
-# is unresolved author-controlled text. The declarations surface contains no Markdown
-# links, so broad matching is safer than guessing the allowed placeholder vocabulary.
 PLACEHOLDER_RE = re.compile(r"\[[^\]\n]+\]")
 WORD_RE = re.compile(r"\b[A-Za-z0-9][A-Za-z0-9'’-]*\b")
+
+# These fields are explicitly conditional in the active readiness/template surface.
+CONDITIONAL_INITIAL_PLACEHOLDERS = {
+    "[ORCID]",
+    "[ADDRESS]",
+    "[NAME(S)]",
+    "[NAME(S), IF APPLICABLE]",
+}
+
+# These belong to the publication/post-acceptance version and must not block
+# double-anonymous initial submission.
+POST_ACCEPTANCE_PLACEHOLDERS = {
+    "[PUBLIC REPOSITORY OR DOI]",
+    "[SOFTWARE CITATION]",
+}
 
 
 def _abstract_word_count(text: str) -> int:
@@ -27,8 +39,22 @@ def _abstract_word_count(text: str) -> int:
 
 
 def unresolved_placeholders(path: Path = DECLARATIONS_TEMPLATE) -> list[str]:
+    """Return semantic placeholders, excluding Markdown task-box syntax."""
+
     text = path.read_text(encoding="utf-8")
-    return sorted(set(PLACEHOLDER_RE.findall(text)))
+    return sorted({item for item in PLACEHOLDER_RE.findall(text) if item.strip() != "[ ]"})
+
+
+def classify_placeholders(path: Path = DECLARATIONS_TEMPLATE) -> dict[str, list[str]]:
+    placeholders = set(unresolved_placeholders(path))
+    post_acceptance = sorted(placeholders & POST_ACCEPTANCE_PLACEHOLDERS)
+    conditional = sorted(placeholders & CONDITIONAL_INITIAL_PLACEHOLDERS)
+    required = sorted(placeholders - POST_ACCEPTANCE_PLACEHOLDERS - CONDITIONAL_INITIAL_PLACEHOLDERS)
+    return {
+        "required_initial_submission": required,
+        "conditional_initial_submission": conditional,
+        "post_acceptance": post_acceptance,
+    }
 
 
 def preflight(
@@ -56,8 +82,9 @@ def preflight(
     }
     repository_ready = all(repository_checks.values())
 
-    placeholders = unresolved_placeholders(declarations)
-    author_fields_ready = len(placeholders) == 0
+    classified = classify_placeholders(declarations)
+    required = classified["required_initial_submission"]
+    author_fields_ready = len(required) == 0
     literal_upload_ready = (
         repository_ready and author_fields_ready and pdf_visual_and_font_gate_confirmed
     )
@@ -66,7 +93,11 @@ def preflight(
         "repository_ready": repository_ready,
         "repository_checks": repository_checks,
         "author_fields_ready": author_fields_ready,
-        "unresolved_author_placeholders": placeholders,
+        "unresolved_required_author_placeholders": required,
+        "unresolved_conditional_author_placeholders": classified[
+            "conditional_initial_submission"
+        ],
+        "unresolved_post_acceptance_placeholders": classified["post_acceptance"],
         "pdf_visual_and_font_gate_confirmed": pdf_visual_and_font_gate_confirmed,
         "literal_upload_ready": literal_upload_ready,
         "text_word_count": report["text_word_count"],
