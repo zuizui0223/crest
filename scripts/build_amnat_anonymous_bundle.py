@@ -183,7 +183,7 @@ def _manifest(source_payloads: dict[str, bytes]) -> bytes:
         "shannon_uniqueness_anchor": {
             "witness_cells": 2,
             "query_prerequisites": [["H"], ["THETA"]],
-            "joint_prerequisite_declared": false,
+            "joint_prerequisite_declared": False,
             "joint_dividend_q1_bits": 0.0,
             "leakage_sign_q_below_1": -1,
             "leakage_sign_q_above_1": 1,
