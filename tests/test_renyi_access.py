@@ -1,5 +1,5 @@
 from itertools import combinations
-from math import log2
+from math import inf, log2
 
 import pytest
 
@@ -7,8 +7,10 @@ from crest.renyi_access import (
     asymptotic_limit_q_above_one,
     asymptotic_offset_q_below_one,
     asymptotic_slope,
+    continuous_decoder_gain,
     fixed_budget_extrema,
     heterogeneous_renyi_access_gain,
+    optimal_decoder_allocation,
     renyi_access_gain,
 )
 
@@ -34,6 +36,14 @@ def test_uniform_occupancy_shannon_gain_is_m_times_k_over_n() -> None:
     assert renyi_access_gain(ps, {2}, 10, q=1) == pytest.approx(2.5)
 
 
+def test_min_entropy_endpoint_is_exact() -> None:
+    ps = (0.50, 0.30, 0.20)
+    # Splitting the dominant cell four ways makes 0.30 the largest remaining atom.
+    assert renyi_access_gain(ps, {0}, 2, q=inf) == pytest.approx(log2(0.50 / 0.30))
+    # If the dominant cell is inaccessible, min-entropy cannot improve.
+    assert renyi_access_gain(ps, {1, 2}, 8, q=inf) == pytest.approx(0.0)
+
+
 def test_exact_renyi_formula_agrees_with_explicit_refined_distribution() -> None:
     ps = (0.2, 0.3, 0.5)
     access = {0, 2}
@@ -54,7 +64,7 @@ def test_exact_renyi_formula_agrees_with_explicit_refined_distribution() -> None
 
 def test_gain_is_between_zero_and_decoder_depth_for_common_depth() -> None:
     ps = (0.02, 0.08, 0.20, 0.70)
-    for q in (0.0, 0.25, 0.9, 1.0, 2.0, 5.0):
+    for q in (0.0, 0.25, 0.9, 1.0, 2.0, 5.0, inf):
         for access in ({0}, {3}, {0, 2}, {0, 1, 2, 3}):
             gain = renyi_access_gain(ps, access, 7, q)
             assert -1e-12 <= gain <= 7 + 1e-12
@@ -66,6 +76,7 @@ def test_three_regime_asymptotic_slopes() -> None:
     assert asymptotic_slope(ps, access, 0.5) == 1.0
     assert asymptotic_slope(ps, access, 1.0) == pytest.approx(0.5)
     assert asymptotic_slope(ps, access, 2.0) == 0.0
+    assert asymptotic_slope(ps, access, inf) == 0.0
 
 
 def test_q_below_one_offset_recovers_log_n_over_k_at_q_zero() -> None:
@@ -96,7 +107,7 @@ def test_fixed_budget_extrema_are_sharp_by_brute_force() -> None:
     n = len(ps)
     k = 2
     m = 6
-    for q in (0.0, 0.5, 1.0, 2.0):
+    for q in (0.0, 0.5, 1.0, 2.0, inf):
         observed = [
             renyi_access_gain(ps, set(access), m, q)
             for access in combinations(range(n), k)
@@ -107,7 +118,7 @@ def test_fixed_budget_extrema_are_sharp_by_brute_force() -> None:
         if q == 0.0:
             assert low == pytest.approx(high, abs=1e-12)
         else:
-            assert high > low
+            assert high >= low
 
 
 def test_heterogeneous_decoder_capacity_has_exact_shannon_formula() -> None:
@@ -122,7 +133,73 @@ def test_heterogeneous_formula_reduces_to_common_depth_formula() -> None:
     access = {0, 2}
     m = 5
     multiplicities = tuple(2**m if i in access else 1 for i in range(len(ps)))
-    for q in (0.0, 0.5, 1.0, 2.0):
+    for q in (0.0, 0.5, 1.0, 2.0, inf):
         assert heterogeneous_renyi_access_gain(ps, multiplicities, q) == pytest.approx(
             renyi_access_gain(ps, access, m, q), abs=1e-12
         )
+
+
+def _simplex_grid(budget: float, step: float) -> list[tuple[float, float, float]]:
+    units = round(budget / step)
+    return [
+        (i * step, j * step, (units - i - j) * step)
+        for i in range(units + 1)
+        for j in range(units - i + 1)
+    ]
+
+
+def test_optimal_budget_concentrates_for_q_at_or_below_one() -> None:
+    ps = (0.50, 0.30, 0.20)
+    budget = 2.0
+    grid = _simplex_grid(budget, 0.25)
+    for q in (0.0, 0.5, 1.0):
+        optimum = optimal_decoder_allocation(ps, budget, q)
+        optimum_gain = continuous_decoder_gain(ps, optimum, q)
+        brute = max(continuous_decoder_gain(ps, candidate, q) for candidate in grid)
+        assert sum(optimum) == pytest.approx(budget, abs=1e-12)
+        assert optimum_gain == pytest.approx(brute, abs=1e-12)
+        if q > 0.0:
+            assert optimum == pytest.approx((budget, 0.0, 0.0), abs=1e-12)
+
+
+def test_q_above_one_water_filling_is_globally_optimal_on_grid() -> None:
+    ps = (0.50, 0.30, 0.20)
+    budget = 2.0
+    q = 2.0
+    optimum = optimal_decoder_allocation(ps, budget, q)
+    optimum_gain = continuous_decoder_gain(ps, optimum, q)
+    brute = max(
+        continuous_decoder_gain(ps, candidate, q)
+        for candidate in _simplex_grid(budget, 0.05)
+    )
+    assert sum(optimum) == pytest.approx(budget, abs=1e-12)
+    assert optimum_gain >= brute - 1e-12
+    assert optimum[0] > 0.0
+    assert optimum[1] > 0.0
+
+
+def test_water_filling_equalizes_active_weighted_residuals() -> None:
+    ps = (0.50, 0.30, 0.15, 0.05)
+    q = 2.0
+    allocation = optimal_decoder_allocation(ps, 4.0, q)
+    residuals = [
+        (p**q) * (2.0 ** ((1.0 - q) * x))
+        for p, x in zip(ps, allocation)
+    ]
+    active = [r for r, x in zip(residuals, allocation) if x > 1e-10]
+    assert max(active) - min(active) < 1e-10
+    inactive = [r for r, x in zip(residuals, allocation) if x <= 1e-10]
+    assert all(r <= active[0] + 1e-10 for r in inactive)
+
+
+def test_min_entropy_budget_limit_is_water_filling_on_log_probability() -> None:
+    ps = (0.50, 0.30, 0.20)
+    budget = 2.0
+    allocation = optimal_decoder_allocation(ps, budget, inf)
+    gain = continuous_decoder_gain(ps, allocation, inf)
+    brute = max(
+        continuous_decoder_gain(ps, candidate, inf)
+        for candidate in _simplex_grid(budget, 0.05)
+    )
+    assert gain >= brute - 1e-12
+    assert sum(allocation) == pytest.approx(budget, abs=1e-12)

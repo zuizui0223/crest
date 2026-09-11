@@ -1,7 +1,7 @@
 """Rényi/Hill information gain under sparse semantic access.
 
 This module generalizes CREST's count-based sparse-access result from support
-size (Rényi order q=0) to nonuniform semantic-pair occupancy.  Rényi entropy
+size (Rényi order q=0) to nonuniform semantic-pair occupancy. Rényi entropy
 itself is standard; the object encoded here is CREST's selective refinement
 operator: inaccessible semantic cells remain unsplit while accessible cells are
 refined by a declared local decoder multiplicity.
@@ -9,7 +9,7 @@ refined by a declared local decoder multiplicity.
 
 from __future__ import annotations
 
-from math import isclose, log2
+from math import inf, isclose, isfinite, isinf, log2
 from typing import Iterable, Sequence
 
 
@@ -41,8 +41,9 @@ def renyi_access_gain(
     """Exact information gain from selectively splitting accessible cells.
 
     Each accessible semantic cell is split uniformly into ``2**bit_depth``
-    descendants; inaccessible cells remain singletons.  The returned value is
-    refined Rényi entropy minus baseline Rényi entropy, in bits.
+    descendants; inaccessible cells remain singletons. The returned value is
+    refined Rényi entropy minus baseline Rényi entropy, in bits. ``q=inf``
+    returns the min-entropy endpoint.
     """
 
     if not isinstance(bit_depth, int) or isinstance(bit_depth, bool) or bit_depth < 0:
@@ -55,6 +56,12 @@ def renyi_access_gain(
     access = set(_indices(accessible, len(ps)))
     multiplicity = 2**bit_depth
 
+    if isinf(q):
+        base_max = max(ps)
+        refined_max = max(
+            p / multiplicity if i in access else p for i, p in enumerate(ps)
+        )
+        return log2(base_max / refined_max)
     if q == 0.0:
         refined_support = sum(multiplicity if i in access else 1 for i in range(len(ps)))
         return log2(refined_support / len(ps))
@@ -71,6 +78,97 @@ def renyi_access_gain(
     return log2(refined_power / base_power) / (1.0 - q)
 
 
+def continuous_decoder_gain(
+    probabilities: Sequence[float],
+    decoder_bits: Sequence[float],
+    q: float,
+) -> float:
+    """Rényi gain for a continuous decoder-depth relaxation.
+
+    Cell ``i`` receives ``x_i >= 0`` bits and is idealized as splitting into
+    ``2**x_i`` equiprobable descendants. Integer ``x_i`` recovers an ordinary
+    finite split; noninteger values define the convex resource-allocation
+    relaxation used by the supplementary optimal-design theorem.
+    """
+
+    ps = _probabilities(probabilities)
+    xs = tuple(float(x) for x in decoder_bits)
+    if len(xs) != len(ps):
+        raise ValueError("one decoder depth is required per semantic cell")
+    if any(x < 0.0 or not isfinite(x) for x in xs):
+        raise ValueError("decoder depths must be finite and nonnegative")
+    q = float(q)
+    if q < 0.0:
+        raise ValueError("q must be nonnegative")
+
+    if isinf(q):
+        return log2(max(ps) / max(p * (2.0 ** (-x)) for p, x in zip(ps, xs)))
+    if q == 0.0:
+        return log2(sum(2.0**x for x in xs) / len(xs))
+    if q == 1.0:
+        return sum(p * x for p, x in zip(ps, xs))
+
+    base_power = sum(p**q for p in ps)
+    refined_power = sum((p**q) * (2.0 ** ((1.0 - q) * x)) for p, x in zip(ps, xs))
+    return log2(refined_power / base_power) / (1.0 - q)
+
+
+def optimal_decoder_allocation(
+    probabilities: Sequence[float],
+    budget_bits: float,
+    q: float,
+) -> tuple[float, ...]:
+    """Return one gain-maximizing allocation under ``sum(x_i)=budget_bits``.
+
+    For ``0 <= q <= 1`` the convex/linear objective is maximized at a simplex
+    vertex: all depth is assigned to a most-occupied cell (at ``q=0`` every
+    vertex is equivalent, and the same deterministic choice is returned).
+
+    For ``q>1`` the objective is strictly convex after reversing the negative
+    Rényi prefactor, yielding the unique water-filling solution
+
+        x_i = max(0, q/(q-1) * log2(p_i) - tau),
+
+    where ``tau`` is chosen so that the depths sum to the budget. At ``q=inf``
+    the limiting formula uses ``log2(p_i)`` in place of ``q/(q-1) log2(p_i)``.
+    """
+
+    ps = _probabilities(probabilities)
+    budget = float(budget_bits)
+    if budget < 0.0 or not isfinite(budget):
+        raise ValueError("budget_bits must be finite and nonnegative")
+    q = float(q)
+    if q < 0.0:
+        raise ValueError("q must be nonnegative")
+    if budget == 0.0:
+        return tuple(0.0 for _ in ps)
+
+    if q <= 1.0:
+        target = max(range(len(ps)), key=lambda i: (ps[i], -i))
+        return tuple(budget if i == target else 0.0 for i in range(len(ps)))
+
+    coefficient = 1.0 if isinf(q) else q / (q - 1.0)
+    scores = tuple(coefficient * log2(p) for p in ps)
+
+    # Solve sum_i max(0, score_i - tau) = budget by monotone bisection.
+    low = min(scores) - budget - 1.0
+    high = max(scores)
+    for _ in range(200):
+        tau = (low + high) / 2.0
+        allocated = sum(max(0.0, score - tau) for score in scores)
+        if allocated > budget:
+            low = tau
+        else:
+            high = tau
+    tau = high
+    allocation = [max(0.0, score - tau) for score in scores]
+    # Absorb floating residual into the largest active coordinate.
+    residual = budget - sum(allocation)
+    target = max(range(len(ps)), key=lambda i: allocation[i])
+    allocation[target] += residual
+    return tuple(allocation)
+
+
 def heterogeneous_renyi_access_gain(
     probabilities: Sequence[float],
     multiplicities: Sequence[int],
@@ -78,7 +176,7 @@ def heterogeneous_renyi_access_gain(
 ) -> float:
     """Exact gain when semantic cell i is split into ``multiplicities[i]`` cells.
 
-    ``M_i=1`` represents no future refinement.  Accessible descendants are
+    ``M_i=1`` represents no future refinement. Accessible descendants are
     equiprobable within each parent semantic cell.
     """
 
@@ -92,6 +190,8 @@ def heterogeneous_renyi_access_gain(
     if q < 0.0:
         raise ValueError("q must be nonnegative")
 
+    if isinf(q):
+        return log2(max(ps) / max(p / m for p, m in zip(ps, ms)))
     if q == 0.0:
         return log2(sum(ms) / len(ms))
     if q == 1.0:
@@ -154,8 +254,8 @@ def asymptotic_limit_q_above_one(
     ps = _probabilities(probabilities)
     access = set(_indices(accessible, len(ps)))
     q = float(q)
-    if q <= 1.0:
-        raise ValueError("finite saturation limit requires q > 1")
+    if q <= 1.0 or isinf(q):
+        raise ValueError("finite-q saturation formula requires 1 < q < infinity")
     inaccessible = [i for i in range(len(ps)) if i not in access]
     if not inaccessible:
         raise ValueError("at least one inaccessible cell is required")
