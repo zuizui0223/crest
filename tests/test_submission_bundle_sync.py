@@ -13,6 +13,7 @@ CANONICAL = {
     "crest_flagship_amnat_v0.7_semantic_access.md",
     "CREST_supplementary_information.md",
     "CREST_AmNat_supplementary_information.md",
+    "CREST_AmNat_supplementary_prerequisite_support.md",
     "biology_philosophy_title_page_TEMPLATE.md",
     "amnat_submission_declarations_TEMPLATE.md",
     "amnat_submission_metadata.json",
@@ -44,6 +45,9 @@ def test_amnat_v07_flagship_is_separate_from_biology_philosophy_submission_entry
     supplement = (MANUSCRIPT_DIR / "CREST_AmNat_supplementary_information.md").read_text(
         encoding="utf-8"
     )
+    support_supplement = (
+        MANUSCRIPT_DIR / "CREST_AmNat_supplementary_prerequisite_support.md"
+    ).read_text(encoding="utf-8")
     v06 = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.6_addressability.md").read_text(
         encoding="utf-8"
     )
@@ -61,6 +65,9 @@ def test_amnat_v07_flagship_is_separate_from_biology_philosophy_submission_entry
     assert "exact Rényi access spectrum" in supplement
     assert "three asymptotic regimes" in supplement
     assert "coverage placement" in supplement
+    assert "prerequisite-support factorization" in support_supplement
+    assert "Shannon uniqueness" in support_supplement
+    assert "distributional interaction" in support_supplement
     submission_readme = (MANUSCRIPT_DIR / "SUBMISSION_README.md").read_text(encoding="utf-8")
     assert "crest_flagship_amnat_v0.7_semantic_access.md" in submission_readme
     assert "amnat_submission_metadata.json" in submission_readme
