@@ -14,7 +14,10 @@ READINESS = ROOT / "manuscript" / "AMNAT_SUBMISSION_READINESS.md"
 ANONYMOUS_BUNDLE_BUILDER = ROOT / "scripts" / "build_amnat_anonymous_bundle.py"
 TITLE_PAGE_BUILDER = ROOT / "scripts" / "build_amnat_title_page.py"
 
-PLACEHOLDER_RE = re.compile(r"\[[A-Z][A-Z0-9 /_().,'’-]*\]")
+# Declaration placeholders are deliberately broad: anything left in square brackets
+# is unresolved author-controlled text. The declarations surface contains no Markdown
+# links, so broad matching is safer than guessing the allowed placeholder vocabulary.
+PLACEHOLDER_RE = re.compile(r"\[[^\]\n]+\]")
 WORD_RE = re.compile(r"\b[A-Za-z0-9][A-Za-z0-9'’-]*\b")
 
 
