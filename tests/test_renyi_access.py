@@ -11,6 +11,7 @@ from crest.renyi_access import (
     fixed_budget_extrema,
     heterogeneous_renyi_access_gain,
     optimal_decoder_allocation,
+    optimal_integer_decoder_allocation,
     renyi_access_gain,
 )
 
@@ -203,3 +204,45 @@ def test_min_entropy_budget_limit_is_water_filling_on_log_probability() -> None:
     )
     assert gain >= brute - 1e-12
     assert sum(allocation) == pytest.approx(budget, abs=1e-12)
+
+
+def _integer_compositions(total: int, parts: int) -> list[tuple[int, ...]]:
+    if parts == 1:
+        return [(total,)]
+    out: list[tuple[int, ...]] = []
+    for first in range(total + 1):
+        for rest in _integer_compositions(total - first, parts - 1):
+            out.append((first,) + rest)
+    return out
+
+
+def test_integer_budget_greedy_is_exact_by_exhaustive_enumeration() -> None:
+    ps = (0.50, 0.30, 0.20)
+    budget = 6
+    candidates = _integer_compositions(budget, len(ps))
+    for q in (0.0, 0.5, 1.0, 1.5, 2.0, 4.0, inf):
+        optimum = optimal_integer_decoder_allocation(ps, budget, q)
+        optimum_gain = continuous_decoder_gain(ps, optimum, q)
+        brute = max(continuous_decoder_gain(ps, candidate, q) for candidate in candidates)
+        assert sum(optimum) == budget
+        assert optimum_gain == pytest.approx(brute, abs=1e-12)
+        if 0.0 < q <= 1.0:
+            assert optimum == (budget, 0, 0)
+
+
+def test_integer_q_above_one_allocation_has_no_profitable_one_bit_exchange() -> None:
+    ps = (0.50, 0.30, 0.15, 0.05)
+    budget = 9
+    for q in (1.25, 2.0, 5.0, inf):
+        optimum = optimal_integer_decoder_allocation(ps, budget, q)
+        gain = continuous_decoder_gain(ps, optimum, q)
+        for donor, depth in enumerate(optimum):
+            if depth == 0:
+                continue
+            for receiver in range(len(ps)):
+                if receiver == donor:
+                    continue
+                moved = list(optimum)
+                moved[donor] -= 1
+                moved[receiver] += 1
+                assert gain >= continuous_decoder_gain(ps, moved, q) - 1e-12
