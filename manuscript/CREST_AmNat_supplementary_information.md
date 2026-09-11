@@ -1,6 +1,6 @@
 # Supplementary Information: Information spectra of sparse semantic access
 
-This supplement extends the main-text sparse semantic-access result from support size to nonuniform occupancy and heterogeneous decoder capacity. Rényi entropy, Shannon entropy, Hill numbers, and monotonicity under ordinary partition refinement are standard information-theoretic constructions and are **not** claimed here as new mathematics. The contribution is narrower: the CREST semantic-access operator refines only a declared subset of retrospective-by-transverse semantic cells, and the results below give its exact finite information spectrum, asymptotic regimes, and sharp fixed-budget placement bounds.
+This supplement extends the main-text sparse semantic-access result from support size to nonuniform occupancy, heterogeneous decoder capacity, and constrained decoder allocation. Rényi entropy, Shannon entropy, Hill numbers, monotonicity under ordinary partition refinement, convex optimization, KKT conditions, and water-filling methods are standard and are **not** claimed here as new mathematics. The contribution is narrower: the CREST semantic-access operator refines only declared retrospective-by-transverse semantic cells, and the results below give its exact finite information spectrum, asymptotic regimes, sharp placement bounds, and optimal allocation structure under a fixed decoder budget.
 
 ## S1. Setup
 
@@ -23,17 +23,17 @@ i\in A:\quad
 \underbrace{p_i/2^m,\ldots,p_i/2^m}_{2^m\text{ descendants}}.
 \]
 
-For \(q\ge0\), let \(H_q(P)\) denote Rényi entropy in bits, with the usual continuous extension to Shannon entropy at \(q=1\) and the Hartley support entropy at \(q=0\). Define the access information gain
+For \(q\ge0\), let \(H_q(P)\) denote Rényi entropy in bits, with the usual continuous extension to Shannon entropy at \(q=1\), Hartley support entropy at \(q=0\), and min-entropy at \(q=\infty\). Define the access information gain
 
 \[
-G_q(m;A,P)=H_q(P^{\mathrm{ref}})-H_q(P).
+G_q=H_q(P^{\mathrm{ref}})-H_q(P).
 \]
 
-The main text uses support size only. The present supplement asks what changes when semantic pairs are not equiprobable.
+The main text uses support size only. The present supplement asks what changes when semantic pairs are not equiprobable and when decoder capacity itself is a design variable.
 
 ## S2. Theorem S1: exact Rényi access spectrum
 
-For \(q\neq1\), define
+For finite \(q\neq1\), define
 
 \[
 S_q=\sum_{i=1}^{N}p_i^q,
@@ -57,7 +57,7 @@ S_q^{\mathrm{ref}}
 +2^{m(1-q)}\sum_{i\in A}p_i^q.
 \]
 
-Therefore the exact gain is
+Therefore
 
 \[
 \boxed{
@@ -66,22 +66,20 @@ G_q(m;A,P)
 \frac{1}{1-q}
 \log_2
 \frac{
-\displaystyle
 \sum_{i\notin A}p_i^q
 +2^{m(1-q)}\sum_{i\in A}p_i^q
 }{
-\displaystyle
 \sum_{i=1}^{N}p_i^q
 }
 }
 \qquad(q\neq1).
 \]
 
-This formula is finite and exact. It does not require an asymptotic approximation.
+This formula is finite and exact.
 
 ### Corollary S1.1: recovery of the main-text Hartley result
 
-At \(q=0\), every positive-probability semantic cell contributes one unit to the support count. If \(|A|=k\), then
+At \(q=0\), if \(|A|=k\),
 
 \[
 \boxed{
@@ -91,86 +89,54 @@ G_0(m)
 }
 \]
 
-This is exactly the three-way state dividend reported in the main text. Hence the main-text count theorem is the \(q=0\) endpoint of the access spectrum, not a separate construction.
-
-For the canonical witness \(N=4,k=1,m=10\),
+This is exactly the three-way state dividend reported in the main text. For the canonical witness \(N=4,k=1,m=10\),
 
 \[
-G_0
-=
-\log_2(1027/4)
-\approx8.004220466\ \text{bits}.
+G_0=\log_2(1027/4)\approx8.004220466\ \text{bits}.
 \]
 
 ### Corollary S1.2: Shannon occupancy theorem
 
-Taking \(q\to1\), splitting parent \(i\) into \(2^m\) equal descendants adds exactly \(m\) conditional bits whenever that parent is occupied. Therefore
+Taking \(q\to1\),
 
 \[
 \boxed{
-G_1(m;A,P)
-=
-m\sum_{i\in A}p_i
-=
-mP_A,
+G_1(m;A,P)=m\sum_{i\in A}p_i=mP_A,
 }
 \]
 
-where
-
-\[
-P_A=\Pr(i\in A)
-\]
-
-is the accessible occupancy mass.
-
-Thus two systems can have the same combinatorial coverage \(k/N\) but different realized information gains whenever the occupied mass of their accessible cells differs.
+where \(P_A=\Pr(i\in A)\). Thus equal combinatorial coverage \(k/N\) need not imply equal realized information gain.
 
 ## S3. Theorem S2: three asymptotic regimes
 
-Assume both \(A\) and \(A^c\) are nonempty. Then semantic sparsity produces three qualitatively different large-\(m\) regimes.
+Assume both \(A\) and \(A^c\) are nonempty.
 
-### S2a. Orders \(0\le q<1\)
-
-For \(q<1\), \(2^{m(1-q)}\to\infty\), so the accessible contribution dominates. Hence
+For \(0\le q<1\),
 
 \[
-G_q(m)
-=
-m-C_q(A,P)+o(1),
+G_q(m)=m-C_q(A,P)+o(1),
 \]
 
 with
 
 \[
 \boxed{
-C_q(A,P)
-=
-\frac{1}{1-q}
-\log_2\frac{S_q}{S_q(A)}.
+C_q(A,P)=\frac{1}{1-q}\log_2\frac{S_q}{S_q(A)}.
 }
 \]
 
-Therefore
+Hence
 
 \[
 \boxed{
-\lim_{m\to\infty}\frac{G_q(m)}{m}=1,
+\lim_{m\to\infty}\frac{G_q(m)}m=1,
 \qquad 0\le q<1.
 }
 \]
 
-At \(q=0\),
+At \(q=0\), \(C_0=\log_2(N/k)\), recovering the main-text sparse-access penalty.
 
-\[
-C_0=\log_2(N/k),
-\]
-
-recovering the main-text sparse-access penalty.
-
-### S2b. Shannon order \(q=1\)
-
-The exact result already gives
+At Shannon order,
 
 \[
 \boxed{
@@ -178,107 +144,72 @@ The exact result already gives
 }
 \]
 
-The asymptotic slope is therefore the probability mass on which future access is actually available.
-
-### S2c. Orders \(q>1\)
-
-For \(q>1\), \(2^{m(1-q)}\to0\). Accessible descendants become individually small in the high-order power sum, while inaccessible high-probability parents remain unsplit. The gain converges to the finite limit
+For finite \(q>1\),
 
 \[
 \boxed{
 G_q(\infty)
 =
 \frac{1}{q-1}
-\log_2
-\frac{S_q}{S_q(A^c)}.
+\log_2\frac{S_q}{S_q(A^c)},
 }
 \]
 
-Consequently
+so
 
 \[
 \boxed{
-\lim_{m\to\infty}\frac{G_q(m)}m=0,
-\qquad q>1.
+\lim_{m\to\infty}\frac{G_q(m)}m=0.
 }
 \]
 
-Combining the three cases,
+Combining the cases,
 
 \[
 \boxed{
 \lim_{m\to\infty}\frac{G_q(m)}m
 =
 \begin{cases}
-1, & 0\le q<1,\\[4pt]
-P_A, & q=1,\\[4pt]
-0, & q>1.
+1,&0\le q<1,\\[4pt]
+P_A,&q=1,\\[4pt]
+0,&q>1.
 \end{cases}
 }
 \]
 
-This phase change is the principal generalization beyond the support-count theorem. The same semantic-access relation can appear nearly fully informative to rare-state-sensitive orders \(q<1\), occupancy-weighted at \(q=1\), and capacity-saturated to dominant-state-sensitive orders \(q>1\).
+The same access relation therefore appears nearly fully informative to rare-state-sensitive orders, occupancy-weighted at Shannon order, and capacity-saturated to dominant-state-sensitive orders.
 
-## S4. Theorem S3: sharp fixed-budget placement law
+## S4. Theorem S3: sharp fixed-cardinality placement law
 
-Suppose the number of accessible semantic cells is fixed at \(|A|=k\), but their locations may vary. Order the occupancy probabilities as
+Suppose \(|A|=k\) is fixed but its locations may vary, and order
 
 \[
 p_{(1)}\ge p_{(2)}\ge\cdots\ge p_{(N)}.
 \]
 
-For every \(q>0\) and fixed \(m>0\), the gain \(G_q(m;A,P)\) is strictly increasing in
-
-\[
-S_q(A)=\sum_{i\in A}p_i^q
-\]
-
-(and at \(q=1\), in \(P_A\)). Hence the maximum is achieved by assigning access to the \(k\) most occupied cells, while the minimum is achieved by assigning access to the \(k\) least occupied cells.
-
-Writing \(A_{\max}\) for the top-\(k\) cells and \(A_{\min}\) for the bottom-\(k\) cells,
+For every finite \(q>0\) and fixed \(m>0\), \(G_q\) is strictly increasing in \(S_q(A)\) (and at \(q=1\), in \(P_A\)). Hence access to the \(k\) most occupied cells maximizes gain, whereas access to the \(k\) least occupied cells minimizes it. Thus
 
 \[
 \boxed{
-G_q(m;A_{\min},P)
-\le
-G_q(m;A,P)
-\le
-G_q(m;A_{\max},P),
-\qquad q>0.
+G_q(A_{\min})\le G_q(A)\le G_q(A_{\max}).
 }
 \]
 
-Both bounds are sharp because the extremizing sets themselves are admissible.
-
-At \(q=1\), this reduces to
+At \(q=1\),
 
 \[
 \boxed{
 m\sum_{j=N-k+1}^{N}p_{(j)}
-\le
-G_1
-\le
+\le G_1\le
 m\sum_{j=1}^{k}p_{(j)}.
 }
 \]
 
-At \(q=0\), placement is irrelevant: only \(k\) matters, so the two bounds coincide.
-
-This separates three quantities that the support-count result cannot distinguish:
-
-\[
-\boxed{
-\text{coverage size}
-\neq
-\text{coverage occupancy}
-\neq
-\text{coverage placement}.
-}
-\]
+At \(q=0\), placement is irrelevant: only \(k\) matters. This separates coverage size, coverage occupancy, and coverage placement.
 
 ## S5. Theorem S4: heterogeneous local decoder capacity
 
-The common-depth assumption can be removed. Let semantic cell \(i\) be refined into \(M_i\ge1\) equiprobable descendants, with \(M_i=1\) representing no prospective refinement. Then
+Let semantic cell \(i\) be refined into \(M_i\ge1\) equiprobable descendants. Then for finite \(q\neq1\),
 
 \[
 \boxed{
@@ -286,12 +217,8 @@ G_q
 =
 \frac{1}{1-q}
 \log_2
-\frac{
-\displaystyle\sum_i p_i^qM_i^{1-q}
-}{
-\displaystyle\sum_i p_i^q
-},
-\qquad q\neq1.
+\frac{\sum_i p_i^qM_i^{1-q}}
+{\sum_i p_i^q}.
 }
 \]
 
@@ -299,59 +226,150 @@ The Shannon limit is
 
 \[
 \boxed{
-G_1
-=
-\sum_i p_i\log_2 M_i.
+G_1=\sum_i p_i\log_2M_i.
 }
 \]
 
-Thus realized future information decomposes into occupancy-weighted local decoder capacities. The common-depth sparse-access model is recovered by setting
+Thus realized future information decomposes into occupancy-weighted local decoder capacities. The common-depth sparse model is recovered by setting \(M_i=2^m\) on \(A\) and \(M_i=1\) elsewhere.
+
+## S6. Theorem S5: min-entropy endpoint
+
+At \(q=\infty\), Rényi entropy is min-entropy,
 
 \[
-M_i=
-\begin{cases}
-2^m,&i\in A,\\
-1,&i\notin A.
-\end{cases}
+H_\infty(P)=-\log_2\max_i p_i.
 \]
 
-## S6. Finite bounds
+Under common-depth selective refinement,
 
-For the common-depth operator,
+\[
+\boxed{
+G_\infty(m;A,P)
+=
+\log_2
+\frac{\max_i p_i}
+{\max\left\{
+\max_{i\notin A}p_i,
+2^{-m}\max_{i\in A}p_i
+\right\}}.
+}
+\]
+
+Thus dominant-state information improves only if refinement reaches a currently dominant atom strongly enough to push its descendant probability below the largest remaining unsplit atom. For sparse access and \(m\to\infty\),
+
+\[
+\boxed{
+G_\infty(\infty)
+=
+\log_2
+\frac{\max_i p_i}{\max_{i\notin A}p_i},
+}
+\]
+
+provided at least one inaccessible cell remains. This is the exact endpoint of the \(q>1\) saturation regime.
+
+## S7. Theorem S6: optimal allocation under a total decoder budget
+
+The heterogeneous formula allows decoder depth itself to be optimized. Introduce a continuous relaxation in which cell \(i\) receives \(x_i\ge0\) decoder bits, corresponding formally to local multiplicity \(M_i=2^{x_i}\), under
+
+\[
+\sum_i x_i=B.
+\]
+
+For \(0\le q<1\), maximizing \(G_q\) is equivalent to maximizing
+
+\[
+\sum_i p_i^q2^{(1-q)x_i},
+\]
+
+a convex function over the budget simplex. Therefore a maximum occurs at a vertex. For \(0<q<1\), the optimal vertex assigns all budget to a most-occupied cell; at \(q=0\), all vertices are equivalent.
+
+At \(q=1\),
+
+\[
+G_1=\sum_i p_ix_i,
+\]
+
+so the same concentration rule holds: all budget is assigned to a most-occupied cell.
+
+For finite \(q>1\), maximizing \(G_q\) is equivalent to minimizing the strictly convex function
+
+\[
+F_q(x)=\sum_i p_i^q2^{-(q-1)x_i}.
+\]
+
+The KKT conditions therefore give a unique optimum of water-filling form
+
+\[
+\boxed{
+x_i^*
+=
+\left[
+\frac{q}{q-1}\log_2p_i-\tau
+\right]_+,
+}
+\]
+
+where \([z]_+=\max(z,0)\) and \(\tau\) is the unique threshold satisfying
+
+\[
+\sum_i x_i^*=B.
+\]
+
+At min-entropy order, the limiting allocation is
+
+\[
+\boxed{
+x_i^*
+=
+[\log_2p_i-\tau]_+.
+}
+\]
+
+Hence the optimal design changes qualitatively at \(q=1\): support- and occupancy-sensitive objectives concentrate a finite decoder budget on a most-occupied semantic state, whereas dominant-state-sensitive objectives \(q>1\) progressively spread budget across high-occupancy states to equalize their weighted residual dominance. Water-filling itself is standard optimization machinery; the result here is its appearance as the exact optimum of the CREST selective semantic-access objective.
+
+## S8. Finite bounds
+
+For common depth,
 
 \[
 \boxed{0\le G_q(m;A,P)\le m}
 \]
 
-for every finite \(q\ge0\). The lower bound is attained when no cell is accessible or \(m=0\); the upper bound is attained under complete access. Sparse access therefore cannot create more information than the decoder depth it exposes.
+for every \(q\in[0,\infty]\). Sparse access cannot create more information than the decoder depth it exposes.
 
-## S7. Ecological interpretation
+## S9. Ecological interpretation
 
-The order \(q\) specifies which parts of the ecological state distribution receive weight. This is the same reason Rényi/Hill families are useful in ecological diversity measurement, but the object measured here is different: not species diversity, but the information gain produced by selectively accessible future refinement of semantic state cells.
+The order \(q\) specifies which parts of the ecological state distribution receive weight. This parallels Rényi/Hill diversity analysis, but the object here is not species diversity: it is the information gain produced by selectively accessible future refinement of semantic state cells.
 
-- \(q=0\) treats every possible semantic cell equally and corresponds to **potential state diversity**. This is the quantity used by the main-text quotient count.
-- \(q=1\) weights cells by occupancy and corresponds to **realized or experienced state information** along the declared ensemble.
-- \(q>1\) increasingly emphasizes common semantic states and therefore measures access value for **dominant-state prediction**.
+- \(q=0\): potential state diversity; all possible semantic cells count equally.
+- \(q=1\): realized or experienced state information; cells are weighted by occupancy.
+- \(q>1\): dominant-state prediction; common semantic states receive increasing weight.
+- \(q=\infty\): worst-dominant-atom control; only the largest remaining semantic probability matters.
 
-The three-regime theorem shows that one statement such as "one quarter of semantic cells are accessible" is insufficient once occupancy is nonuniform. A rare but structurally distinct set of accessible cells may preserve Hartley support while contributing little Shannon information; conversely, access targeted to highly occupied cells can produce substantially greater realized gain at the same \(k\).
+The budget theorem adds an operational distinction. If the scientific objective values support or average occupancy, a constrained intervention/measurement budget is best concentrated on the most occupied semantic state. If the objective emphasizes dominant-state predictability, the optimum becomes water-filling: once the leading state has been sufficiently refined, capacity should spill to the next most dominant state rather than continue deepening one state indefinitely.
 
-## S8. Novelty boundary
+## S10. Novelty boundary
 
-The following are standard and are not claimed as new: Rényi entropy, Shannon entropy, Hartley entropy, Hill-number interpretation, and the fact that ordinary refinement increases information. The results claimed here concern the specific selective semantic-access refinement induced by CREST:
+The following are standard and are not claimed as new: Rényi, Shannon, Hartley, and min-entropy; Hill-number interpretation; ordinary partition-refinement monotonicity; convex optimization; KKT conditions; and generic water-filling arguments. The results claimed here concern the CREST selective semantic-access operator:
 
 1. the exact finite \(G_q\) spectrum for selectively refined semantic cells;
 2. recovery of the main-text \(\log_2(N/k)\) theorem as the \(q=0\) endpoint;
-3. the \(q<1/q=1/q>1\) three-regime asymptotic law;
-4. sharp fixed-\(k\) placement extrema under nonuniform occupancy; and
-5. the heterogeneous local decoder-capacity extension.
+3. the \(q<1/q=1/q>1\) asymptotic regime split;
+4. sharp fixed-cardinality placement extrema under nonuniform occupancy;
+5. heterogeneous local decoder capacity;
+6. the exact min-entropy endpoint; and
+7. the decoder-budget design transition from concentration at \(q\le1\) to water-filling at \(q>1\).
 
-These results remain finite-state statements. They do not establish stochastic-process convergence, continuous-time limits, or empirical occupancy distributions for any particular ecosystem.
+These remain finite-state or finite-dimensional relaxed-design statements. They do not establish stochastic-process convergence, continuous-time limits, or empirical occupancy distributions for any particular ecosystem.
 
-## S9. Reproducibility
+## S11. Reproducibility
 
-The formulas are implemented in `crest/renyi_access.py` and tested in `tests/test_renyi_access.py`. Tests include direct expansion of the refined distribution, exact recovery of the main-text \(N=4,k=1,m=10\) benchmark, numerical convergence to both asymptotic regimes, and brute-force enumeration of every fixed-\(k\) access set in a nonuniform example to verify the extremal theorem.
+The formulas are implemented in `crest/renyi_access.py` and tested in `tests/test_renyi_access.py`. Tests include direct expansion of refined distributions, exact recovery of the main-text \(N=4,k=1,m=10\) benchmark, numerical asymptotic convergence, brute-force fixed-cardinality placement checks, the min-entropy endpoint, grid verification of the budget optimum, and KKT residual equalization for the water-filling solution.
 
 ## Supplementary references
+
+Boyd, S., and L. Vandenberghe. 2004. *Convex Optimization*. Cambridge University Press, Cambridge.
 
 Jost, L. 2006. Entropy and diversity. *Oikos* 113:363–375.
 
