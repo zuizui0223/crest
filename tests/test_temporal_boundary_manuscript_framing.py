@@ -13,7 +13,7 @@ def _between(start: str, end: str) -> str:
 
 def test_present_is_a_zero_duration_cut_not_a_pregiven_state() -> None:
     assert "zero-duration temporal cut" in TEXT
-    assert "not yet an adequate state" in TEXT
+    assert "visible configuration and ecological state need not coincide" in TEXT
     assert "L_t(y)=O_t^{-1}(y)" in TEXT
     assert "not a proved limit of shrinking continuous-time windows" in TEXT
 
@@ -57,17 +57,20 @@ def test_three_roles_are_left_transverse_right_constraints() -> None:
     assert "not three independent state coordinates" in section
 
 
-def test_core_claim_is_minimal_cut_quotient_not_design_prescription() -> None:
+def test_core_claim_is_ecological_state_theory_not_design_prescription() -> None:
     intro = _between("## 1. Introduction", "## 2. State at a zero-duration temporal cut")
-    meaning = _between("## 9. What the cut-state result means", "## 10. Relation to existing state concepts")
+    meaning = _between(
+        "## 9. Why ecological state requires a temporal cut",
+        "## 10. Relation to existing state concepts",
+    )
     conclusion = _between("## 13. Conclusion", "## Literature Cited")
     for block in (intro, meaning, conclusion):
         assert "modeling architecture" not in block
         assert "modular state design" not in block
-        assert "identification discipline" not in block
-    assert "least quotient on the cut" in intro
-    assert "mathematical consequences rather than design choices" in meaning
-    assert "equivalence geometry induced across a temporal boundary" in conclusion
+        assert "monitoring design" not in block
+    assert "visible configuration and ecological state need not coincide" in intro
+    assert "ecological present can contain distinctions with three different temporal origins" in meaning
+    assert "Ecological state is therefore not located entirely in the instantaneous visible present" in conclusion
 
 
 def test_continuous_time_limit_is_explicitly_out_of_scope() -> None:
@@ -77,11 +80,13 @@ def test_continuous_time_limit_is_explicitly_out_of_scope() -> None:
     assert "\\varepsilon\\to0" in scope
 
 
-def test_shallow_lake_remains_interpretation_not_source_of_theory() -> None:
+def test_shallow_lake_remains_biological_witness_not_source_of_theory() -> None:
     shallow = _between(
-        "## 8. Target-relative shallow-lake prerequisite identification",
-        "## 9. What the cut-state result means",
+        "## 8. Shallow lakes as a biological witness of a non-instantaneous present",
+        "## 9. Why ecological state requires a temporal cut",
     )
-    assert "worked ecological interpretation of the abstract cut geometry" in shallow
+    assert "concrete reason not to identify ecological state with a coarse instantaneous configuration" in shallow
+    assert "one visible present can conceal several states" in shallow
     assert "formal witness of joint dependence" in shallow
     assert "not a biological law asserted by the restoration literature" in shallow
+    assert "target-relative prerequisite calculation is secondary evidence" in shallow
