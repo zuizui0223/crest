@@ -70,7 +70,7 @@ def test_core_claim_is_ecological_state_theory_not_design_prescription() -> None
         assert "monitoring design" not in block
     assert "visible configuration and ecological state need not coincide" in intro
     assert "ecological present can contain distinctions with three different temporal origins" in meaning
-    assert "Ecological state is therefore not located entirely in the instantaneous visible present" in conclusion
+    assert "Ecological state is not located entirely in the instantaneous visible present" in conclusion
 
 
 def test_continuous_time_limit_is_explicitly_out_of_scope() -> None:
