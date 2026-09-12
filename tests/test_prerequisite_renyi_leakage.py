@@ -7,6 +7,8 @@ from crest.prerequisite_renyi_leakage import (
     prospective_renyi_game,
     symmetric_two_query_leakage,
     symmetric_two_query_leakage_sign,
+    two_cell_disjoint_query_leakage,
+    two_cell_disjoint_query_leakage_sign,
 )
 
 
@@ -15,10 +17,10 @@ THETA = "THETA"
 F = "F"
 
 
-def _witness_queries() -> tuple[ProspectiveQuery, ...]:
+def _witness_queries(left_bits: float = 1.0, right_bits: float = 1.0) -> tuple[ProspectiveQuery, ...]:
     return (
-        ProspectiveQuery("left", frozenset((H,)), frozenset((0,)), 1.0),
-        ProspectiveQuery("right", frozenset((THETA,)), frozenset((1,)), 1.0),
+        ProspectiveQuery("left", frozenset((H,)), frozenset((0,)), left_bits),
+        ProspectiveQuery("right", frozenset((THETA,)), frozenset((1,)), right_bits),
     )
 
 
@@ -31,10 +33,36 @@ def test_closed_form_matches_direct_mobius_dividend() -> None:
         assert dividend[grand] == pytest.approx(symmetric_two_query_leakage(q), abs=1e-12)
 
 
-def test_shannon_is_the_unique_zero_leakage_order_in_the_witness() -> None:
+def test_general_two_cell_formula_matches_direct_game_across_occupancies_and_depths() -> None:
+    grand = frozenset((H, THETA, F))
+    for p in (0.07, 0.2, 0.43, 0.71, 0.93):
+        ps = (p, 1.0 - p)
+        for left_bits, right_bits in ((0.25, 0.5), (1.0, 3.0), (2.5, 0.75), (5.0, 4.0)):
+            queries = _witness_queries(left_bits, right_bits)
+            for q in (0.0, 0.2, 0.7, 1.0, 1.3, 2.0, 6.0, inf):
+                direct = mobius_transform(
+                    prospective_renyi_game(ps, queries, (H, THETA, F), q)
+                )[grand]
+                exact = two_cell_disjoint_query_leakage(p, left_bits, right_bits, q)
+                assert direct == pytest.approx(exact, abs=1e-11)
+
+
+def test_shannon_is_unique_finite_zero_for_every_interior_occupancy_and_positive_depth() -> None:
+    for p in (0.01, 0.1, 0.37, 0.5, 0.82, 0.99):
+        for left_bits, right_bits in ((0.1, 0.2), (1.0, 1.0), (1.5, 4.0), (8.0, 0.5)):
+            assert two_cell_disjoint_query_leakage(p, left_bits, right_bits, 1.0) == 0.0
+            for q in (0.0, 0.1, 0.5, 0.9):
+                assert two_cell_disjoint_query_leakage_sign(p, left_bits, right_bits, q) == -1
+            for q in (1.1, 1.5, 2.0, 10.0):
+                assert two_cell_disjoint_query_leakage_sign(p, left_bits, right_bits, q) == 1
+
+
+def test_symmetric_specialization_is_unchanged() -> None:
     assert symmetric_two_query_leakage(1.0) == 0.0
     for q in (0.0, 0.1, 0.5, 0.9, 1.1, 1.5, 2.0, 10.0, inf):
-        assert abs(symmetric_two_query_leakage(q)) > 1e-6
+        assert symmetric_two_query_leakage(q) == pytest.approx(
+            two_cell_disjoint_query_leakage(0.5, 1.0, 1.0, q), abs=1e-12
+        )
 
 
 def test_leakage_changes_sign_at_shannon_order() -> None:

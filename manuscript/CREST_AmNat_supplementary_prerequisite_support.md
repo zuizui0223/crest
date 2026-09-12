@@ -4,23 +4,11 @@ This supplement isolates the CREST-specific link between declared prerequisite o
 
 ## SII.1. Setup
 
-Let `U` be the retained pre-future interfaces and `F` the prospective responsibility. Each future query `f` declares:
-
-- a minimal prerequisite set \(R_f\subseteq U\);
-- an addressable semantic-cell set \(A_f\);
-- a decoder depth \(m_f\ge0\) bits.
-
-Let semantic-cell occupancies be \(p_i\), with \(\sum_i p_i=1\), and define
-
-\[
-P(A_f)=\sum_{i\in A_f}p_i.
-\]
-
-Assume simultaneously licensed future refinements compose by multiplying local descendant multiplicities, equivalently by adding local decoder depths.
+Let `U` be the retained pre-future interfaces and `F` the prospective responsibility. Each future query `f` declares a minimal prerequisite set \(R_f\subseteq U\), an addressable semantic-cell set \(A_f\), and a decoder depth \(m_f\ge0\) bits. Let semantic-cell occupancies be \(p_i\), with \(\sum_i p_i=1\), and define \(P(A_f)=\sum_{i\in A_f}p_i\). Simultaneously licensed refinements compose by multiplying local descendant multiplicities, equivalently by adding local decoder depths.
 
 ## SII.2. Theorem S8: prerequisite-support factorization at Shannon order
 
-For coalition \(S\subseteq U\cup\{F\}\), the prospective Shannon information gain is
+For coalition \(S\subseteq U\cup\{F\}\),
 
 \[
 \boxed{
@@ -28,108 +16,115 @@ v_1(S)=\sum_f m_fP(A_f)\,\mathbf 1\{R_f\cup\{F\}\subseteq S\}.
 }
 \]
 
-Thus \(v_1\) is exactly a weighted sum of unanimity games. Its Boolean-lattice Möbius transform is
+Thus \(v_1\) is a weighted sum of unanimity games, and its Boolean-lattice Möbius transform is
 
 \[
 \boxed{
-d_1(T)=\sum_{f:R_f\cup\{F\}=T}m_fP(A_f),
+d_1(T)=\sum_{f:R_f\cup\{F\}=T}m_fP(A_f).
 }
 \]
 
-and \(d_1(T)=0\) for every coalition \(T\) that is not the minimal prerequisite support of at least one query.
+Hence prerequisite order determines **where** prospective Shannon information appears, while semantic coverage and occupancy determine **how much** appears there. Interfaces absent from every \(R_f\) cannot acquire spurious prospective Shannon interaction; queries with identical prerequisites aggregate; and overlapping access sets create no extra Shannon interaction under multiplicative local refinement.
 
-### Consequences
-
-1. **Prerequisite order determines where information appears.** The support of the prospective Shannon dividend is fixed by the declared hyperedges \(R_f\cup\{F\}\).
-2. **Semantic coverage determines how much appears there.** Changing \(A_f\) or the occupancy distribution changes \(P(A_f)\), hence the coefficient weight, but cannot move that query's Shannon dividend to another coalition.
-3. **Irrelevant interfaces cannot acquire spurious prospective interaction.** An interface absent from every \(R_f\) never appears in a nonzero prospective Shannon dividend.
-4. **Queries with identical prerequisites aggregate.** Their weights add on the same coefficient.
-5. **Overlapping access sets do not create extra Shannon interaction** under multiplicative local refinement, because local decoder depths add before taking the occupancy expectation.
-
-For the canonical CREST witness, one future query requires \(\{H,\Theta\}\), one of four uniformly occupied semantic cells is addressable, and \(m=10\). Therefore
+For the canonical CREST witness, one query requires \(\{H,\Theta\}\), one of four uniformly occupied semantic cells is addressable, and \(m=10\), giving
 
 \[
-\boxed{
-d_1(\{H,\Theta,F\})=10\times\frac14=2.5\text{ bits},
-}
+\boxed{d_1(\{H,\Theta,F\})=10/4=2.5\text{ bits}.}
 \]
 
-with every other prospective Shannon dividend equal to zero. This is deliberately distinct from the main-text Hartley/support-count dividend \(\log_2(1027/4)\approx8.004220466\) bits.
+This is distinct from the main-text Hartley/support-count dividend \(\log_2(1027/4)\approx8.004220466\) bits.
 
 ### Proof
 
-Query \(f\) is licensed by coalition \(S\) iff \(F\in S\) and \(R_f\subseteq S\). On every addressable semantic cell it contributes \(m_f\) Shannon bits and elsewhere zero. Its expected information gain is therefore \(m_fP(A_f)\) when licensed and zero otherwise. Summing over queries gives the displayed weighted-unanimity representation. The Möbius transform of a unanimity game supported on \(T_f=R_f\cup\{F\}\) is one at \(T_f\) and zero elsewhere. Linearity of Möbius inversion gives the coefficient formula.
+Query \(f\) is licensed iff \(F\in S\) and \(R_f\subseteq S\). It contributes \(m_f\) Shannon bits on every addressable cell and zero elsewhere, so its expected gain is \(m_fP(A_f)\). Summing gives the weighted-unanimity representation. A unanimity game's Möbius transform is supported only on its defining coalition; linearity gives the coefficient formula.
 
-## SII.3. Theorem S9: Shannon uniqueness and non-Shannon prerequisite leakage
+## SII.3. Theorem S9: general two-cell Shannon-uniqueness law
 
-The support factorization is Shannon-specific. Consider two equiprobable semantic cells. One one-bit query requires only \(H\) and refines cell 0; a second one-bit query requires only \(\Theta\) and refines cell 1. No query declares the joint prerequisite \(\{H,\Theta\}\).
-
-With one query licensed, the refined distribution is \((1/4,1/4,1/2)\). With both licensed, the refined distribution is four atoms of probability \(1/4\). For finite Rényi order \(q\ne1\), the single-query gain is
+The support factorization is not merely broken by one symmetric example outside Shannon order. Consider **any** two semantic cells with probabilities
 
 \[
-g_q=\frac{1}{1-q}\log_2\left(\frac12+2^{-q}\right).
+p\in(0,1),\qquad 1-p,
 \]
 
-The induced \(H\times\Theta\times F\) Möbius dividend is therefore
+and two positive decoder depths \(a,b>0\). One query requires only \(H\) and refines the first cell by \(a\) bits; a second query requires only \(\Theta\) and refines the second cell by \(b\) bits. No query declares the joint prerequisite \(\{H,\Theta\}\).
+
+For finite \(q\ne1\), put
 
 \[
-\boxed{
-D_q=1-\frac{2}{1-q}\log_2\left(\frac12+2^{-q}\right),\qquad q\ne1.
-}
+u=p^q,\quad v=(1-p)^q,\quad
+A=2^{(1-q)a},\quad B=2^{(1-q)b}.
 \]
 
-At Shannon order, each single query contributes \(1/2\) bit and the joint gain is one bit, so
-
-\[
-\boxed{D_1=0.}
-\]
-
-Moreover, \(q=1\) is the unique zero of this leakage term. Setting \(D_q=0\) is equivalent to
-
-\[
-\frac12+2^{-q}=2^{(1-q)/2}.
-\]
-
-Writing \(t=2^{-q/2}\) gives
-
-\[
-t^2-\sqrt2\,t+\frac12=\left(t-\frac1{\sqrt2}\right)^2=0,
-\]
-
-hence \(q=1\). The sign changes at Shannon order:
+The undeclared \(H\times\Theta\times F\) Möbius dividend is exactly
 
 \[
 \boxed{
-D_q<0\quad(0\le q<1),\qquad D_1=0,\qquad D_q>0\quad(q>1),
+D_q(p,a,b)=
+\frac{1}{1-q}
+\log_2
+\frac{(u+v)(uA+vB)}{(uA+v)(u+vB)}.
 }
 \]
 
-with \(D_\infty=1\) bit.
+The sign is determined without approximation because
 
-Thus Shannon order is uniquely **prerequisite-support faithful** in this minimal witness. Only at \(q=1\) does the prospective Möbius support coincide exactly with the declared prerequisite hypergraph. Non-Shannon Rényi orders can generate a higher-order dividend even when no query declares the corresponding higher-order prerequisite.
+\[
+(u+v)(uA+vB)-(uA+v)(u+vB)
+=-uv(A-1)(B-1).
+\]
 
-This separates two notions:
+Since \(u,v>0\) and \(a,b>0\), for \(q<1\) we have \(A,B>1\), so the logarithmic ratio is below one and \(1/(1-q)>0\). For \(q>1\), \(A,B<1\), the ratio remains below one but \(1/(1-q)<0\). Therefore
+
+\[
+\boxed{
+D_q(p,a,b)<0\quad(0\le q<1),\qquad
+D_1(p,a,b)=0,\qquad
+D_q(p,a,b)>0\quad(1<q<\infty).
+}
+\]
+
+Thus for **every interior two-cell occupancy and every pair of positive decoder depths**, Shannon order is the unique finite Rényi order at which the undeclared joint-prerequisite interaction vanishes. This is stronger than a single symmetric witness: the zero is invariant to occupancy imbalance and decoder-depth asymmetry.
+
+At \(q=1\), the result follows directly from Shannon additivity:
+
+\[
+G_1(a,b)=pa+(1-p)b=G_1(a,0)+G_1(0,b),
+\]
+
+so the cross-difference is exactly zero.
+
+### Symmetric corollary
+
+Setting \(p=1/2\) and \(a=b=1\) recovers
+
+\[
+D_q=1-\frac{2}{1-q}\log_2\left(\frac12+2^{-q}\right),
+\]
+
+with \(D_\infty=1\) bit. This is the canonical executable witness retained in the review bundle.
+
+The theorem separates:
 
 - **structural interaction**: interaction implied by declared prerequisite sets and recovered exactly by Shannon prospective dividends;
 - **distributional interaction**: additional interaction induced by nonlinear weighting of selectively refined semantic cells at non-Shannon Rényi orders.
 
 ## SII.4. Relation to Supplementary Information I
 
-Supplementary Information I studies the Rényi spectrum, sparse-access asymptotics, placement extrema, heterogeneous decoder capacity, and optimal continuous/integer decoder allocation. Those results ask how much information a selective refinement carries under different Rényi orders. The present supplement asks a different question: when can a Rényi-order interaction coefficient be interpreted literally as the declared prerequisite structure?
+Supplementary Information I asks how much information selective refinement carries under different Rényi orders. Supplement II asks when an interaction coefficient can be read literally as prerequisite structure. The answer is now stronger than the original minimal witness: Shannon support fidelity holds generally by Theorem S8, while the simplest possible pair of disjoint prerequisite channels exhibits nonzero leakage at every finite \(q\ne1\), regardless of interior occupancy or positive decoder-depth asymmetry.
 
-The answer is sharp in the minimal witness above. Shannon order preserves the prerequisite support exactly; non-Shannon orders can mix structural and distributional interaction. Accordingly, prerequisite topology should be diagnosed with the Shannon prospective game, while non-Shannon spectra should be interpreted as distribution-sensitive summaries rather than literal prerequisite graphs.
+Accordingly, prerequisite topology should be diagnosed with the Shannon prospective game. Non-Shannon spectra remain useful distribution-sensitive summaries, but their higher-order coefficients cannot in general be interpreted as literal prerequisite hyperedges.
 
 ## SII.5. Novelty boundary
 
 The following are standard and are not claimed as new: Möbius/Harsanyi inversion, unanimity games, Shannon entropy and additivity, Rényi entropy, and Boolean-lattice coalition accounting. The CREST-specific results are:
 
 1. the exact Shannon factorization linking prerequisite hyperedges to Möbius support and semantic-access occupancy to coefficient weights; and
-2. the explicit Shannon-uniqueness boundary showing, in a minimal selectively refined witness, that \(q=1\) is the unique Rényi order with zero undeclared joint-prerequisite leakage.
+2. the exact two-cell leakage law showing that, for every interior occupancy and every positive pair of disjoint decoder depths, \(q=1\) is the unique finite Rényi order with zero undeclared joint-prerequisite interaction.
 
 These are finite-state statements. They do not establish continuous-time limits, stochastic-process generality, or empirical occupancy distributions for any particular ecosystem.
 
 ## SII.6. Reproducibility
 
-The factorization is implemented in `crest/prerequisite_access_game.py` and tested in `tests/test_prerequisite_access_game.py`. The non-Shannon leakage boundary is implemented in `crest/prerequisite_renyi_leakage.py` and tested in `tests/test_prerequisite_renyi_leakage.py`.
+The factorization is implemented in `crest/prerequisite_access_game.py` and tested in `tests/test_prerequisite_access_game.py`. The generalized leakage law is implemented in `crest/prerequisite_renyi_leakage.py` and tested in `tests/test_prerequisite_renyi_leakage.py`.
 
-Tests compare the closed-form Shannon query sum with direct cellwise combined refinement for every coalition, verify exact Möbius support and irrelevant-interface no-leakage, recover the canonical 2.5-bit pure three-way Shannon dividend, match the non-Shannon leakage formula to direct Möbius inversion across multiple Rényi orders, and verify its sign change and unique zero at \(q=1\).
+Tests compare the closed form with direct cellwise refinement and full Möbius inversion across unequal occupancies, asymmetric positive decoder depths, and multiple Rényi orders; verify the strict sign law on both sides of \(q=1\); recover the symmetric canonical formula; and retain the canonical 2.5-bit pure three-way Shannon dividend.
