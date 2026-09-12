@@ -39,21 +39,11 @@ def test_submission_entrypoints_name_the_blinded_candidate_and_si() -> None:
 
 
 def test_amnat_v07_flagship_is_separate_from_biology_philosophy_submission_entrypoint() -> None:
-    flagship = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.7_semantic_access.md").read_text(
-        encoding="utf-8"
-    )
-    supplement = (MANUSCRIPT_DIR / "CREST_AmNat_supplementary_information.md").read_text(
-        encoding="utf-8"
-    )
-    support_supplement = (
-        MANUSCRIPT_DIR / "CREST_AmNat_supplementary_prerequisite_support.md"
-    ).read_text(encoding="utf-8")
-    v06 = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.6_addressability.md").read_text(
-        encoding="utf-8"
-    )
-    delta_predecessor = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.2.md").read_text(
-        encoding="utf-8"
-    )
+    flagship = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.7_semantic_access.md").read_text(encoding="utf-8")
+    supplement = (MANUSCRIPT_DIR / "CREST_AmNat_supplementary_information.md").read_text(encoding="utf-8")
+    support_supplement = (MANUSCRIPT_DIR / "CREST_AmNat_supplementary_prerequisite_support.md").read_text(encoding="utf-8")
+    v06 = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.6_addressability.md").read_text(encoding="utf-8")
+    delta_predecessor = (MANUSCRIPT_DIR / "crest_flagship_amnat_v0.2.md").read_text(encoding="utf-8")
     assert "The American Naturalist" in flagship
     assert "Ecological State at a Temporal Cut: Sparse Semantic Access" in flagship
     assert "Literature Cited" in flagship
@@ -66,7 +56,7 @@ def test_amnat_v07_flagship_is_separate_from_biology_philosophy_submission_entry
     assert "three asymptotic regimes" in supplement
     assert "coverage placement" in supplement
     assert "prerequisite-support factorization" in support_supplement
-    assert "Shannon uniqueness" in support_supplement
+    assert "Shannon-uniqueness" in support_supplement
     assert "distributional interaction" in support_supplement
     submission_readme = (MANUSCRIPT_DIR / "SUBMISSION_README.md").read_text(encoding="utf-8")
     assert "crest_flagship_amnat_v0.7_semantic_access.md" in submission_readme
@@ -78,9 +68,7 @@ def test_amnat_v07_flagship_is_separate_from_biology_philosophy_submission_entry
 
 
 def test_amnat_declaration_template_keeps_author_fields_outside_blinded_manuscript() -> None:
-    template = (MANUSCRIPT_DIR / "amnat_submission_declarations_TEMPLATE.md").read_text(
-        encoding="utf-8"
-    )
+    template = (MANUSCRIPT_DIR / "amnat_submission_declarations_TEMPLATE.md").read_text(encoding="utf-8")
     assert "Data and Code Accessibility Statement" in template
     assert "Generative-AI disclosure" in template
     assert "Author contribution statement" in template
