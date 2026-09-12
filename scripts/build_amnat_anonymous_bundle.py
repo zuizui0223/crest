@@ -3,10 +3,9 @@
 
 The archive is whitelist-only and contains the finite implementation needed for
 the v0.7 temporal-cut, strict realizability, semantic-access quotient, the
-occupancy-aware Rényi access supplement, the prerequisite-support theorem and its
-Shannon-uniqueness boundary, and executable shallow-lake prerequisite audit.
-Repository history, provenance notes, public URLs, and submission metadata are
-excluded.
+occupancy-aware Rényi access supplement, prerequisite-support and overlap-balance
+theorems, and executable shallow-lake prerequisite audit. Repository history,
+provenance notes, public URLs, and submission metadata are excluded.
 """
 
 from __future__ import annotations
@@ -33,6 +32,7 @@ SOURCE_PATHS = (
     "crest/renyi_access.py",
     "crest/prerequisite_access_game.py",
     "crest/prerequisite_renyi_leakage.py",
+    "crest/prerequisite_overlap_balance.py",
     "crest/shallow_lake_prerequisites.py",
     "tests/test_crest_temporal_cut.py",
     "tests/test_companion_realizability.py",
@@ -42,6 +42,7 @@ SOURCE_PATHS = (
     "tests/test_renyi_access.py",
     "tests/test_prerequisite_access_game.py",
     "tests/test_prerequisite_renyi_leakage.py",
+    "tests/test_prerequisite_overlap_balance.py",
     "tests/test_shallow_lake_prerequisites.py",
     "tests/test_sparse_semantic_access_benchmark.py",
     "artifacts/crest_sparse_semantic_access_benchmarks_2026-09-08.json",
@@ -58,10 +59,10 @@ ANONYMOUS_README = """# Anonymous review code
 
 This archive contains the minimal finite implementation used to reproduce the
 manuscript's temporal-cut, strict realizability, semantic-access quotient,
-occupancy-aware Rényi access supplement, prerequisite-support theorem and its
-Shannon-uniqueness boundary, and shallow-lake prerequisite results. It
-intentionally excludes repository history, provenance notes, author metadata,
-and external repository links.
+occupancy-aware Rényi access supplement, prerequisite-support and overlap-balance
+theorems, and shallow-lake prerequisite results. It intentionally excludes
+repository history, provenance notes, author metadata, and external repository
+links.
 
 ## Reproduce the focused tests
 
@@ -76,6 +77,7 @@ pytest -q \\
   tests/test_renyi_access.py \\
   tests/test_prerequisite_access_game.py \\
   tests/test_prerequisite_renyi_leakage.py \\
+  tests/test_prerequisite_overlap_balance.py \\
   tests/test_shallow_lake_prerequisites.py \\
   tests/test_sparse_semantic_access_benchmark.py
 ```
@@ -94,10 +96,16 @@ decoder capacity, continuous and integer decoder-budget optima, and the Shannon
 prerequisite-support theorem linking declared prerequisite sets to exact Möbius
 support while semantic coverage changes only the dividend weights.
 
-A minimal two-query witness then tests the boundary of that factorization: no
-query requires H and THETA jointly, yet non-Shannon Rényi orders generate a
-nonzero H x THETA x F dividend. The leakage vanishes uniquely at q=1 and changes
-sign across Shannon order.
+For two distinct prerequisite channels, disjoint semantic access gives strict
+non-Shannon leakage with q=1 as the unique finite zero. The overlap extension
+then partitions semantic cells into left-only, right-only, shared, and residual
+regions and verifies the exact factorization
+
+    (A-1)(B-1)(W*Z-X*Y).
+
+Thus non-Shannon leakage vanishes additionally on the exact overlap-balance
+surface W*Z=X*Y; the review tests include a four-cell construction that lies on
+that surface for every finite Rényi order.
 
 The exact main-text numeric table is stored at
 `artifacts/crest_sparse_semantic_access_benchmarks_2026-09-08.json` and is
@@ -169,8 +177,8 @@ def _manifest(source_payloads: dict[str, bytes]) -> bytes:
             "asymptotic_slopes": {
                 "q_below_1": 1,
                 "q_equal_1": 0.25,
-                "q_above_1": 0
-            }
+                "q_above_1": 0,
+            },
         },
         "prerequisite_support_anchor": {
             "future_label": "F",
@@ -178,7 +186,7 @@ def _manifest(source_payloads: dict[str, bytes]) -> bytes:
             "uniform_accessible_mass": 0.25,
             "bit_depth": 10,
             "shannon_grand_dividend_bits": 2.5,
-            "claim": "prerequisite sets determine Shannon Mobius support; semantic coverage determines weights"
+            "claim": "prerequisite sets determine Shannon Mobius support; semantic coverage determines weights",
         },
         "shannon_uniqueness_anchor": {
             "witness_cells": 2,
@@ -187,7 +195,13 @@ def _manifest(source_payloads: dict[str, bytes]) -> bytes:
             "joint_dividend_q1_bits": 0.0,
             "leakage_sign_q_below_1": -1,
             "leakage_sign_q_above_1": 1,
-            "claim": "q=1 is the unique zero-leakage Renyi order in the symmetric two-query witness"
+            "claim": "q=1 is the unique finite zero-leakage Renyi order under nonempty disjoint access",
+        },
+        "overlap_balance_anchor": {
+            "regions": ["left_only", "right_only", "overlap", "residual"],
+            "balance": "W_q*Z_q-X_q*Y_q",
+            "finite_nonshannon_zero_condition": "W_q*Z_q=X_q*Y_q",
+            "equal_four_region_cells_zero_for_all_finite_q": True,
         },
         "complete_access_boundary": {
             "semantic_pairs": 4,
@@ -205,8 +219,8 @@ def _manifest(source_payloads: dict[str, bytes]) -> bytes:
         },
         "claim_boundary": [
             "Mobius and Harsanyi accounting are not claimed as mathematical novelty",
-            "Renyi entropy, Shannon entropy, Hill numbers, ordinary partition refinement, water-filling, and generic marginal-allocation methods are not claimed as new mathematics",
-            "the supplemental contribution includes the selective semantic-access spectrum, the Shannon prerequisite-support factorization, and its non-Shannon leakage boundary",
+            "Renyi entropy, Shannon entropy, Hill numbers, ordinary partition refinement, water-filling, generic marginal-allocation methods, and Shannon chain-rule characterizations are not claimed as new mathematics",
+            "the supplemental contribution includes the selective semantic-access spectrum, Shannon prerequisite-support factorization, disjoint-access leakage law, and overlapping-access balance law",
             "semantic access coverage is distinct from syntactic interface prerequisite order",
             "the shallow-lake audit is an executable finite decision model, not empirical validation",
             "no continuous-time or stochastic generalization is claimed",

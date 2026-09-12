@@ -69,6 +69,8 @@ def test_anonymous_manifest_hashes_every_whitelisted_source(tmp_path: Path) -> N
         assert "tests/test_prerequisite_access_game.py" in manifest["files"]
         assert "crest/prerequisite_renyi_leakage.py" in manifest["files"]
         assert "tests/test_prerequisite_renyi_leakage.py" in manifest["files"]
+        assert "crest/prerequisite_overlap_balance.py" in manifest["files"]
+        assert "tests/test_prerequisite_overlap_balance.py" in manifest["files"]
         for name, metadata in manifest["files"].items():
             payload = archive.read(name)
             assert hashlib.sha256(payload).hexdigest() == metadata["sha256"]
@@ -108,6 +110,11 @@ def test_anonymous_manifest_hashes_every_whitelisted_source(tmp_path: Path) -> N
         assert uniqueness["leakage_sign_q_below_1"] == -1
         assert uniqueness["leakage_sign_q_above_1"] == 1
 
+        overlap = manifest["overlap_balance_anchor"]
+        assert overlap["balance"] == "W_q*Z_q-X_q*Y_q"
+        assert overlap["finite_nonshannon_zero_condition"] == "W_q*Z_q=X_q*Y_q"
+        assert overlap["equal_four_region_cells_zero_for_all_finite_q"] is True
+
         boundary = manifest["complete_access_boundary"]
         assert boundary["addressable_pairs"] == 4
         assert boundary["grand_classes"] == 4096
@@ -141,6 +148,7 @@ def test_anonymous_bundle_runs_focused_theorem_tests(tmp_path: Path) -> None:
             "tests/test_renyi_access.py",
             "tests/test_prerequisite_access_game.py",
             "tests/test_prerequisite_renyi_leakage.py",
+            "tests/test_prerequisite_overlap_balance.py",
             "tests/test_shallow_lake_prerequisites.py",
             "tests/test_sparse_semantic_access_benchmark.py",
         ],
