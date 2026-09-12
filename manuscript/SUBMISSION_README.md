@@ -5,7 +5,8 @@
 **Ecological State at a Temporal Cut: Sparse Semantic Access**  
 Target: **The American Naturalist — Major Article**  
 Canonical manuscript: `crest_flagship_amnat_v0.7_semantic_access.md`.  
-AmNat Supplementary Information: `CREST_AmNat_supplementary_information.md`.
+AmNat Supplementary Information I: `CREST_AmNat_supplementary_information.md`.  
+AmNat Supplementary Information II: `CREST_AmNat_supplementary_prerequisite_support.md`.
 
 CREST treats the present as a zero-duration observational cut and defines ecological state as the least quotient induced on that cut by retrospective, transverse latent-present, and prospective distinguishability constraints.
 
@@ -22,29 +23,51 @@ The flagship distinguishes two structures controlling prospective refinement of 
 1. the minimum prerequisite set of retained interfaces needed before a future target is well formed; and
 2. the semantic access relation describing on which retained history-mode x response-type combinations that target is actually addressable.
 
+It also distinguishes two information questions that earlier drafts conflated.
+
+### Structural prerequisite interaction: Shannon order
+
+For prospective query `f` with prerequisite set `R_f`, decoder depth `m_f`, and accessible occupancy mass `P(A_f)`, the Shannon prospective game has
+
+\[
+d_1(T)=\sum_{f:R_f\cup\{F\}=T}m_fP(A_f).
+\]
+
+Thus prerequisite topology determines **where Shannon prospective information is supported**, while semantic accessibility and occupancy determine **how much** appears there. Supplement II proves this support fidelity for arbitrary query families in the finite model. Non-Shannon Rényi orders can generate additional distribution-sensitive interaction, and overlapping access can create exact non-Shannon cancellation; zero non-Shannon interaction therefore does not certify prerequisite fidelity.
+
+For the canonical witness, `N=4`, one of four uniformly occupied semantic pairs is accessible, and `m=10`, so
+
+\[
+d_1(\{H,\Theta,F\})=10/4=2.5\text{ bits}.
+\]
+
+This **2.5-bit Shannon dividend is the canonical structural interaction value**.
+
+### Support-space contraction: Hartley endpoint
+
 If `N` semantic pairs exist, `k` are addressable, and an addressable future query distinguishes `2^m` exterior signatures, then
 
 \[
 |Q_{H\Theta F}|=(N-k)+k2^m.
 \]
 
-When both H and Theta remain syntactic prerequisites,
+At the Hartley (`q=0`) support-count endpoint,
 
 \[
-d_{H\Theta F}=\log_2\frac{(N-k)+k2^m}{N}
+d^{(0)}_{H\Theta F}=\log_2\frac{(N-k)+k2^m}{N}
 \]
 
 and asymptotically
 
 \[
-d_{H\Theta F}=m-\log_2(N/k)+o(1).
+d^{(0)}_{H\Theta F}=m-\log_2(N/k)+o(1).
 \]
 
-Prerequisite order determines **where** the burden appears; semantic coverage determines **how large** it is. The canonical witness has `N=4`, `k=1`; at `m=10` the grand coalition has 1027 classes / 10.00422 bits and the three-way dividend is 8.00422 bits. The earlier 4096-class / 12-bit / 10-bit-three-way result is retained only as the complete-access boundary `k=N=4`.
+This quantity measures **distinguishable state-space support**, not faithful recovery of prerequisite topology. The canonical witness has `N=4`, `k=1`; at `m=10` the grand coalition has 1027 classes / 10.00422 Hartley bits and the support-count dividend is 8.00422 bits. The earlier 4096-class / 12-bit / 10-bit-three-way result is retained only as the complete-access boundary `k=N=4`.
 
-## AmNat Supplement: occupancy-aware access spectrum
+## AmNat Supplement I: occupancy-aware access spectrum
 
-The Supplement generalizes the support-count result to nonuniform semantic-cell occupancies `p_i`. It does **not** claim Rényi entropy, Shannon entropy, Hill numbers, or ordinary partition-refinement information theory as new mathematics. The new object is CREST's selective semantic-access refinement, in which only licensed cells receive prospective splitting.
+Supplement I generalizes the support-count result to nonuniform semantic-cell occupancies `p_i`. It does **not** claim Rényi entropy, Shannon entropy, Hill numbers, or ordinary partition-refinement information theory as new mathematics. The new object is CREST's selective semantic-access refinement, in which only licensed cells receive prospective splitting.
 
 For Rényi order `q`, the exact access gain is
 
@@ -61,7 +84,7 @@ with the Shannon limit
 G_1=mP_A.
 \]
 
-The main-text formula is recovered exactly at `q=0`. For nontrivial sparse access, the Supplement proves the large-decoder slope law
+The Hartley support-count formula is recovered exactly at `q=0`. For nontrivial sparse access, Supplement I proves the large-decoder slope law
 
 \[
 \lim_{m\to\infty}G_q/m=
@@ -73,6 +96,16 @@ P_A,&q=1,\\
 \]
 
 plus sharp fixed-`k` placement extrema and a heterogeneous local-capacity extension `G_1 = sum_i p_i log2 M_i`.
+
+## AmNat Supplement II: prerequisite support and Rényi-order leakage
+
+Supplement II asks when an interaction coefficient can be read literally as prerequisite structure. At Shannon order, the prospective game is a weighted sum of unanimity games and its Möbius support coincides with declared prerequisite hyperedges. For disjoint semantic access, every finite `q != 1` produces strict undeclared joint interaction. With overlapping access, the exact four-region balance
+
+\[
+\mathcal B_q=W_qZ_q-X_qY_q
+\]
+
+controls the sign, and non-Shannon leakage can vanish on the balance surface `W_q Z_q = X_q Y_q`. Accordingly, **Shannon is the generally support-faithful structural diagnostic; non-Shannon zero interaction can also be distributional cancellation**.
 
 ## Realizability no-go
 
@@ -90,7 +123,7 @@ The finite partition/quotient/transport spine is **structural support, not a cla
 
 The flagship therefore does **not** claim mathematical novelty for Möbius/Harsanyi inversion, unanimity games, generic quotient-state abstraction, common-refinement lattice facts, finite counting once an access relation is fixed, or Rényi/Hill entropy theory itself.
 
-The **paper-level theoretical contribution** is the separation of prerequisite order from semantic coverage at a temporal cut, together with the non-circular retrospective/transverse/prospective construction and strict realizability boundaries. The **main-text quantitative headline** is the sparse-access degradation `log2(N/k)` relative to complete addressability. The Supplement places that result as the Hartley (`q=0`) endpoint of an exact occupancy-aware semantic-access spectrum.
+The **paper-level theoretical contribution** is the ecological temporal-cut state construction plus the separation of prerequisite topology from semantic accessibility. Its information-theoretic statement is explicitly two-layered: **Shannon order diagnoses structural prerequisite support; the Hartley endpoint quantifies distinguishable support-space contraction under sparse access**. The sparse-access degradation `log2(N/k)` remains a quantitative result, but no longer carries the structural-support interpretation by itself.
 
 The phrase `zero-duration cut` remains a finite idealization. The manuscript does not claim an epsilon-to-zero continuous-time limit theorem, continuous-time germ theorem, stochastic generality, approximate-state theorem, or infinite-state extension.
 
@@ -108,7 +141,7 @@ The exact parity-style two-output map is a minimal formal witness of joint depen
 ## AmNat submission metadata
 
 Machine-readable metadata: `amnat_submission_metadata.json`  
-Current pinned text word count: **4008**  
+Current pinned text word count: **5265**  
 Short title: **Sparse Semantic Access**.
 
 Generate the anonymous title-page metadata with:
@@ -137,7 +170,7 @@ python scripts/build_amnat_anonymous_bundle.py
 
 Default output: `dist/anonymous_review_code.zip`.
 
-The v0.7 archive contains the minimal code needed for temporal-cut representation, strict companion-realizability checks, companion semantic quotients, sparse semantic access, semantic trace-equivalence quotient calculation, exact `N-k+k*2^m` benchmark checks, the Rényi/Hill semantic-access generalization, and the executable shallow-lake prerequisite/counterfactual-substitution audit.
+The v0.7 archive contains the minimal code needed for temporal-cut representation, strict companion-realizability checks, companion semantic quotients, sparse semantic access, semantic trace-equivalence quotient calculation, exact `N-k+k*2^m` benchmark checks, the Rényi/Hill semantic-access generalization, the Shannon prerequisite-support theorem, the non-Shannon leakage / overlap-balance laws, and the executable shallow-lake prerequisite/counterfactual-substitution audit.
 
 ## Remaining author-controlled fields
 
@@ -159,11 +192,11 @@ raw ecological possibilities Omega
 -> visible-cut fibers O_t^{-1}(y)
 -> retrospective / transverse / prospective pre-state structures
 -> strict realizability no-go
--> prerequisite structure + semantic access relation A_f
--> legal prospective traces
+-> prerequisite topology + semantic access relation A_f
+-> Shannon structural prerequisite-support game
+-> Hartley support-count contraction under sparse access
+-> occupancy-aware Rényi/Hill access spectrum and leakage boundaries
 -> least induced cut-state quotient Q_S
--> interaction accounting
--> occupancy-aware Rényi/Hill access spectrum in Supplement
 -> ecological interpretation / evidence downstream
 ```
 
@@ -178,4 +211,4 @@ python scripts/build_amnat_anonymous_bundle.py
 python scripts/build_amnat_title_page.py
 ```
 
-The test suite verifies the temporal-cut surface, definition firewall, strict realizability no-go, semantic-access quotient, Rényi access spectrum and extremal laws, shallow-lake prerequisite audit, AmNat manuscript compliance, submission metadata, generated anonymous title page, and anonymous review bundle.
+The test suite verifies the temporal-cut surface, definition firewall, strict realizability no-go, semantic-access quotient, Rényi access spectrum and extremal laws, Shannon prerequisite-support / leakage boundaries, shallow-lake prerequisite audit, AmNat manuscript compliance, submission metadata, generated anonymous title page, and anonymous review bundle.
