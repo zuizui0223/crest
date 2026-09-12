@@ -5,10 +5,11 @@ games on declared prerequisite sets. For other Rényi orders, the logarithm of a
 sum over selectively refined semantic cells is nonlinear and can create Möbius
 interaction on a coalition that no query declares as a minimal prerequisite.
 
-The two-cell theorem below is not restricted to equal occupancy or equal decoder
-depth: for every p in (0,1) and positive depths a,b, the undeclared joint
-interaction is negative below Shannon order, zero at q=1, and positive at every
-finite order above it.
+The disjoint-access theorem below is not restricted to two semantic cells,
+equal occupancy, or equal decoder depth. For any positive occupancy vector,
+any two nonempty disjoint access sets, and positive depths a,b, the undeclared
+joint interaction is negative below Shannon order, zero at q=1, and positive at
+every finite order above it.
 """
 
 from __future__ import annotations
@@ -59,6 +60,109 @@ def prospective_renyi_game(probabilities: Sequence[float], queries: Sequence[Pro
     return table
 
 
+def _validate_disjoint_access_inputs(
+    probabilities: Sequence[float],
+    left_cells: Iterable[int],
+    right_cells: Iterable[int],
+    left_bits: float,
+    right_bits: float,
+    q: float,
+) -> tuple[tuple[float, ...], frozenset[int], frozenset[int], float, float, float]:
+    ps = _probabilities(probabilities)
+    left = frozenset(int(i) for i in left_cells)
+    right = frozenset(int(i) for i in right_cells)
+    a, b, order = map(float, (left_bits, right_bits, q))
+    if not left or not right:
+        raise ValueError("both access sets must be nonempty")
+    if left & right:
+        raise ValueError("access sets must be disjoint")
+    if any(i < 0 or i >= len(ps) for i in left | right):
+        raise ValueError("accessible cell index out of range")
+    if a <= 0.0 or b <= 0.0:
+        raise ValueError("both decoder depths must be positive")
+    if order < 0.0:
+        raise ValueError("q must be nonnegative")
+    return ps, left, right, a, b, order
+
+
+def disjoint_access_set_leakage(
+    probabilities: Sequence[float],
+    left_cells: Iterable[int],
+    right_cells: Iterable[int],
+    left_bits: float,
+    right_bits: float,
+    q: float,
+) -> float:
+    """Exact undeclared joint dividend for two disjoint access channels.
+
+    Let U=sum_{i in L} p_i**q, V=sum_{i in R} p_i**q, and W be the q-power
+    mass of all residual cells. With A=2**((1-q)*a) and
+    B=2**((1-q)*b), the finite-q joint dividend is
+
+        D_q = 1/(1-q) log2(
+            ((U*A + V*B + W) * (U+V+W)) /
+            ((U*A + V + W) * (U + V*B + W))
+        ).
+
+    The numerator minus denominator inside the ratio factors exactly as
+
+        -U*V*(A-1)*(B-1).
+
+    Hence every positive occupancy vector and every pair of nonempty disjoint
+    access sets obey the same strict finite-q sign law: negative below Shannon,
+    zero at Shannon, positive above Shannon. Residual cells cancel from the sign.
+    """
+
+    ps, left, right, a, b, q = _validate_disjoint_access_inputs(
+        probabilities, left_cells, right_cells, left_bits, right_bits, q
+    )
+    if q == 1.0:
+        return 0.0
+    if isinf(q):
+        local_left = [a if i in left else 0.0 for i in range(len(ps))]
+        local_right = [b if i in right else 0.0 for i in range(len(ps))]
+        local_both = [local_left[i] + local_right[i] for i in range(len(ps))]
+        both = continuous_decoder_gain(ps, local_both, inf)
+        left_gain = continuous_decoder_gain(ps, local_left, inf)
+        right_gain = continuous_decoder_gain(ps, local_right, inf)
+        return both - left_gain - right_gain
+
+    U = sum(ps[i] ** q for i in left)
+    V = sum(ps[i] ** q for i in right)
+    W = sum(ps[i] ** q for i in range(len(ps)) if i not in left and i not in right)
+    A = 2.0 ** ((1.0 - q) * a)
+    B = 2.0 ** ((1.0 - q) * b)
+    ratio = ((U * A + V * B + W) * (U + V + W)) / (
+        (U * A + V + W) * (U + V * B + W)
+    )
+    return log2(ratio) / (1.0 - q)
+
+
+def disjoint_access_set_leakage_sign(
+    probabilities: Sequence[float],
+    left_cells: Iterable[int],
+    right_cells: Iterable[int],
+    left_bits: float,
+    right_bits: float,
+    q: float,
+) -> int:
+    """Return the theorem's exact sign for finite q, avoiding cancellation."""
+
+    _, _, _, _, _, q = _validate_disjoint_access_inputs(
+        probabilities, left_cells, right_cells, left_bits, right_bits, q
+    )
+    if q == 1.0:
+        return 0
+    if not isinf(q):
+        return -1 if q < 1.0 else 1
+    value = disjoint_access_set_leakage(
+        probabilities, left_cells, right_cells, left_bits, right_bits, q
+    )
+    if isclose(value, 0.0, abs_tol=1e-12):
+        return 0
+    return 1 if value > 0.0 else -1
+
+
 def _validate_two_cell_inputs(occupancy_left: float, left_bits: float, right_bits: float, q: float) -> tuple[float, float, float, float]:
     p, a, b, order = map(float, (occupancy_left, left_bits, right_bits, q))
     if not 0.0 < p < 1.0:
@@ -71,46 +175,17 @@ def _validate_two_cell_inputs(occupancy_left: float, left_bits: float, right_bit
 
 
 def two_cell_disjoint_query_leakage(occupancy_left: float, left_bits: float, right_bits: float, q: float) -> float:
-    """Exact undeclared joint dividend for two disjoint one-interface queries.
-
-    For finite q != 1, put u=p**q, v=(1-p)**q,
-    A=2**((1-q)*left_bits), and B=2**((1-q)*right_bits). Then
-
-        D_q = 1/(1-q) log2(((u+v)(uA+vB))/((uA+v)(u+vB))).
-
-    The numerator minus denominator inside the ratio is
-    -u*v*(A-1)*(B-1), proving the strict finite-q sign law analytically.
-    """
+    """Two-cell specialization of :func:`disjoint_access_set_leakage`."""
 
     p, a, b, q = _validate_two_cell_inputs(occupancy_left, left_bits, right_bits, q)
-    if q == 1.0:
-        return 0.0
-    if isinf(q):
-        ps = (p, 1.0 - p)
-        both = continuous_decoder_gain(ps, (a, b), inf)
-        left = continuous_decoder_gain(ps, (a, 0.0), inf)
-        right = continuous_decoder_gain(ps, (0.0, b), inf)
-        return both - left - right
-    u = p**q
-    v = (1.0 - p) ** q
-    A = 2.0 ** ((1.0 - q) * a)
-    B = 2.0 ** ((1.0 - q) * b)
-    ratio = ((u + v) * (u * A + v * B)) / ((u * A + v) * (u + v * B))
-    return log2(ratio) / (1.0 - q)
+    return disjoint_access_set_leakage((p, 1.0 - p), (0,), (1,), a, b, q)
 
 
 def two_cell_disjoint_query_leakage_sign(occupancy_left: float, left_bits: float, right_bits: float, q: float) -> int:
-    """Return the theorem's exact sign for finite q, avoiding cancellation."""
+    """Two-cell specialization of the exact disjoint-access sign law."""
 
-    _, _, _, q = _validate_two_cell_inputs(occupancy_left, left_bits, right_bits, q)
-    if q == 1.0:
-        return 0
-    if not isinf(q):
-        return -1 if q < 1.0 else 1
-    value = two_cell_disjoint_query_leakage(occupancy_left, left_bits, right_bits, q)
-    if isclose(value, 0.0, abs_tol=1e-12):
-        return 0
-    return 1 if value > 0.0 else -1
+    p, a, b, q = _validate_two_cell_inputs(occupancy_left, left_bits, right_bits, q)
+    return disjoint_access_set_leakage_sign((p, 1.0 - p), (0,), (1,), a, b, q)
 
 
 def symmetric_two_query_leakage(q: float) -> float:
