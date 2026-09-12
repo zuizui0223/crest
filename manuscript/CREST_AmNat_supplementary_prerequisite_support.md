@@ -151,7 +151,7 @@ Theorem S9 is recovered by setting \(Z_q=0\), for which \(\mathcal B_q=-X_qY_q<0
 
 ### Interpretation
 
-Theorem S10 sharpens the structural/distributional distinction. At Shannon order, prerequisite support is faithful for arbitrary query families by Theorem S8. At non-Shannon orders, undeclared higher-order interaction is controlled not merely by whether access sets overlap, but by a four-region balance of \(q\)-weighted semantic mass. Non-Shannon zero interaction therefore does **not** imply prerequisite faithfulness: it can arise from exact cancellation on the overlap-balance surface.
+Theorem S10 sharpens the distinction between **structural interaction** and **distributional interaction**. At Shannon order, prerequisite support is faithful for arbitrary query families by Theorem S8. At non-Shannon orders, undeclared higher-order interaction is controlled not merely by whether access sets overlap, but by a four-region balance of \(q\)-weighted semantic mass. Non-Shannon zero interaction therefore does **not** imply prerequisite faithfulness: it can arise from exact cancellation on the overlap-balance surface.
 
 ## SII.5. Relation to Supplementary Information I
 
