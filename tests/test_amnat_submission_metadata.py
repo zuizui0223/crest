@@ -45,4 +45,4 @@ def test_metadata_is_consistent_with_manuscript_surface() -> None:
     assert manuscript_keywords == metadata["keywords"]
     assert "## Abstract" in text
     assert "## Literature Cited" in text
-    assert "| \\(m\\) | grand classes | grand bits | three-way dividend |" in text
+    assert "| \\(m\\) | grand classes | grand bits | Shannon structural dividend | Hartley support-count dividend |" in text

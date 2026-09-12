@@ -28,11 +28,11 @@ def test_amnat_major_article_abstract_is_within_200_words() -> None:
     abstract = _section_between("## Abstract", "**Keywords:**")
     assert _word_count(abstract) <= 200
     assert "zero-duration temporal cut" in abstract
-    assert "semantic pairs" in abstract
-    assert "support future differentiation" in abstract
+    assert "Shannon order" in abstract
+    assert "exact Möbius support" in abstract
+    assert "Hartley support-count endpoint" in abstract
     assert "(N-k)+k2^m" in abstract
     assert "one visible present can conceal ecologically distinct recovery capacities" in abstract
-    assert "does not claim a continuous-time epsilon-to-zero limit theorem" in abstract
 
 
 def test_amnat_keywords_do_not_exceed_six() -> None:
@@ -72,6 +72,7 @@ def test_submission_manuscript_has_literature_positioning() -> None:
         "Søndergaard, Jensen, and Jeppesen 2003",
         "Søndergaard et al. 2007",
         "Jeppesen et al. 2012",
+        "Walker et al. 2004",
         "## Literature Cited",
     )
     for token in required:
@@ -94,13 +95,30 @@ def test_section10_distinguishes_four_neighboring_state_traditions() -> None:
     assert "finite theory of the ecological present as a temporal boundary" in section
 
 
+def test_shannon_is_structural_and_hartley_is_support_count() -> None:
+    section = _section_between(
+        "## 6. Sparse semantic access",
+        "## 7. Canonical finite witness",
+    )
+    assert "### 6.1 Structural interaction at Shannon order" in section
+    assert "d_1(T)=" in section
+    assert "prerequisite set determines **where**" in section
+    assert "Shannon order is the generally support-faithful diagnostic" in section
+    assert "### 6.2 Hartley support-count endpoint" in section
+    assert "|Q_{H\\Theta F}|=(N-k)+k2^m" in section
+    assert "m-\\log_2(N/k)+o(1)" in section
+    assert "support-space contraction" in section
+    assert "not faithful recovery of prerequisite interaction support" in section
+
+
 def test_sparse_access_and_full_access_boundary_are_both_explicit() -> None:
-    assert "|Q_{H\\Theta F}|=(N-k)+k2^m" in TEXT
-    assert "m-\\log_2(N/k)+o(1)" in TEXT
     assert "1027" in TEXT
     assert "8.00422" in TEXT
+    assert "2.50000" in TEXT
     assert "4096-class" in TEXT
     assert "full-access boundary" in TEXT
+    assert "Shannon structural dividend" in TEXT
+    assert "Hartley support-count dividend" in TEXT
 
 
 def test_novelty_firewall_distinguishes_theory_from_accounting() -> None:
@@ -110,6 +128,7 @@ def test_novelty_firewall_distinguishes_theory_from_accounting() -> None:
     assert "finite counting" in PLAIN
     assert "paper-level contribution" in PLAIN
     assert "structural support, not a claim of new partition theory" in PLAIN
+    assert "Shannon for structural prerequisite support, Hartley for distinguishable state-space support" in PLAIN
     assert "modeling contribution" not in PLAIN
 
 

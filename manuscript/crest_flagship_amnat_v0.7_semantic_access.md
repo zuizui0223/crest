@@ -4,7 +4,7 @@
 
 ## Abstract
 
-When two ecosystems look the same now but differ in what they retain from the past, how they are organized beneath that appearance, or what futures remain possible, are they in the same ecological state? Ecological memory, hysteresis, historical contingency, and long transients all show that instantaneous configuration need not determine ecological identity. We therefore idealize the present as a zero-duration temporal cut and define state from the distinctions that remain consequential at that boundary. Retrospective carried history, transverse latent-present response structure, and prospective response accessibility are defined before state through separate companion semantics. CREST defines ecological state as the least quotient compatible with those left, transverse, and right distinctions. Sparse prospective accessibility then changes the induced quotient: if N retrospective-by-transverse semantic pairs exist but only k support future differentiation, an m-bit decoder yields (N-k)+k2^m joint state classes and a three-way state dividend log2[((N-k)+k2^m)/N], approaching m-log2(N/k). A shallow-lake model shows why one visible present can conceal ecologically distinct recovery capacities. The finite theory does not claim a continuous-time epsilon-to-zero limit theorem.
+When two ecosystems look the same now but differ in what they retain from the past, how they are organized beneath that appearance, or what futures remain possible, are they in the same ecological state? Ecological memory, hysteresis, historical contingency, and long transients all show that instantaneous configuration need not determine ecological identity. We therefore idealize the present as a zero-duration temporal cut and define state from distinctions that remain consequential at that boundary. Retrospective carried history, transverse latent-present response structure, and prospective response accessibility are defined before state. CREST defines ecological state as the least quotient compatible with those distinctions. For prospective refinement, prerequisite topology and semantic accessibility play different roles. At Shannon order, prerequisite sets determine exact Möbius support while accessible occupancy determines coefficient magnitude; non-Shannon orders can mix structural and distributional interaction. Separately, the Hartley support-count endpoint shows that if N retrospective-by-transverse semantic pairs exist but only k support an m-bit future distinction, the joint state has (N-k)+k2^m classes and loses asymptotically log2(N/k) bits relative to complete accessibility. A shallow-lake model shows why one visible present can conceal ecologically distinct recovery capacities.
 
 **Keywords:** ecological state; temporal representation; ecological memory; state abstraction; semantic access; restoration
 
@@ -29,6 +29,8 @@ The paper does not claim mathematical novelty for Möbius inversion or unanimity
 \]
 
 The first determines which retained structures must jointly be present before a future distinction exists. The second determines on which combinations of those semantic structures the distinction is actually ecologically expressible. Complete addressability is therefore a special case, not a default assumption.
+
+A second distinction is equally important: **structural interaction and support-space richness are not the same quantity**. CREST uses the Shannon prospective game when asking where prerequisite interaction is structurally supported, because Shannon additivity preserves declared prerequisite support exactly. It uses the Hartley endpoint when asking how many distinguishable state classes remain under sparse semantic access. The two are different Rényi orders of the same selective-refinement structure and answer different ecological questions.
 
 ## 2. State at a zero-duration temporal cut
 
@@ -251,7 +253,37 @@ a\in\{0,1\}^m
 
 and requires both retained interfaces before it is syntactically well formed. On an addressable semantic pair, the legal decoder distinguishes all \(2^m\) exterior signatures. On a non-addressable pair, all exterior signatures collapse to one inaccessible trace class.
 
-The grand-coalition state therefore has
+### 6.1 Structural interaction at Shannon order
+
+For structural interpretation, let the semantic pairs carry occupancies \(p_i>0\), \(\sum_i p_i=1\), and let
+
+\[
+P(A_f)=\sum_{i\in A_f}p_i.
+\]
+
+At Shannon order \(q=1\), a query with prerequisite set \(R_f\), decoder depth \(m_f\), and access set \(A_f\) contributes
+
+\[
+\boxed{
+v_1(S)=m_fP(A_f)\,\mathbf 1\{R_f\cup\{F\}\subseteq S\}.
+}
+\]
+
+For an arbitrary family of prospective queries, the contributions add, so the Möbius dividend is
+
+\[
+\boxed{
+d_1(T)=\sum_{f:R_f\cup\{F\}=T}m_fP(A_f).
+}
+\]
+
+This is the structural result used to interpret prospective interaction in CREST. The prerequisite set determines **where** a Shannon dividend can occur; semantic accessibility and occupancy determine **how much** information appears there. Overlapping access sets do not create additional Shannon support beyond the declared prerequisite hyperedges.
+
+The choice of Shannon order is not merely conventional. Supplementary Information II shows that non-Shannon Rényi orders can generate undeclared higher-order dividends through nonlinear weighting of selectively refined cells. For disjoint access, the leakage has a strict sign change around \(q=1\); with overlapping access, non-Shannon leakage can also cancel exactly on an overlap-balance surface. Thus a zero non-Shannon dividend does not by itself certify prerequisite fidelity. Shannon order is the generally support-faithful diagnostic for prerequisite topology in this finite construction.
+
+### 6.2 Hartley support-count endpoint
+
+A different question is how many distinguishable state classes remain when future differentiation is sparse. The grand-coalition state has
 
 \[
 \boxed{
@@ -279,33 +311,33 @@ The proper-coalition state sizes are
 
 because the exterior decoder requires both semantic interfaces.
 
-With
+With the Hartley/support-count game
 
 \[
-v(S)=\log_2|Q_S|,
+v_0(S)=\log_2|Q_S|,
 \]
 
-the three-way state dividend becomes
+the three-way support-count dividend becomes
 
 \[
 \boxed{
-d_{H\Theta F}
+d^{(0)}_{H\Theta F}
 =
 \log_2\frac{(N-k)+k2^m}{N}.}
 \]
 
-This quantity is generally non-integer. Complete addressability is the boundary case \(k=N\), giving \(d_{H\Theta F}=m\). If \(k=0\), the decoder is nowhere addressable and the dividend is zero.
+This quantity is generally non-integer. Complete addressability is the boundary case \(k=N\), giving \(d^{(0)}_{H\Theta F}=m\). If \(k=0\), the decoder is nowhere addressable and the dividend is zero.
 
 For fixed \(N\) and \(k>0\),
 
 \[
 \boxed{
-d_{H\Theta F}
+d^{(0)}_{H\Theta F}
 =
 m-\log_2(N/k)+o(1)}
 \]
 
-as \(m\to\infty\). Thus sparse semantic access creates an asymptotic penalty
+as \(m\to\infty\). Thus sparse semantic access creates an asymptotic Hartley penalty
 
 \[
 \boxed{\log_2(N/k)}
@@ -313,7 +345,7 @@ as \(m\to\infty\). Thus sparse semantic access creates an asymptotic penalty
 
 relative to the complete-access case.
 
-This result changes the **magnitude**, not the interaction order, while both history and latent response remain syntactic prerequisites. The higher-order location still follows standard Möbius accounting; semantic coverage controls how much information reaches that location.
+This Hartley result measures **support-space contraction**, not faithful recovery of prerequisite interaction support. It should therefore not be read as saying that q=0 Möbius support identifies the prerequisite hypergraph. The structural location claim belongs to the Shannon prospective game above; the Hartley endpoint quantifies how sparse future-generating capacity contracts the number of distinguishable states.
 
 Ecologically, sparse access need not mean that an observer failed to sample enough combinations. It can mean that future-generating capacity is itself uneven across the ecological state space. Some history-by-response combinations may retain a response pathway, whereas in others that pathway has been lost, blocked, or rendered biologically irrelevant. The ratio \(k/N\) therefore measures how broadly a prospective distinction is supported across otherwise distinct retrospective-by-transverse combinations, and \(\log_2(N/k)\) measures the resulting contraction of state complexity relative to complete future differentiation.
 
@@ -331,7 +363,15 @@ Only one semantic pair licenses the future decoder, so
 k=1.
 \]
 
-Hence
+Under uniform occupancy, \(P(A_f)=1/4\). Therefore the Shannon structural dividend for the canonical query is
+
+\[
+\boxed{d_1(\{H,\Theta,F\})=m/4.}
+\]
+
+At \(m=10\), this is **2.5 bits**. This is the canonical structural interaction value.
+
+The Hartley support-count endpoint separately gives
 
 \[
 |Q_{H\Theta F}|=3+2^m
@@ -341,18 +381,18 @@ and
 
 \[
 \boxed{
-d_{H\Theta F}=\log_2((3+2^m)/4).}
+d^{(0)}_{H\Theta F}=\log_2((3+2^m)/4).}
 \]
 
 For three benchmark depths:
 
-| \(m\) | grand classes | grand bits | three-way dividend |
-|---:|---:|---:|---:|
-| 4 | 19 | 4.24793 | 2.24793 |
-| 8 | 259 | 8.01681 | 6.01681 |
-| 10 | 1027 | 10.00422 | 8.00422 |
+| \(m\) | grand classes | grand bits | Shannon structural dividend | Hartley support-count dividend |
+|---:|---:|---:|---:|---:|
+| 4 | 19 | 4.24793 | 1.00000 | 2.24793 |
+| 8 | 259 | 8.01681 | 2.00000 | 6.01681 |
+| 10 | 1027 | 10.00422 | 2.50000 | 8.00422 |
 
-The deficit from complete addressability tends to two bits because
+The Hartley deficit from complete addressability tends to two bits because
 
 \[
 \log_2(N/k)=\log_2 4=2.
@@ -438,7 +478,9 @@ The finite partition spine in Section 2 is structural support, not a claim of ne
 
 Earlier CREST marked-cycle and fixed-closure three-audit families remain mathematically valid as abstract closure extrema. The realizability audit shows why they should not be interpreted literally as immutable MLTR history and fixed-grammar MRM response types. The earlier direct-value compositional module is retained only as a closed-form corollary of the complete-access trace quotient and is regression-tested against it for every coalition.
 
-The sparse-access result should also not be oversold as difficult game theory. Once the semantic quotient and access relation are specified, its cardinality formula follows by finite counting. The paper-level contribution instead lies in the separation of prerequisite order from semantic coverage at a temporal cut: prerequisite structure determines which interfaces must be retained before a future query is well formed, whereas sparse addressability changes how much prospective information reaches that interaction. In particular, the \(\log_2(N/k)\) sparse-access degradation is the quantitative result, while the finite partition spine supplies the supporting layer on which that result is stated. The phrase `zero-duration cut` is a finite idealization: CREST has not proved that states on intervals \( [t-\varepsilon,t+\varepsilon] \) converge as \(\varepsilon\to0\), nor does it claim a continuous-time germ theorem in this manuscript.
+The information-order distinction is essential to the paper-level contribution. The Shannon prerequisite-support factorization is the structural result: declared prerequisite sets determine the Möbius support of prospective information, while semantic accessibility and occupancy determine the corresponding coefficient weights. This support fidelity is exact for arbitrary query families in the finite model. Non-Shannon Rényi coefficients are distribution sensitive and can contain additional interaction generated by selective refinement; with overlapping access, such leakage can also cancel on a balance surface. They therefore should not be interpreted as prerequisite hyperedges merely because a coefficient is zero or nonzero.
+
+The Hartley result answers a different question. Once the semantic quotient and access relation are specified, its cardinality formula follows by finite counting. The \(\log_2(N/k)\) sparse-access degradation quantifies support-space contraction as future-generating capacity becomes sparse; it is not the theorem that identifies interaction order. Thus the paper retains both results without conflating them: **Shannon for structural prerequisite support, Hartley for distinguishable state-space support**. The finite partition spine remains the supporting layer on which both results are stated. The phrase `zero-duration cut` is a finite idealization: CREST has not proved that states on intervals \([t-\varepsilon,t+\varepsilon]\) converge as \(\varepsilon\to0\), nor does it claim a continuous-time germ theorem in this manuscript.
 
 ## 12. Discussion
 
@@ -448,7 +490,7 @@ This interpretation unifies several familiar ecological phenomena at the level o
 
 The realizability results protect that biological interpretation. Positive temporal interaction does not appear merely because three labels are intersected, raw historical identity is not preserved when histories are semantically equivalent, and a fixed response grammar cannot generate a latent distinction that its own candidate-safe quotient has already erased. These restrictions matter because a theory of ecological state should not manufacture temporal dependence from arbitrary labels.
 
-Sparse access adds a second ecological consequence. Even after retrospective and transverse distinctions are both retained, prospective differentiation can remain localized to only some combinations of them. Complete addressability would treat every semantic combination as equally capable of expressing the future response. The sparse-access result instead allows ecological possibility itself to be uneven. In that sense \(k/N\) describes the breadth of future-generating capacity across the state space, and \(\log_2(N/k)\) quantifies how much state differentiation is lost when that capacity is restricted.
+Sparse access adds a second ecological consequence. Even after retrospective and transverse distinctions are both retained, prospective differentiation can remain localized to only some combinations of them. Complete addressability would treat every semantic combination as equally capable of expressing the future response. The Shannon result states where that prospective interaction is structurally supported and weights it by accessible occupancy. The Hartley endpoint asks instead how much distinguishable support remains when accessibility is sparse. In that sense \(k/N\) describes the breadth of future-generating capacity across the state space, while \(\log_2(N/k)\) quantifies support-space contraction rather than prerequisite topology.
 
 The shallow-lake witness makes the necessity concrete. The same coarse water-quality appearance can coexist with different sediment legacies and different current response configurations, and those differences can alter recovery even before any particular management decision is formulated. The formal prerequisite contrasts then reveal how different consequences of that hidden temporal structure become visible. They do not make state arbitrary; they expose distinctions already present in the ecology.
 
@@ -458,7 +500,7 @@ This is the sense in which ecological state is cut-relative without being merely
 
 Ecological state is not located entirely in the instantaneous visible present. Systems that look the same at one moment can remain nonequivalent because they retain different histories, embody different latent response organization, or preserve different capacities for future response.
 
-CREST represents the present as a temporal cut at which those three sources of distinction meet. Retrospective carried history, transverse latent-present response structure, and prospective response accessibility are defined before the state, and the ecological state is the least quotient that does not collapse their consequential differences. Sparse semantic access then determines how broadly future-generating capacity is distributed across that state structure.
+CREST represents the present as a temporal cut at which those three sources of distinction meet. Retrospective carried history, transverse latent-present response structure, and prospective response accessibility are defined before the state, and the ecological state is the least quotient that does not collapse their consequential differences. For prospective refinement, Shannon information preserves declared prerequisite support, whereas the Hartley endpoint quantifies how sparse accessibility contracts the distinguishable state space.
 
 The resulting view is not that state is chosen by whatever question an investigator happens to ask. It is that the ecological present has temporal depth: past consequences can remain embodied, hidden organization can differentiate systems now, and the futures a system can still express are properties of its present organization. A temporal-cut state is the finite representation of that ecological fact.
 
