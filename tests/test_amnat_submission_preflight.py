@@ -9,7 +9,7 @@ def test_repository_preflight_is_green_while_author_template_remains_open() -> N
     assert report["author_fields_ready"] is False
     assert report["pdf_visual_and_font_gate_confirmed"] is False
     assert report["literal_upload_ready"] is False
-    assert report["text_word_count"] == 4008
+    assert report["text_word_count"] == 4702
     assert report["unresolved_required_author_placeholders"]
     assert "[ANONYMOUS REVIEW ARCHIVE OR JOURNAL FILE IDENTIFIER]" not in report[
         "unresolved_required_author_placeholders"

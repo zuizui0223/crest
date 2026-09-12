@@ -29,9 +29,9 @@ def test_amnat_major_article_abstract_is_within_200_words() -> None:
     assert _word_count(abstract) <= 200
     assert "zero-duration temporal cut" in abstract
     assert "semantic pairs" in abstract
-    assert "future-addressable" in abstract
+    assert "support future differentiation" in abstract
     assert "(N-k)+k2^m" in abstract
-    assert "worked ecological interpretation" in abstract
+    assert "one visible present can conceal ecologically distinct recovery capacities" in abstract
     assert "does not claim a continuous-time epsilon-to-zero limit theorem" in abstract
 
 
@@ -52,7 +52,7 @@ def test_scientific_spine_is_in_correct_order() -> None:
         "## 6. Sparse semantic access"
     )
     assert TEXT.index("## 6. Sparse semantic access") < TEXT.index(
-        "## 8. Target-relative shallow-lake prerequisite identification"
+        "## 8. Shallow lakes as a biological witness of a non-instantaneous present"
     )
 
 
@@ -87,11 +87,11 @@ def test_section10_distinguishes_four_neighboring_state_traditions() -> None:
     assert "### 10.2 Hysteresis, alternative states, and restoration" in section
     assert "### 10.3 Latent ecological state in state-space models" in section
     assert "### 10.4 Predictive states and state abstraction" in section
-    assert "CREST therefore does not equate “history matters” with “retain the complete history.”" in section
-    assert "state-space methods estimate a chosen latent representation" in section
-    assert "CREST audits whether that representation retains the distinctions demanded by the scientific task" in section
+    assert "CREST therefore does not equate ecological memory with retention of complete history" in section
+    assert "A state-space model normally begins after the analyst has specified what variables constitute the latent state" in section
+    assert "CREST instead asks what makes two possible ecological worlds the same state at the present boundary in the first place" in section
     assert "not a new generic theory of quotient states" in section
-    assert "finite theory of state at a temporal boundary" in section
+    assert "finite theory of the ecological present as a temporal boundary" in section
 
 
 def test_sparse_access_and_full_access_boundary_are_both_explicit() -> None:
@@ -113,19 +113,20 @@ def test_novelty_firewall_distinguishes_theory_from_accounting() -> None:
     assert "modeling contribution" not in PLAIN
 
 
-def test_shallow_lake_is_executable_model_not_empirical_validation() -> None:
+def test_shallow_lake_is_biological_witness_not_empirical_validation() -> None:
     shallow = _section_between(
-        "## 8. Target-relative shallow-lake prerequisite identification",
-        "## 9. What the cut-state result means",
+        "## 8. Shallow lakes as a biological witness of a non-instantaneous present",
+        "## 9. Why ecological state requires a temporal cut",
     )
-    assert "worked ecological interpretation of the abstract cut geometry" in shallow
-    assert "counterfactual substitution" in shallow
+    assert "concrete reason not to identify ecological state with a coarse instantaneous configuration" in shallow
+    assert "one visible present can conceal several states" in shallow
     assert "R_{\\rm composed}=\\{H,\\Theta\\}" in shallow
     assert "only two outputs" in shallow
     assert "standard_pathway" in shallow
     assert "cross_interface_review" in shallow
     assert "formal witness of joint dependence" in shallow
     assert "not a biological law asserted by the restoration literature" in shallow
+    assert "target-relative prerequisite calculation is secondary evidence" in shallow
     assert "Søndergaard, Jensen, and Jeppesen 2003" in shallow
     assert "Søndergaard et al. 2007" in shallow
     assert "Jeppesen et al. 2012" in shallow
