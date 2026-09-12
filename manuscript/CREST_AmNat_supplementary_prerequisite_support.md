@@ -1,6 +1,6 @@
 # Supplementary Information II: Prerequisite support and Rényi-order leakage
 
-This supplement isolates the CREST-specific link between declared prerequisite order and semantic-access coverage. Möbius/Harsanyi inversion, unanimity games, Shannon additivity, and Rényi entropy are standard and are not claimed here as new mathematics. The contribution is the exact factorization of CREST's prospective information game at Shannon order and a sharp disjoint-access law showing why the same support interpretation fails outside Shannon order.
+This supplement isolates the CREST-specific link between declared prerequisite order and semantic-access coverage. Möbius/Harsanyi inversion, unanimity games, Shannon additivity, and Rényi entropy are standard and are not claimed here as new mathematics. The contribution is the exact factorization of CREST's prospective information game at Shannon order and sharp finite-state laws describing when non-Shannon interaction does or does not preserve declared prerequisite support.
 
 ## SII.1. Setup
 
@@ -40,15 +40,9 @@ Query \(f\) is licensed iff \(F\in S\) and \(R_f\subseteq S\). It contributes \(
 
 ## SII.3. Theorem S9: general disjoint-access Shannon-uniqueness law
 
-Consider any finite semantic state space with positive occupancies \(p_i\). Let two future queries have distinct prerequisite channels, with one requiring only \(H\) and the other only \(\Theta\). Let their semantic access sets be nonempty and disjoint,
+Consider any finite semantic state space with positive occupancies \(p_i\). Let two future queries have distinct prerequisite channels, with one requiring only \(H\) and the other only \(\Theta\). Let their semantic access sets be nonempty and disjoint, \(L\cap R=\varnothing\), and let their decoder depths be \(a,b>0\). No query declares the joint prerequisite \(\{H,\Theta\}\). Cells outside \(L\cup R\) may remain unrefined.
 
-\[
-L\cap R=\varnothing,
-\]
-
-and let their decoder depths be \(a,b>0\). No query declares the joint prerequisite \(\{H,\Theta\}\). Cells outside \(L\cup R\) may remain unrefined and may carry arbitrary positive occupancy.
-
-For finite Rényi order \(q\ne1\), define the three \(q\)-power masses
+For finite Rényi order \(q\ne1\), define
 
 \[
 U_q=\sum_{i\in L}p_i^q,\qquad
@@ -56,16 +50,9 @@ V_q=\sum_{i\in R}p_i^q,\qquad
 W_q=\sum_{i\notin L\cup R}p_i^q,
 \]
 
-and
+and \(A_q=2^{(1-q)a}\), \(B_q=2^{(1-q)b}\). The undeclared \(H\times\Theta\times F\) dividend is
 
 \[
-A_q=2^{(1-q)a},\qquad B_q=2^{(1-q)b}.
-\]
-
-The undeclared \(H\times\Theta\times F\) Möbius dividend is exactly
-
-\[
-\boxed{
 D_q=
 \frac{1}{1-q}
 \log_2
@@ -74,84 +61,116 @@ D_q=
 }{
 (U_qA_q+V_q+W_q)(U_q+V_qB_q+W_q)
 }.
-}
 \]
 
-The sign is determined without approximation. The difference between the numerator and denominator inside the logarithmic ratio factors as
+Its logarithmic numerator-minus-denominator factors exactly as
+
+\[
+\boxed{-U_qV_q(A_q-1)(B_q-1).}
+\]
+
+Therefore
 
 \[
 \boxed{
-(U_qA_q+V_qB_q+W_q)(U_q+V_q+W_q)
--
-(U_qA_q+V_q+W_q)(U_q+V_qB_q+W_q)
-=
--U_qV_q(A_q-1)(B_q-1).
+D_q<0\ (0\le q<1),\qquad D_1=0,\qquad D_q>0\ (1<q<\infty).
 }
 \]
 
-The residual mass \(W_q\) cancels completely from this sign determinant. Since both access sets are nonempty and all occupancies are positive, \(U_q,V_q>0\). Therefore
+Thus, under disjoint semantic access, Shannon order is the unique finite Rényi order with zero undeclared joint-prerequisite interaction. This **Shannon uniqueness** statement is exact for arbitrary positive occupancies, access-set cardinalities, residual cells, and positive decoder depths.
+
+## SII.4. Theorem S10: overlapping-access balance law
+
+The disjoint condition in Theorem S9 is substantive. If the two semantic access sets overlap, partition the semantic cells into four regions:
+
+- left-only \(X=L\setminus R\),
+- right-only \(Y=R\setminus L\),
+- overlap \(Z=L\cap R\),
+- residual \(W=(L\cup R)^c\).
+
+For finite \(q\ne1\), write their \(q\)-power masses as
+
+\[
+X_q=\sum_{i\in X}p_i^q,\quad
+Y_q=\sum_{i\in Y}p_i^q,\quad
+Z_q=\sum_{i\in Z}p_i^q,\quad
+W_q=\sum_{i\in W}p_i^q,
+\]
+
+and again \(A_q=2^{(1-q)a}\), \(B_q=2^{(1-q)b}\). Then
 
 \[
 \boxed{
-D_q<0\quad(0\le q<1),\qquad
-D_1=0,\qquad
-D_q>0\quad(1<q<\infty).
+D_q=
+\frac{1}{1-q}\log_2
+\frac{
+(X_qA_q+Y_qB_q+Z_qA_qB_q+W_q)(X_q+Y_q+Z_q+W_q)
+}{
+(A_q(X_q+Z_q)+Y_q+W_q)(B_q(Y_q+Z_q)+X_q+W_q)
+}.
 }
 \]
 
-Thus, for **every positive finite occupancy distribution, every pair of nonempty disjoint semantic access sets, arbitrary unrefined residual cells, and every positive pair of decoder depths**, Shannon order is the unique finite Rényi order at which the undeclared joint-prerequisite interaction vanishes.
-
-At \(q=1\), Shannon additivity gives directly
+The decisive algebraic identity is
 
 \[
-G_1(L,R)=aP(L)+bP(R)=G_1(L,\varnothing)+G_1(\varnothing,R),
+\boxed{
+\text{numerator}-\text{denominator}
+=(A_q-1)(B_q-1)(W_qZ_q-X_qY_q).
+}
 \]
 
-so the cross-difference is exactly zero.
-
-### Two-cell and symmetric corollaries
-
-If \(L\) and \(R\) each contain one cell and no residual cells remain, the theorem reduces to the two-cell law. Writing the left occupancy as \(p\in(0,1)\) gives
+Define the **overlap balance**
 
 \[
-D_q(p,a,b)=
-\frac{1}{1-q}
-\log_2
-\frac{(u+v)(uA+vB)}{(uA+v)(u+vB)},
+\mathcal B_q=W_qZ_q-X_qY_q.
 \]
 
-with \(u=p^q\), \(v=(1-p)^q\), \(A=2^{(1-q)a}\), and \(B=2^{(1-q)b}\).
-
-Setting further \(p=1/2\) and \(a=b=1\) recovers
+Because \((A_q-1)(B_q-1)>0\) for every finite \(q\ne1\), the leakage sign is
 
 \[
-D_q=1-\frac{2}{1-q}\log_2\left(\frac12+2^{-q}\right),
+\boxed{
+\operatorname{sgn}(D_q)=
+\begin{cases}
+\operatorname{sgn}(\mathcal B_q), & 0\le q<1,\\
+0, & q=1,\\
+-\operatorname{sgn}(\mathcal B_q), & q>1.
+\end{cases}
+}
 \]
 
-with \(D_\infty=1\) bit for this symmetric endpoint witness.
+Hence Shannon order always has zero leakage, but it is **not globally the unique zero once access sets overlap**. At any finite \(q\ne1\), a second zero occurs exactly on the balance surface
 
-The theorem separates:
+\[
+\boxed{W_qZ_q=X_qY_q.}
+\]
 
-- **structural interaction**: interaction implied by declared prerequisite sets and recovered exactly by Shannon prospective dividends;
-- **distributional interaction**: additional interaction induced by nonlinear weighting of selectively refined semantic cells at non-Shannon Rényi orders.
+This is not a numerical accident. For example, four equally occupied cells with one cell in each region satisfy the balance equality for every finite \(q\), so all Rényi orders have zero undeclared joint-prerequisite dividend in that configuration.
 
-## SII.4. Relation to Supplementary Information I
+Theorem S9 is recovered by setting \(Z_q=0\), for which \(\mathcal B_q=-X_qY_q<0\). Complete-overlap configurations instead have \(X_q=Y_q=0\), so \(\mathcal B_q=W_qZ_q\ge0\). Thus disjoint and strongly overlapping access occupy opposite sides of an exact interaction-sign boundary.
 
-Supplementary Information I asks how much information selective refinement carries under different Rényi orders. Supplement II asks when an interaction coefficient can be read literally as prerequisite structure. Theorem S8 establishes exact Shannon support fidelity for arbitrary query families. Theorem S9 shows that even the cleanest pair of disjoint prerequisite channels generates undeclared joint interaction at every finite \(q\ne1\), regardless of occupancy heterogeneity, access-set cardinality, unrefined residual cells, or positive decoder-depth asymmetry.
+### Interpretation
 
-Accordingly, prerequisite topology should be diagnosed with the Shannon prospective game. Non-Shannon spectra remain useful distribution-sensitive summaries, but their higher-order coefficients cannot in general be interpreted as literal prerequisite hyperedges.
+Theorem S10 sharpens the structural/distributional distinction. At Shannon order, prerequisite support is faithful for arbitrary query families by Theorem S8. At non-Shannon orders, undeclared higher-order interaction is controlled not merely by whether access sets overlap, but by a four-region balance of \(q\)-weighted semantic mass. Non-Shannon zero interaction therefore does **not** imply prerequisite faithfulness: it can arise from exact cancellation on the overlap-balance surface.
 
-## SII.5. Novelty boundary
+## SII.5. Relation to Supplementary Information I
 
-The following are standard and are not claimed as new: Möbius/Harsanyi inversion, unanimity games, Shannon entropy and additivity, Rényi entropy, and Boolean-lattice coalition accounting. The CREST-specific results are:
+Supplementary Information I asks how much information selective refinement carries under different Rényi orders. Supplement II asks when an interaction coefficient can be read literally as prerequisite structure. Theorem S8 gives exact Shannon support fidelity. Theorem S9 gives strict non-Shannon leakage for disjoint channels. Theorem S10 shows the precise boundary of that strict law when semantic access overlaps.
 
-1. the exact Shannon factorization linking prerequisite hyperedges to Möbius support and semantic-access occupancy to coefficient weights; and
-2. the exact disjoint-access leakage law showing that, for arbitrary positive finite occupancy distributions, nonempty disjoint access sets, residual unrefined cells, and positive decoder depths, \(q=1\) is the unique finite Rényi order with zero undeclared joint-prerequisite interaction.
+Accordingly, prerequisite topology should be diagnosed with the Shannon prospective game. Non-Shannon spectra remain useful distribution-sensitive summaries, but their higher-order coefficients can reflect both genuine prerequisite structure and access-overlap balance.
+
+## SII.6. Novelty boundary
+
+The following are standard and are not claimed as new: Möbius/Harsanyi inversion, unanimity games, Shannon entropy and additivity, Rényi entropy, chain-rule characterizations of Shannon entropy, and Boolean-lattice coalition accounting. The CREST-specific results are:
+
+1. the exact Shannon factorization linking prerequisite hyperedges to Möbius support and semantic-access occupancy to coefficient weights;
+2. the exact disjoint-access leakage law and its Shannon-uniqueness corollary; and
+3. the exact overlapping-access factorization showing that non-Shannon leakage is governed by \(W_qZ_q-X_qY_q\), including the balance surface on which non-Shannon leakage vanishes.
 
 These are finite-state statements. They do not establish continuous-time limits, stochastic-process generality, or empirical occupancy distributions for any particular ecosystem.
 
-## SII.6. Reproducibility
+## SII.7. Reproducibility
 
-The factorization is implemented in `crest/prerequisite_access_game.py` and tested in `tests/test_prerequisite_access_game.py`. The disjoint-access leakage law is implemented in `crest/prerequisite_renyi_leakage.py` and tested in `tests/test_prerequisite_renyi_leakage.py`.
+The Shannon factorization is implemented in `crest/prerequisite_access_game.py`. The disjoint law is implemented in `crest/prerequisite_renyi_leakage.py`. The overlapping-access balance law is implemented in `crest/prerequisite_overlap_balance.py`.
 
-Tests compare the closed form with direct cellwise refinement and full Möbius inversion for multi-cell disjoint access sets with residual cells; verify the strict sign law on both sides of \(q=1\); recover unequal two-cell occupancies and asymmetric decoder depths as special cases; recover the symmetric canonical formula; and retain the canonical 2.5-bit pure three-way Shannon dividend.
+Tests compare all closed forms with direct cellwise refinement and full Möbius inversion; verify multi-cell disjoint and overlapping access sets, residual cells, strict sign laws, the exact non-Shannon balance-zero construction, the two-cell and symmetric corollaries, and the canonical 2.5-bit pure three-way Shannon dividend.
