@@ -4,6 +4,8 @@ import pytest
 
 from crest.prerequisite_access_game import ProspectiveQuery, mobius_transform
 from crest.prerequisite_renyi_leakage import (
+    disjoint_access_set_leakage,
+    disjoint_access_set_leakage_sign,
     prospective_renyi_game,
     symmetric_two_query_leakage,
     symmetric_two_query_leakage_sign,
@@ -47,7 +49,47 @@ def test_general_two_cell_formula_matches_direct_game_across_occupancies_and_dep
                 assert direct == pytest.approx(exact, abs=1e-11)
 
 
-def test_shannon_is_unique_finite_zero_for_every_interior_occupancy_and_positive_depth() -> None:
+def test_general_disjoint_access_formula_matches_direct_game_with_residual_cells() -> None:
+    ps = (0.05, 0.15, 0.20, 0.25, 0.35)
+    left_cells = frozenset((0, 2))
+    right_cells = frozenset((3, 4))
+    residual_cell = 1
+    assert residual_cell not in left_cells | right_cells
+    left_bits, right_bits = 1.75, 0.6
+    queries = (
+        ProspectiveQuery("left", frozenset((H,)), left_cells, left_bits),
+        ProspectiveQuery("right", frozenset((THETA,)), right_cells, right_bits),
+    )
+    grand = frozenset((H, THETA, F))
+    for q in (0.0, 0.2, 0.7, 1.0, 1.3, 2.0, 6.0, inf):
+        direct = mobius_transform(
+            prospective_renyi_game(ps, queries, (H, THETA, F), q)
+        )[grand]
+        exact = disjoint_access_set_leakage(
+            ps, left_cells, right_cells, left_bits, right_bits, q
+        )
+        assert direct == pytest.approx(exact, abs=1e-11)
+
+
+def test_shannon_is_unique_finite_zero_for_arbitrary_nonempty_disjoint_access_sets() -> None:
+    examples = (
+        ((0.05, 0.15, 0.20, 0.25, 0.35), (0, 2), (3, 4), 1.75, 0.6),
+        ((0.01, 0.09, 0.10, 0.30, 0.50), (0, 1, 3), (4,), 0.1, 3.5),
+        ((0.12, 0.18, 0.22, 0.48), (0,), (1, 2), 8.0, 0.25),
+    )
+    for ps, left, right, left_bits, right_bits in examples:
+        assert disjoint_access_set_leakage(ps, left, right, left_bits, right_bits, 1.0) == 0.0
+        for q in (0.0, 0.1, 0.5, 0.9):
+            assert disjoint_access_set_leakage_sign(
+                ps, left, right, left_bits, right_bits, q
+            ) == -1
+        for q in (1.1, 1.5, 2.0, 10.0):
+            assert disjoint_access_set_leakage_sign(
+                ps, left, right, left_bits, right_bits, q
+            ) == 1
+
+
+def test_shannon_is_unique_finite_zero_for_every_interior_two_cell_occupancy_and_positive_depth() -> None:
     for p in (0.01, 0.1, 0.37, 0.5, 0.82, 0.99):
         for left_bits, right_bits in ((0.1, 0.2), (1.0, 1.0), (1.5, 4.0), (8.0, 0.5)):
             assert two_cell_disjoint_query_leakage(p, left_bits, right_bits, 1.0) == 0.0
