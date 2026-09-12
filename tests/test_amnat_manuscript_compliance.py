@@ -87,11 +87,11 @@ def test_section10_distinguishes_four_neighboring_state_traditions() -> None:
     assert "### 10.2 Hysteresis, alternative states, and restoration" in section
     assert "### 10.3 Latent ecological state in state-space models" in section
     assert "### 10.4 Predictive states and state abstraction" in section
-    assert "CREST does not equate ecological memory with storing a complete trajectory" in section
-    assert "state-space models normally begin after a latent state vector has already been specified" in section
-    assert "CREST asks an earlier ontological question" in section
+    assert "CREST therefore does not equate ecological memory with retention of complete history" in section
+    assert "A state-space model normally begins after the analyst has specified what variables constitute the latent state" in section
+    assert "CREST instead asks what makes two possible ecological worlds the same state at the present boundary in the first place" in section
     assert "not a new generic theory of quotient states" in section
-    assert "finite theory of ecological state at a temporal boundary" in section
+    assert "finite theory of the ecological present as a temporal boundary" in section
 
 
 def test_sparse_access_and_full_access_boundary_are_both_explicit() -> None:
