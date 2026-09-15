@@ -34,7 +34,7 @@ MANIFEST = ROOT / "docs" / "flagship_integration" / "flagship_integration_manife
 
 def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    assert manifest["schema_version"] == 11
+    assert manifest["schema_version"] == 12
     assert manifest["canonical_flagship_manuscript"] == (
         "manuscript/crest_flagship_amnat_v0.7_semantic_access.md"
     )
@@ -46,11 +46,13 @@ def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
         "Ecological State at a Temporal Cut: Sparse Semantic Access"
     )
     assert "cut geometry" in manifest["headline"]
+    assert "Shannon" in manifest["headline_quantity"]
+    assert "Hartley" in manifest["headline_quantity"]
     assert "unique coarsest quotient" in manifest["theory_contribution"]
     assert "representation invariance" in manifest["theory_contribution"]
     assert "partition-refinement interval" in manifest["theory_contribution"]
     assert "transport between cuts by quotient descent" in manifest["theory_contribution"]
-    assert "prospective query accessibility" in manifest["theory_contribution"]
+    assert "Shannon prerequisite-support fidelity" in manifest["theory_contribution"]
     assert "does not claim novelty" in manifest["novelty_boundary"]
     assert "epsilon-to-zero" in manifest["novelty_boundary"]
     assert "modeling_contribution" not in manifest
@@ -59,7 +61,15 @@ def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
     assert "zero-duration observational cut" in geometry["present"]
     assert geometry["visible_fiber"] == "L_t(y)=O_t^{-1}(y)"
     assert "not complete ontic mechanism identity" in geometry["transverse"]
+    assert "present response capacity" in geometry["prospective"]
     assert "no shrinking-window epsilon-to-zero" in geometry["continuous_time_boundary"]
+
+    order_split = manifest["information_order_split"]
+    assert order_split["structural_order"] == "Shannon q=1"
+    assert order_split["support_count_order"] == "Hartley q=0"
+    assert "prerequisite hyperedges" in order_split["structural_interpretation"]
+    assert "must not be read as prerequisite topology" in order_split["support_count_interpretation"]
+    assert "non-Shannon zero interaction" in order_split["non_shannon_boundary"]
 
     invariance = manifest["representation_invariance"]
     assert "mutually factors through" in invariance["criterion"]
@@ -82,6 +92,10 @@ def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
 
     implementation = manifest["implementation"]
     assert implementation["least_cut_quotient_module"] == "crest/cut_state_quotient.py"
+    assert implementation["renyi_access_module"] == "crest/renyi_access.py"
+    assert implementation["prerequisite_support_module"] == "crest/prerequisite_access_game.py"
+    assert implementation["renyi_leakage_module"] == "crest/prerequisite_renyi_leakage.py"
+    assert implementation["overlap_balance_module"] == "crest/prerequisite_overlap_balance.py"
     assert implementation["least_cut_quotient_theorem"] == (
         "docs/crest_least_temporal_cut_quotient_theorem_2026-09-09.md"
     )
@@ -91,18 +105,23 @@ def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
     assert implementation["cut_state_lattice_theorem"] == (
         "docs/crest_cut_state_partition_lattice_theorem_2026-09-09.md"
     )
-    assert implementation["temporal_cut_transport_module"] == (
-        "crest/temporal_cut_transport.py"
-    )
+    assert implementation["temporal_cut_transport_module"] == "crest/temporal_cut_transport.py"
     assert implementation["temporal_cut_transport_theorem"] == (
         "docs/crest_temporal_cut_transport_theorem_2026-09-09.md"
     )
-    assert (ROOT / implementation["least_cut_quotient_module"]).is_file()
-    assert (ROOT / implementation["least_cut_quotient_theorem"]).is_file()
-    assert (ROOT / implementation["signature_invariance_theorem"]).is_file()
-    assert (ROOT / implementation["cut_state_lattice_theorem"]).is_file()
-    assert (ROOT / implementation["temporal_cut_transport_module"]).is_file()
-    assert (ROOT / implementation["temporal_cut_transport_theorem"]).is_file()
+    for key in (
+        "least_cut_quotient_module",
+        "least_cut_quotient_theorem",
+        "signature_invariance_theorem",
+        "cut_state_lattice_theorem",
+        "temporal_cut_transport_module",
+        "temporal_cut_transport_theorem",
+        "renyi_access_module",
+        "prerequisite_support_module",
+        "renyi_leakage_module",
+        "overlap_balance_module",
+    ):
+        assert (ROOT / implementation[key]).is_file()
 
 
 def test_flagship_submission_constraints_are_pinned() -> None:
@@ -111,10 +130,11 @@ def test_flagship_submission_constraints_are_pinned() -> None:
     assert constraints["abstract_word_limit"] == 200
     assert constraints["keyword_max"] == 6
     assert constraints["current_abstract_words"] <= constraints["abstract_word_limit"]
-    assert constraints["current_abstract_words"] == 163
+    assert constraints["current_abstract_words"] == 189
     assert constraints["current_keywords"] <= constraints["keyword_max"]
     assert constraints["current_title_words"] == 9
-    assert constraints["current_main_text_words"] == 3873
+    assert constraints["current_main_text_words"] == 5265
+    assert manifest["literature_positioning"]["resilience_and_present_response_capacity"] == "Walker et al. 2004"
 
     for value in manifest["literature_positioning"].values():
         assert value
@@ -134,10 +154,14 @@ def test_sparse_semantic_numeric_anchor_matches_manifest() -> None:
         routes, candidates, model, m, (HISTORY, MECHANISM, FUTURE)
     ) == anchor["grand_classes"]
     assert semantic_three_way_dividend(routes, candidates, model, m) == pytest.approx(
-        anchor["three_way_bits"], abs=1e-9
+        anchor["hartley_three_way_bits"], abs=1e-9
     )
     assert anchor["grand_classes"] == 1027
+    assert anchor["shannon_structural_three_way_bits"] == pytest.approx(2.5)
+    assert anchor["hartley_three_way_bits"] == pytest.approx(8.004220466)
     assert anchor["asymptotic_sparsity_penalty_bits"] == 2
+    assert "Shannon q=1" in manifest["sparse_semantic_access"]["interpretation"]
+    assert "Hartley q=0" in manifest["sparse_semantic_access"]["interpretation"]
 
 
 def test_shallow_lake_prerequisite_manifest_matches_executable_audit() -> None:
@@ -163,9 +187,7 @@ def test_shallow_lake_prerequisite_manifest_matches_executable_audit() -> None:
     assert audit["single_interface_factorization"] is False
     assert "parity" in audit["literature_boundary"]
     assert "worked ecological interpretation" in audit["status"]
-    assert (
-        ROOT / "docs" / "shallow_lake_v07_prerequisite_identification_2026-09-08.md"
-    ).is_file()
+    assert (ROOT / "docs" / "shallow_lake_v07_prerequisite_identification_2026-09-08.md").is_file()
 
 
 def test_v06_complete_access_is_retained_as_boundary_case() -> None:
