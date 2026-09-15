@@ -23,7 +23,7 @@ def test_paper_a_preserves_strict_realizability_no_go() -> None:
     assert "Immutable-history no-activation result" in manuscript
     assert "Fixed-grammar MRM zero-debt result" in manuscript
     assert "not yet strict simultaneous MLTR x MRM x CCOC realizations" in no_go
-    assert "open: a simultaneous canonical companion realization" in no_go
+    assert "a simultaneous canonical companion realization with an unbounded genuine three-way interaction" in no_go
 
 
 def test_shannon_support_is_not_used_to_define_its_own_prerequisites() -> None:
