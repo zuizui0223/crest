@@ -2,18 +2,20 @@
 
 **Current target:** *The American Naturalist* — Major Article  
 **Canonical manuscript:** `crest_flagship_amnat_v0.7_semantic_access.md`  
-**Current text word count:** 4008  
+**Current text word count:** 5265  
 **Purpose:** current submission-readiness surface for the AmNat flagship. The older `SUBMISSION_BLOCKERS_2026-08-24.md` is retained only as a historical Biology & Philosophy record.
 
 ## Repository-controlled status
 
 - Canonical manuscript is fixed at `crest_flagship_amnat_v0.7_semantic_access.md`.
 - The current scientific hierarchy is explicit: finite partition/quotient/transport results are supporting structural guarantees rather than independent mathematical novelty claims.
-- The paper-level theoretical contribution is the separation of prerequisite order from semantic coverage at a temporal cut.
-- The quantitative headline is the sparse-access degradation `log2(N/k)` relative to complete addressability.
+- The paper-level theoretical contribution is the ecological temporal-cut state construction plus the separation of prerequisite topology from semantic accessibility.
+- The information-theoretic interpretation is explicitly two-layered: Shannon order (`q=1`) is the structural prerequisite-support diagnostic, whereas the Hartley endpoint (`q=0`) measures distinguishable support-space contraction under sparse semantic access.
+- The canonical Shannon witness has a 2.5-bit structural dividend at `N=4`, accessible occupancy `1/4`, and decoder depth `m=10`.
+- The Hartley support-count result retains the sparse-access degradation `log2(N/k)` relative to complete addressability; the canonical sparse-access witness has 1027 classes / 10.00422 Hartley bits and an 8.00422-bit support-count dividend at `m=10`.
 - The zero-duration cut remains a finite idealization; no epsilon-to-zero continuous-time theorem is claimed.
 - The shallow-lake model is presented as a worked ecological interpretation and executable formal witness, not empirical validation.
-- The canonical manuscript remains well below the Major Article word ceiling at 4008 words by the repository's pinned counting method.
+- The canonical manuscript remains below the Major Article usual 7500-word ceiling at 5265 words by the repository's pinned counting method.
 - Anonymous review-code bundle and anonymous title-page builders are implemented and covered by the reproducibility suite.
 
 ## Current AmNat review-format requirements tracked by the repository
@@ -21,13 +23,15 @@
 Before literal upload, the review manuscript must be prepared with:
 
 - double-anonymous review separation;
+- an anonymous first-page title page containing the title, article type, four to six keywords, text word count, and manuscript-element list;
 - abstract within 200 words;
 - no more than six keywords/metadata entries as currently pinned;
 - double spacing;
 - continuous line numbering;
 - page numbering;
 - embedded math fonts in the final PDF;
-- article type, short title, text word count, keywords, and manuscript elements supplied in the submission metadata/title-page workflow.
+- article type, short title, text word count, keywords, and manuscript elements supplied in the submission metadata/title-page workflow;
+- reviewer-accessible code/data material supplied through the anonymous review-code handoff.
 
 A cover letter is not treated as a blocker. Any necessary editor-facing note should be placed in the submission system's author-comments field.
 
@@ -59,7 +63,7 @@ The report separates three states rather than collapsing them into one pass/fail
 
 - `repository_ready`: canonical manuscript, metadata, word count, abstract, keywords, short title, and builders are internally consistent;
 - `author_fields_ready`: the supplied declarations file contains no unresolved bracketed author-controlled placeholders;
-- `pdf_visual_and_font_gate_confirmed`: the final review PDF has been manually checked for spacing, line/page numbering, anonymity, equation rendering, and embedded fonts.
+- `pdf_visual_and_font_gate_confirmed`: the final review PDF has been manually checked for spacing, line/page numbering, anonymity, equation rendering, embedded fonts, and placement of the generated anonymous title page as page 1.
 
 The default declarations input is the template, so `repository_ready=true` with `author_fields_ready=false` is the expected pre-submission state until the author supplies the final declarations. To test a completed nonblinded declarations file and explicitly confirm the PDF gate:
 
@@ -83,7 +87,7 @@ python scripts/build_amnat_title_page.py
 python scripts/check_amnat_submission_preflight.py
 ```
 
-The final review PDF must then be checked visually for double spacing, line numbering, page numbering, anonymity, equation rendering, and embedded fonts.
+For the final review manuscript, prepend the generated anonymous title page (`dist/amnat_anonymous_title_page.md`, or its rendered equivalent) as page 1 of the blinded manuscript PDF. The final review PDF must then be checked visually for double spacing, line numbering, page numbering, anonymity, equation rendering, and embedded fonts.
 
 ## Historical separation
 

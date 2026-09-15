@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -65,6 +66,20 @@ def test_amnat_v07_flagship_is_separate_from_biology_philosophy_submission_entry
     assert "4096" in v06
     assert "The American Naturalist" in delta_predecessor
     assert "Delta" in delta_predecessor
+
+
+def test_amnat_readiness_tracks_current_metadata_and_information_split() -> None:
+    metadata = json.loads((MANUSCRIPT_DIR / "amnat_submission_metadata.json").read_text(encoding="utf-8"))
+    readiness = (MANUSCRIPT_DIR / "AMNAT_SUBMISSION_READINESS.md").read_text(encoding="utf-8")
+    word_count = metadata["text_word_count"]
+
+    assert f"**Current text word count:** {word_count}" in readiness
+    assert f"at {word_count} words" in readiness
+    assert "Shannon order (`q=1`)" in readiness
+    assert "Hartley endpoint (`q=0`)" in readiness
+    assert "2.5-bit structural dividend" in readiness
+    assert "8.00422-bit support-count dividend" in readiness
+    assert "as page 1 of the blinded manuscript PDF" in readiness
 
 
 def test_amnat_declaration_template_keeps_author_fields_outside_blinded_manuscript() -> None:
