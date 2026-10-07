@@ -446,7 +446,7 @@ CREST sits at the intersection of several literatures that already show that ant
 
 ### 10.1 Ecological memory and historical contingency
 
-Ecological-memory models make antecedent conditions explicit. Ogle et al. (2015), for example, quantify how past environmental conditions contribute to current ecological processes and emphasize the length, temporal pattern, and strength of memory. Historical contingency in community assembly provides a complementary perspective: priority effects can make the order and timing of immigration alter later community structure and function, producing alternative stable or transient outcomes (Fukami 2015). These approaches establish more than the generic claim that the past matters. They show that distinctions originating before the present can remain biologically active at the present.
+Ecological-memory models make antecedent conditions explicit. Ogle et al. (2015), for example, quantify how past environmental conditions contribute to current ecological processes and emphasize the length, temporal pattern, and strength of memory. More recently, Munch and Rogers (2026) estimated memory length across 302 ecological abundance time series and related it to dynamical stability and forecast skill, illustrating that memory length is now used as a comparative property of ecological dynamics. Historical contingency in community assembly provides a complementary perspective: priority effects can make the order and timing of immigration alter later community structure and function, producing alternative stable or transient outcomes (Fukami 2015). These approaches establish more than the generic claim that the past matters. They show that distinctions originating before the present can remain biologically active at the present.
 
 CREST therefore does not equate ecological memory with retention of complete history. Its retrospective interface is a quotient. Two raw histories are merged when their carried semantics are identical at the cut and separated when inherited differences remain ecologically consequential. In this sense ecological memory supplies one route by which past structure becomes constitutive of present ecological identity.
 
@@ -531,6 +531,8 @@ Li, L., T. J. Walsh, and M. L. Littman. 2006. Towards a unified theory of state 
 Li, Z., X. Bian, X. Li, and G. E. Karniadakis. 2015. Incorporation of memory effects in coarse-grained modeling via the Mori-Zwanzig formalism. *The Journal of Chemical Physics* 143:243128. https://doi.org/10.1063/1.4935490.
 
 Littman, M. L., R. S. Sutton, and S. Singh. 2001. Predictive representations of state. *Advances in Neural Information Processing Systems* 14:1555–1561.
+
+Munch, S. B., and T. L. Rogers. 2026. Memory, chaos, and noise in ecological forecasting. *Proceedings of the National Academy of Sciences of the United States of America* 123:e2604256123. https://doi.org/10.1073/pnas.2604256123.
 
 Ogle, K., J. J. Barber, G. A. Barron-Gafford, L. P. Bentley, J. M. Young, T. E. Huxman, M. E. Loik, and D. T. Tissue. 2015. Quantifying ecological memory in plant and ecosystem processes. *Ecology Letters* 18:221–235. https://doi.org/10.1111/ele.12399.
 
