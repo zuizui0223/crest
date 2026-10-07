@@ -34,7 +34,7 @@ MANIFEST = ROOT / "docs" / "flagship_integration" / "flagship_integration_manife
 
 def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    assert manifest["schema_version"] == 12
+    assert manifest["schema_version"] == 13
     assert manifest["canonical_flagship_manuscript"] == (
         "manuscript/crest_flagship_amnat_v0.7_semantic_access.md"
     )
@@ -130,11 +130,18 @@ def test_flagship_submission_constraints_are_pinned() -> None:
     assert constraints["abstract_word_limit"] == 200
     assert constraints["keyword_max"] == 6
     assert constraints["current_abstract_words"] <= constraints["abstract_word_limit"]
-    assert constraints["current_abstract_words"] == 189
+    assert constraints["current_abstract_words"] == 188
     assert constraints["current_keywords"] <= constraints["keyword_max"]
     assert constraints["current_title_words"] == 9
-    assert constraints["current_main_text_words"] == 5265
+    assert constraints["current_main_text_words"] == 5794
     assert manifest["literature_positioning"]["resilience_and_present_response_capacity"] == "Walker et al. 2004"
+    assert manifest["literature_positioning"]["coarse_graining_and_memory"] == "Li et al. 2015"
+    memory = manifest["memory_state_invariance"]
+    assert "not generally invariant to state representation" in memory["claim"]
+    assert "distinct later state classes" in memory["coarse_state_obstruction"]
+    assert "ordinary state dependence" in memory["refinement_consequence"]
+    assert "transport obstruction" in memory["invariant_object"]
+    assert "does not assert that all ecological memory is removable" in memory["scope"]
 
     for value in manifest["literature_positioning"].values():
         assert value
