@@ -42,6 +42,8 @@ q_t(\omega)=q_t(\omega').
 
 A same-cut pair separated by the adequate state is therefore a finite witness that the visible present is insufficient for the declared contract.
 
+A stronger ecological consequence concerns **memory**. If two worlds are merged by a coarse present state but later diverge because they carry different legacies, the coarse process appears history dependent. If the persistent legacy is represented in the present state and the refined quotient supports a well-defined transition, the same biology becomes ordinary state dependence. Thus ecological memory is not generally invariant to state representation: in the finite theory, the invariant diagnostic is dynamic closure of the proposed state quotient, not whether a missing distinction is labeled “memory” or “state”. This does not claim that all ecological memory is removable by finite refinement.
+
 ## Primitive responsibilities before state
 
 - **retrospective / MLTR:** root law and raw replacement path first; carried maps second; retained history is a quotient of immutable histories by equality of carried semantics. This is the left-of-cut structure.
