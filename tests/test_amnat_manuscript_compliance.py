@@ -99,6 +99,20 @@ def test_section10_distinguishes_four_neighboring_state_traditions() -> None:
     assert "memory strength or memory length is not a system invariant until the state representation is fixed" in section
 
 
+def test_transport_closure_corollary_is_explicit_and_not_future_smuggling() -> None:
+    section = _section_between(
+        "## 2. State at a zero-duration temporal cut",
+        "## 3. Retrospective, transverse, and prospective structures are pre-state",
+    )
+    assert "P_t^{\\rm close}" in section
+    assert "operatorname{LCR}" in section
+    assert "C_{t\\to s}^{(0)}" in section
+    assert "unique coarsest refinement" in section
+    assert "diagnostic requirement" in section
+    assert "present carrier" in section
+    assert "not automatically a biologically realized present state" in section
+
+
 def test_shannon_is_structural_and_hartley_is_support_count() -> None:
     section = _section_between(
         "## 6. Sparse semantic access",
