@@ -34,7 +34,7 @@ MANIFEST = ROOT / "docs" / "flagship_integration" / "flagship_integration_manife
 
 def test_flagship_headline_is_temporal_boundary_state_theory() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    assert manifest["schema_version"] == 13
+    assert manifest["schema_version"] == 14
     assert manifest["canonical_flagship_manuscript"] == (
         "manuscript/crest_flagship_amnat_v0.7_semantic_access.md"
     )
@@ -133,7 +133,7 @@ def test_flagship_submission_constraints_are_pinned() -> None:
     assert constraints["current_abstract_words"] == 188
     assert constraints["current_keywords"] <= constraints["keyword_max"]
     assert constraints["current_title_words"] == 9
-    assert constraints["current_main_text_words"] == 5793
+    assert constraints["current_main_text_words"] == 5989
     assert manifest["literature_positioning"]["resilience_and_present_response_capacity"] == "Walker et al. 2004"
     assert manifest["literature_positioning"]["coarse_graining_and_memory"] == "Li et al. 2015"
     assert manifest["literature_positioning"]["current_memory_forecasting"] == "Munch and Rogers 2026"
@@ -143,6 +143,9 @@ def test_flagship_submission_constraints_are_pinned() -> None:
     assert "ordinary state dependence" in memory["refinement_consequence"]
     assert "transport obstruction" in memory["invariant_object"]
     assert "does not assert that all ecological memory is removable" in memory["scope"]
+    assert "unique coarsest source refinement" in memory["minimal_closure"]
+    assert "Hartley class-count diagnostic" in memory["closure_cost"]
+    assert "independently identified present carrier" in memory["realizability_firewall"]
 
     for value in manifest["literature_positioning"].values():
         assert value
