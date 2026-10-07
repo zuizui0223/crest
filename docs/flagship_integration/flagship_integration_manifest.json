@@ -1,5 +1,5 @@
 {
-  "schema_version": 13,
+  "schema_version": 14,
   "target_journal": "The American Naturalist",
   "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.7_semantic_access.md",
   "previous_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.6_addressability.md",
@@ -104,7 +104,7 @@
     "current_abstract_words": 188,
     "current_keywords": 6,
     "current_title_words": 9,
-    "current_main_text_words": 5793
+    "current_main_text_words": 5989
   },
   "literature_positioning": {
     "ecological_memory": "Ogle et al. 2015",
@@ -180,6 +180,9 @@
     "coarse_state_obstruction": "worlds merged by the present quotient can evolve to distinct later state classes, so no deterministic quotient transition is well defined",
     "refinement_consequence": "representing a carried legacy in the present state can convert apparent history dependence into ordinary state dependence without changing the underlying biology",
     "invariant_object": "dynamic closure / quotient-transport obstruction under the declared state family",
-    "scope": "finite deterministic transport claim; does not assert that all ecological memory is removable by finite state refinement"
+    "scope": "finite deterministic transport claim; does not assert that all ecological memory is removable by finite state refinement",
+    "minimal_closure": "P_t^close = LCR(P_t, phi^-1(P_s)) is the unique coarsest source refinement supporting deterministic quotient transport to P_s",
+    "closure_cost": "C_0 = log2(|P_t^close|/|P_t|), a Hartley class-count diagnostic equal to zero exactly under source-state closure",
+    "realizability_firewall": "the pullback is future-defined and only specifies distinctions a sufficient present state must contain; ecological absorption requires an independently identified present carrier realizing or refining them"
   }
 }
