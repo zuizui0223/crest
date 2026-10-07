@@ -69,6 +69,7 @@ def test_submission_manuscript_has_literature_positioning() -> None:
         "Littman, Sutton, and Singh 2001",
         "Givan, Dean, and Greig 2003",
         "Li, Walsh, and Littman 2006",
+        "Li et al. 2015",
         "Søndergaard, Jensen, and Jeppesen 2003",
         "Søndergaard et al. 2007",
         "Jeppesen et al. 2012",
@@ -93,6 +94,8 @@ def test_section10_distinguishes_four_neighboring_state_traditions() -> None:
     assert "CREST instead asks what makes two possible ecological worlds the same state at the present boundary in the first place" in section
     assert "not a new generic theory of quotient states" in section
     assert "finite theory of the ecological present as a temporal boundary" in section
+    assert "ecological memory is not, in general, invariant to state representation" in section
+    assert "memory strength or memory length is not a system invariant until the state representation is fixed" in section
 
 
 def test_shannon_is_structural_and_hartley_is_support_count() -> None:
