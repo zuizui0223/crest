@@ -2,7 +2,7 @@
 
 **Current target:** *The American Naturalist* — Major Article  
 **Canonical manuscript:** `crest_flagship_amnat_v0.7_semantic_access.md`  
-**Current text word count:** 5755  
+**Current text word count:** 5793  
 **Purpose:** current submission-readiness surface for the AmNat flagship. The older `SUBMISSION_BLOCKERS_2026-08-24.md` is retained only as a historical Biology & Philosophy record.
 
 ## Repository-controlled status
@@ -16,7 +16,7 @@
 - The Hartley support-count result retains the sparse-access degradation `log2(N/k)` relative to complete addressability; the canonical sparse-access witness has 1027 classes / 10.00422 Hartley bits and an 8.00422-bit support-count dividend at `m=10`.
 - The zero-duration cut remains a finite idealization; no epsilon-to-zero continuous-time theorem is claimed.
 - The shallow-lake model is presented as a worked ecological interpretation and executable formal witness, not empirical validation.
-- The canonical manuscript remains below the Major Article usual 7500-word ceiling at 5755 words by the repository's pinned counting method.
+- The canonical manuscript remains below the Major Article usual 7500-word ceiling at 5793 words by the repository's pinned counting method.
 - Anonymous review-code bundle and anonymous title-page builders are implemented and covered by the reproducibility suite.
 
 ## Current AmNat review-format requirements tracked by the repository
