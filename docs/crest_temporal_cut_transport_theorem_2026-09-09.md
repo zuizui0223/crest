@@ -72,47 +72,46 @@ This is not repaired by choosing a representative of the source class: doing so 
 
 ## Corollary 2 — unique coarsest closing refinement
 
-Let (P_t) and (P_s) be source and target partitions and let
-(phi^{-1}(P_s)) denote the pullback partition on the source carrier. Define
+Let \(P_t\) and \(P_s\) be source and target partitions and let
+\(\phi^{-1}(P_s)\) denote the pullback partition on the source carrier. Define
 
-[
-P_t^{mathrm{close}}
+\[
+P_t^{\mathrm{close}}
 =
-operatorname{LCR}!left(P_t,phi^{-1}(P_s)ight).
-]
+\operatorname{LCR}\!\left(P_t,\phi^{-1}(P_s)\right).
+\]
 
-Then (P_t^{mathrm{close}}) is the unique coarsest refinement of (P_t) from
-which (phi) descends to (P_s).
+Then \(P_t^{\mathrm{close}}\) is the unique coarsest refinement of \(P_t\) from
+which \(\phi\) descends to \(P_s\).
 
 ### Proof
 
-The common refinement (P_t^{mathrm{close}}) refines
-(phi^{-1}(P_s)), so the descent criterion holds. Conversely, any partition
-(R) that refines (P_t) and supports a quotient transition to (P_s) must
-also refine (phi^{-1}(P_s)). Therefore (R) refines their least common
-refinement (P_t^{mathrm{close}}).
+The common refinement \(P_t^{\mathrm{close}}\) refines
+\(\phi^{-1}(P_s)\), so the descent criterion holds. Conversely, any partition
+\(R\) that refines \(P_t\) and supports a quotient transition to \(P_s\) must
+also refine \(\phi^{-1}(P_s)\). Therefore \(R\) refines their least common
+refinement \(P_t^{\mathrm{close}}\).
 
 The finite class-count increment
 
-[
-C_{t	o s}^{(0)}
+\[
+C_{t\to s}^{(0)}
 =
-log_2rac{|P_t^{mathrm{close}}|}{|P_t|}
-]
+\log_2\frac{|P_t^{\mathrm{close}}|}{|P_t|}
+\]
 
-is nonnegative and is zero exactly when (P_t) already supports the transition.
+is nonnegative and is zero exactly when \(P_t\) already supports the transition.
 This is a Hartley class-count diagnostic, not a Shannon quantity.
 
 ### Ecological interpretation firewall
 
 The pullback partition uses the declared future evolution and target state.
-Therefore (P_t^{mathrm{close}}) identifies the distinctions that a sufficient
+Therefore \(P_t^{\mathrm{close}}\) identifies the distinctions that a sufficient
 present state must contain, but it does not by itself prove that those
 distinctions are embodied by an independently identifiable present ecological
 carrier. Interpreting apparent memory as absorbed into present state requires a
 present carrier whose independently defined partition realizes or refines the
 required distinction.
-
 
 ## Scope firewall
 
