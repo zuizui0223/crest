@@ -1,5 +1,5 @@
 {
-  "schema_version": 12,
+  "schema_version": 13,
   "target_journal": "The American Naturalist",
   "canonical_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.7_semantic_access.md",
   "previous_flagship_manuscript": "manuscript/crest_flagship_amnat_v0.6_addressability.md",
@@ -13,8 +13,8 @@
   "state_concept": "the present is a zero-duration observational cut; ecological state is the least quotient induced on that cut by retrospective, transverse latent-present, and prospective distinguishability/access constraints",
   "headline": "retrospective-transverse-prospective cut geometry and sparse prospective access determine the induced ecological state quotient",
   "headline_quantity": "Shannon prospective dividends diagnose declared prerequisite support, while Hartley support counts quantify state-space contraction under sparse semantic access",
-  "theory_contribution": "characterize ecological state as the unique coarsest quotient preserving the cut observation and declared pre-state signatures; prove representation invariance, identify the fixed-cut state space with the partition-refinement interval, and characterize deterministic transport between cuts by quotient descent; then specialize retrospective carried semantics, transverse candidate-safe latent response structure, and prospective query accessibility, separating Shannon prerequisite-support fidelity from Hartley sparse-support contraction",
-  "novelty_boundary": "CREST does not claim novelty for quotient state abstraction, Mobius/Harsanyi accounting, unanimity games, finite counting once the access relation is fixed, Renyi/Hill entropy theory, or classical Shannon additivity. The contribution is the finite temporal-boundary theory, strict companion realizability boundaries, pre-state retrospective/transverse/prospective structure, and the exact separation of prerequisite topology from distribution-sensitive semantic accessibility. The manuscript does not claim a proved continuous-time epsilon-to-zero or germ limit theorem.",
+  "theory_contribution": "characterize ecological state as the unique coarsest quotient preserving the cut observation and declared pre-state signatures; prove representation invariance, identify the fixed-cut state space with the partition-refinement interval, and characterize deterministic transport between cuts by quotient descent; then specialize retrospective carried semantics, transverse candidate-safe latent response structure, and prospective query accessibility, separating Shannon prerequisite-support fidelity from Hartley sparse-support contraction; identify ecological memory as state-representation dependent in the finite transport sense, so coarse history dependence can become ordinary state dependence after the carried legacy is represented",
+  "novelty_boundary": "CREST does not claim novelty for quotient state abstraction, Mobius/Harsanyi accounting, unanimity games, finite counting once the access relation is fixed, Renyi/Hill entropy theory, or classical Shannon additivity. The contribution is the finite temporal-boundary theory, strict companion realizability boundaries, pre-state retrospective/transverse/prospective structure, and the exact separation of prerequisite topology from distribution-sensitive semantic accessibility. The manuscript does not claim a proved continuous-time epsilon-to-zero or germ limit theorem. CREST does not claim as new the general coarse-graining principle that eliminating degrees of freedom can generate memory; the ecological contribution is the consequence for state identity and memory interpretation.",
   "temporal_boundary_geometry": {
     "present": "zero-duration observational cut represented at one indexed time, not a finite observation interval",
     "visible_fiber": "L_t(y)=O_t^{-1}(y)",
@@ -81,9 +81,16 @@
   "shallow_lake_prerequisite_audit": {
     "status": "worked ecological interpretation with an executable literature-grounded finite model; not empirical validation and not a state-design prescription",
     "current_status": [],
-    "legacy_sensitive_recovery": ["H"],
-    "mechanism_specific_intervention": ["THETA"],
-    "composed_restoration_policy": ["H", "THETA"],
+    "legacy_sensitive_recovery": [
+      "H"
+    ],
+    "mechanism_specific_intervention": [
+      "THETA"
+    ],
+    "composed_restoration_policy": [
+      "H",
+      "THETA"
+    ],
     "composed_target_output_cardinality": 2,
     "composed_target_form": "binary history-response concordance versus mismatch diagnostic",
     "single_interface_factorization": false,
@@ -94,10 +101,10 @@
     "abstract_word_limit": 200,
     "keyword_max": 6,
     "preferred_title_words": "approximately 8-10",
-    "current_abstract_words": 189,
+    "current_abstract_words": 188,
     "current_keywords": 6,
     "current_title_words": 9,
-    "current_main_text_words": 5265
+    "current_main_text_words": 5794
   },
   "literature_positioning": {
     "ecological_memory": "Ogle et al. 2015",
@@ -112,7 +119,8 @@
     "bisimulation_and_state_abstraction": "Givan, Dean, and Greig 2003; Li, Walsh, and Littman 2006",
     "shallow_lake_internal_phosphorus": "Sondergaard, Jensen, and Jeppesen 2003",
     "shallow_lake_restoration_long_term": "Sondergaard et al. 2007",
-    "shallow_lake_combined_restoration": "Jeppesen et al. 2012"
+    "shallow_lake_combined_restoration": "Jeppesen et al. 2012",
+    "coarse_graining_and_memory": "Li et al. 2015"
   },
   "implementation": {
     "temporal_cut_module": "crest/temporal_cut.py",
@@ -165,5 +173,12 @@
     "composition": "identity and composition descend for compatible finite world evolutions",
     "obstruction": "failure means one source state class reaches multiple target state classes",
     "scope": "no stochastic or multivalued transport theorem, no temporal monotonicity of state cardinality, and no continuous-time limit"
+  },
+  "memory_state_invariance": {
+    "claim": "ecological memory is not generally invariant to state representation",
+    "coarse_state_obstruction": "worlds merged by the present quotient can evolve to distinct later state classes, so no deterministic quotient transition is well defined",
+    "refinement_consequence": "representing a carried legacy in the present state can convert apparent history dependence into ordinary state dependence without changing the underlying biology",
+    "invariant_object": "dynamic closure / quotient-transport obstruction under the declared state family",
+    "scope": "finite deterministic transport claim; does not assert that all ecological memory is removable by finite state refinement"
   }
 }
