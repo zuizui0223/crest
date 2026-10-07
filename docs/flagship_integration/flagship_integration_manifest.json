@@ -104,7 +104,7 @@
     "current_abstract_words": 188,
     "current_keywords": 6,
     "current_title_words": 9,
-    "current_main_text_words": 5755
+    "current_main_text_words": 5793
   },
   "literature_positioning": {
     "ecological_memory": "Ogle et al. 2015",
@@ -120,7 +120,8 @@
     "shallow_lake_internal_phosphorus": "Sondergaard, Jensen, and Jeppesen 2003",
     "shallow_lake_restoration_long_term": "Sondergaard et al. 2007",
     "shallow_lake_combined_restoration": "Jeppesen et al. 2012",
-    "coarse_graining_and_memory": "Li et al. 2015"
+    "coarse_graining_and_memory": "Li et al. 2015",
+    "current_memory_forecasting": "Munch and Rogers 2026"
   },
   "implementation": {
     "temporal_cut_module": "crest/temporal_cut.py",
