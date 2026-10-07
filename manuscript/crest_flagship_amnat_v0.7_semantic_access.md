@@ -78,6 +78,27 @@ For a fixed cut, these representation classes exhaust the entire finite state sp
 
 States at different cuts can be connected only when the underlying world evolution respects their quotient equivalences. For a declared deterministic map \(\phi_{t\to s}:\Omega_t\to\Omega_s\), a state-level map \(\bar\phi:Q_t\to Q_s\) exists exactly when \(\omega\sim_t\omega'\) implies \(\phi(\omega)\sim_s\phi(\omega')\). When this descent condition holds, \(\bar\phi([\omega]_t)=[\phi(\omega)]_s\) is unique; identity and composition descend. Failure is a state-sufficiency obstruction: one source state class evolves into multiple target state classes, so no deterministic quotient transition is well defined. This finite transport result does not imply temporal monotonicity of \(|Q_t|\) or a continuous-time limit.
 
+The same criterion gives a minimal one-step closure diagnostic. Let \(P_t\) and \(P_s\) denote the source and target state partitions and let \(\phi^{-1}(P_s)\) be the pullback partition that groups source worlds whose images lie in the same target class. Then
+\[
+\boxed{
+P_t^{\rm close}
+=
+\operatorname{LCR}\!\left(P_t,\phi^{-1}(P_s)\right)
+}
+\]
+is the unique coarsest refinement of \(P_t\) from which \(\phi\) descends to \(P_s\). Any other source refinement supporting a deterministic quotient transition must refine \(P_t^{\rm close}\). The associated Hartley class-count increment
+\[
+\boxed{
+C_{t\to s}^{(0)}
+=
+\log_2\frac{|P_t^{\rm close}|}{|P_t|}
+\ge 0
+}
+\]
+is zero exactly when the original source state is already dynamically closed for that target cut. This is an elementary partition corollary, not a new information-theoretic theorem.
+
+Crucially, \(P_t^{\rm close}\) is a **diagnostic requirement**, not automatically a biologically realized present state: it is defined using the declared evolution and target partition. To claim that apparent memory has been absorbed into the present, one must identify a present carrier—such as a seed bank, sediment legacy, age structure, or physiological state—whose independently defined partition realizes or refines the required distinction. Otherwise the closure partition remains only a statement about what information a sufficient present state would have to contain.
+
 ## 3. Retrospective, transverse, and prospective structures are pre-state
 
 ### 3.1 MLTR: retrospective carried semantics from the left
