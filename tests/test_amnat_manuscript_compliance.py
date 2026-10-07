@@ -59,6 +59,7 @@ def test_scientific_spine_is_in_correct_order() -> None:
 def test_submission_manuscript_has_literature_positioning() -> None:
     required = (
         "Ogle et al. 2015",
+        "Munch and Rogers 2026",
         "Scheffer et al. 2001",
         "Hastings et al. 2018",
         "Fukami 2015",
