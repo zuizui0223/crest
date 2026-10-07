@@ -143,7 +143,7 @@ The exact parity-style two-output map is a minimal formal witness of joint depen
 ## AmNat submission metadata
 
 Machine-readable metadata: `amnat_submission_metadata.json`  
-Current pinned text word count: **5755**  
+Current pinned text word count: **5793**  
 Short title: **Sparse Semantic Access**.
 
 Generate the anonymous title-page metadata with:
