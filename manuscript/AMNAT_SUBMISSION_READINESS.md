@@ -2,7 +2,7 @@
 
 **Current target:** *The American Naturalist* — Major Article  
 **Canonical manuscript:** `crest_flagship_amnat_v0.7_semantic_access.md`  
-**Current text word count:** 5793  
+**Current text word count:** 5989  
 **Purpose:** current submission-readiness surface for the AmNat flagship. The older `SUBMISSION_BLOCKERS_2026-08-24.md` is retained only as a historical Biology & Philosophy record.
 
 ## Repository-controlled status
@@ -11,12 +11,13 @@
 - The current scientific hierarchy is explicit: finite partition/quotient/transport results are supporting structural guarantees rather than independent mathematical novelty claims.
 - The paper-level theoretical contribution is the ecological temporal-cut state construction plus the separation of prerequisite topology from semantic accessibility.
 - A further ecological consequence is that observed ecological memory is not state-representation invariant: history dependence at a coarse present can become ordinary state dependence when the carried legacy is represented. The invariant finite obstruction is failure of the proposed state quotient to support a well-defined transition.
+- The transport criterion now also identifies the unique coarsest one-step closing refinement and its Hartley class-count cost; this is a diagnostic requirement on a sufficient present state, not evidence that the future-derived pullback is itself a biological present variable.
 - The information-theoretic interpretation is explicitly two-layered: Shannon order (`q=1`) is the structural prerequisite-support diagnostic, whereas the Hartley endpoint (`q=0`) measures distinguishable support-space contraction under sparse semantic access.
 - The canonical Shannon witness has a 2.5-bit structural dividend at `N=4`, accessible occupancy `1/4`, and decoder depth `m=10`.
 - The Hartley support-count result retains the sparse-access degradation `log2(N/k)` relative to complete addressability; the canonical sparse-access witness has 1027 classes / 10.00422 Hartley bits and an 8.00422-bit support-count dividend at `m=10`.
 - The zero-duration cut remains a finite idealization; no epsilon-to-zero continuous-time theorem is claimed.
 - The shallow-lake model is presented as a worked ecological interpretation and executable formal witness, not empirical validation.
-- The canonical manuscript remains below the Major Article usual 7500-word ceiling at 5793 words by the repository's pinned counting method.
+- The canonical manuscript remains below the Major Article usual 7500-word ceiling at 5989 words by the repository's pinned counting method.
 - Anonymous review-code bundle and anonymous title-page builders are implemented and covered by the reproducibility suite.
 
 ## Current AmNat review-format requirements tracked by the repository
