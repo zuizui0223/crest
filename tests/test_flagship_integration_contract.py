@@ -133,7 +133,7 @@ def test_flagship_submission_constraints_are_pinned() -> None:
     assert constraints["current_abstract_words"] == 188
     assert constraints["current_keywords"] <= constraints["keyword_max"]
     assert constraints["current_title_words"] == 9
-    assert constraints["current_main_text_words"] == 5794
+    assert constraints["current_main_text_words"] == 5755
     assert manifest["literature_positioning"]["resilience_and_present_response_capacity"] == "Walker et al. 2004"
     assert manifest["literature_positioning"]["coarse_graining_and_memory"] == "Li et al. 2015"
     memory = manifest["memory_state_invariance"]
