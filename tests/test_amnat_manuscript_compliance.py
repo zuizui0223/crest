@@ -29,7 +29,7 @@ def test_amnat_major_article_abstract_is_within_200_words() -> None:
     assert _word_count(abstract) <= 200
     assert "zero-duration temporal cut" in abstract
     assert "Shannon order" in abstract
-    assert "exact Möbius support" in abstract
+    assert "prerequisite support" in abstract
     assert "Hartley support-count endpoint" in abstract
     assert "(N-k)+k2^m" in abstract
     assert "one visible present can conceal ecologically distinct recovery capacities" in abstract
@@ -59,7 +59,7 @@ def test_scientific_spine_is_in_correct_order() -> None:
 def test_submission_manuscript_has_literature_positioning() -> None:
     required = (
         "Ogle et al. 2015",
-        "Munch and Rogers 2026",
+        "Munch and Rogers (2026)",
         "Scheffer et al. 2001",
         "Hastings et al. 2018",
         "Fukami 2015",
