@@ -29,8 +29,8 @@ def test_amnat_major_article_abstract_is_within_200_words() -> None:
     assert _word_count(abstract) <= 200
     assert "zero-duration temporal cut" in abstract
     assert "Shannon order" in abstract
-    assert "exact Möbius support" in abstract
-    assert "Hartley support-count endpoint" in abstract
+    assert "prerequisite support" in abstract
+    assert "Hartley endpoint" in abstract
     assert "(N-k)+k2^m" in abstract
     assert "one visible present can conceal ecologically distinct recovery capacities" in abstract
 
@@ -59,6 +59,7 @@ def test_scientific_spine_is_in_correct_order() -> None:
 def test_submission_manuscript_has_literature_positioning() -> None:
     required = (
         "Ogle et al. 2015",
+        "Munch and Rogers (2026)",
         "Scheffer et al. 2001",
         "Hastings et al. 2018",
         "Fukami 2015",
@@ -69,6 +70,7 @@ def test_submission_manuscript_has_literature_positioning() -> None:
         "Littman, Sutton, and Singh 2001",
         "Givan, Dean, and Greig 2003",
         "Li, Walsh, and Littman 2006",
+        "Li et al. 2015",
         "Søndergaard, Jensen, and Jeppesen 2003",
         "Søndergaard et al. 2007",
         "Jeppesen et al. 2012",
@@ -93,6 +95,22 @@ def test_section10_distinguishes_four_neighboring_state_traditions() -> None:
     assert "CREST instead asks what makes two possible ecological worlds the same state at the present boundary in the first place" in section
     assert "not a new generic theory of quotient states" in section
     assert "finite theory of the ecological present as a temporal boundary" in section
+    assert "ecological memory is not, in general, invariant to state representation" in section
+    assert "memory strength or memory length is not a system invariant until the state representation is fixed" in section
+
+
+def test_transport_closure_corollary_is_explicit_and_not_future_smuggling() -> None:
+    section = _section_between(
+        "## 2. State at a zero-duration temporal cut",
+        "## 3. Retrospective, transverse, and prospective structures are pre-state",
+    )
+    assert "P_t^{\\rm close}" in section
+    assert "operatorname{LCR}" in section
+    assert "C_{t\\to s}^{(0)}" in section
+    assert "unique coarsest refinement" in section
+    assert "diagnostic requirement" in section
+    assert "present carrier" in section
+    assert "not automatically a biologically realized present state" in section
 
 
 def test_shannon_is_structural_and_hartley_is_support_count() -> None:

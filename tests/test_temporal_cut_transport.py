@@ -99,3 +99,60 @@ def test_world_map_validation_rejects_partial_or_out_of_carrier_maps() -> None:
         transition_respects_state(
             source, target, state_source, state_target, {1: 3, 2: 9}
         )
+
+
+def test_minimal_closing_refinement_is_coarsest_over_all_three_world_partitions() -> None:
+    """Exhaustive finite witness for the one-step closure corollary.
+
+    This checks a standard common-refinement fact in the CREST transport
+    setting; it is not presented as new partition mathematics.
+    """
+    from math import log2
+
+    from crest.cut_state_quotient import (
+        least_common_refinement,
+        partition_from_labels,
+        partition_refines,
+    )
+
+    def all_partitions(worlds: tuple[int, ...]):
+        if not worlds:
+            yield ()
+            return
+        first, *rest = worlds
+        for tail in all_partitions(tuple(rest)):
+            yield (frozenset({first}),) + tail
+            for index in range(len(tail)):
+                merged = tuple(
+                    block | {first} if j == index else block
+                    for j, block in enumerate(tail)
+                )
+                yield merged
+
+    source = (0, 1, 2)
+    target = ("x", "y")
+    all_source_states = list(all_partitions(source))
+    target_state = (frozenset({"x"}), frozenset({"y"}))
+
+    for source_state in all_source_states:
+        for images in product(target, repeat=len(source)):
+            world_map = dict(zip(source, images))
+            pullback = partition_from_labels(source, images)
+            closed = least_common_refinement(source, (source_state, pullback))
+            assert transition_respects_state(
+                source, target, closed, target_state, world_map
+            )
+            assert partition_refines(source, closed, source_state)
+            for candidate in all_source_states:
+                if (
+                    partition_refines(source, candidate, source_state)
+                    and transition_respects_state(
+                        source, target, candidate, target_state, world_map
+                    )
+                ):
+                    assert partition_refines(source, candidate, closed)
+            cost = log2(len(closed) / len(source_state))
+            assert cost >= 0
+            assert (cost == 0) == transition_respects_state(
+                source, target, source_state, target_state, world_map
+            )

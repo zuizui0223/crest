@@ -4,7 +4,7 @@
 
 ## Abstract
 
-When two ecosystems look the same now but differ in what they retain from the past, how they are organized beneath that appearance, or what futures remain possible, are they in the same ecological state? Ecological memory, hysteresis, historical contingency, and long transients all show that instantaneous configuration need not determine ecological identity. We therefore idealize the present as a zero-duration temporal cut and define state from distinctions that remain consequential at that boundary. Retrospective carried history, transverse latent-present response structure, and prospective response accessibility are defined before state. CREST defines ecological state as the least quotient compatible with those distinctions. For prospective refinement, prerequisite topology and semantic accessibility play different roles. At Shannon order, prerequisite sets determine exact Möbius support while accessible occupancy determines coefficient magnitude; non-Shannon orders can mix structural and distributional interaction. Separately, the Hartley support-count endpoint shows that if N retrospective-by-transverse semantic pairs exist but only k support an m-bit future distinction, the joint state has (N-k)+k2^m classes and loses asymptotically log2(N/k) bits relative to complete accessibility. A shallow-lake model shows why one visible present can conceal ecologically distinct recovery capacities.
+When two ecosystems look the same now but differ in what they retain from the past, how they are organized beneath that appearance, or what futures remain possible, are they in the same ecological state? Ecological memory, hysteresis, historical contingency, and long transients show that instantaneous configuration need not determine ecological identity. We represent the present as a zero-duration temporal cut and define state as the least quotient preserving consequential retrospective, latent-present, and prospective distinctions. This yields a stronger consequence: ecological memory is not invariant to state representation. History dependence at a coarse visible state can become ordinary state dependence once the carried legacy is represented; the corresponding failure is that a coarse state cannot support a well-defined transition when worlds it merges later diverge. For prospective refinement, Shannon order preserves declared prerequisite support, whereas non-Shannon orders can mix structural and distributional interaction. Separately, the Hartley endpoint shows that if N semantic pairs exist but only k support an m-bit future distinction, the joint state has (N-k)+k2^m classes and loses asymptotically log2(N/k) bits relative to complete accessibility. A shallow-lake model illustrates the ecological consequences.
 
 **Keywords:** ecological state; temporal representation; ecological memory; state abstraction; semantic access; restoration
 
@@ -77,6 +77,27 @@ This conclusion is representation invariant. Two different pre-state signature f
 For a fixed cut, these representation classes exhaust the entire finite state space. Representation-equivalence classes of signature families are in one-to-one correspondence with partitions that refine \(B_t\): every induced cut-state refines the visible partition, and conversely any refinement of \(B_t\) can be realized by one signature whose kernel is that refinement. Ordering states by retained information is therefore exactly partition refinement. Adding a nonredundant signature can only move to a finer state, so \(\log_2|Q|\) is monotone nondecreasing along this order.
 
 States at different cuts can be connected only when the underlying world evolution respects their quotient equivalences. For a declared deterministic map \(\phi_{t\to s}:\Omega_t\to\Omega_s\), a state-level map \(\bar\phi:Q_t\to Q_s\) exists exactly when \(\omega\sim_t\omega'\) implies \(\phi(\omega)\sim_s\phi(\omega')\). When this descent condition holds, \(\bar\phi([\omega]_t)=[\phi(\omega)]_s\) is unique; identity and composition descend. Failure is a state-sufficiency obstruction: one source state class evolves into multiple target state classes, so no deterministic quotient transition is well defined. This finite transport result does not imply temporal monotonicity of \(|Q_t|\) or a continuous-time limit.
+
+The same criterion gives a minimal one-step closure diagnostic. Let \(P_t\) and \(P_s\) denote the source and target state partitions and let \(\phi^{-1}(P_s)\) be the pullback partition that groups source worlds whose images lie in the same target class. Then
+\[
+\boxed{
+P_t^{\rm close}
+=
+\operatorname{LCR}\!\left(P_t,\phi^{-1}(P_s)\right)
+}
+\]
+is the unique coarsest refinement of \(P_t\) from which \(\phi\) descends to \(P_s\). Any other source refinement supporting a deterministic quotient transition must refine \(P_t^{\rm close}\). The associated Hartley class-count increment
+\[
+\boxed{
+C_{t\to s}^{(0)}
+=
+\log_2\frac{|P_t^{\rm close}|}{|P_t|}
+\ge 0
+}
+\]
+is zero exactly when the original source state is already dynamically closed for that target cut. This is an elementary partition corollary, not a new information-theoretic theorem.
+
+Crucially, \(P_t^{\rm close}\) is a **diagnostic requirement**, not automatically a biologically realized present state: it is defined using the declared evolution and target partition. To claim that apparent memory has been absorbed into the present, one must identify a present carrier—such as a seed bank, sediment legacy, age structure, or physiological state—whose independently defined partition realizes or refines the required distinction. Otherwise the closure partition remains only a statement about what information a sufficient present state would have to contain.
 
 ## 3. Retrospective, transverse, and prospective structures are pre-state
 
@@ -446,9 +467,13 @@ CREST sits at the intersection of several literatures that already show that ant
 
 ### 10.1 Ecological memory and historical contingency
 
-Ecological-memory models make antecedent conditions explicit. Ogle et al. (2015), for example, quantify how past environmental conditions contribute to current ecological processes and emphasize the length, temporal pattern, and strength of memory. Historical contingency in community assembly provides a complementary perspective: priority effects can make the order and timing of immigration alter later community structure and function, producing alternative stable or transient outcomes (Fukami 2015). These approaches establish more than the generic claim that the past matters. They show that distinctions originating before the present can remain biologically active at the present.
+Ecological-memory models make antecedent conditions explicit. Ogle et al. (2015), for example, quantify how past environmental conditions contribute to current ecological processes and emphasize the length, temporal pattern, and strength of memory. More recently, Munch and Rogers (2026) estimated memory length across 302 ecological abundance time series and related it to dynamical stability and forecast skill, illustrating that memory length is now used as a comparative property of ecological dynamics. Historical contingency in community assembly provides a complementary perspective: priority effects can make the order and timing of immigration alter later community structure and function, producing alternative stable or transient outcomes (Fukami 2015). These approaches establish more than the generic claim that the past matters. They show that distinctions originating before the present can remain biologically active at the present.
 
 CREST therefore does not equate ecological memory with retention of complete history. Its retrospective interface is a quotient. Two raw histories are merged when their carried semantics are identical at the cut and separated when inherited differences remain ecologically consequential. In this sense ecological memory supplies one route by which past structure becomes constitutive of present ecological identity.
+
+A stronger consequence follows from the transport criterion in Section 2: **ecological memory is not, in general, invariant to state representation**. Suppose two histories are merged by a coarse present classification but their carried legacies make them evolve into different later state classes. At that coarse resolution, the future depends on which history occurred, so the process appears history dependent. If the carried legacy is represented as part of the present state and the refined quotient restores deterministic transport, the same biology is described as ordinary state dependence. Nothing about the ecosystem has changed; only the boundary between “memory” and “state” has moved. This does not imply that all ecological memory is removable by a finite refinement. It means that a claim about memory strength or memory length is not a system invariant until the state representation is fixed. The representation-explicit question in the present finite setting is whether the chosen present quotient is dynamically closed: do worlds called the same state have a well-defined common image at the next cut?
+
+This representation dependence echoes the general coarse-graining principle that eliminating degrees of freedom can generate memory terms (Li et al. 2015). CREST does not claim that principle as new mathematics. Its ecological consequence here is that a measured history effect can reflect either an irreducible dependence within the declared state family or a legacy carrier that the present state description has omitted.
 
 ### 10.2 Hysteresis, alternative states, and restoration
 
@@ -488,6 +513,10 @@ The central biological claim is that an ecological present can be temporally com
 
 This interpretation unifies several familiar ecological phenomena at the level of state. Ecological memory and priority effects show how past distinctions can remain active; hysteresis and restoration dynamics show that similar visible configurations can diverge in recovery; latent ecological organization shows that current response structure can be hidden; and differences in regeneration or response capacity show that identical appearances can support different reachable futures. CREST does not replace those theories. It identifies their shared implication: instantaneous visible configuration is not in general sufficient to define ecological identity at a moment.
 
+This also changes how ecological memory should be interpreted. A persistent legacy can be described as “history dependence” when its carrier is omitted from the present state, yet as ordinary present-state dependence when that carrier is represented—for example, sediment phosphorus, a seed bank, age structure, or physiological priming. Two analyses can therefore assign different apparent memory strengths to the same underlying biology simply because they resolve the present differently. In the finite CREST setting, the operationally defined fact is not the label “memory” but the failure of a proposed state to close the dynamics: worlds merged as one present state later separate. Memory can therefore diagnose an under-resolved ecological present rather than an intrinsically non-Markovian ecosystem.
+
+This distinction is empirically falsifiable. If an apparent history effect is carried by an omitted present variable, adding that carrier to the state description should reduce the residual predictive contribution of past conditions and should reduce failures of one-step state closure. If history retains predictive information after the relevant present carriers have been represented, then the proposed state remains insufficient or the memory cannot be absorbed by that finite refinement. Thus CREST does not ask whether an ecosystem “has memory” in the abstract. It asks how much apparent memory survives successive, biologically justified completions of the present state.
+
 The realizability results protect that biological interpretation. Positive temporal interaction does not appear merely because three labels are intersected, raw historical identity is not preserved when histories are semantically equivalent, and a fixed response grammar cannot generate a latent distinction that its own candidate-safe quotient has already erased. These restrictions matter because a theory of ecological state should not manufacture temporal dependence from arbitrary labels.
 
 Sparse access adds a second ecological consequence. Even after retrospective and transverse distinctions are both retained, prospective differentiation can remain localized to only some combinations of them. Complete addressability would treat every semantic combination as equally capable of expressing the future response. The Shannon result states where that prospective interaction is structurally supported and weights it by accessible occupancy. The Hartley endpoint asks instead how much distinguishable support remains when accessibility is sparse. In that sense \(k/N\) describes the breadth of future-generating capacity across the state space, while \(\log_2(N/k)\) quantifies support-space contraction rather than prerequisite topology.
@@ -502,7 +531,7 @@ Ecological state is not located entirely in the instantaneous visible present. S
 
 CREST represents the present as a temporal cut at which those three sources of distinction meet. Retrospective carried history, transverse latent-present response structure, and prospective response accessibility are defined before the state, and the ecological state is the least quotient that does not collapse their consequential differences. For prospective refinement, Shannon information preserves declared prerequisite support, whereas the Hartley endpoint quantifies how sparse accessibility contracts the distinguishable state space.
 
-The resulting view is not that state is chosen by whatever question an investigator happens to ask. It is that the ecological present has temporal depth: past consequences can remain embodied, hidden organization can differentiate systems now, and the futures a system can still express are properties of its present organization. A temporal-cut state is the finite representation of that ecological fact.
+The resulting view is not that state is chosen by whatever question an investigator happens to ask. It is that the ecological present has temporal depth: past consequences can remain embodied, hidden organization can differentiate systems now, and the futures a system can still express are properties of its present organization. In this finite sense, observed ecological memory can be a signature of an under-resolved present state rather than irreducible history dependence. A temporal-cut state is the finite representation of that ecological fact.
 
 ## Literature Cited
 
@@ -520,7 +549,11 @@ Jeppesen, E., M. Søndergaard, T. L. Lauridsen, T. A. Davidson, Z. Liu, N. Mazze
 
 Li, L., T. J. Walsh, and M. L. Littman. 2006. Towards a unified theory of state abstraction for MDPs. In *Proceedings of the 9th International Symposium on Artificial Intelligence and Mathematics (AI&M 2006)*, Fort Lauderdale, Florida.
 
+Li, Z., X. Bian, X. Li, and G. E. Karniadakis. 2015. Incorporation of memory effects in coarse-grained modeling via the Mori-Zwanzig formalism. *The Journal of Chemical Physics* 143:243128. https://doi.org/10.1063/1.4935490.
+
 Littman, M. L., R. S. Sutton, and S. Singh. 2001. Predictive representations of state. *Advances in Neural Information Processing Systems* 14:1555–1561.
+
+Munch, S. B., and T. L. Rogers. 2026. Memory, chaos, and noise in ecological forecasting. *Proceedings of the National Academy of Sciences of the United States of America* 123:e2604256123. https://doi.org/10.1073/pnas.2604256123.
 
 Ogle, K., J. J. Barber, G. A. Barron-Gafford, L. P. Bentley, J. M. Young, T. E. Huxman, M. E. Loik, and D. T. Tissue. 2015. Quantifying ecological memory in plant and ecosystem processes. *Ecology Letters* 18:221–235. https://doi.org/10.1111/ele.12399.
 
