@@ -30,7 +30,7 @@ def test_amnat_major_article_abstract_is_within_200_words() -> None:
     assert "zero-duration temporal cut" in abstract
     assert "Shannon order" in abstract
     assert "prerequisite support" in abstract
-    assert "Hartley support-count endpoint" in abstract
+    assert "Hartley endpoint" in abstract
     assert "(N-k)+k2^m" in abstract
     assert "one visible present can conceal ecologically distinct recovery capacities" in abstract
 
