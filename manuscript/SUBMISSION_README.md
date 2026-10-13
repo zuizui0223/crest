@@ -10,6 +10,10 @@ AmNat Supplementary Information II: `CREST_AmNat_supplementary_prerequisite_supp
 
 CREST treats the present as a zero-duration observational cut and defines ecological state as the least quotient induced on that cut by retrospective, transverse latent-present, and prospective distinguishability constraints.
 
+A key ecological consequence is that memory is not generally invariant to state representation. A history effect at a coarse present can become ordinary state dependence when its persistent carrier is included in the present state; the invariant failure is dynamic non-closure of the coarse state, not the label assigned to the missing distinction.
+
+The transport theorem additionally gives a minimal one-step closure diagnostic: the least common refinement of the source state with the pullback of the target state is the unique coarsest refinement that restores a deterministic quotient transition. Its class-count increment is a Hartley support cost. Ecological absorption of memory still requires an independently identified present carrier realizing that distinction.
+
 The three companion responsibilities remain non-circular and non-identical:
 
 - **MLTR / retrospective H:** primitive replacement histories first, complete carried-map equivalence second; left-of-cut structure.
@@ -141,7 +145,7 @@ The exact parity-style two-output map is a minimal formal witness of joint depen
 ## AmNat submission metadata
 
 Machine-readable metadata: `amnat_submission_metadata.json`  
-Current pinned text word count: **5265**  
+Current pinned text word count: **5968**  
 Short title: **Sparse Semantic Access**.
 
 Generate the anonymous title-page metadata with:
