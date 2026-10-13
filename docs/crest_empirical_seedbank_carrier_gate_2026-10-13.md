@@ -25,7 +25,7 @@ Predict the log1p-scaled next-year seedling density. Inputs known by year t: log
 
 Relative incremental historical predictive benefit: **6.254%** with present alone, **2.187%** when present seed bank is included; this is **not** a causal mediation contrast. Adding the seed bank to the present-only baseline improves MSE by 2.752%, but **adding it beyond history makes MSE 1.467% worse**.
 
-Ridge sensitivity lambda 0.25 / 2 / 20 / 100 gives direct-carrier incremental benefit beyond history **−1.53%, −1.47%, −0.96%, +0.14%**. Year-block resampling 2,000 times, keeping all fitted models fixed, yields a descriptive interval **[−4.77%, +1.37%]** for this incremental benefit; this is **not** a full-model or causal confidence interval. Under 300 within-species, within-split carrier shuffles (a timing placebo), 118 random alignments score at least as well as the real bank. Temporal specificity is not compelling.
+Ridge sensitivity lambda 0.25 / 2 / 20 / 100 gives direct-carrier incremental benefit beyond history **−1.53%, −1.47%, −0.96%, +0.14%**. Year-block resampling 2,000 times, keeping all fitted models fixed, yields a descriptive interval **[−4.77%, +1.37%]** for this incremental benefit; this is **not** a full-model or causal confidence interval. Under 300 within-species, within-split carrier shuffles (a timing placebo), **217** random alignments score at least as well as the real bank. An earlier 118/300 count was invalid: the previous calculation erroneously reused a single shuffled value for each species across years. The per-year shuffle indexing was corrected before rerunning all 300 placebos. Temporal specificity is not compelling.
 
 ## Scientific rejection / acceptance gate
 
