@@ -87,3 +87,22 @@ def test_annual_cv_uses_heldout_years_and_no_online_data() -> None:
             - mse["current_plus_history_plus_seedbank"]
         ) / mse["current_plus_history"]
     )
+
+
+def test_carrier_placebo_shuffles_every_timepoint_without_dropping_values() -> None:
+    panel = [
+        {
+            "species": "taxon",
+            "year": 2000 + k,
+            "y": 1.0,
+            "x": (0.5, 0.25, float(k)),
+        }
+        for k in range(10)
+    ]
+    original = [r["x"][2] for r in panel]
+    permuted = MODEL["_shuffled_panel"](panel, MODEL["xorshift"](20261013))
+    values = [r["x"][2] for r in permuted]
+    assert sorted(values) == original
+    assert len(set(values)) == len(panel)
+    assert values != original
+    assert [r["x"][2] for r in panel] == original
