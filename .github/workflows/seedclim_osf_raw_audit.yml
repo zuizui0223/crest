@@ -1,0 +1,41 @@
+name: SeedClim external raw-source audit
+
+on:
+  pull_request:
+    paths:
+      - scripts/audit_seedclim_osf_raw.py
+      - tests/test_seedclim_osf_raw_audit.py
+      - .github/workflows/seedclim_osf_raw_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-probe:
+    name: Public OSF binary probe (non-blocking scientific HOLD)
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit seed-bank workbook and community SQLite source archives
+        shell: bash
+        run: |
+          set +e
+          python scripts/audit_seedclim_osf_raw.py --download --output "${RUNNER_TEMP}/seedclim-osf-source-audit.json"
+          code=$?
+          if [ "$code" -ne 0 ]; then
+            echo "::warning::OSF raw source audit could not be independently verified in this runner. Scientific status remains HOLD."
+          fi
+          # The report must never be taken as proof of a species mechanism.
+          test -s "${RUNNER_TEMP}/seedclim-osf-source-audit.json" || exit 1
+          exit 0
+      - name: Upload metadata-only source audit (never raw files)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seedclim-osf-source-grain-audit
+          path: ${{ runner.temp }}/seedclim-osf-source-audit.json
