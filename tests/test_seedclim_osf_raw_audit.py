@@ -93,13 +93,13 @@ def fake_xlsx(with_turf_id: bool = False) -> bytes:
     return bio.getvalue()
 
 
-def fake_sqlite_zip(tmp_path: Path) -> bytes:
+def fake_sqlite_zip(tmp_path: Path, include_fauske: bool = True) -> bytes:
     dbpath = tmp_path / "seedclim.sqlite"
     conn = sqlite3.connect(dbpath)
     try:
         conn.executescript(
             "CREATE TABLE sites (siteID TEXT PRIMARY KEY);"
-            "INSERT INTO sites VALUES ('Arhelleren'), ('Fauske');"
+            "INSERT INTO sites VALUES ('Arhelleren');"
             "CREATE TABLE turfs (turfID TEXT PRIMARY KEY);"
             "CREATE TABLE turf_community ("
             "turfID TEXT, year INTEGER, species TEXT, cover REAL);"
@@ -109,6 +109,8 @@ def fake_sqlite_zip(tmp_path: Path) -> bytes:
             "('T-12', 2011, 'Acer_sp', 0.2),"
             "('T-44', 2011, 'Acer_sp', 0.3);"
         )
+        if include_fauske:
+            conn.execute("INSERT INTO sites VALUES ('Fauske')")
         conn.commit()
     finally:
         conn.close()
@@ -158,6 +160,20 @@ def test_turf_column_without_validated_crosswalk_does_not_pass(tmp_path: Path) -
     report = MODULE["audit"](fake_xlsx(with_turf_id=True), fake_sqlite_zip(tmp_path))
     assert report["status"] == "HOLD_SOURCE_CONTENT_OR_SCHEMA_UNRESOLVED"
     assert report["scientific_gate"]["can_match_one_seedbank_replicate_to_one_transplant_turf"] is False
+
+
+
+
+def test_bank_site_missing_from_community_is_not_silently_dropped(tmp_path: Path) -> None:
+    report = MODULE["audit"](
+        fake_xlsx(), fake_sqlite_zip(tmp_path, include_fauske=False)
+    )
+    assert report["status"] == "HOLD_SOURCE_CONTENT_OR_SCHEMA_UNRESOLVED"
+    assert report["site_linkage"]["exact_site_name_coverage"] is False
+    assert report["site_linkage"]["baseline_sites_absent_from_community"] == [
+        "Fauske"
+    ]
+    assert report["scientific_gate"]["may_compare_origin_site_level_baseline_profiles"] is False
 
 
 def test_field_scale_and_count_fail_closed_when_invalid() -> None:
