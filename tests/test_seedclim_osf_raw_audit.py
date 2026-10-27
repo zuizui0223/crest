@@ -98,6 +98,8 @@ def fake_sqlite_zip(tmp_path: Path) -> bytes:
     conn = sqlite3.connect(dbpath)
     try:
         conn.executescript(
+            "CREATE TABLE sites (siteID TEXT PRIMARY KEY);"
+            "INSERT INTO sites VALUES ('Arhelleren'), ('Fauske');"
             "CREATE TABLE turfs (turfID TEXT PRIMARY KEY);"
             "CREATE TABLE turf_community ("
             "turfID TEXT, year INTEGER, species TEXT, cover REAL);"
@@ -139,11 +141,14 @@ def test_sqlite_zip_audit_is_limited_to_schema_and_aggregates(tmp_path: Path) ->
     assert report["turf_community"]["rows"] == 3
     assert report["turf_community"]["distinct_turfs"] == 2
     assert report["turf_community"]["year_rows"] == {"2009": 1, "2011": 2}
+    assert report["sites"]["site_ids"] == ["Arhelleren", "Fauske"]
 
 
 def test_join_requires_independent_replicate_to_turf_evidence(tmp_path: Path) -> None:
     report = MODULE["audit"](fake_xlsx(), fake_sqlite_zip(tmp_path))
     assert report["status"] == "RAW_GRAIN_VALID_SITE_LEVEL_HOLD_TURF_LINKAGE"
+    assert report["site_linkage"]["exact_site_name_coverage"] is True
+    assert report["site_linkage"]["baseline_sites_absent_from_community"] == []
     assert report["scientific_gate"]["can_match_one_seedbank_replicate_to_one_transplant_turf"] is False
     assert report["scientific_gate"]["may_claim_ecological_memory_closure"] is False
     assert report["scientific_gate"]["earliest_conservative_future_analysis_year"] == 2011
