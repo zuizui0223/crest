@@ -310,6 +310,12 @@ def audit_community_zip(data: bytes) -> dict:
                     row_count = con.execute(f"SELECT COUNT(*) FROM {safe}").fetchone()[0]
                     details = {"rows": row_count}
                     colnames = {x[1] for x in con.execute(f"PRAGMA table_info({safe})")}
+                    if target_table == "sites" and "siteID" in colnames:
+                        details["site_ids"] = sorted(
+                            str(r[0]) for r in con.execute(
+                                f"SELECT DISTINCT siteID FROM {safe} WHERE siteID IS NOT NULL"
+                            )
+                        )
                     if "year" in colnames:
                         details["year_rows"] = {
                             str(y): n for y, n in con.execute(
@@ -329,9 +335,15 @@ def audit_community_zip(data: bytes) -> dict:
 def audit(seedbank: bytes, community: bytes) -> dict:
     a, b = audit_xlsx(seedbank), audit_community_zip(community)
     sheet = a["sheets"].get("seedbank")
+    source_sites = set(sheet["distinct_site_ids"]) if sheet else set()
+    community_sites = set(b.get("sites", {}).get("site_ids", []))
+    mismatched_sites = sorted(source_sites - community_sites)
     valid = (
         sheet is not None
         and not sheet["missing_required_columns"]
+        and bool(source_sites)
+        and bool(community_sites)
+        and not mismatched_sites
         and not sheet["has_turfID"] and not sheet["has_blockID"]
         and not sheet["invalid_sampling_scales"]
         and not sheet["invalid_seed_counts"]
@@ -343,6 +355,14 @@ def audit(seedbank: bytes, community: bytes) -> dict:
         "osf_node": OSF_NODE,
         "seedbank": a,
         "community": b,
+        "site_linkage": {
+            "baseline_sites": sorted(source_sites),
+            "community_sites": sorted(community_sites),
+            "baseline_sites_absent_from_community": mismatched_sites,
+            "exact_site_name_coverage": bool(source_sites) and not mismatched_sites
+            and bool(community_sites),
+            "replicate_to_block_linkage": "NOT_VERIFIED",
+        },
         "scientific_gate": {
             "can_match_one_seedbank_replicate_to_one_transplant_turf": False,
             "may_compare_origin_site_level_baseline_profiles": valid,
